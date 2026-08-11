@@ -1,0 +1,165 @@
+/**
+ * Кинематографичный первый экран.
+ * Всё здесь работает только когда на <body> висит класс .hero-cinematic —
+ * его ставит js/hero-cinematic.js, если включён флаг heroCinematic
+ * в js/flags.js. Выключили флаг — этот файл ни на что не влияет.
+ *
+ * Сценарий прокрутки: фото растворяется → под ним проступают световые пятна →
+ * описание и кнопки уступают место надписи «Ознакомительный ролик»,
+ * которая подъезжает вверх к имени → справа всплывает сам ролик.
+ */
+
+/* Экран получает запас по высоте: пока он «проезжает», успевает пройти
+   вся сцена, а текст всё это время стоит на месте. */
+.hero-cinematic .hero {
+  min-height: 210vh;
+  align-items: flex-start;
+  overflow: visible;
+  /* запас снизу: залипший блок отрывается заранее и уезжает вверх с отступом,
+     а не упирается в край следующего раздела */
+  padding-bottom: clamp(72px, 12vh, 160px);
+}
+
+/* Фото, затемнение и световые пятна прибиты к окну: кадр не «уезжает»
+   вверх, а именно исчезает, открывая живой фон. */
+.hero-cinematic .hero-media,
+.hero-cinematic .hero-scrim,
+.hero-cinematic .hero-glow {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  will-change: opacity;
+}
+.hero-cinematic .hero-media { transform-origin: center 45%; }
+.hero-cinematic .hero-media.is-gone,
+.hero-cinematic .hero-scrim.is-gone { visibility: hidden; }
+
+/* Световые пятна первого экрана: те же, что в разделах ниже, но их
+   прозрачностью управляет прокрутка, а не появление в кадре. */
+.hero-glow {
+  z-index: -3;
+  opacity: 0;
+  transition: none;
+  overflow: hidden;
+}
+
+/* Текст залипает по центру экрана, ролик встаёт справа от него. */
+.hero-cinematic .hero-inner {
+  --intro-video-w: clamp(220px, 22vw, 300px);
+  --intro-gap: clamp(28px, 4vw, 64px);
+  position: sticky;
+  top: calc(var(--header-h) + 6vh);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) var(--intro-video-w);
+  gap: var(--intro-gap);
+  align-items: start;
+}
+.hero-cinematic .hero-credit { position: fixed; bottom: 26px; }
+
+/* Блок-«мостик»: надпись и заголовок ролика подъезжают снизу вверх
+   к тексту о Льве Майденко и занимают место описания. */
+.hero-intro-bridge {
+  margin-top: 22px;
+  padding-top: 20px;
+  border-top: 1px solid var(--rule);
+  max-width: 46ch;
+  opacity: 0;
+  transform: translateY(18px);
+  will-change: opacity, transform;
+}
+.hero-intro-bridge h2 {
+  font-size: var(--fs-h3);
+  margin: 10px 0 8px;
+  text-transform: none;
+  letter-spacing: 0;
+  line-height: 1.2;
+}
+.hero-intro-sub { color: var(--bone-dim); font-size: var(--fs-base); line-height: 1.6; }
+.hero-intro-cue {
+  display: inline-flex; align-items: center; gap: 8px; margin-top: 14px;
+  font-size: var(--fs-2xs); letter-spacing: 0.14em; text-transform: uppercase; color: var(--copper);
+}
+.hero-intro-cue::after { content: '→'; font-size: 14px; }
+
+/* Стрелка от текста к ролику. Длину штриха задаёт JS: она «дорисовывается»
+   по мере прокрутки, вместе с появлением ролика. */
+/* Вне кинематографичного режима стрелки нет вовсе. */
+.hero-intro-arrow { display: none; }
+.hero-cinematic .hero-intro-arrow {
+  display: block;
+  position: absolute;
+  /* остриё упирается в левый край ролика, где бы тот ни оказался */
+  right: calc(var(--intro-video-w) + var(--intro-gap) - 14px);
+  top: 42%;
+  /* пошире — чтобы начало завитка стояло вплотную к тексту,
+     а остриё упиралось в ролик: сразу видно, откуда и куда ведёт */
+  width: clamp(240px, 24vw, 330px);
+  height: auto;
+  color: var(--copper);
+  overflow: visible;
+  pointer-events: none;
+}
+.hero-intro-arrow path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+/* Ролик рядом с текстом. Размер плитке уточняет JS по пропорциям кадра. */
+.hero-intro-video {
+  width: var(--intro-video-w);
+  opacity: 0;
+  transform: translateY(38px);
+  will-change: opacity, transform;
+}
+.hero-intro-video .video-tile { border: 1px solid var(--rule); }
+
+/* Отдельный раздел с роликом больше не нужен — он теперь часть первого экрана. */
+.hero-cinematic #intro-video { display: none; }
+
+/* Блок описания и кнопок не просто гаснет, а сжимается — иначе на его месте
+   остаётся пустота, а надпись о ролике «зависает» посреди экрана. */
+.hero-cinematic .hero-lead { overflow: hidden; will-change: height, opacity; }
+
+/* Узкое окно (и телефон): ролик рядом с текстом уже не помещается, поэтому
+   кинематографичный режим выключается целиком — первый экран и раздел
+   «Ознакомительный ролик» снова живут отдельно, каждый со своим фоном. */
+@media (max-width: 1024px) {
+  .hero-cinematic .hero {
+    min-height: min(760px, 100svh);
+    align-items: flex-end;
+    overflow: hidden;
+    padding-bottom: clamp(56px, 8vh, 96px);
+  }
+  .hero-cinematic .hero-media,
+  .hero-cinematic .hero-scrim { position: absolute; opacity: 1 !important; transform: none !important; }
+  .hero-cinematic .hero-glow { display: none; }
+  .hero-cinematic .hero-inner {
+    position: relative; top: auto;
+    display: block;
+  }
+  .hero-cinematic .hero-credit { position: absolute; }
+  .hero-cinematic .hero-lead { height: auto !important; opacity: 1 !important; overflow: visible; }
+  .hero-cinematic .hero-intro-bridge,
+  .hero-cinematic .hero-intro-video,
+  .hero-cinematic .hero-intro-arrow { display: none; }
+  .hero-cinematic #intro-video { display: block; }
+}
+
+/* Экономия движения: тот же «обычный» вид, что и в узком окне. */
+@media (prefers-reduced-motion: reduce) {
+  .hero-cinematic .hero {
+    min-height: min(760px, 100svh);
+    align-items: flex-end;
+    overflow: hidden;
+    padding-bottom: clamp(56px, 8vh, 96px);
+  }
+  .hero-cinematic .hero-media,
+  .hero-cinematic .hero-scrim { position: absolute; opacity: 1 !important; transform: none !important; }
+  .hero-cinematic .hero-glow { display: none; }
+  .hero-cinematic .hero-inner { position: relative; top: auto; display: block; }
+  .hero-cinematic .hero-lead { height: auto !important; opacity: 1 !important; overflow: visible; }
+  .hero-cinematic .hero-intro-bridge,
+  .hero-cinematic .hero-intro-video,
+  .hero-cinematic .hero-intro-arrow { display: none; }
+  .hero-cinematic #intro-video { display: block; }
+}

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Услуги</title>
+<meta name="description" content="">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/styles.css?v=11">
+<link rel="stylesheet" href="css/texture.css?v=11">
+<link rel="stylesheet" href="css/animations.css?v=11">
+</head>
+<body data-title-key="services.heading">
+
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+<header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <a href="index.html" class="brand" data-bind="nav.brand">Л.М.</a>
+    <nav class="main-nav" id="mainNav" aria-label="Основная навигация">
+      <ul id="navLinks"></ul>
+    </nav>
+    <div class="header-actions">
+      <button class="lang-toggle" id="langToggle" type="button" aria-label="Switch language">
+        <span class="lang-current">RU</span><span class="lang-sep">/</span><span class="lang-other">EN</span>
+      </button>
+      <a href="index.html#contact" class="btn btn-primary btn-small" data-bind="nav.cta">Обсудить проект</a>
+      <button class="nav-burger" id="navBurger" type="button" aria-label="Открыть меню" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="page-header">
+    <div class="ink-stain" aria-hidden="true"></div>
+    <div class="wrap reveal" data-reveal>
+      <span class="eyebrow" id="eyebrow"></span>
+      <h1 id="heading"></h1>
+      <p class="desc" id="sub"></p>
+    </div>
+  </section>
+
+  <div class="tear-divider">
+    <svg viewBox="0 0 1200 30" preserveAspectRatio="none">
+      <polygon fill="currentColor" points="0,30 0,8 45,15 85,3 140,13 185,1 250,11 300,4 365,16 410,2 470,10 525,5 590,14 640,1 705,12 760,3 820,15 880,6 940,10 1000,2 1060,13 1120,4 1170,9 1200,7 1200,30"/>
+    </svg>
+  </div>
+
+  <section class="section section-deep">
+    <div class="wrap">
+      <div class="card-grid card-grid--3" id="servicesGrid"></div>
+      <p class="services-note" id="note"></p>
+      <div class="section-foot">
+        <a href="index.html#contact" class="btn btn-primary" data-bind="nav.cta">Обсудить проект</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div><span class="footer-brand" data-bind="nav.brand">Л.М.</span><span class="footer-tagline" data-bind="footer.tagline"></span></div>
+    <p class="footer-rights" id="footerRights"></p>
+    <a href="privacy.html" class="footer-privacy" data-bind="footer.privacy">Политика конфиденциальности</a>
+  </div>
+</footer>
+
+<script src="js/content.js?v=11"></script>
+<script src="js/common.js?v=11"></script>
+<script src="js/page-services.js?v=11"></script>
+</body>
+</html>

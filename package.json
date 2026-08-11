@@ -1,0 +1,12 @@
+{
+  "name": "score-production-lab",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Портфолио-сайт (статика) + локальная админка для редактирования контента",
+  "scripts": {
+    "start": "node server/server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

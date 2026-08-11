@@ -1,0 +1,12 @@
+.DS_Store
+._*
+node_modules/
+*.tmp
+
+# СЕКРЕТЫ — в публичный репозиторий не попадают.
+# В send.php лежит токен Telegram-бота. Шаблон без токена: send.php.example
+send.php
+
+# Служебное: не нужно на сайте и раздувает репозиторий
+backups/
+assets/media/archive/

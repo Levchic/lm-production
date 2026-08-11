@@ -1,0 +1,227 @@
+/**
+ * Бумажная/печатная фактура плюс два «живых» фона.
+ *
+ * 1. .grain-overlay — зерно, один fixed-слой на весь вьюпорт.
+ * 2. .ink-stain     — чернильное поле в шапках внутренних страниц: несколько
+ *                     цветных пятен, которые медленно плывут и перетекают
+ *                     друг в друга. Разметку создаёт js/common.js.
+ * 3. .glow-field    — очень слабые световые пятна в однотонных разделах
+ *                     главной. Проявляются, когда раздел попадает в экран,
+ *                     и слегка смещаются при прокрутке.
+ * 4. .tear-divider  — рваный край между шапкой страницы и первым разделом.
+ *
+ * Все пятна декоративные: pointer-events: none и z-index ниже контента.
+ * Насыщенность правится через opacity у .ink-blob / .glow.
+ */
+
+/* ---------- Зерно ---------- */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='matrix' values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.06 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+@media (prefers-reduced-motion: reduce) {
+  .grain-overlay { opacity: 0.035; }
+}
+
+/* =========================================================================
+   ЧЕРНИЛЬНОЕ ПОЛЕ — шапки страниц «Обо мне», «Портфолио», «Услуги», «Новости»
+   ========================================================================= */
+.ink-stain {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  /* к низу шапки растворяется, чтобы не спорить с рваным краем */
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 72%, transparent 100%);
+  mask-image: linear-gradient(180deg, #000 0%, #000 72%, transparent 100%);
+}
+
+.ink-blob {
+  position: absolute;
+  border-radius: 50%;
+  /* размытие + screen поверх угольного фона = мягкое слияние, как чернила
+     в воде; резкие края «лава-лампы» на тёмном фоне смотрятся грязно */
+  /* блюр поменьше, чем у световых пятен: границы должны читаться как пятна,
+     а не сливаться в один ровный градиент */
+  filter: blur(44px);
+  mix-blend-mode: screen;
+  will-change: transform;
+  animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(0.45, 0, 0.55, 1);
+}
+
+.ink-blob.b1 {
+  width: clamp(230px, 31vw, 460px); aspect-ratio: 1.1;
+  left: -3%; top: -34%;
+  background: radial-gradient(circle at 50% 50%, rgba(194, 98, 43, 0.82), rgba(194, 98, 43, 0) 66%);
+  animation-name: ink-drift-a; animation-duration: 41s;
+}
+.ink-blob.b2 {
+  width: clamp(190px, 25vw, 380px); aspect-ratio: 0.92;
+  right: 6%; top: -26%;
+  background: radial-gradient(circle at 50% 50%, rgba(217, 140, 63, 0.68), rgba(217, 140, 63, 0) 68%);
+  animation-name: ink-drift-b; animation-duration: 53s;
+}
+.ink-blob.b3 {
+  width: clamp(220px, 29vw, 430px); aspect-ratio: 1.25;
+  left: 24%; top: 6%;
+  background: radial-gradient(circle at 50% 50%, rgba(140, 48, 62, 0.76), rgba(140, 48, 62, 0) 68%);
+  animation-name: ink-drift-c; animation-duration: 47s;
+}
+.ink-blob.b4 {
+  width: clamp(180px, 23vw, 350px); aspect-ratio: 1;
+  right: 22%; top: 30%;
+  background: radial-gradient(circle at 50% 50%, rgba(92, 62, 138, 0.7), rgba(92, 62, 138, 0) 68%);
+  animation-name: ink-drift-d; animation-duration: 63s;
+}
+.ink-blob.b5 {
+  width: clamp(160px, 20vw, 310px); aspect-ratio: 1.15;
+  left: 6%; top: 44%;
+  background: radial-gradient(circle at 50% 50%, rgba(32, 104, 104, 0.6), rgba(32, 104, 104, 0) 70%);
+  animation-name: ink-drift-b; animation-duration: 58s; animation-delay: -20s;
+}
+.ink-blob.b6 {
+  width: clamp(200px, 26vw, 400px); aspect-ratio: 1.35;
+  right: 2%; top: 52%;
+  background: radial-gradient(circle at 50% 50%, rgba(176, 84, 40, 0.62), rgba(176, 84, 40, 0) 70%);
+  animation-name: ink-drift-c; animation-duration: 69s; animation-delay: -30s;
+}
+
+@keyframes ink-drift-a {
+  0%   { transform: translate3d(-4%, -8%, 0) scale(1); }
+  30%  { transform: translate3d(18%, 10%, 0) scale(1.22); }
+  62%  { transform: translate3d(6%, 24%, 0) scale(0.9); }
+  100% { transform: translate3d(-4%, -8%, 0) scale(1); }
+}
+@keyframes ink-drift-b {
+  0%   { transform: translate3d(6%, 4%, 0) scale(1.08); }
+  35%  { transform: translate3d(-16%, 20%, 0) scale(0.88); }
+  70%  { transform: translate3d(-4%, -10%, 0) scale(1.26); }
+  100% { transform: translate3d(6%, 4%, 0) scale(1.08); }
+}
+@keyframes ink-drift-c {
+  0%   { transform: translate3d(0, 0, 0) scale(0.95); }
+  28%  { transform: translate3d(-20%, 14%, 0) scale(1.2); }
+  58%  { transform: translate3d(14%, -12%, 0) scale(1.05); }
+  100% { transform: translate3d(0, 0, 0) scale(0.95); }
+}
+@keyframes ink-drift-d {
+  0%   { transform: translate3d(4%, 10%, 0) scale(1.15); }
+  40%  { transform: translate3d(-14%, -14%, 0) scale(0.92); }
+  75%  { transform: translate3d(16%, 6%, 0) scale(1.1); }
+  100% { transform: translate3d(4%, 10%, 0) scale(1.15); }
+}
+
+/* =========================================================================
+   СВЕТОВЫЕ ПЯТНА — однотонные разделы главной
+   Намеренно очень слабые: фон должен перестать быть плоским, но не
+   перетягивать внимание с текста.
+   ========================================================================= */
+.section--glow { overflow: hidden; }
+.section--glow > .wrap { position: relative; z-index: 1; }
+
+.glow-field {
+  position: absolute;
+  inset: -10% 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: 0;
+  transform: translate3d(0, var(--glow-shift, 0px), 0);
+  transition: opacity 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.glow-field.visible { opacity: 1; }
+
+.glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  mix-blend-mode: screen;
+  will-change: transform;
+  animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(0.45, 0, 0.55, 1);
+}
+.glow.g1 {
+  width: clamp(300px, 46vw, 720px); aspect-ratio: 1.3;
+  left: -8%; top: -12%;
+  background: radial-gradient(circle at 50% 50%, rgba(194, 98, 43, 0.2), rgba(194, 98, 43, 0) 70%);
+  animation-name: glow-drift-a, glow-pulse; animation-duration: 64s, 17s;
+}
+.glow.g2 {
+  width: clamp(260px, 38vw, 600px); aspect-ratio: 1;
+  right: -6%; top: 22%;
+  background: radial-gradient(circle at 50% 50%, rgba(138, 74, 34, 0.18), rgba(138, 74, 34, 0) 70%);
+  animation-name: glow-drift-b, glow-pulse; animation-duration: 78s, 23s; animation-delay: 0s, -8s;
+}
+.glow.g3 {
+  width: clamp(220px, 32vw, 500px); aspect-ratio: 1.4;
+  left: 34%; bottom: -18%;
+  background: radial-gradient(circle at 50% 50%, rgba(90, 72, 130, 0.14), rgba(90, 72, 130, 0) 72%);
+  animation-name: glow-drift-c, glow-pulse; animation-duration: 92s, 29s; animation-delay: 0s, -15s;
+}
+
+/* Четыре раскладки пятен — чтобы в соседних разделах они не оказывались
+   на одних и тех же местах. Класс вешает injectGlowFields в js/common.js. */
+.glow-field--b .glow.g1 { left: auto; right: -10%; top: 26%; }
+.glow-field--b .glow.g2 { right: auto; left: -6%; top: -14%; }
+.glow-field--b .glow.g3 { left: auto; right: 24%; bottom: auto; top: 46%; }
+
+.glow-field--c .glow.g1 { left: 30%; top: 34%; }
+.glow-field--c .glow.g2 { right: -12%; top: -18%; }
+.glow-field--c .glow.g3 { left: -10%; bottom: -10%; }
+
+.glow-field--d .glow.g1 { left: auto; right: 8%; top: -20%; }
+.glow-field--d .glow.g2 { right: auto; left: 16%; top: 36%; }
+.glow-field--d .glow.g3 { left: auto; right: -14%; bottom: -6%; }
+
+@keyframes glow-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.25; }
+}
+@keyframes glow-drift-a {
+  0%   { transform: translate3d(0, 0, 0) scale(1); }
+  40%  { transform: translate3d(14%, 12%, 0) scale(1.18); }
+  100% { transform: translate3d(0, 0, 0) scale(1); }
+}
+@keyframes glow-drift-b {
+  0%   { transform: translate3d(0, 0, 0) scale(1.1); }
+  45%  { transform: translate3d(-16%, -10%, 0) scale(0.9); }
+  100% { transform: translate3d(0, 0, 0) scale(1.1); }
+}
+@keyframes glow-drift-c {
+  0%   { transform: translate3d(0, 0, 0) scale(0.95); }
+  50%  { transform: translate3d(-18%, -16%, 0) scale(1.22); }
+  100% { transform: translate3d(0, 0, 0) scale(0.95); }
+}
+
+/* На узком экране пятна физически меньше, поэтому прежний блюр превращал их
+   в один ровный градиент — размываем слабее, чтобы формы остались читаемыми */
+@media (max-width: 760px) {
+  .ink-blob { filter: blur(30px); }
+  .glow { filter: blur(62px); }
+}
+
+/* Меньше движения — меньше блюра и никакой анимации: и спокойнее, и легче
+   для слабых машин */
+@media (prefers-reduced-motion: reduce) {
+  .ink-blob, .glow { animation: none !important; }
+  .glow-field { transition: none; transform: none; }
+  * { scroll-behavior: auto !important; }
+}
+
+/* ---------- Рваный разделитель секций ---------- */
+.tear-divider {
+  position: relative;
+  z-index: 3;
+  height: 30px;
+  margin-top: -1px;
+  line-height: 0;
+  color: var(--char-deep);
+}
+.tear-divider svg { display: block; width: 100%; height: 100%; }

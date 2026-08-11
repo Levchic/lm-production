@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Проект</title>
+<meta name="description" content="">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/styles.css?v=11">
+<link rel="stylesheet" href="css/texture.css?v=11">
+<link rel="stylesheet" href="css/animations.css?v=11">
+</head>
+<body>
+
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+<header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <a href="index.html" class="brand" data-bind="nav.brand">Л.М.</a>
+    <nav class="main-nav" id="mainNav" aria-label="Основная навигация">
+      <ul id="navLinks"></ul>
+    </nav>
+    <div class="header-actions">
+      <button class="lang-toggle" id="langToggle" type="button" aria-label="Switch language">
+        <span class="lang-current">RU</span><span class="lang-sep">/</span><span class="lang-other">EN</span>
+      </button>
+      <a href="index.html#contact" class="btn btn-primary btn-small" data-bind="nav.cta">Обсудить проект</a>
+      <button class="nav-burger" id="navBurger" type="button" aria-label="Открыть меню" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="case-header">
+    <div class="case-hero-bg" id="caseHeroBg" aria-hidden="true"></div>
+    <div class="ink-stain" id="inkStain" aria-hidden="true"></div>
+    <div class="wrap reveal" data-reveal>
+      <span class="tag" id="categoryTag"></span>
+      <h1 id="title"></h1>
+      <p class="meta" id="meta"></p>
+      <p class="desc" id="description"></p>
+      <span class="placeholder-flag" id="placeholderFlag" style="display:none;"></span>
+      <div class="case-stats" id="stats"></div>
+    </div>
+  </section>
+
+  <section class="case-scope" id="scopeSection">
+    <div class="wrap">
+      <h2 id="scopeHeading"></h2>
+      <ol class="scope-list" id="scopeList"></ol>
+    </div>
+  </section>
+
+  <!-- Фото, видео и аудио идут отдельными блоками, а не вперемешку -->
+  <section class="case-media" id="photoSection">
+    <div class="wrap">
+      <h2 id="photoHeading"></h2>
+      <div class="media-grid" id="photoGrid"></div>
+    </div>
+  </section>
+
+  <section class="case-media" id="videoSection">
+    <div class="wrap">
+      <h2 id="videoHeading"></h2>
+      <div class="media-grid media-grid--video" id="videoGrid"></div>
+    </div>
+  </section>
+
+  <section class="case-media" id="audioSection">
+    <div class="wrap">
+      <h2 id="audioHeading"></h2>
+      <div class="audio-list" id="audioList"></div>
+    </div>
+  </section>
+
+  <div class="case-back">
+    <div class="wrap">
+      <a href="portfolio.html" class="text-link" id="backLink"></a>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div><span class="footer-brand" data-bind="nav.brand">Л.М.</span><span class="footer-tagline" data-bind="footer.tagline"></span></div>
+    <p class="footer-rights" id="footerRights"></p>
+    <a href="privacy.html" class="footer-privacy" data-bind="footer.privacy">Политика конфиденциальности</a>
+  </div>
+</footer>
+
+<script src="js/content.js?v=11"></script>
+<script src="js/common.js?v=11"></script>
+<script src="js/page-project.js?v=11"></script>
+</body>
+</html>
