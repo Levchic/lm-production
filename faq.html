@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Проект</title>
+<title>Частые вопросы</title>
 <meta name="description" content="">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="css/styles.css?v=12">
 <link rel="stylesheet" href="css/texture.css?v=12">
 <link rel="stylesheet" href="css/animations.css?v=12">
 </head>
-<body>
+<body data-title-key="faq.heading">
 
 <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
@@ -33,53 +33,30 @@
 </header>
 
 <main>
-  <section class="case-header">
-    <div class="case-hero-bg" id="caseHeroBg" aria-hidden="true"></div>
-    <div class="ink-stain" id="inkStain" aria-hidden="true"></div>
+  <section class="page-header">
+    <div class="ink-stain" aria-hidden="true"></div>
     <div class="wrap reveal" data-reveal>
-      <span class="tag" id="categoryTag"></span>
-      <h1 id="title"></h1>
-      <p class="meta" id="meta"></p>
-      <p class="desc" id="description"></p>
-      <span class="placeholder-flag" id="placeholderFlag" style="display:none;"></span>
-      <div class="case-stats" id="stats"></div>
+      <span class="eyebrow" id="eyebrow"></span>
+      <h1 id="heading"></h1>
+      <p class="desc" id="sub"></p>
     </div>
   </section>
 
-  <section class="case-scope" id="scopeSection">
-    <div class="wrap">
-      <h2 id="scopeHeading"></h2>
-      <ol class="scope-list" id="scopeList"></ol>
-    </div>
-  </section>
-
-  <!-- Фото, видео и аудио идут отдельными блоками, а не вперемешку -->
-  <section class="case-media" id="photoSection">
-    <div class="wrap">
-      <h2 id="photoHeading"></h2>
-      <div class="media-grid" id="photoGrid"></div>
-    </div>
-  </section>
-
-  <section class="case-media" id="videoSection">
-    <div class="wrap">
-      <h2 id="videoHeading"></h2>
-      <div class="media-grid media-grid--video" id="videoGrid"></div>
-    </div>
-  </section>
-
-  <section class="case-media" id="audioSection">
-    <div class="wrap">
-      <h2 id="audioHeading"></h2>
-      <div class="audio-list" id="audioList"></div>
-    </div>
-  </section>
-
-  <div class="case-back">
-    <div class="wrap">
-      <a href="portfolio.html" class="text-link" id="backLink"></a>
-    </div>
+  <div class="tear-divider">
+    <svg viewBox="0 0 1200 30" preserveAspectRatio="none">
+      <polygon fill="currentColor" points="0,30 0,8 45,15 85,3 140,13 185,1 250,11 300,4 365,16 410,2 470,10 525,5 590,14 640,1 705,12 760,3 820,15 880,6 940,10 1000,2 1060,13 1120,4 1170,9 1200,7 1200,30"/>
+    </svg>
   </div>
+
+  <section class="section section-deep">
+    <div class="wrap">
+      <ul class="faq-list" id="faqList"></ul>
+      <p class="faq-note" id="note"></p>
+      <div class="section-foot">
+        <a href="index.html#contact" class="btn btn-primary" data-bind="nav.cta">Обсудить проект</a>
+      </div>
+    </div>
+  </section>
 </main>
 
 <footer class="site-footer">
@@ -93,7 +70,7 @@
 
 <script src="js/content.js?v=12"></script>
 <script src="js/common.js?v=12"></script>
-<script src="js/page-project.js?v=12"></script>
+<script src="js/page-faq.js?v=12"></script>
 <script src="js/mobile-carousel.js?v=12"></script>
 </body>
 </html>

@@ -64,6 +64,16 @@
     paragraphs.forEach(function (text) { body.appendChild(el("p", null, esc(text).replace(/\n/g, "<br>"))); });
     toggle($("#postBodySection"), paragraphs.length > 0);
 
+    // Ссылка на YouTube / VK / Rutube превращается во встроенный плеер
+    var videoBox = $("#postVideo");
+    if (post.video) {
+      videoBox.innerHTML = C.videoEmbed(post.video, post.title);
+      toggle($("#postVideoSection"), true);
+    } else {
+      videoBox.innerHTML = "";
+      toggle($("#postVideoSection"), false);
+    }
+
     var photos = (post.photos || []).filter(Boolean);
     var photoGrid = $("#postPhotos");
     photoGrid.innerHTML = photos.map(function (src, i) {

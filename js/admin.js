@@ -91,7 +91,8 @@
             { key: "nav.brand", label: "Логотип (инициалы)", type: "text" },
             { key: "nav.cta", label: "Кнопка в шапке", type: "text" },
             { key: "footer.tagline", label: "Подпись в подвале", type: "text" },
-            { key: "footer.rights", label: "Строка о правах", type: "text" }
+            { key: "footer.rights", label: "Строка о правах", type: "text" },
+            { key: "footer.faq", label: "Ссылка «Частые вопросы» в подвале", type: "text" }
           ]
         },
         {
@@ -272,7 +273,7 @@
     },
     {
       id: "services", title: "Услуги",
-      hint: "На главной показываются первые три услуги, на services.html — все.",
+      hint: "На главной показываются направления, на services.html — прайс-лист: услуги внутри своих направлений.",
       groups: [
         {
           title: "Заголовки", fields: [
@@ -288,19 +289,36 @@
           ]
         },
         {
+          title: "Направления", fields: [
+            {
+              key: "services.groups", label: "", type: "objects",
+              titleKey: "title", addLabel: "Добавить направление", collapsed: true,
+              newItem: { id: "", title: "Новое направление", summary: "" },
+              item: [
+                { key: "id", label: "Код (латиницей, без пробелов)", type: "text",
+                  hint: "По нему услуга привязывается к направлению — менять код у существующего направления нельзя, иначе услуги от него отвяжутся." },
+                { key: "title", label: "Название", type: "text" },
+                { key: "summary", label: "Короткое описание", type: "textarea" }
+              ]
+            }
+          ]
+        },
+        {
           title: "Список услуг", fields: [
             {
               key: "services.items", label: "", type: "objects",
               titleKey: "title", addLabel: "Добавить услугу", collapsed: true,
-              newItem: { title: "Новая услуга", description: "", detail: "", bullets: [], price: "цена договорная", photo: "" },
+              newItem: { title: "Новая услуга", group: "", description: "", detail: "", bullets: [], price: "цена договорная" },
               item: [
                 { key: "title", label: "Название", type: "text" },
-                { key: "description", label: "Короткое описание (видно сразу)", type: "textarea" },
+                { key: "group", label: "Направление (код)", type: "text",
+                  hint: "Код направления из блока выше. Пустое или неизвестное — услуга уйдёт в конец страницы отдельным блоком." },
+                { key: "description", label: "Короткое описание (видно сразу)", type: "textarea",
+                  hint: "Одна строка, без точки в начале списка — так строки прайса держат общий ритм." },
                 { key: "detail", label: "Подробности (раскрываются по клику)", type: "textarea" },
                 { key: "bullets", label: "Что входит — списком", type: "strings", addLabel: "Добавить пункт" },
-                { key: "price", label: "Цена", type: "text" },
-                { key: "photo", label: "Фото в фоне карточки", type: "media", accept: "photo", shared: true, folder: "services",
-                  hint: "Показывается приглушённо, под затемнением — текст остаётся читаемым." }
+                { key: "price", label: "Цена", type: "text",
+                  hint: "Одной строкой, например «от 5 000 ₽ / мин» — цены выстраиваются в общую колонку." }
               ]
             }
           ]
@@ -395,7 +413,9 @@
                 { key: "body", label: "Полный текст статьи", type: "textarea",
                   hint: "Пустая строка между абзацами = новый абзац на странице." },
                 { key: "cover", label: "Обложка", type: "media", accept: "photo", shared: true,
-                  hint: "Показывается и на карточке, и фоном в шапке статьи." },
+                  hint: "Показывается и на карточке, и фоном в шапке статьи. Если не выбрать — возьмётся первое фото." },
+                { key: "video", label: "Ссылка на видео (YouTube / VK / Rutube)", type: "text", shared: true,
+                  hint: "Вставьте ссылку из адресной строки — на странице появится встроенный плеер." },
                 { key: "photos", label: "Фотографии в статье", type: "photos" },
                 {
                   key: "links", label: "Ссылки в статье", type: "objects",
@@ -407,6 +427,39 @@
                   ]
                 },
                 { key: "isPlaceholder", label: "Это заглушка", type: "checkbox", shared: true }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      id: "faq", title: "Вопросы",
+      hint: "На главной показываются первые пять вопросов, полный список — на странице faq.html.",
+      groups: [
+        {
+          title: "Заголовки", fields: [
+            { key: "faq.eyebrow", label: "Надзаголовок", type: "text" },
+            { key: "faq.heading", label: "Заголовок", type: "text" },
+            { key: "faq.subheading", label: "Описание", type: "textarea" },
+            { key: "faq.viewAll", label: "Ссылка «все вопросы»", type: "text" },
+            { key: "faq.note", label: "Примечание под списком", type: "textarea" },
+            { key: "faq.bgPhoto", label: "Фото в фоне раздела", type: "media", accept: "photo", shared: true, folder: "home",
+              hint: "Оставьте пустым — раздел будет однотонным со световыми пятнами." },
+            { key: "faq.openLabel", label: "Подпись «раскрыть ответ»", type: "text" },
+            { key: "faq.hideLabel", label: "Подпись «свернуть ответ»", type: "text" }
+          ]
+        },
+        {
+          title: "Вопросы и ответы", fields: [
+            {
+              key: "faq.items", label: "", type: "objects",
+              titleKey: "question", addLabel: "Добавить вопрос", collapsed: true,
+              newItem: { question: "Новый вопрос", answer: "" },
+              item: [
+                { key: "question", label: "Вопрос", type: "text",
+                  hint: "Формулируйте так, как спрашивает заказчик, — по этой строке вопрос ищут глазами." },
+                { key: "answer", label: "Ответ", type: "textarea" }
               ]
             }
           ]

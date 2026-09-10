@@ -23,8 +23,11 @@
     grid.style.display = "";
     empty.style.display = "none";
 
+    // первая новость — крупной карточкой на две колонки
     d.blog.posts.forEach(function (post, i) {
-      grid.appendChild(C.blogCard(post, i, d));
+      var card = C.blogCard(post, i, d);
+      if (i === 0) card.classList.add("is-lead");
+      grid.appendChild(card);
     });
   }
 

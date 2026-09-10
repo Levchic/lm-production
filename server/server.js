@@ -8,14 +8,19 @@
  * Переменные окружения:
  *   PORT           — порт (по умолчанию 4000)
  *   ADMIN_PASSWORD — пароль в админку (по умолчанию "admin")
- *   HOST           — по умолчанию 127.0.0.1, т.е. только этот компьютер.
+ *   BIND_HOST      — по умолчанию 127.0.0.1, т.е. только этот компьютер.
+ *                    BIND_HOST=0.0.0.0 открывает доступ по локальной сети —
+ *                    тогда в админку можно зайти с телефона по адресу мака.
  *                    Для онлайн-версии достаточно поднять этот же файл на
- *                    хостинге с Node и задать HOST=0.0.0.0 и свой пароль.
+ *                    хостинге с Node с тем же BIND_HOST=0.0.0.0 и своим паролем.
+ *                    (Не HOST — эта переменная в zsh уже занята под имя
+ *                    компьютера, см. комментарий у константы ниже.)
  */
 "use strict";
 
 const http = require("http");
 const fs = require("fs");
+const os = require("os");
 const path = require("path");
 const crypto = require("crypto");
 
@@ -25,10 +30,23 @@ const telegram = require("./telegram");
 
 const ROOT = path.resolve(__dirname, "..");
 const PORT = Number(process.env.PORT || 4000);
-const HOST = process.env.HOST || "127.0.0.1";
+// Именно BIND_HOST, а не HOST: zsh заводит собственную переменную HOST с
+// именем компьютера, и сервер вместо локальной сети молча слушал бы только
+// сам мак — с телефона такой адрес не открывается.
+const HOST = process.env.BIND_HOST || "127.0.0.1";
 const PASSWORD = process.env.ADMIN_PASSWORD || "admin";
 const SESSION_SECRET = crypto.randomBytes(32);
 const MAX_UPLOAD = 800 * 1024 * 1024;
+
+/* Ограничение попыток входа. Пароль — единственный барьер перед админкой,
+   а с HOST=0.0.0.0 сервер виден всей локальной сети, поэтому без тормозов
+   пароль подбирается перебором за минуты. */
+const LOGIN_FAILS_PER_IP = 5;      // после скольких промахов запираем один адрес
+const LOGIN_FAILS_TOTAL = 20;      // и сколько промахов терпим суммарно
+const LOGIN_LOCK_MS = 60 * 1000;   // первая пауза; дальше удваивается
+const LOGIN_LOCK_MAX_MS = 60 * 60 * 1000;
+const LOGIN_FORGET_MS = 24 * 60 * 60 * 1000; // столько помним старые промахи
+const LOGIN_MAX_KEYS = 1000;
 
 const MIME = {
   ".html": "text/html; charset=utf-8",
@@ -64,6 +82,80 @@ function authorized(req) {
   const expected = token();
   if (given.length !== expected.length) return false;
   return crypto.timingSafeEqual(Buffer.from(given), Buffer.from(expected));
+}
+
+/* ------------------------------------------------------- защита входа */
+
+/** Пустая «корзинка» промахов: одна на адрес плюс одна общая. */
+function newBucket() { return { fails: 0, lockedUntil: 0, last: 0 }; }
+
+const loginByIP = new Map();
+const loginTotal = newBucket();
+
+/**
+ * Ключ для счётчика промахов. За туннелем все соединения приходят с
+ * 127.0.0.1, а настоящий адрес приезжает в X-Forwarded-For — но клиент может
+ * его подделать, поэтому это только ключ корзинки, не удостоверение личности.
+ * Подмена адреса помогает обойти лишь персональный счётчик; общий работает
+ * в любом случае.
+ */
+function clientKey(req) {
+  const forwarded = String(req.headers["x-forwarded-for"] || "").split(",")[0].trim();
+  return forwarded || req.socket.remoteAddress || "unknown";
+}
+
+/** Сколько ещё миллисекунд эта корзинка заперта. */
+function bucketLock(bucket, now) {
+  return bucket && bucket.lockedUntil > now ? bucket.lockedUntil - now : 0;
+}
+
+function noteFail(bucket, threshold, now) {
+  // давние промахи не копим: один опечатанный вход в месяц не должен
+  // складываться с сегодняшним
+  if (bucket.last && now - bucket.last > LOGIN_FORGET_MS) bucket.fails = 0;
+  bucket.last = now;
+  bucket.fails += 1;
+  if (bucket.fails >= threshold) {
+    const over = bucket.fails - threshold;
+    bucket.lockedUntil = now + Math.min(LOGIN_LOCK_MS * Math.pow(2, over), LOGIN_LOCK_MAX_MS);
+  }
+}
+
+/** 0, если входить можно; иначе — сколько ждать. */
+function loginLockedFor(req) {
+  const now = Date.now();
+  return Math.max(bucketLock(loginTotal, now), bucketLock(loginByIP.get(clientKey(req)), now));
+}
+
+function loginFailed(req) {
+  const now = Date.now();
+  const key = clientKey(req);
+  // карта не должна расти бесконечно — при переполнении выметаем отсиженное
+  if (loginByIP.size > LOGIN_MAX_KEYS) {
+    for (const [k, v] of loginByIP) if (v.lockedUntil < now) loginByIP.delete(k);
+  }
+  const bucket = loginByIP.get(key) || newBucket();
+  noteFail(bucket, LOGIN_FAILS_PER_IP, now);
+  loginByIP.set(key, bucket);
+  noteFail(loginTotal, LOGIN_FAILS_TOTAL, now);
+}
+
+function loginSucceeded(req) {
+  loginByIP.delete(clientKey(req));
+  loginTotal.fails = 0;
+  loginTotal.lockedUntil = 0;
+}
+
+/**
+ * Сравнение паролей по хешам, а не по самим строкам: буферы всегда одной
+ * длины (иначе timingSafeEqual бросает исключение), и длина настоящего
+ * пароля не утекает через разницу в поведении сервера.
+ */
+function passwordMatches(given) {
+  if (typeof given !== "string") return false;
+  const a = crypto.createHash("sha256").update(given).digest();
+  const b = crypto.createHash("sha256").update(PASSWORD).digest();
+  return crypto.timingSafeEqual(a, b);
 }
 
 function readBody(req, limit) {
@@ -177,11 +269,23 @@ async function handleAPI(req, res, url) {
   const route = url.pathname;
 
   if (route === "/api/login" && req.method === "POST") {
+    const waitMs = loginLockedFor(req);
+    if (waitMs > 0) {
+      const seconds = Math.ceil(waitMs / 1000);
+      res.setHeader("Retry-After", String(seconds));
+      sendJSON(res, 429, {
+        error: "Слишком много попыток входа. Повторите через " +
+          (seconds > 90 ? Math.ceil(seconds / 60) + " мин." : seconds + " сек.")
+      });
+      return;
+    }
     const body = JSON.parse((await readBody(req, 1024 * 64)).toString("utf8") || "{}");
-    const ok = typeof body.password === "string" &&
-      body.password.length === PASSWORD.length &&
-      crypto.timingSafeEqual(Buffer.from(body.password), Buffer.from(PASSWORD));
-    if (!ok) { sendJSON(res, 401, { error: "Неверный пароль" }); return; }
+    if (!passwordMatches(body.password)) {
+      loginFailed(req);
+      sendJSON(res, 401, { error: "Неверный пароль" });
+      return;
+    }
+    loginSucceeded(req);
     sendJSON(res, 200, { token: token() });
     return;
   }
@@ -273,11 +377,52 @@ const server = http.createServer((req, res) => {
   serveStatic(req, res, url.pathname);
 });
 
+/**
+ * Адреса этого компьютера в локальной сети — их и набирают на телефоне.
+ * Обычно он один, но при включённом «режиме модема» или VPN бывает
+ * несколько, поэтому показываем все и даём выбрать.
+ */
+function lanAddresses() {
+  const found = [];
+  for (const list of Object.values(os.networkInterfaces())) {
+    for (const net of list || []) {
+      if (net.family === "IPv4" && !net.internal) found.push(net.address);
+    }
+  }
+  // Домашние адреса (192.168.x, 10.x, 172.16–31.x, раздача с iPhone) — вперёд:
+  // всё остальное обычно наводит VPN и виртуальные машины, и телефону
+  // по таким адресам не достучаться.
+  const isHome = (ip) => /^(192\.168\.|10\.|172\.(1[6-9]|2\d|3[01])\.)/.test(ip);
+  return found.sort((a, b) => (isHome(b) ? 1 : 0) - (isHome(a) ? 1 : 0));
+}
+
 server.listen(PORT, HOST, () => {
   console.log("");
   console.log("  Сайт:    http://localhost:" + PORT + "/");
   console.log("  Админка: http://localhost:" + PORT + "/admin.html");
   console.log("  Пароль:  " + (process.env.ADMIN_PASSWORD ? "(из ADMIN_PASSWORD)" : '"admin" — задайте свой через ADMIN_PASSWORD'));
+
+  if (HOST === "0.0.0.0") {
+    const addresses = lanAddresses();
+    console.log("");
+    if (addresses.length) {
+      console.log("  С ТЕЛЕФОНА — той же сети Wi-Fi:");
+      addresses.forEach((ip) => console.log("      http://" + ip + ":" + PORT + "/admin.html"));
+      console.log("");
+      console.log("  Адрес виден всем в этой сети, так что в кафе и коворкингах");
+      console.log("  сервер лучше не оставлять запущенным.");
+    } else {
+      console.log("  ⚠ Компьютер сейчас не в сети — адреса для телефона нет.");
+      console.log("    Подключитесь к Wi-Fi (или включите раздачу с телефона) и перезапустите.");
+    }
+  }
+
+  if (PASSWORD === "admin") {
+    console.log("");
+    console.log("  ⚠ Пароль в админку — стандартный «admin».");
+    console.log("    Задайте свой в start.command — иначе в общей сети");
+    console.log("    админка открыта любому, кто наберёт адрес выше.");
+  }
   if (!media.HAS_FFMPEG) console.log("  ⚠ ffmpeg не найден — видео и аудио не будут сжиматься (brew install ffmpeg)");
   console.log("");
   console.log("  Остановить: Ctrl+C");

@@ -406,75 +406,136 @@ img, svg { max-width: 100%; display: block; }
 .project-thumb--ph { background: repeating-linear-gradient(112deg, #201d22, #201d22 2px, #1a171b 2px, #1a171b 22px); }
 
 /* ---------- Услуги ----------
-   Карточка: фото в фоне под плотной вуалью (текст важнее картинки),
-   номер услуги, раскрывающиеся подробности. */
-.service-card {
+   На главной — три направления работы карточками, на services.html —
+   прайс-лист: направление слева, строки услуг справа. Фото в карточках
+   услуг сознательно нет: снимки были из разных источников и превращали
+   ровную сетку в мозаику, а цену — в мелочь на пёстром фоне. */
+
+/* --- Направления на главной --- */
+.direction-card {
   position: relative;
-  overflow: hidden;
   background: var(--char);
-  display: flex;
-  flex-direction: column;
+  padding: var(--sp-card);
+  display: flex; flex-direction: column;
   transition: background 0.3s var(--ease);
 }
-.section-deep .service-card { background: var(--char-deep); }
-.service-card:hover { background: var(--char-raised); }
+.section-deep .direction-card { background: var(--char-deep); }
+.direction-card:hover { background: var(--char-raised); }
 
-/* медная нить сверху — растёт при наведении и когда карточка раскрыта */
-.service-card::before {
+/* медная нить сверху — растёт при наведении */
+.direction-card::before {
   content: '';
-  position: absolute; top: 0; left: 0; z-index: 3;
+  position: absolute; top: 0; left: 0;
   height: 2px; width: 0;
   background: var(--copper);
   transition: width 0.5s var(--ease);
 }
-.service-card:hover::before, .service-card.open::before { width: 100%; }
+.direction-card:hover::before { width: 100%; }
 
-.service-photo {
-  position: absolute; inset: 0; z-index: 0;
-  background-size: cover; background-position: center;
-  transform: scale(1.02);
-  transition: transform 0.9s var(--ease);
-}
-.service-card:hover .service-photo, .service-card.open .service-photo { transform: scale(1.07); }
-
-/* Вуаль отдельным слоем, а не внутри .service-photo: прозрачность родителя
-   гасила бы и её саму, и снимок пропадал бы совсем. Здесь плотность вуали —
-   единственная ручка яркости фото. */
-.service-card.has-photo::after {
-  content: '';
-  position: absolute; inset: 0; z-index: 1;
-  pointer-events: none;
-  background: linear-gradient(180deg, rgba(23,21,26,0.74) 0%, rgba(23,21,26,0.88) 55%, rgba(23,21,26,0.94) 100%);
-  transition: opacity 0.5s var(--ease);
-}
-.section-deep .service-card.has-photo::after {
-  background: linear-gradient(180deg, rgba(16,14,18,0.74) 0%, rgba(16,14,18,0.88) 55%, rgba(16,14,18,0.94) 100%);
-}
-.service-card.has-photo:hover::after, .service-card.has-photo.open::after { opacity: 0.86; }
-
-.service-body {
-  position: relative; z-index: 2;
-  padding: var(--sp-card);
-  display: flex; flex-direction: column; flex: 1;
-}
-.service-index {
+.direction-index {
   font-family: var(--font-note); font-style: italic;
   color: var(--copper); font-size: var(--fs-sm);
   display: block; margin-bottom: 10px;
 }
-.service-card h3 { font-size: var(--fs-h3); margin-bottom: 10px; text-transform: none; letter-spacing: 0; font-weight: 700; line-height: 1.3; }
-.service-card p { color: var(--mute); font-size: var(--fs-base); }
+.direction-card h3 {
+  font-size: var(--fs-h3); margin-bottom: 10px;
+  text-transform: none; letter-spacing: 0; font-weight: 700; line-height: 1.3;
+}
+.direction-card p { color: var(--mute); font-size: var(--fs-base); }
+.direction-list {
+  margin-top: auto; padding-top: 20px;
+  display: flex; flex-direction: column; gap: 6px;
+}
+.direction-list li {
+  position: relative; padding-left: 18px;
+  color: var(--bone-dim); font-size: var(--fs-sm);
+}
+.direction-list li::before {
+  content: ''; position: absolute; left: 0; top: 0.72em;
+  width: 9px; height: 1px; background: var(--copper);
+}
+
+/* --- Прайс-лист на странице услуг --- */
+.services-groups { display: flex; flex-direction: column; gap: clamp(48px, 6vw, 76px); }
+
+.service-group {
+  display: grid;
+  grid-template-columns: minmax(0, 260px) minmax(0, 1fr);
+  gap: clamp(28px, 4vw, 56px);
+  align-items: start;
+}
+.service-group-head { position: sticky; top: calc(var(--header-h) + 28px); }
+.service-group-index {
+  font-family: var(--font-note); font-style: italic;
+  color: var(--copper); font-size: var(--fs-sm);
+  display: block; margin-bottom: 10px;
+}
+.service-group-head h2 { font-size: var(--fs-md); text-transform: none; letter-spacing: 0; font-weight: 700; line-height: 1.3; }
+.service-group-head p { color: var(--mute); font-size: var(--fs-sm); margin-top: 10px; }
+
+.price-list { border-top: 1px solid var(--rule); }
+.price-row { border-bottom: 1px solid var(--rule); }
+
+/* Вся строка — одна кнопка: цель для клика во всю ширину, а цена и название
+   лежат в одной сетке, поэтому колонка цен выравнивается по всему списку.
+   Третья колонка фиксированной ширины — под кружок «раскрыть». */
+.price-row-main {
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto 15px;
+  align-items: baseline;
+  column-gap: clamp(20px, 3vw, 40px);
+  padding: 20px 0;
+  background: none; border: 0;
+  font: inherit; color: inherit; text-align: left;
+  transition: color 0.25s var(--ease);
+}
+.price-row.is-expandable .price-row-main { cursor: pointer; }
+.price-row-text { display: block; min-width: 0; }
+.price-row-title {
+  display: block;
+  font-family: var(--font-display); font-weight: 700;
+  font-size: var(--fs-md); line-height: 1.3;
+  transition: color 0.25s var(--ease);
+}
+.price-row.is-expandable:hover .price-row-title,
+.price-row.open .price-row-title { color: var(--copper); }
+.price-row-desc { display: block; color: var(--mute); font-size: var(--fs-sm); margin-top: 6px; }
+.price-row-price {
+  font-family: var(--font-note); font-style: italic; color: var(--copper);
+  font-size: var(--fs-md); line-height: 1.3; white-space: nowrap;
+}
+
+/* align-self: start — иначе кружок центрируется по всей строке и уезжает
+   под цену; здесь он должен стоять на одной оптической линии с названием. */
+.price-row-plus {
+  position: relative; width: 15px; height: 15px;
+  align-self: start; margin-top: 4px;
+  border: 1px solid var(--mute); border-radius: 50%;
+  transition: border-color 0.25s var(--ease);
+}
+.price-row.is-expandable:hover .price-row-plus,
+.price-row.open .price-row-plus { border-color: var(--copper); }
+.price-row-plus::before, .price-row-plus::after {
+  content: ''; position: absolute; left: 50%; top: 50%;
+  background: currentColor; transform: translate(-50%, -50%);
+  transition: transform 0.3s var(--ease), opacity 0.3s var(--ease);
+}
+.price-row-plus::before { width: 7px; height: 1px; }
+.price-row-plus::after { width: 1px; height: 7px; }
+.price-row.open .price-row-plus::after { transform: translate(-50%, -50%) rotate(90deg); opacity: 0; }
+.price-row.open .price-row-plus { color: var(--copper); }
 
 /* Аккордеон: высоту подставляет JS (см. toggleService в common.js). Приём
-   с grid-строками 0fr→1fr здесь не работал — карточка живёт в строке грида
-   и flex-колонке, и раскрывающийся блок схлопывался обратно в ноль. */
-.service-detail {
+   с grid-строками 0fr→1fr здесь не работал — строка живёт в сетке, и
+   раскрывающийся блок схлопывался обратно в ноль. */
+.price-row-detail {
   max-height: 0;
   overflow: hidden;
-  flex: 0 0 auto;
   transition: max-height 0.45s var(--ease);
 }
-.service-detail p { color: var(--bone-dim); font-size: var(--fs-base); line-height: 1.7; padding-top: 14px; }
+.price-row-detail-inner { padding-bottom: 22px; max-width: 62ch; }
+.price-row-detail p { color: var(--bone-dim); font-size: var(--fs-base); line-height: 1.7; }
 .service-points { margin-top: 12px; display: flex; flex-direction: column; gap: 7px; }
 .service-points li {
   position: relative; padding-left: 16px;
@@ -485,36 +546,61 @@ img, svg { max-width: 100%; display: block; }
   width: 5px; height: 5px; border-radius: 50%; background: var(--copper);
 }
 
-.service-toggle {
-  margin-top: 14px;
-  align-self: flex-start;
-  display: inline-flex; align-items: center; gap: 9px;
-  background: none; border: none; padding: 0;
-  color: var(--mute); font-size: var(--fs-xs);
-  letter-spacing: 0.08em; text-transform: uppercase;
+.services-note { color: var(--mute); font-size: var(--fs-sm); margin-top: clamp(40px, 5vw, 64px); max-width: 70ch; }
+
+/* ---------- Частые вопросы ----------
+   Тот же приём, что и в прайсе: свёрнутый список читается как оглавление,
+   ответ раскрывается по клику (высоту подставляет toggleFaq в common.js).
+   Отдельные классы, а не .price-row: здесь нет колонки цены, и вопрос
+   набран крупнее — иначе список выглядел бы прайсом без цифр. */
+.faq-list { border-top: 1px solid var(--rule); max-width: 62rem; }
+.faq-row { border-bottom: 1px solid var(--rule); }
+.faq-question {
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 15px;
+  align-items: baseline;
+  column-gap: clamp(20px, 3vw, 40px);
+  padding: 22px 0;
+  background: none; border: 0; cursor: pointer;
+  font: inherit; color: inherit; text-align: left;
+}
+.faq-question-text {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: var(--fs-md); line-height: 1.35;
   transition: color 0.25s var(--ease);
 }
-.service-toggle:hover { color: var(--copper); }
-.service-card.open .service-toggle { color: var(--copper); }
-.service-plus {
-  position: relative; width: 15px; height: 15px; flex: none;
-  border: 1px solid currentColor; border-radius: 50%;
+.faq-row:hover .faq-question-text,
+.faq-row.open .faq-question-text { color: var(--copper); }
+
+/* Кружок «+» — как в прайсе: та же оптическая линия с первой строкой текста. */
+.faq-sign {
+  position: relative; width: 15px; height: 15px;
+  align-self: start; margin-top: 5px;
+  border: 1px solid var(--mute); border-radius: 50%;
+  transition: border-color 0.25s var(--ease);
 }
-.service-plus::before, .service-plus::after {
+.faq-row:hover .faq-sign,
+.faq-row.open .faq-sign { border-color: var(--copper); }
+.faq-sign::before, .faq-sign::after {
   content: ''; position: absolute; left: 50%; top: 50%;
   background: currentColor; transform: translate(-50%, -50%);
   transition: transform 0.3s var(--ease), opacity 0.3s var(--ease);
 }
-.service-plus::before { width: 7px; height: 1px; }
-.service-plus::after { width: 1px; height: 7px; }
-.service-card.open .service-plus::after { transform: translate(-50%, -50%) rotate(90deg); opacity: 0; }
+.faq-sign::before { width: 7px; height: 1px; }
+.faq-sign::after { width: 1px; height: 7px; }
+.faq-row.open .faq-sign { color: var(--copper); }
+.faq-row.open .faq-sign::after { transform: translate(-50%, -50%) rotate(90deg); opacity: 0; }
 
-.service-price {
-  font-family: var(--font-note); font-style: italic; color: var(--copper);
-  font-size: var(--fs-md); line-height: 1.4;
-  margin-top: auto; padding-top: 20px;
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.45s var(--ease);
 }
-.services-note { color: var(--mute); font-size: var(--fs-sm); margin-top: 24px; max-width: 70ch; }
+.faq-answer-inner { padding-bottom: 24px; max-width: 62ch; }
+.faq-answer p { color: var(--bone-dim); font-size: var(--fs-base); line-height: 1.7; }
+
+.faq-note { color: var(--mute); font-size: var(--fs-sm); margin-top: clamp(32px, 4vw, 48px); max-width: 70ch; }
 
 /* ---------- Отзывы ---------- */
 .carousel { position: relative; display: flex; align-items: center; gap: 12px; }
@@ -618,14 +704,49 @@ a.testimonial-name:hover { color: var(--copper); }
 .blog-card {
   background: var(--char); display: flex; flex-direction: column;
   color: inherit; text-decoration: none; overflow: hidden;
-  transition: background 0.3s var(--ease), transform 0.3s var(--ease);
+  border: 1px solid var(--rule);
+  transition: border-color 0.3s var(--ease), transform 0.35s var(--ease), background 0.3s var(--ease);
 }
 .section-deep .blog-card { background: var(--char-deep); }
-.blog-card:hover { background: var(--char-raised); }
+.blog-card:hover { border-color: var(--copper-dim); transform: translateY(-3px); }
+
+/* Обложка: фото или «нотная» заглушка, поверх — рубрика и значок видео */
+.blog-cover {
+  position: relative; aspect-ratio: 16 / 10; overflow: hidden;
+  background: var(--char-deep); flex: none;
+}
+.blog-cover img { transition: transform 0.7s var(--ease); }
+.blog-card:hover .blog-cover img { transform: scale(1.05); }
+.blog-cover::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(16,14,18,0.15) 0%, rgba(16,14,18,0) 45%, rgba(16,14,18,0.75) 100%);
+}
+.blog-cover-fallback {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  color: var(--copper-dim);
+  background:
+    radial-gradient(120% 90% at 20% 0%, rgba(194,98,43,0.16), rgba(194,98,43,0) 60%),
+    repeating-linear-gradient(180deg, var(--rule) 0 1px, transparent 1px 13px),
+    var(--char-raised);
+}
+.blog-cover-fallback svg { width: 54px; height: 54px; opacity: 0.85; }
+.blog-tag {
+  position: absolute; left: 14px; top: 14px; z-index: 2;
+  font-size: var(--fs-2xs); letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--bone); background: rgba(16,14,18,0.62); backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,0.14); padding: 5px 10px; border-radius: 2px;
+}
+.blog-play {
+  position: absolute; right: 14px; bottom: 14px; z-index: 2;
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--copper); color: #17110a;
+  display: flex; align-items: center; justify-content: center;
+  transition: transform 0.3s var(--ease), background 0.3s var(--ease);
+}
+.blog-card:hover .blog-play { transform: scale(1.1); background: var(--copper-bright); }
+.blog-play svg { transform: translateX(1px); }
+
 .blog-card .blog-body-wrap { padding: var(--sp-card); display: flex; flex-direction: column; flex: 1; }
-.blog-cover { position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: var(--char-deep); }
-.blog-cover img { transition: transform 0.6s var(--ease); }
-.blog-card:hover .blog-cover img { transform: scale(1.04); }
 .blog-meta { font-family: var(--font-note); font-style: italic; font-size: var(--fs-xs); color: var(--copper); margin-bottom: 10px; }
 .blog-card h3 { font-size: var(--fs-h3); margin-bottom: 10px; text-transform: none; letter-spacing: 0; font-weight: 700; line-height: 1.3; }
 .blog-card p { color: var(--mute); font-size: var(--fs-base); }
@@ -633,14 +754,23 @@ a.testimonial-name:hover { color: var(--copper); }
   margin-top: auto; padding-top: 18px; font-size: var(--fs-xs); letter-spacing: 0.08em;
   text-transform: uppercase; color: var(--copper);
 }
-.blog-card:hover .blog-more { color: var(--copper-bright, var(--copper)); }
+.blog-card:hover .blog-more { color: var(--copper-bright); }
 .blog-note { color: var(--mute); font-size: var(--fs-sm); margin-top: 24px; }
+
+/* Первая новость на странице «Новости» — крупной карточкой в две колонки */
+.blog-page-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-card); }
+.blog-page-grid .blog-card.is-lead { grid-column: span 2; }
+.blog-page-grid .blog-card.is-lead .blog-cover { aspect-ratio: 21 / 9; }
+.blog-page-grid .blog-card.is-lead h3 { font-size: var(--fs-h2); }
+.blog-page-grid .blog-card.is-lead p { font-size: var(--fs-md); max-width: 60ch; }
 
 /* ---------- Страница новости ---------- */
 .post-body-section { padding: clamp(32px, 5vw, 56px) 0 0; }
 .post-body { max-width: 68ch; }
 .post-body p { color: var(--bone-dim); font-size: var(--fs-md); line-height: 1.8; }
 .post-body p + p { margin-top: 18px; }
+.post-video-section { padding: clamp(28px, 4vw, 48px) 0 0; }
+.post-video-section .video-embed { max-width: 900px; }
 .post-links-section { padding: var(--sp-section) 0 0; }
 .post-links-section h2 { font-size: var(--fs-h2); margin-bottom: 20px; }
 .post-links { list-style: none; display: flex; flex-direction: column; gap: 12px; }
@@ -905,6 +1035,7 @@ a.testimonial-name:hover { color: var(--copper); }
    ========================================================================= */
 @media (max-width: 1080px) {
   .card-grid--3 { grid-template-columns: repeat(2, 1fr); }
+  .blog-page-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 1024px) {
@@ -928,6 +1059,10 @@ a.testimonial-name:hover { color: var(--copper); }
 
 @media (max-width: 980px) {
   .about-grid, .contact-grid, .about-hero-grid { grid-template-columns: 1fr; }
+  /* Прайс: направление уходит наверх, строки услуг — под ним */
+  .service-group { grid-template-columns: 1fr; gap: 20px; }
+  .service-group-head { position: static; }
+  .service-group-head p { max-width: 60ch; }
   .about-hero-portrait { width: 100%; max-width: 300px; }
   .about-portrait { max-width: 340px; }
   .intro-video-inner { grid-template-columns: 1fr; justify-items: center; text-align: center; }
@@ -952,11 +1087,98 @@ a.testimonial-name:hover { color: var(--copper); }
   .card-grid--2, .card-grid--3 { grid-template-columns: 1fr; }
   .media-grid, .media-grid--video { grid-template-columns: 1fr; }
   .carousel-track { grid-auto-columns: 100%; }
+  .blog-page-grid { grid-template-columns: 1fr; }
+  .blog-page-grid .blog-card.is-lead { grid-column: auto; }
+  .blog-page-grid .blog-card.is-lead .blog-cover { aspect-ratio: 16 / 10; }
   .carousel-arrow { display: none; }
   .process-step { grid-template-columns: 40px 1fr; gap: 14px; }
   .scope-list li { grid-template-columns: 32px 1fr; gap: 12px; }
+  /* На узком экране цена не влезает рядом с названием — уводим её под текст,
+     плюс остаётся в правом верхнем углу строки. */
+  .price-row-main {
+    grid-template-columns: minmax(0, 1fr) 15px;
+    row-gap: 10px;
+  }
+  .price-row-price { grid-column: 1; grid-row: 2; }
+  .price-row-plus { grid-column: 2; grid-row: 1; align-self: start; margin-top: 4px; }
   .lightbox-nav.prev { left: 8px; }
   .lightbox-nav.next { right: 8px; }
+}
+
+/* =========================================================================
+   МОБИЛЬНАЯ КАРУСЕЛЬ
+   На узком экране сетки карточек, галереи и списки-окошки превращаются в
+   ленту, которую листают пальцем: столбик из десяти карточек подряд читать
+   тяжелее, чем пролистать. Разметка при этом не меняется —
+   js/mobile-carousel.js вешает на контейнер класс .mcar и добавляет следом
+   за ним точки-индикаторы, а на широком экране всё возвращается к сетке.
+   Список шагов рабочего процесса (.process-steps) намеренно не трогаем:
+   там важен порядок сверху вниз.
+   ========================================================================= */
+.mcar-dots { display: none; }
+
+@media (max-width: 760px) {
+  .mcar {
+    display: flex;
+    /* направление задаём явно: у списков вроде .audio-list по умолчанию column */
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    gap: var(--mcar-gap, 14px);
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    /* карточка «прилипает» к внутреннему полю, а не к краю экрана */
+    scroll-padding-left: var(--gutter);
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    /* лента выходит за поля .wrap: соседняя карточка выглядывает из-за
+       края экрана и сама подсказывает, что список листается */
+    margin-left: calc(-1 * var(--gutter));
+    margin-right: calc(-1 * var(--gutter));
+    padding-left: var(--gutter);
+    padding-right: var(--gutter);
+    padding-bottom: 2px;
+    max-width: none;
+    /* рамки сетки в ленте превратились бы в висящую линию */
+    border: 0;
+  }
+  .mcar::-webkit-scrollbar { display: none; }
+  .mcar > * {
+    flex: 0 0 var(--mcar-item, 84%);
+    min-width: 0;
+    scroll-snap-align: start;
+  }
+
+  /* .card-grid рисует рамки на стыках ячеек — в ленте каждая карточка
+     обводится сама по себе */
+  .card-grid.mcar > * { border: 1px solid var(--rule); }
+
+  /* Появление при скролле для карточек ленты отключаем: соседняя карточка
+     должна выглядывать из-за края экрана сразу — это и есть подсказка,
+     что список листается. */
+  .mcar > [data-reveal] { opacity: 1; transform: none; }
+
+  /* ширина карточки под каждый тип содержимого */
+  .card-grid.mcar { --mcar-item: 85%; }
+  .for-whom-grid.mcar { --mcar-item: 82%; }
+  .media-grid.mcar { --mcar-item: 78%; --mcar-gap: 10px; }
+  .media-grid--video.mcar { --mcar-item: 88%; }
+  .audio-list.mcar { --mcar-item: 88%; }
+  .case-stats.mcar { --mcar-item: 68%; --mcar-gap: 12px; flex-wrap: nowrap; }
+
+  /* точки под лентой — тот же язык, что у карусели отзывов */
+  .mcar-dots {
+    display: flex; justify-content: center; flex-wrap: wrap;
+    gap: 8px; margin-top: 16px;
+  }
+  .mcar-dots[hidden] { display: none; }
+  .mcar-dots button {
+    width: 7px; height: 7px; border-radius: 50%; border: 0; padding: 0; cursor: pointer;
+    background: var(--rule); transition: background 0.25s var(--ease), transform 0.25s var(--ease);
+  }
+  .mcar-dots button.on { background: var(--copper); transform: scale(1.35); }
 }
 
 /* ---------- Юридические страницы ---------- */
@@ -972,6 +1194,6 @@ a.testimonial-name:hover { color: var(--copper); }
   margin-top: 40px; padding: 18px 20px; border-left: 2px solid var(--copper-dim);
   background: rgba(255,255,255,0.02); font-size: var(--fs-sm) !important; color: var(--mute) !important;
 }
-.footer-privacy { font-size: var(--fs-xs); color: var(--mute); border-bottom: 1px solid transparent; }
-.footer-privacy:hover { color: var(--copper); border-bottom-color: var(--copper-dim); }
+.footer-privacy, .footer-link { font-size: var(--fs-xs); color: var(--mute); border-bottom: 1px solid transparent; }
+.footer-privacy:hover, .footer-link:hover { color: var(--copper); border-bottom-color: var(--copper-dim); }
 .field-consent a { color: var(--copper); border-bottom: 1px solid var(--copper-dim); }

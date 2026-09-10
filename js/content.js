@@ -16,7 +16,7 @@ window.SITE_CONTENT = {
   "ru": {
     "meta": {
       "title": "Лев Майденко — аранжировка, оркестровка, саунд-продакшн",
-      "description": "Портфолио аранжировщика и оркестровщика: оркестровые шоу, партитуры, аранжировки для кино, театра и концертных программ."
+      "description": "Создаю на заказ оркестровые шоу, партитуры, аранжировки для кино, театра и концертных программ."
     },
     "nav": {
       "brand": "L.M.PRODUCTION",
@@ -31,7 +31,7 @@ window.SITE_CONTENT = {
         },
         {
           "href": "index.html#process",
-          "label": "Рабочий процесс"
+          "label": "Этапы работы"
         },
         {
           "href": "portfolio.html",
@@ -43,7 +43,7 @@ window.SITE_CONTENT = {
         },
         {
           "href": "index.html#testimonials",
-          "label": "Отзывы"
+          "label": "Отзывы о работе"
         },
         {
           "href": "blog.html",
@@ -63,14 +63,14 @@ window.SITE_CONTENT = {
       "description": "Продакшн оркестровой музыки для концертов и шоу — полный цикл от идеи до концертных партий, и не только.",
       "ctaPrimary": "Обсудить проект",
       "ctaSecondary": "Перейти в портфолио",
-      "photoCaption": "Мой рабочий стол",
+      "photoCaption": "Рабочий стол",
       "photoSrc": "assets/media/home/hero.jpg",
       "marginNote": "«Шоу маст гоу он!»"
     },
     "introVideo": {
       "eyebrow": "Ознакомительный ролик",
       "heading": "Как создаётся оркестровое шоу?",
-      "subheading": "Коротко и своими словами о том, как устроена работа над оркестровым шоу от идеи до сцены.",
+      "subheading": "Своими словами о том, как устроена работа над оркестровым шоу от идеи до сцены.",
       "src": "assets/media/home/intro.mp4",
       "poster": "assets/media/home/intro-poster.jpg",
       "bgPhoto": ""
@@ -676,66 +676,85 @@ window.SITE_CONTENT = {
     "services": {
       "eyebrow": "Услуги",
       "heading": "Услуги и цены",
-      "subheading": "Цены — ориентир; итог зависит от состава, сложности материала, сроков и объёма правок.",
+      "subheading": "Три направления работы. Цены — ориентир; итог зависит от состава, сложности материала и сроков.",
       "viewAll": "Все услуги и цены",
       "note": "Цены ориентировочные и не являются публичной офертой: итоговая стоимость зависит от состава, объёма и сроков и фиксируется в договоре. Для точного расчёта свяжитесь со мной — обсудим задачу, дедлайны и формат сдачи. Работа ведётся по договору, старт — после предоплаты 50%.",
       "bgPhoto": "assets/media/home/about-2.jpg",
+      "detailsLabel": "Подробнее",
+      "hideLabel": "Свернуть",
+      "groups": [
+        {
+          "id": "production",
+          "title": "Концертный продакшн",
+          "summary": "Программа целиком: структура номеров, аранжировки, клик и плейбэк."
+        },
+        {
+          "id": "arrangement",
+          "title": "Аранжировка и оркестровка",
+          "summary": "От эскиза до партитуры: оркестр, камерный состав, синтетические партии."
+        },
+        {
+          "id": "score",
+          "title": "Нотный цех",
+          "summary": "Партитуры и партии: набор, вычитка, расшифровка записи на слух."
+        }
+      ],
       "items": [
         {
-          "title": "Продакшн концертной программы под ключ",
-          "description": "От идеи до готовых партий: структура номеров, аранжировки, клик, плейбэк, партитуры.",
+          "title": "Концертная программа под ключ",
+          "group": "production",
+          "description": "Структура номеров, аранжировки, клик, плейбэк, партитуры.",
           "detail": "Беру программу целиком: собираем структуру вечера и отдельных номеров, снимаю и аранжирую материал, готовлю клик-треки и плейбэки, оформляю партитуры и партии, при необходимости сопровождаю репетиции. Цена считается по объёму программы.",
-          "price": "от 150 000 ₽ за программу",
-          "bullets": [],
-          "photo": "assets/media/services/img_8216.jpg"
-        },
-        {
-          "title": "Аранжировка для оркестра",
-          "description": "Полная оркестровка под заданный состав, динамический план, сдача партитуры.",
-          "detail": "Работаю от эскиза или референса до полной партитуры под заданный состав: распределяю материал по секциям, выстраиваю динамический план всего номера, слежу за балансом и играбельностью партий. Стоимость зависит от состава и сложности материала.",
-          "price": "от 5 000 ₽ / мин",
-          "bullets": [],
-          "photo": "assets/media/services/images.jpg"
-        },
-        {
-          "title": "Саунд-дизайн",
-          "description": "С нуля или по референсам: синтетические партии и звуковой дизайн шоу.",
-          "detail": "Подбираю и программирую синтетические партии там, где живой состав не покрывает задачу, делаю звуковой дизайн номеров и переходов — с нуля или по присланным референсам. Слежу за тем, чтобы синтез не спорил с живым звуком.",
-          "price": "от 1 000 ₽ / мин",
-          "bullets": [],
-          "photo": "assets/media/services/img_4829-2.jpg"
-        },
-        {
-          "title": "Набор нот: партитура и партии",
-          "description": "Вёрстка в нотном редакторе, вычитка, подготовка к печати и архиву.",
-          "detail": "Набор и вёрстка в нотном редакторе, вычитка на предмет ошибок и неудобных мест, разметка страниц, подготовка комплекта партий к печати и архиву.",
-          "price": "партитура — от 500 ₽ / стр., партии — от 250 ₽ / стр.",
-          "bullets": [],
-          "photo": "assets/media/services/snimok-ekrana-2026-08-11-v-15.38.15.jpg"
-        },
-        {
-          "title": "Снятие на слух",
-          "description": "Расшифровка плотной фактуры с записи; сверка по референсу.",
-          "detail": "Расшифровываю плотную многослойную фактуру с записи, когда нот не существует. Результат сверяется с референсом на каждом этапе.",
-          "price": "от 2 000 ₽ / мин",
-          "bullets": [],
-          "photo": "assets/media/services/img_4830-2.jpg"
-        },
-        {
-          "title": "Камерное переложение",
-          "description": "Струнные и духовые ансамбли; адаптация под конкретный состав.",
-          "detail": "Переношу партитуру или трек на камерный состав без потери характера оригинала — с учётом реальных возможностей конкретного ансамбля.",
-          "price": "от 3 000 ₽ / мин",
-          "bullets": [],
-          "photo": "assets/media/services/slide-2023-01.jpg"
+          "price": "от 150 000 ₽ / программа",
+          "bullets": []
         },
         {
           "title": "Клик-трек и плейбэк",
-          "description": "Сетка, метки, экспорт для сцены и репетиционной базы.",
+          "group": "production",
+          "description": "Темповая сетка, метки, экспорт для сцены.",
           "detail": "Собираю темповую сетку, метки перехода, экспортирую плейбэк в формате, готовом для звукорежиссёра и дирижёрского пульта.",
           "price": "от 1 500 ₽ / номер",
-          "bullets": [],
-          "photo": "assets/media/services/snimok-ekrana-2026-08-11-v-15.43.32.jpg"
+          "bullets": []
+        },
+        {
+          "title": "Аранжировка для оркестра",
+          "group": "arrangement",
+          "description": "Оркестровка под заданный состав, динамический план.",
+          "detail": "Работаю от эскиза или референса до полной партитуры под заданный состав: распределяю материал по секциям, выстраиваю динамический план всего номера, слежу за балансом и играбельностью партий. Стоимость зависит от состава и сложности материала.",
+          "price": "от 5 000 ₽ / мин",
+          "bullets": []
+        },
+        {
+          "title": "Камерное переложение",
+          "group": "arrangement",
+          "description": "Адаптация под конкретный ансамбль без потери характера.",
+          "detail": "Переношу партитуру или трек на камерный состав без потери характера оригинала — с учётом реальных возможностей конкретного ансамбля. Струнные и духовые составы.",
+          "price": "от 3 000 ₽ / мин",
+          "bullets": []
+        },
+        {
+          "title": "Саунд-дизайн",
+          "group": "arrangement",
+          "description": "Синтетические партии и звуковой дизайн номеров.",
+          "detail": "Подбираю и программирую синтетические партии там, где живой состав не покрывает задачу, делаю звуковой дизайн номеров и переходов — с нуля или по присланным референсам. Слежу за тем, чтобы синтез не спорил с живым звуком.",
+          "price": "от 1 000 ₽ / мин",
+          "bullets": []
+        },
+        {
+          "title": "Набор нот: партитура и партии",
+          "group": "score",
+          "description": "Вёрстка, вычитка, подготовка к печати и архиву.",
+          "detail": "Набор и вёрстка в нотном редакторе, вычитка на предмет ошибок и неудобных мест, разметка страниц, подготовка комплекта партий к печати и архиву. Партитура — от 500 ₽ за страницу, партии — от 250 ₽ за страницу.",
+          "price": "от 500 ₽ / стр.",
+          "bullets": []
+        },
+        {
+          "title": "Снятие на слух",
+          "group": "score",
+          "description": "Расшифровка плотной фактуры с записи.",
+          "detail": "Расшифровываю плотную многослойную фактуру с записи, когда нот не существует. Результат сверяется с референсом на каждом этапе.",
+          "price": "от 2 000 ₽ / мин",
+          "bullets": []
         }
       ]
     },
@@ -889,8 +908,9 @@ window.SITE_CONTENT = {
           "title": "Аранжировка трейлера «Дюна, часть 3»",
           "excerpt": "Полная версия аранжировки эпик-трейлера вышла на YouTube.",
           "body": "На YouTube выложили полную версию аранжировки «эпик»-трейлера «Дюны».\n\nОтдельно отмечу солиста: партия непростая, а спета уверенно и ровно — именно она держит всю кульминацию номера.",
-          "cover": "",
+          "cover": "assets/media/blog/dune-trailer/cover.jpg",
           "photos": [],
+          "video": "https://youtu.be/_KL8ab5f8NE",
           "links": [
             {
               "label": "Смотреть на YouTube",
@@ -900,30 +920,192 @@ window.SITE_CONTENT = {
           "isPlaceholder": false
         },
         {
-          "id": "burton-concert",
-          "date": "",
-          "category": "Отчёт",
-          "title": "Сходил на «Мир Бёртона» — спустя полгода после работы",
-          "excerpt": "Послушал программу, над которой работал полгода назад, уже как слушатель.",
-          "body": "Сходил на концертную программу «Мир Бёртона», которую делал полгода назад: хотелось послушать и разобрать её уже свежей головой.\n\nПо сравнению с премьерой звучание заметно выровнялось, хотя материал у артистов сложный. Отдельная благодарность дирижёру — за то, что принял нестандартные темповые решения и довёл их до сцены.",
-          "cover": "",
-          "photos": [],
-          "links": [],
-          "isPlaceholder": false
-        },
-        {
           "id": "the-boys-track",
-          "date": "",
+          "date": "17.06.2026",
           "category": "Работа",
           "title": "Очередной трек по сериалу «Пацаны»",
           "excerpt": "Новый трек в работе над сериалом — и несколько слов про инструменты.",
-          "body": "Сделали очередной трек по сериалу «Пацаны». Отдельно радует, как ребята сводят материал.\n\nВместо живой записи в этот раз использовал библиотеку народных инструментов Ильи Ефимова — баян в ней звучит достаточно убедительно для такой задачи.",
-          "cover": "",
+          "body": "Сделали очередной трек по сериалу «Пацаны». Отдельно радует, как ребята сводят материал: по сравнению с сырой концертной записью разница слышна сразу.\n\nВместо живой записи в этот раз использовал библиотеку народных инструментов Ильи Ефимова — баян в ней звучит достаточно убедительно для такой задачи.",
+          "cover": "assets/media/blog/the-boys-track/cover.jpg",
           "photos": [],
+          "video": "https://youtu.be/9TA8fujWBss",
           "links": [
             {
-              "label": "Смотреть на YouTube",
-              "href": "https://youtu.be/9TA8fujWBss"
+              "label": "Пост в Telegram",
+              "href": "https://t.me/levlvovichmusicwork/108"
+            }
+          ],
+          "isPlaceholder": false
+        },
+        {
+          "id": "orchestral-tracks",
+          "date": "08.06.2026",
+          "category": "Из мастерской",
+          "title": "Пять дней над двумя большими треками",
+          "excerpt": "Фрагмент работы и несколько мыслей о том, как не «замылить» слух за долгую смену.",
+          "body": "Готовлю два больших трека для оркестра и решил показать фрагмент того, что успел сделать за пять дней работы.\n\nСамое сложное в такой долгой работе — даже не написать, а удержать концентрацию: через несколько часов слух «замыливается», и решения начинают приниматься по инерции. Помогают перерывы, сон и спорт — банально, но без этого качество на длинной дистанции падает быстрее, чем кажется.",
+          "cover": "assets/media/blog/orchestral-tracks/01.jpg",
+          "photos": [
+            "assets/media/blog/orchestral-tracks/02.jpg",
+            "assets/media/blog/orchestral-tracks/03.jpg",
+            "assets/media/blog/orchestral-tracks/04.jpg"
+          ],
+          "video": "",
+          "links": [
+            {
+              "label": "Пост в Telegram",
+              "href": "https://t.me/levlvovichmusicwork/106"
+            }
+          ],
+          "isPlaceholder": false
+        },
+        {
+          "id": "beat-library",
+          "date": "31.05.2026",
+          "category": "Инструменты",
+          "title": "Сделал справочник drum-паттернов",
+          "excerpt": "Небольшой веб-сервис: визуализация, сортировка по жанрам, прослушивание и выгрузка в MIDI.",
+          "body": "Собрал небольшой интерактивный веб-сервис с drum-паттернами на основе одного полезного справочника.\n\nВнутри — визуализация рисунка, сортировка по жанрам и воспроизведение примеров. Позже добавил выгрузку в MIDI и гайд по условным обозначениям.\n\nПользуйтесь, если пригодится в работе.",
+          "cover": "assets/media/blog/beat-library/01.jpg",
+          "photos": [],
+          "video": "",
+          "links": [
+            {
+              "label": "Открыть BeatLibrary",
+              "href": "https://levchic.github.io/BeatLibrary/"
+            },
+            {
+              "label": "Пост в Telegram",
+              "href": "https://t.me/levlvovichmusicwork/104"
+            }
+          ],
+          "isPlaceholder": false
+        },
+        {
+          "id": "burton-concert",
+          "date": "19.04.2026",
+          "category": "Отчёт",
+          "title": "Сходил на «Мир Бёртона» — спустя полгода после работы",
+          "excerpt": "Послушал программу, над которой работал полгода назад, уже как слушатель.",
+          "body": "Сходил на концертную программу «Мир Бёртона», которую делал полгода назад: хотелось послушать и разобрать её уже свежей головой.\n\nАртисты, правда, припомнили мне довольно сложный и неудобный материал. Но звучало всё на порядок лучше, чем на премьере — музыка там действительно непростая.\n\nМестами есть вопросы, но они скорее следствие принятых в аранжировках решений: как раз за этим я и шёл — определить их и учесть в следующей работе.",
+          "cover": "assets/media/blog/burton-concert/01.jpg",
+          "photos": [
+            "assets/media/blog/burton-concert/02.jpg",
+            "assets/media/blog/burton-concert/03.jpg",
+            "assets/media/blog/burton-concert/04.jpg",
+            "assets/media/blog/burton-concert/05.jpg"
+          ],
+          "video": "",
+          "links": [
+            {
+              "label": "Пост в Telegram",
+              "href": "https://t.me/levlvovichmusicwork/90"
+            }
+          ],
+          "isPlaceholder": false
+        },
+        {
+          "id": "profi-song",
+          "date": "14.04.2026",
+          "category": "Работа",
+          "title": "Детская песня на заставку к спектаклю",
+          "excerpt": "Голос, записанный на телефон, — и из него полноценная аранжировка.",
+          "body": "Пришли с Профи.ру: нужна была детская песня на заставку к спектаклю.\n\nЗадачу осложняло то, что прислали только голос, записанный на телефон: тональность, темп и ноты были очень приблизительные. Пришлось сначала подбирать, выравнивать и подгонять — и только потом делать аранжировку.\n\nПридумывание без чётких границ и требований для меня всегда стресс, но работу приняли. Доведу до ума и добавлю готовую запись в портфолио.",
+          "cover": "assets/media/blog/profi-song/01.jpg",
+          "photos": [],
+          "video": "",
+          "links": [
+            {
+              "label": "Пост в Telegram",
+              "href": "https://t.me/levlvovichmusicwork/88"
+            }
+          ],
+          "isPlaceholder": false
+        },
+        {
+          "id": "potter-planetarium",
+          "date": "14.12.2025",
+          "category": "Работа",
+          "title": "Гарри Поттер для планетария: 50 минут музыки за 2,5 недели",
+          "excerpt": "Ещё один проект по вселенной Поттера — и снова рекорд по срокам.",
+          "body": "Снова о Гарри Поттере, только уже в другом проекте — для планетария.\n\nСнова бьём рекорды по скорости: нужно было успеть сделать 50 минут музыки за две с половиной недели. Один я бы не справился, поэтому здорово, что нашёлся человек, который взял на себя часть работы.\n\nЗадачу осложняло и то, что предстояло уместить довольно насыщенную оркестровку Джона Уильямса, Николаса Хупера и Александра Деспла в существенно меньший состав.",
+          "cover": "assets/media/blog/potter-planetarium/01.jpg",
+          "photos": [
+            "assets/media/blog/potter-planetarium/02.jpg",
+            "assets/media/blog/potter-planetarium/03.jpg",
+            "assets/media/blog/potter-planetarium/04.jpg"
+          ],
+          "video": "",
+          "links": [
+            {
+              "label": "Пост в Telegram",
+              "href": "https://t.me/levlvovichmusicwork/52"
+            }
+          ],
+          "isPlaceholder": false
+        },
+        {
+          "id": "imperial-burton",
+          "date": "13.12.2025",
+          "category": "Отчёт",
+          "title": "Программа для Imperial Orchestra: самая сложная работа на сегодня",
+          "excerpt": "Три месяца над хэллоуинской программой по фильмам Тима Бёртона.",
+          "body": "С августа по конец октября работал над программой для Imperial Orchestra — на сегодня, пожалуй, самой сложной для меня: и по уровню задач, и по срокам.\n\nТематика была приурочена к Хэллоуину, поэтому выбор пал на Тима Бёртона с его готическим фэнтези и очень разнообразной музыкой Дэнни Эльфмана.\n\nЭта работа заметно подняла планку: после неё многие вещи, казавшиеся сложными, стали рабочей рутиной.",
+          "cover": "assets/media/blog/imperial-burton/01.jpg",
+          "photos": [
+            "assets/media/blog/imperial-burton/02.jpg",
+            "assets/media/blog/imperial-burton/03.jpg",
+            "assets/media/blog/imperial-burton/04.jpg"
+          ],
+          "video": "",
+          "links": [
+            {
+              "label": "Пост в Telegram",
+              "href": "https://t.me/levlvovichmusicwork/45"
+            }
+          ],
+          "isPlaceholder": false
+        },
+        {
+          "id": "how-programs-made",
+          "date": "10.12.2025",
+          "category": "Видео",
+          "title": "Как создаются концертные оркестровые программы",
+          "excerpt": "Рассказал на видео весь путь — от идеи программы до партий на пультах.",
+          "body": "Как создаются концертные оркестровые программы для шоу саундтреков? Рассказываю в этом видео.\n\nСъёмка и монтаж — Даня Жадаев. Фрагмент концертной записи взят с YouTube-канала Imperial Orchestra.",
+          "cover": "",
+          "photos": [],
+          "video": "https://youtu.be/6zIsDrHYI0c",
+          "links": [
+            {
+              "label": "Съёмка и монтаж — danyazhadaev.ru",
+              "href": "http://danyazhadaev.ru/"
+            },
+            {
+              "label": "Пост в Telegram",
+              "href": "https://t.me/levlvovichmusicwork/40"
+            }
+          ],
+          "isPlaceholder": false
+        },
+        {
+          "id": "tavrida-artschool",
+          "date": "10.12.2025",
+          "category": "Отчёт",
+          "title": "Арт-школа «Тавриды»: песенный саунд-продакшн с нуля",
+          "excerpt": "Записывали вокал, гитары, скрипку и духовые — в студиях, домиках и беседках у моря.",
+          "body": "Случайно попав в арт-школу «Тавриды», получилось прокачаться в саунд-продакшне песенного формата — практически не имея в этом опыта.\n\nЗаписывали вокал и бэк-вокал, гитары, скрипку, саксофон и флейту. Утром, днём, вечером и ночью, с перерывами на еду. В студиях, в жилых домиках и в беседках под шум моря.\n\nВ первые дни был некоторый хаос в организации, но в итоге всё сложилось — и опыт оказался из тех, что двигают вперёд сильнее любого курса.",
+          "cover": "assets/media/blog/tavrida-artschool/01.jpg",
+          "photos": [
+            "assets/media/blog/tavrida-artschool/02.jpg",
+            "assets/media/blog/tavrida-artschool/03.jpg",
+            "assets/media/blog/tavrida-artschool/04.jpg"
+          ],
+          "video": "",
+          "links": [
+            {
+              "label": "Пост в Telegram",
+              "href": "https://t.me/levlvovichmusicwork/36"
             }
           ],
           "isPlaceholder": false
@@ -936,6 +1118,50 @@ window.SITE_CONTENT = {
       "linksHeading": "Ссылки",
       "postNotFound": "Новость не найдена."
     },
+    "faq": {
+      "eyebrow": "Частые вопросы",
+      "heading": "Частые вопросы",
+      "subheading": "Коротко о деньгах, сроках, правках и правах — то, что обычно выясняется в первой переписке.",
+      "viewAll": "Все вопросы",
+      "note": "Не нашли свой вопрос? Напишите — отвечу лично.",
+      "openLabel": "Раскрыть ответ",
+      "hideLabel": "Свернуть ответ",
+      "bgPhoto": "",
+      "items": [
+        {
+          "question": "Сколько стоит работа?",
+          "answer": "Цены на странице «Услуги» — ориентир: аранжировка для оркестра от 5 000 ₽ за минуту, набор нот от 500 ₽ за страницу партитуры. Итоговая сумма зависит от состава, сложности материала и сроков: называю её после брифа и фиксирую в договоре."
+        },
+        {
+          "question": "Как мы начинаем работу?",
+          "answer": "С брифа: обсуждаем задачу, состав, сроки, права на материал и формат сдачи. Дальше я даю оценку по стоимости и этапам, мы подписываем договор, и я приступаю после предоплаты 50%. Остаток — при сдаче всех материалов и правок."
+        },
+        {
+          "question": "Сколько времени занимает проект?",
+          "answer": "Зависит от объёма: отдельный номер и концертная программа целиком — разные сроки. Реальные даты называю после брифа и фиксирую в договоре. Если дедлайн горит, скажите об этом сразу — иногда получается перестроить очередь."
+        },
+        {
+          "question": "Сколько правок входит в стоимость?",
+          "answer": "Количество кругов правок мы прописываем в договоре — так объём понятен обеим сторонам. Материалы проходят проверку в репетиционном процессе, и правки по согласованию я вношу внутри оговорённых кругов."
+        },
+        {
+          "question": "Кому принадлежат права на музыку?",
+          "answer": "Права обсуждаем на брифе и прописываем в договоре — до начала работы, а не после. Если проект закрытый, материал не попадёт ни в портфолио, ни в соцсети без вашего разрешения."
+        },
+        {
+          "question": "В каком виде я получу материалы?",
+          "answer": "Партитура и партии — в PDF, готовые к печати, с вычитанной вёрсткой; клик и плейбэк — в формате, удобном звукорежиссёру и дирижёрскому пульту. Работаю в связке Logic Pro и Sibelius, исходники передаю по договорённости. Нужный набор форматов фиксируем на брифе."
+        },
+        {
+          "question": "Можно ли работать удалённо, из другого города?",
+          "answer": "Да, большинство проектов так и идёт: бриф, демо и правки — в переписке, отвечаю обычно в течение дня. На репетиции и запись выезжаю по согласованию."
+        },
+        {
+          "question": "Работаете официально?",
+          "answer": "Да: я самозанятый, работаю по договору и выдаю чек. Реквизиты — в разделе «Контакты» под ссылками на соцсети."
+        }
+      ]
+    },
     "contact": {
       "eyebrow": "Контакты",
       "heading": "Контакты",
@@ -945,13 +1171,10 @@ window.SITE_CONTENT = {
         "contact": "Телефон или email",
         "type": "Тип услуги",
         "typeOptions": [
-          "Оркестровое шоу",
+          "Концертный продакшн",
           "Аранжировка и оркестровка",
-          "Партитуры и партии",
-          "Саунд-дизайн",
-          "Другое / консультация",
-          "Набор нот",
-          "Работа с MIDI"
+          "Нотный цех",
+          "Другое / консультация"
         ],
         "message": "Описание задачи",
         "submit": "Отправить",
@@ -983,6 +1206,7 @@ window.SITE_CONTENT = {
     "footer": {
       "tagline": "Аранжировка · Оркестровка · Саунд-продакшн · Logic Pro  · Sibelius",
       "rights": "Права на тексты, дизайн и авторские материалы сайта принадлежат автору. Права на упомянутые произведения и материалы третьих лиц принадлежат их правообладателям.",
+      "faq": "Частые вопросы",
       "privacy": "Политика конфиденциальности"
     },
     "langSwitch": {
@@ -1659,66 +1883,85 @@ window.SITE_CONTENT = {
     "services": {
       "eyebrow": "Services",
       "heading": "Services & rates",
-      "subheading": "Prices are indicative; the final quote depends on the ensemble, the complexity of the material, the timeline and revisions.",
+      "subheading": "Three lines of work. Prices are indicative; the final quote depends on the ensemble, the complexity of the material and the timeline.",
       "viewAll": "All services & rates",
       "note": "Prices are indicative and do not constitute a public offer: the final cost depends on the ensemble, scope and deadlines and is fixed in the contract. Get in touch for an exact quote — we'll discuss the task, deadlines and delivery format. Work is done under a contract, starting after a 50% advance payment.",
       "bgPhoto": "assets/media/home/about-2.jpg",
+      "detailsLabel": "Details",
+      "hideLabel": "Hide",
+      "groups": [
+        {
+          "id": "production",
+          "title": "Concert production",
+          "summary": "The whole programme: number structure, arrangements, click and playback."
+        },
+        {
+          "id": "arrangement",
+          "title": "Arranging & orchestration",
+          "summary": "From sketch to score: orchestra, chamber ensemble, synth parts."
+        },
+        {
+          "id": "score",
+          "title": "Music engraving",
+          "summary": "Scores and parts: setting, proofreading, transcription by ear."
+        }
+      ],
       "items": [
         {
-          "title": "Turnkey concert program production",
-          "description": "From the idea to finished parts: number structure, arrangements, click, playback, scores.",
+          "title": "Turnkey concert programme",
+          "group": "production",
+          "description": "Number structure, arrangements, click, playback, scores.",
           "detail": "I take on the whole program: we build the structure of the evening and of each number, I transcribe and arrange the material, prepare click tracks and playback, engrave scores and parts, and support rehearsals if needed. Quoted per program.",
-          "price": "from 150,000 ₽ per programme",
-          "bullets": [],
-          "photo": "assets/media/services/img_8216.jpg"
-        },
-        {
-          "title": "Orchestral arrangement",
-          "description": "Full orchestration for the given ensemble, dynamic plan, final score.",
-          "detail": "I work from a sketch or reference to a full score for the given ensemble: spreading material across sections, shaping the dynamic plan of the whole number, watching balance and playability. The rate depends on the ensemble and the complexity of the material.",
-          "price": "from 5,000 ₽ / min",
-          "bullets": [],
-          "photo": "assets/media/services/images.jpg"
-        },
-        {
-          "title": "Sound design",
-          "description": "From scratch or to reference: synth parts and show sound design.",
-          "detail": "I select and program synth parts where the live ensemble can't cover the task, and design the sound of numbers and transitions — from scratch or to the references you send. I make sure synthesis doesn't fight the live sound.",
-          "price": "from 1,000 ₽ / min",
-          "bullets": [],
-          "photo": "assets/media/services/img_4829-2.jpg"
-        },
-        {
-          "title": "Music engraving: score & parts",
-          "description": "Engraving in a notation editor, proofreading, print- and archive-ready delivery.",
-          "detail": "Setting and engraving in a notation editor, proofreading for errors and awkward passages, page layout, preparing a full set of parts for print and archive.",
-          "price": "score — from 500 ₽ / page, parts — from 250 ₽ / page",
-          "bullets": [],
-          "photo": "assets/media/services/snimok-ekrana-2026-08-11-v-15.38.15.jpg"
-        },
-        {
-          "title": "Transcription by ear",
-          "description": "Decoding dense material from a recording; checked against the reference.",
-          "detail": "I decode dense, layered material from a recording where no score exists, checking the result against the reference at every step.",
-          "price": "from 2,000 ₽ / min",
-          "bullets": [],
-          "photo": "assets/media/services/img_4830-2.jpg"
-        },
-        {
-          "title": "Chamber transcription",
-          "description": "Strings and winds ensembles; adapted to a specific ensemble.",
-          "detail": "I move a score or track onto a chamber ensemble without losing the original's character — accounting for what that specific ensemble can actually play.",
-          "price": "from 3,000 ₽ / min",
-          "bullets": [],
-          "photo": "assets/media/services/slide-2023-01.jpg"
+          "price": "from 150,000 ₽ / programme",
+          "bullets": []
         },
         {
           "title": "Click track & playback",
-          "description": "Grid, markers, export for stage and rehearsal use.",
+          "group": "production",
+          "description": "Tempo grid, markers, export for the stage.",
           "detail": "I build the tempo grid and transition markers, and export playback in a format ready for the sound engineer and conductor's podium.",
-          "price": "from 1,500 ₽ per piece",
-          "bullets": [],
-          "photo": "assets/media/services/snimok-ekrana-2026-08-11-v-15.43.32.jpg"
+          "price": "from 1,500 ₽ / piece",
+          "bullets": []
+        },
+        {
+          "title": "Orchestral arrangement",
+          "group": "arrangement",
+          "description": "Orchestration for the given ensemble, dynamic plan.",
+          "detail": "I work from a sketch or reference to a full score for the given ensemble: spreading material across sections, shaping the dynamic plan of the whole number, watching balance and playability. The rate depends on the ensemble and the complexity of the material.",
+          "price": "from 5,000 ₽ / min",
+          "bullets": []
+        },
+        {
+          "title": "Chamber transcription",
+          "group": "arrangement",
+          "description": "Adapted to a specific ensemble, character intact.",
+          "detail": "I move a score or track onto a chamber ensemble without losing the original's character — accounting for what that specific ensemble can actually play. Strings and winds.",
+          "price": "from 3,000 ₽ / min",
+          "bullets": []
+        },
+        {
+          "title": "Sound design",
+          "group": "arrangement",
+          "description": "Synth parts and sound design for the numbers.",
+          "detail": "I select and program synth parts where the live ensemble can't cover the task, and design the sound of numbers and transitions — from scratch or to the references you send. I make sure synthesis doesn't fight the live sound.",
+          "price": "from 1,000 ₽ / min",
+          "bullets": []
+        },
+        {
+          "title": "Engraving: score & parts",
+          "group": "score",
+          "description": "Setting, proofreading, print- and archive-ready delivery.",
+          "detail": "Setting and engraving in a notation editor, proofreading for errors and awkward passages, page layout, preparing a full set of parts for print and archive. Score — from 500 ₽ per page, parts — from 250 ₽ per page.",
+          "price": "from 500 ₽ / page",
+          "bullets": []
+        },
+        {
+          "title": "Transcription by ear",
+          "group": "score",
+          "description": "Decoding dense material from a recording.",
+          "detail": "I decode dense, layered material from a recording where no score exists, checking the result against the reference at every step.",
+          "price": "from 2,000 ₽ / min",
+          "bullets": []
         }
       ]
     },
@@ -1872,8 +2115,9 @@ window.SITE_CONTENT = {
           "title": "Arrangement for the “Dune: Part Three” trailer",
           "excerpt": "The full version of the epic trailer arrangement is out on YouTube.",
           "body": "The full version of my arrangement of the “epic” Dune trailer has been published on YouTube.\n\nSpecial credit goes to the soloist: the part is far from easy, yet it is sung confidently and evenly — it is what carries the climax of the piece.",
-          "cover": "",
+          "cover": "assets/media/blog/dune-trailer/cover.jpg",
           "photos": [],
+          "video": "https://youtu.be/_KL8ab5f8NE",
           "links": [
             {
               "label": "Watch on YouTube",
@@ -1883,30 +2127,192 @@ window.SITE_CONTENT = {
           "isPlaceholder": false
         },
         {
-          "id": "burton-concert",
-          "date": "",
-          "category": "Report",
-          "title": "Revisiting “The World of Burton” six months on",
-          "excerpt": "I went to hear the programme I had worked on half a year earlier, this time as a listener.",
-          "body": "I went to the concert programme “The World of Burton”, which I worked on six months ago — I wanted to listen and analyse it with a fresher head.\n\nCompared with the premiere the sound has become noticeably more even, even though the material is demanding for the performers. Special thanks to the conductor for accepting the unconventional tempo decisions and carrying them through to the stage.",
-          "cover": "",
-          "photos": [],
-          "links": [],
-          "isPlaceholder": false
-        },
-        {
           "id": "the-boys-track",
-          "date": "",
+          "date": "17.06.2026",
           "category": "Work",
           "title": "Another track for “The Boys”",
           "excerpt": "A new track in the series project — and a few words about the instruments.",
-          "body": "We finished another track for the series “The Boys”. I'm especially glad about how well the team handles the mix.\n\nInstead of a live recording I used Ilya Efimov's folk instrument library this time — its bayan sounds convincing enough for a task like this.",
-          "cover": "",
+          "body": "We finished another track for the series “The Boys”. I'm especially glad about how the team mixes the material: next to a raw concert recording the difference is obvious.\n\nInstead of a live recording I used Ilya Efimov's folk instrument library this time — its bayan sounds convincing enough for a task like this.",
+          "cover": "assets/media/blog/the-boys-track/cover.jpg",
           "photos": [],
+          "video": "https://youtu.be/9TA8fujWBss",
           "links": [
             {
-              "label": "Watch on YouTube",
-              "href": "https://youtu.be/9TA8fujWBss"
+              "label": "Post on Telegram",
+              "href": "https://t.me/levlvovichmusicwork/108"
+            }
+          ],
+          "isPlaceholder": false
+        },
+        {
+          "id": "orchestral-tracks",
+          "date": "08.06.2026",
+          "category": "From the workshop",
+          "title": "Five days on two large orchestral tracks",
+          "excerpt": "A work-in-progress excerpt and a few thoughts on keeping your ears fresh.",
+          "body": "I'm working on two large orchestral tracks and decided to share a fragment of what I managed in five days.\n\nThe hardest part of long work is not the writing but holding concentration: after a few hours your ears go dull and decisions start being made by inertia. Breaks, sleep and sport help — obvious, but without them quality drops faster than you'd expect.",
+          "cover": "assets/media/blog/orchestral-tracks/01.jpg",
+          "photos": [
+            "assets/media/blog/orchestral-tracks/02.jpg",
+            "assets/media/blog/orchestral-tracks/03.jpg",
+            "assets/media/blog/orchestral-tracks/04.jpg"
+          ],
+          "video": "",
+          "links": [
+            {
+              "label": "Post on Telegram",
+              "href": "https://t.me/levlvovichmusicwork/106"
+            }
+          ],
+          "isPlaceholder": false
+        },
+        {
+          "id": "beat-library",
+          "date": "31.05.2026",
+          "category": "Tools",
+          "title": "I built a drum-pattern reference",
+          "excerpt": "A small web service: visualisation, genre sorting, playback and MIDI export.",
+          "body": "I put together a small interactive web service with drum patterns based on a useful printed reference.\n\nInside: a visualisation of each pattern, sorting by genre and playback of examples. Later I added MIDI export and a guide to the notation.\n\nHelp yourself if it's useful in your work.",
+          "cover": "assets/media/blog/beat-library/01.jpg",
+          "photos": [],
+          "video": "",
+          "links": [
+            {
+              "label": "Open BeatLibrary",
+              "href": "https://levchic.github.io/BeatLibrary/"
+            },
+            {
+              "label": "Post on Telegram",
+              "href": "https://t.me/levlvovichmusicwork/104"
+            }
+          ],
+          "isPlaceholder": false
+        },
+        {
+          "id": "burton-concert",
+          "date": "19.04.2026",
+          "category": "Report",
+          "title": "Revisiting “The World of Burton” six months on",
+          "excerpt": "I went to hear the programme I had worked on half a year earlier, this time as a listener.",
+          "body": "I went to the concert programme “The World of Burton”, which I worked on six months ago — I wanted to listen and analyse it with a fresher head.\n\nThe players did remind me how difficult and awkward the material was. But it sounded far more even than at the premiere — the music really is demanding.\n\nThere are still question marks here and there, but they follow from decisions made in the arrangements: spotting them and carrying the lesson into the next project was exactly the point.",
+          "cover": "assets/media/blog/burton-concert/01.jpg",
+          "photos": [
+            "assets/media/blog/burton-concert/02.jpg",
+            "assets/media/blog/burton-concert/03.jpg",
+            "assets/media/blog/burton-concert/04.jpg",
+            "assets/media/blog/burton-concert/05.jpg"
+          ],
+          "video": "",
+          "links": [
+            {
+              "label": "Post on Telegram",
+              "href": "https://t.me/levlvovichmusicwork/90"
+            }
+          ],
+          "isPlaceholder": false
+        },
+        {
+          "id": "profi-song",
+          "date": "14.04.2026",
+          "category": "Work",
+          "title": "A children's song for a theatre opening",
+          "excerpt": "A voice recorded on a phone — turned into a full arrangement.",
+          "body": "A request came through Profi.ru: a children's song was needed for the opening of a play.\n\nThe tricky part was that all I received was a voice recorded on a phone — the key, tempo and pitches were very approximate. First I had to transcribe, straighten and fit everything, and only then arrange it.\n\nInventing without clear boundaries is always stressful for me, but the work was approved. I'll polish it and add the finished recording to the portfolio.",
+          "cover": "assets/media/blog/profi-song/01.jpg",
+          "photos": [],
+          "video": "",
+          "links": [
+            {
+              "label": "Post on Telegram",
+              "href": "https://t.me/levlvovichmusicwork/88"
+            }
+          ],
+          "isPlaceholder": false
+        },
+        {
+          "id": "potter-planetarium",
+          "date": "14.12.2025",
+          "category": "Work",
+          "title": "Harry Potter for a planetarium: 50 minutes of music in two and a half weeks",
+          "excerpt": "Another project in the Potter universe — and another record for deadlines.",
+          "body": "Back to Harry Potter, this time in a different project — for a planetarium.\n\nAnother record for speed: fifty minutes of music had to be ready in two and a half weeks. I wouldn't have managed alone, so it was a relief that someone took part of the work on.\n\nThe task was harder still because the dense orchestration of John Williams, Nicholas Hooper and Alexandre Desplat had to fit a much smaller ensemble.",
+          "cover": "assets/media/blog/potter-planetarium/01.jpg",
+          "photos": [
+            "assets/media/blog/potter-planetarium/02.jpg",
+            "assets/media/blog/potter-planetarium/03.jpg",
+            "assets/media/blog/potter-planetarium/04.jpg"
+          ],
+          "video": "",
+          "links": [
+            {
+              "label": "Post on Telegram",
+              "href": "https://t.me/levlvovichmusicwork/52"
+            }
+          ],
+          "isPlaceholder": false
+        },
+        {
+          "id": "imperial-burton",
+          "date": "13.12.2025",
+          "category": "Report",
+          "title": "A programme for Imperial Orchestra: the hardest job so far",
+          "excerpt": "Three months on a Halloween programme built around Tim Burton's films.",
+          "body": "From August to the end of October I worked on a programme for Imperial Orchestra — so far the hardest one for me, both in the level of the tasks and in the deadlines.\n\nThe theme was tied to Halloween, so the choice fell on Tim Burton with his gothic fantasy and the highly varied music of Danny Elfman.\n\nThat job raised the bar noticeably: after it, many things that had felt difficult became everyday routine.",
+          "cover": "assets/media/blog/imperial-burton/01.jpg",
+          "photos": [
+            "assets/media/blog/imperial-burton/02.jpg",
+            "assets/media/blog/imperial-burton/03.jpg",
+            "assets/media/blog/imperial-burton/04.jpg"
+          ],
+          "video": "",
+          "links": [
+            {
+              "label": "Post on Telegram",
+              "href": "https://t.me/levlvovichmusicwork/45"
+            }
+          ],
+          "isPlaceholder": false
+        },
+        {
+          "id": "how-programs-made",
+          "date": "10.12.2025",
+          "category": "Video",
+          "title": "How concert orchestral programmes are made",
+          "excerpt": "I walk through the whole path on video — from the idea of a programme to the parts on the stands.",
+          "body": "How are concert orchestral programmes for soundtrack shows made? I explain it in this video.\n\nFilming and editing by Danya Zhadaev. The fragment of the concert recording is taken from the Imperial Orchestra YouTube channel.",
+          "cover": "",
+          "photos": [],
+          "video": "https://youtu.be/6zIsDrHYI0c",
+          "links": [
+            {
+              "label": "Filming and editing — danyazhadaev.ru",
+              "href": "http://danyazhadaev.ru/"
+            },
+            {
+              "label": "Post on Telegram",
+              "href": "https://t.me/levlvovichmusicwork/40"
+            }
+          ],
+          "isPlaceholder": false
+        },
+        {
+          "id": "tavrida-artschool",
+          "date": "10.12.2025",
+          "category": "Report",
+          "title": "Tavrida art school: song production from scratch",
+          "excerpt": "We recorded vocals, guitars, violin and winds — in studios, cabins and gazebos by the sea.",
+          "body": "Having ended up at the Tavrida art school almost by chance, I got to level up in song-format sound production — with practically no experience in it.\n\nWe recorded lead and backing vocals, guitars, violin, saxophone and flute. Morning, afternoon, evening and night, with breaks for food. In studios, in living cabins and in gazebos by the sound of the sea.\n\nThe first days were somewhat chaotic, but in the end it all came together — the kind of experience that moves you forward more than any course.",
+          "cover": "assets/media/blog/tavrida-artschool/01.jpg",
+          "photos": [
+            "assets/media/blog/tavrida-artschool/02.jpg",
+            "assets/media/blog/tavrida-artschool/03.jpg",
+            "assets/media/blog/tavrida-artschool/04.jpg"
+          ],
+          "video": "",
+          "links": [
+            {
+              "label": "Post on Telegram",
+              "href": "https://t.me/levlvovichmusicwork/36"
             }
           ],
           "isPlaceholder": false
@@ -1919,6 +2325,50 @@ window.SITE_CONTENT = {
       "linksHeading": "Links",
       "postNotFound": "Article not found."
     },
+    "faq": {
+      "eyebrow": "FAQ",
+      "heading": "Frequently asked questions",
+      "subheading": "The short answers on money, timelines, revisions and rights — the things that usually come up in the first email.",
+      "viewAll": "All questions",
+      "note": "Question not on the list? Write to me — I'll answer personally.",
+      "openLabel": "Show answer",
+      "hideLabel": "Hide answer",
+      "bgPhoto": "",
+      "items": [
+        {
+          "question": "How much does it cost?",
+          "answer": "The prices on the Services page are indicative: orchestral arrangement from 5 000 ₽ per minute, music engraving from 500 ₽ per score page. The final figure depends on the ensemble, the complexity of the material and the timeline — I quote it after the brief and fix it in the contract."
+        },
+        {
+          "question": "How do we start?",
+          "answer": "With a brief: we discuss the task, the ensemble, the timeline, the rights to the material and the delivery format. Then I give a cost and stage estimate, we sign a contract, and I start after a 50% deposit. The balance is due on delivery of all materials and revisions."
+        },
+        {
+          "question": "How long does a project take?",
+          "answer": "It depends on the scope: a single number and a full concert programme are different timelines. I give real dates after the brief and fix them in the contract. If the deadline is tight, say so straight away — the queue can sometimes be rearranged."
+        },
+        {
+          "question": "How many revisions are included?",
+          "answer": "The number of revision rounds is written into the contract, so the scope is clear to both sides. Materials get checked in rehearsal, and agreed revisions are made within those rounds."
+        },
+        {
+          "question": "Who owns the rights to the music?",
+          "answer": "Rights are discussed at the brief and written into the contract — before the work starts, not after. If the project is confidential, nothing goes to the portfolio or social media without your permission."
+        },
+        {
+          "question": "In what form do I get the materials?",
+          "answer": "Score and parts as print-ready, proofread PDFs; click and playback in a format that suits the sound engineer and the conductor's desk. I work with Logic Pro and Sibelius, and hand over project files by agreement. The exact set of formats is agreed at the brief."
+        },
+        {
+          "question": "Can we work remotely, from another city?",
+          "answer": "Yes, most projects run that way: brief, demos and revisions by message — I usually reply within a day. I travel to rehearsals and recording sessions by arrangement."
+        },
+        {
+          "question": "Do you work under a contract?",
+          "answer": "Yes: I am registered as self-employed, work under a contract and issue a receipt. The details are in the Contact section, under the social links."
+        }
+      ]
+    },
     "contact": {
       "eyebrow": "Contact",
       "heading": "Contact",
@@ -1928,13 +2378,10 @@ window.SITE_CONTENT = {
         "contact": "Phone or email",
         "type": "Service type",
         "typeOptions": [
-          "Orchestral show",
+          "Concert production",
           "Arranging & orchestration",
-          "Scores & parts",
-          "Sound design",
-          "Other / consultation",
           "Music engraving",
-          "MIDI work"
+          "Other / consultation"
         ],
         "message": "Task description",
         "submit": "Send",
@@ -1966,6 +2413,7 @@ window.SITE_CONTENT = {
     "footer": {
       "tagline": "Arranging · Orchestration · Sound Production · Logic Pro  · Sibelius",
       "rights": "Rights to the text, design and original materials of this site belong to the author. Rights to any third-party works and materials mentioned belong to their respective owners.",
+      "faq": "FAQ",
       "privacy": "Privacy policy"
     },
     "langSwitch": {

@@ -160,9 +160,15 @@ window.SiteCommon = (function () {
         return;
       }
 
-      var serviceCardNode = e.target.closest(".service-card.is-expandable");
-      if (serviceCardNode) {
-        toggleService(serviceCardNode);
+      var priceRowNode = e.target.closest(".price-row.is-expandable");
+      if (priceRowNode) {
+        toggleService(priceRowNode);
+        return;
+      }
+
+      var faqRowNode = e.target.closest(".faq-row");
+      if (faqRowNode) {
+        toggleFaq(faqRowNode);
         return;
       }
 
@@ -505,12 +511,22 @@ window.SiteCommon = (function () {
    */
   function blogCardHTML(post, d) {
     var date = post.date && post.date !== "—" ? post.date : "";
-    var meta = [date, post.category].filter(Boolean).join(" · ");
-    return (post.cover
-        ? '<div class="blog-cover"><img class="media-fill" src="' + esc(post.cover) + '" alt="" loading="lazy"></div>'
-        : "") +
+    var hasVideo = !!post.video;
+    var cover = post.cover || (post.photos || [])[0] || "";
+
+    // Без обложки карточка была бы просто текстом в рамке — рисуем
+    // «нотный» фон, чтобы лента новостей выглядела ровно.
+    var media = cover
+      ? '<img class="media-fill" src="' + esc(cover) + '" alt="" loading="lazy">'
+      : '<div class="blog-cover-fallback">' + iconSVG("score") + "</div>";
+
+    return '<div class="blog-cover">' + media +
+        (hasVideo ? '<span class="blog-play" aria-hidden="true">' +
+          '<svg viewBox="0 0 24 24" width="18" height="18"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>' : "") +
+        (post.category ? '<span class="blog-tag">' + esc(post.category) + "</span>" : "") +
+      "</div>" +
       '<div class="blog-body-wrap">' +
-        (meta ? '<div class="blog-meta">' + esc(meta) + "</div>" : "") +
+        (date ? '<div class="blog-meta">' + esc(date) + "</div>" : "") +
         "<h3>" + esc(post.title) + "</h3>" +
         "<p>" + esc(post.excerpt) + "</p>" +
         (post.isPlaceholder ? '<span class="placeholder-flag">' + esc(d.common.placeholderFlag) + "</span>" : "") +
@@ -528,65 +544,139 @@ window.SiteCommon = (function () {
   }
 
   /**
-   * Карточка услуги — одинаковая на главной и на странице услуг.
-   * Фото в фоне необязательное; подробности показываются по клику, чтобы
-   * список услуг оставался обозримым.
+   * Услуги разложены по направлениям из services.groups. Услуга без группы
+   * (или с группой, которой больше нет) не теряется — она попадает в конец
+   * списка отдельным блоком без заголовка.
    */
-  function serviceCardHTML(item, index, d) {
-    var points = (item.bullets || []).filter(Boolean);
-    var hasDetail = !!(item.detail || points.length);
-    var labels = d.services || {};
-    return (item.photo
-        ? '<div class="service-photo" style="background-image:url(' + esc(item.photo) + ')"></div>'
-        : "") +
-      '<div class="service-body">' +
-        '<span class="service-index">' + String(index + 1).padStart(2, "0") + "</span>" +
-        "<h3>" + esc(item.title) + "</h3>" +
-        "<p>" + esc(item.description) + "</p>" +
-        (hasDetail
-          ? '<button class="service-toggle" type="button" aria-expanded="false">' +
-              '<span class="service-toggle-label">' + esc(labels.detailsLabel || "Подробнее") + "</span>" +
-              '<span class="service-plus" aria-hidden="true"></span>' +
-            "</button>" +
-            '<div class="service-detail"><div class="service-detail-inner">' +
-              (item.detail ? "<p>" + esc(item.detail) + "</p>" : "") +
-              (points.length
-                ? '<ul class="service-points">' + points.map(function (p) { return "<li>" + esc(p) + "</li>"; }).join("") + "</ul>"
-                : "") +
-            "</div></div>"
-          : "") +
-        '<div class="service-price">' + esc(item.price) + "</div>" +
-      "</div>";
+  function servicesByGroup(d) {
+    var groups = (d.services && d.services.groups) || [];
+    var items = (d.services && d.services.items) || [];
+    var known = {};
+    var buckets = groups.map(function (group) {
+      known[group.id] = true;
+      return { group: group, items: [] };
+    });
+    var rest = [];
+    items.forEach(function (item) {
+      if (item.group && known[item.group]) {
+        buckets.filter(function (b) { return b.group.id === item.group; })[0].items.push(item);
+      } else {
+        rest.push(item);
+      }
+    });
+    var result = buckets.filter(function (b) { return b.items.length; });
+    if (rest.length) result.push({ group: null, items: rest });
+    return result;
   }
 
-  /** Готовая карточка услуги как DOM-узел. */
-  function serviceCard(item, index, d) {
+  /**
+   * Строка прайса на странице услуг: название и короткое описание слева,
+   * цена справа. Подробности раскрываются по клику — цены остаются в одной
+   * колонке и сравниваются глазом, а список не разрастается.
+   */
+  function priceRow(item, d) {
     var points = (item.bullets || []).filter(Boolean);
     var expandable = !!(item.detail || points.length);
-    var card = el("article",
-      "service-card reveal" + (expandable ? " is-expandable" : "") + (item.photo ? " has-photo" : ""),
-      serviceCardHTML(item, index, d));
+    var labels = d.services || {};
+    var row = el("li", "price-row reveal" + (expandable ? " is-expandable" : ""));
+    row.setAttribute("data-reveal", "");
+
+    var main = el(expandable ? "button" : "div", "price-row-main",
+      '<span class="price-row-text">' +
+        '<span class="price-row-title">' + esc(item.title) + "</span>" +
+        '<span class="price-row-desc">' + esc(item.description) + "</span>" +
+      "</span>" +
+      '<span class="price-row-price">' + esc(item.price) + "</span>" +
+      (expandable ? '<span class="price-row-plus" aria-hidden="true"></span>' : ""));
+    if (expandable) {
+      main.type = "button";
+      main.setAttribute("aria-expanded", "false");
+      main.setAttribute("aria-label", item.title + " — " + (labels.detailsLabel || "Подробнее"));
+    }
+    row.appendChild(main);
+
+    if (expandable) {
+      row.appendChild(el("div", "price-row-detail",
+        '<div class="price-row-detail-inner">' +
+          (item.detail ? "<p>" + esc(item.detail) + "</p>" : "") +
+          (points.length
+            ? '<ul class="service-points">' + points.map(function (p) { return "<li>" + esc(p) + "</li>"; }).join("") + "</ul>"
+            : "") +
+        "</div>"));
+    }
+    return row;
+  }
+
+  /** Карточка направления на главной: название, суть и состав услуг. */
+  function directionCard(bucket, index, d) {
+    var group = bucket.group || {};
+    var card = el("article", "direction-card reveal",
+      '<span class="direction-index">' + String(index + 1).padStart(2, "0") + "</span>" +
+      "<h3>" + esc(group.title || "") + "</h3>" +
+      (group.summary ? "<p>" + esc(group.summary) + "</p>" : "") +
+      '<ul class="direction-list">' +
+        bucket.items.map(function (item) { return "<li>" + esc(item.title) + "</li>"; }).join("") +
+      "</ul>");
     card.setAttribute("data-reveal", "");
     card.style.transitionDelay = Math.min(index, 8) * 50 + "ms";
     return card;
   }
 
-  function toggleService(card) {
-    var open = card.classList.toggle("open");
-    var detail = $(".service-detail", card);
+  function toggleService(row) {
+    var open = row.classList.toggle("open");
+    var detail = $(".price-row-detail", row);
     if (detail) detail.style.maxHeight = open ? detail.scrollHeight + "px" : "";
 
-    var button = $(".service-toggle", card);
+    var button = $(".price-row-main", row);
     if (!button) return;
     button.setAttribute("aria-expanded", open ? "true" : "false");
-    var label = $(".service-toggle-label", button);
     var labels = t().services || {};
-    if (label) label.textContent = open ? (labels.hideLabel || "Свернуть") : (labels.detailsLabel || "Подробнее");
+    var title = $(".price-row-title", row);
+    button.setAttribute("aria-label", (title ? title.textContent : "") + " — " +
+      (open ? (labels.hideLabel || "Свернуть") : (labels.detailsLabel || "Подробнее")));
+  }
+
+  /**
+   * Строка «вопрос — ответ» в разделе частых вопросов. Механика та же, что у
+   * прайса: ответ скрыт и раскрывается по клику — но без цены, и вопрос набран
+   * крупнее, чтобы свёрнутый список читался как оглавление.
+   */
+  function faqRow(item, d, index) {
+    var labels = (d && d.faq) || {};
+    var row = el("li", "faq-row reveal");
+    row.setAttribute("data-reveal", "");
+    row.style.transitionDelay = Math.min(index || 0, 8) * 45 + "ms";
+
+    var main = el("button", "faq-question",
+      '<span class="faq-question-text">' + esc(item.question) + "</span>" +
+      '<span class="faq-sign" aria-hidden="true"></span>');
+    main.type = "button";
+    main.setAttribute("aria-expanded", "false");
+    main.setAttribute("aria-label", item.question + " — " + (labels.openLabel || "Раскрыть ответ"));
+    row.appendChild(main);
+
+    row.appendChild(el("div", "faq-answer",
+      '<div class="faq-answer-inner"><p>' + esc(item.answer) + "</p></div>"));
+    return row;
+  }
+
+  function toggleFaq(row) {
+    var open = row.classList.toggle("open");
+    var answer = $(".faq-answer", row);
+    if (answer) answer.style.maxHeight = open ? answer.scrollHeight + "px" : "";
+
+    var button = $(".faq-question", row);
+    if (!button) return;
+    button.setAttribute("aria-expanded", open ? "true" : "false");
+    var labels = t().faq || {};
+    var question = $(".faq-question-text", row);
+    button.setAttribute("aria-label", (question ? question.textContent : "") + " — " +
+      (open ? (labels.hideLabel || "Свернуть ответ") : (labels.openLabel || "Раскрыть ответ")));
   }
 
   /** После смены ширины высота раскрытого текста меняется — пересчитываем. */
   function refreshOpenServices() {
-    $all(".service-card.open .service-detail").forEach(function (detail) {
+    $all(".price-row.open .price-row-detail, .faq-row.open .faq-answer").forEach(function (detail) {
       detail.style.maxHeight = "none";
       var height = detail.scrollHeight;
       detail.style.maxHeight = height + "px";
@@ -671,7 +761,9 @@ window.SiteCommon = (function () {
     state: state, t: t, $: $, $all: $all, el: el, esc: esc, getPath: getPath,
     bindTexts: bindTexts, renderChrome: renderChrome, initReveal: initReveal, afterRender: afterRender,
     waveformHTML: waveformHTML, iconSVG: iconSVG, statIconSVG: statIconSVG,
-    projectThumb: projectThumb, projectCardHTML: projectCardHTML, serviceCard: serviceCard,
+    projectThumb: projectThumb, projectCardHTML: projectCardHTML,
+    servicesByGroup: servicesByGroup, priceRow: priceRow, directionCard: directionCard,
+    faqRow: faqRow,
     socialIconSVG: socialIconSVG,
     blogCardHTML: blogCardHTML, blogCard: blogCard,
     photoTile: photoTile, videoTile: videoTile, videoEmbed: videoEmbed, audioItem: audioItem,

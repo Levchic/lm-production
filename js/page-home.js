@@ -84,6 +84,7 @@
      ["#servicesBgPhoto", d.services.bgPhoto],
      ["#testimonialsBgPhoto", d.testimonials.bgPhoto],
      ["#blogBgPhoto", d.blog.bgPhoto],
+     ["#faqBgPhoto", d.faq && d.faq.bgPhoto],
      ["#contactBgPhoto", d.contact.bgPhoto]].forEach(function (pair) {
       setBgPhoto(pair[0], pair[1]);
     });
@@ -141,9 +142,12 @@
     $("#servicesHeading").textContent = d.services.heading;
     $("#servicesSub").textContent = d.services.subheading;
     $("#servicesViewAll").textContent = d.services.viewAll + " →";
+    // На главной — направления целиком, а не первые три услуги из семи:
+    // выборка «первых трёх» читалась как случайная.
     var grid = $("#servicesGrid"); grid.innerHTML = "";
-    d.services.items.slice(0, 3).forEach(function (item, i) {
-      grid.appendChild(C.serviceCard(item, i, d));
+    C.servicesByGroup(d).forEach(function (bucket, i) {
+      if (!bucket.group) return;
+      grid.appendChild(C.directionCard(bucket, i, d));
     });
   }
 
@@ -165,6 +169,20 @@
     var grid = $("#blogGrid"); grid.innerHTML = "";
     d.blog.posts.slice(0, 3).forEach(function (post, i) {
       grid.appendChild(C.blogCard(post, i, d));
+    });
+  }
+
+  /** На главной — первые пять вопросов, остальные на faq.html. */
+  function renderFaqPreview() {
+    var d = t();
+    if (!d.faq) return;
+    $("#faqEyebrow").textContent = d.faq.eyebrow;
+    $("#faqHeading").textContent = d.faq.heading;
+    $("#faqSub").textContent = d.faq.subheading;
+    $("#faqViewAll").textContent = d.faq.viewAll + " →";
+    var list = $("#faqList"); list.innerHTML = "";
+    (d.faq.items || []).slice(0, 5).forEach(function (item, i) {
+      list.appendChild(C.faqRow(item, d, i));
     });
   }
 
@@ -218,6 +236,7 @@
     renderServicesPreview();
     renderTestimonials();
     renderBlogPreview();
+    renderFaqPreview();
     renderContact();
     // кинематографичный первый экран — только если включён флаг в js/flags.js
     if (window.SiteHeroCinematic) window.SiteHeroCinematic.render();
