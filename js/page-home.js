@@ -492,11 +492,17 @@
       .filter(function (s) { return s.href && s.href !== "#" && !/^https?:\/\/?$/.test(s.href.trim()); })
       .forEach(function (s) {
         var handle = channelHandle(s.href);
-        var a = el("a", "social-row",
+        /* Telegram выделен как основной канал: туда пишут чаще всего и
+           отвечаю там быстрее. Определяем по адресу, а не по флагу в
+           контенте — админка переписывает список соцсетей и лишнее поле
+           из него бы потерялось. */
+        var isPrimary = /(^|\/\/)(t\.me|telegram\.me)\//i.test(s.href);
+        var a = el("a", "social-row" + (isPrimary ? " is-primary" : ""),
           '<span class="social-icon">' + C.socialIconSVG(s.label) + "</span>" +
           '<span class="social-name">' + esc(s.label) + "</span>" +
           '<span class="social-handle">' + esc(handle) + "</span>" +
-          '<span class="social-go">' + C.arrowSVG() + "</span>");
+          '<span class="social-go">' + C.arrowSVG() + "</span>" +
+          (isPrimary ? '<span class="social-badge">' + esc((c.primaryBadge || "")) + "</span>" : ""));
         a.href = s.href;
         a.target = "_blank";
         a.rel = "noopener noreferrer";

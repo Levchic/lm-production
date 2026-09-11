@@ -97,7 +97,16 @@
         <h2 id="calcHeading"></h2>
         <p class="section-sub" id="calcSub"></p>
       </div>
-      <div class="calc" id="calcHost"></div>
+      <!-- Калькулятор раскрывается по кнопке. Семь шагов сразу на экране
+           встречают посетителя стеной вопросов, на которые он ещё не знает
+           ответа; ориентиры по ценам он уже видел в витрине выше. Узел
+           #calcHost остаётся в разметке всегда — pricing-ui.js держит на
+           нём состояние формы, — но наполняется при первом раскрытии. -->
+      <div class="calc-toggle-wrap reveal" data-reveal>
+        <button class="btn btn-ghost calc-toggle" id="calcToggle" type="button" aria-expanded="false" aria-controls="calcHost"></button>
+        <p class="calc-toggle-note" id="calcToggleNote"></p>
+      </div>
+      <div class="calc" id="calcHost" hidden></div>
     </div>
   </section>
 

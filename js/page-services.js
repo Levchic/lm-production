@@ -53,12 +53,44 @@
    * его сам и держит на нём состояние формы, поэтому пересоздавать узел
    * при смене языка нельзя.
    */
+  var calcMounted = false;   /* монтируем один раз, дальше только перерисовка */
+
+  function mountCalculator() {
+    if (!window.PricingUI || !window.PRICING_CONFIG) return;
+    window.PricingUI.mount($("#calcHost"));
+    calcMounted = true;
+  }
+
   function renderCalculator(d) {
     var c = d.services.calculator || {};
     $("#calcEyebrow").textContent = c.eyebrow || "";
     $("#calcHeading").textContent = c.heading || "";
     $("#calcSub").textContent = c.subheading || "";
-    if (window.PricingUI && window.PRICING_CONFIG) window.PricingUI.mount($("#calcHost"));
+
+    var host = $("#calcHost");
+    var toggle = $("#calcToggle");
+    var open = !host.hidden;
+    toggle.textContent = open ? (c.hideLabel || "Свернуть расчёт") : (c.openLabel || "Посчитать стоимость");
+    $("#calcToggleNote").textContent = c.toggleNote || "";
+
+    /* Язык мог смениться при раскрытом калькуляторе — тогда пересобираем
+       содержимое; свёрнутый ждёт первого нажатия. */
+    if (open) mountCalculator();
+  }
+
+  function setupCalcToggle() {
+    var host = $("#calcHost");
+    var toggle = $("#calcToggle");
+    if (!toggle || toggle.dataset.bound) return;
+    toggle.dataset.bound = "1";
+    toggle.addEventListener("click", function () {
+      var open = host.hidden;
+      host.hidden = !open;
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      var c = t().services.calculator || {};
+      toggle.textContent = open ? (c.hideLabel || "Свернуть расчёт") : (c.openLabel || "Посчитать стоимость");
+      if (open && !calcMounted) mountCalculator();
+    });
   }
 
   /** Прикладные работы: цены живут в прайс-конфиге, рядом со ставками. */
@@ -106,6 +138,7 @@
     renderCalculator(d);
     renderExtras(d);
     renderTerms(d);
+    setupCalcToggle();
   }
 
   document.addEventListener("DOMContentLoaded", function () { C.init(render); });

@@ -57,10 +57,10 @@ window.SITE_CONTENT = {
       "cta": "Задать вопрос"
     },
     "hero": {
-      "annotation": "Личный сайт-портфолио",
+      "annotation": "Аранжировка и оркестровка на заказ",
       "name": "Лев Майденко",
       "role": "Аранжировка, оркестровка, саунд-продакшн",
-      "description": "Продакшн оркестровой музыки для концертов и шоу — полный цикл **от идеи до концертных партий.**",
+      "description": "Оркестровая музыка для концертов, шоу, театра и экрана — полный цикл **от идеи до партий на пультах.**",
       "ctaPrimary": "Обсудить проект",
       "ctaSecondary": "Перейти в портфолио",
       "photoCaption": "Галерея",
@@ -134,54 +134,64 @@ window.SITE_CONTENT = {
     },
     "forWhom": {
       "eyebrow": "Для кого",
-      "heading": "Для кого я работаю?",
-      "subheading": "Коротко о типах заказчиков — вы сразу поймёте, подходит ли вам формат сотрудничества.",
+      "heading": "С кем я работаю",
+      "subheading": "Задачи приходят разные, но сводятся к одному: нужно, чтобы музыка прозвучала живым составом и в срок. Ниже — ситуации, в которых меня обычно и зовут.",
       "bgPhoto": "",
       "items": [
         {
-          "title": "Продюсеры шоу и художественные руководители оркестровых проектов",
-          "description": "Тематические программы, шоу саундтреков, концерты с полным циклом подготовки — от структуры номеров до партитур.",
+          "title": "Оркестровые шоу и концертные программы",
+          "description": "Программа целиком: от структуры номеров и оркестровки до партий на пультах и клика в наушниках дирижёра.",
           "tasks": [
             "Структура программы",
             "Оркестровка",
             "Партитура и партии",
-            "Клик и плейбэк"
+            "Клик и плейбэк",
+            "Партитура для режиссёра трансляции"
           ]
         },
         {
-          "title": "Кино, игры, реклама",
-          "description": "Музыкальные супервайзеры и продюсеры — аранжировка и оркестровка под видеоряд, саунд-дизайн, подготовка материалов к сессии.",
+          "title": "Театр и постановки",
+          "description": "Музыка под конкретный спектакль: сцены, переходы, синхронизация с видеорядом и дирижёрским пультом.",
           "tasks": [
-            "Музыка под видеоряд",
-            "Саунд-дизайн",
-            "Материалы для записи"
-          ]
-        },
-        {
-          "title": "Театры и продюсерские центры",
-          "description": "Партитуры под постановку, клик и плейбэк, синхронизация с видеорядом и дирижёрским пультом.",
-          "tasks": [
-            "Партитура под постановку",
+            "Музыка к постановке",
             "Клик и плейбэк",
             "Синхронизация с видео"
           ]
         },
         {
-          "title": "Композиторы и аранжировщики",
-          "description": "Ассистентирование коллегам по цеху - помощь с оформлением сочинений, переаранжировкой, созданием партитур из демо-записей и наоборот, досочинение или редакция проектов различной сложности и формы.",
+          "title": "Оркестры и ансамбли учреждений культуры",
+          "description": "Школам искусств, колледжам и домам культуры — ноты под ваш реальный состав, а не под тот, для которого написан оригинал.",
           "tasks": [
-            "Нотный набор",
-            "Переаранжировка",
-            "Партитура из демо"
+            "Переложение под состав",
+            "Партии для репетиций",
+            "Учебная скидка"
           ]
         },
         {
-          "title": "Музыканты и любители",
-          "description": "Любые коллаборации, совместные проекты или заказ с отчуждением — возможны различные варианты сотрудничества с различными музыкально-прикладными задачами: камерные переложения, MIDI-демо, набор нот, озвучивание сочинений профессиональными библиотеками, аранжировки под сессию записи или для любых других личных целей.",
+          "title": "Кино, реклама, игры",
+          "description": "Музыка под готовый видеоряд: попадание в монтажные стыки, саунд-дизайн, материалы в том виде, в каком их ждёт студия звукозаписи.",
           "tasks": [
-            "Камерные переложения",
-            "MIDI-демо",
-            "Аранжировка под сессию"
+            "Музыка к изображению",
+            "Саунд-дизайн",
+            "Материалы для записи"
+          ]
+        },
+        {
+          "title": "Артисты и коллективы",
+          "description": "Сольным исполнителям и группам — аранжировка под ваш состав, ноты к сессии записи, клик и плейбэк для живого выступления.",
+          "tasks": [
+            "Аранжировка под состав",
+            "Мелодическая строка",
+            "Клик для концерта"
+          ]
+        },
+        {
+          "title": "Композиторы и коллеги по цеху",
+          "description": "Работа с чужой партитурой: набрать с рукописи, оркестровать демо, привести готовое к виду, в котором его примут музыканты.",
+          "tasks": [
+            "Нотный набор",
+            "Оркестровка демо",
+            "Редактура партитуры"
           ]
         }
       ]
@@ -800,7 +810,7 @@ window.SITE_CONTENT = {
     "services": {
       "eyebrow": "Услуги",
       "heading": "Услуги и цены",
-      "subheading": "Три направления работы. Ниже — ориентиры по каждой услуге, принцип расчёта и калькулятор предварительной стоимости.",
+      "subheading": "Три направления работы. Ниже — ориентиры по каждой услуге, принцип расчёта и калькулятор предварительной стоимости. Если работаем впервые, проще начать с одного номера — снятие, мелодическая строка или набор: небольшая задача, на которой видно и мою работу, и то, как нам вместе.",
       "viewAll": "Все услуги и цены",
       "note": "Цены на этой странице — ориентиры и не являются публичной офертой. Итоговая стоимость зависит от состава, объёма и сроков и фиксируется в договоре.",
       "bgPhoto": "",
@@ -915,7 +925,10 @@ window.SITE_CONTENT = {
       "calculator": {
         "eyebrow": "Расчёт",
         "heading": "Калькулятор стоимости",
-        "subheading": "Начните с типа работы — этапы и вопросы подстроятся под него. Смета собирается сразу: ничего никуда не отправляется, расчёт остаётся в браузере."
+        "subheading": "Подробный расчёт для тех, кому нужна цифра до разговора. Начните с типа работы — этапы и вопросы подстроятся под него. Ничего никуда не отправляется, расчёт остаётся в браузере.",
+      "openLabel": "Посчитать стоимость",
+      "hideLabel": "Свернуть расчёт",
+      "toggleNote": "Семь шагов, две-три минуты. Если отвечать не на что — просто напишите, посчитаю сам."
       },
       "extra": {
         "eyebrow": "Отдельно",
@@ -1371,6 +1384,7 @@ window.SITE_CONTENT = {
           "href": "https://www.youtube.com/@levlvovich2000"
         }
       ],
+      "primaryBadge": "отвечаю быстрее всего",
       "directHeading": "Написать напрямую",
       "directNote": "Если удобнее в мессенджере — пишите туда, отвечаю обычно в течение дня.",
       "directFoot": "Майденко Лев Львович, самозанятый, ИНН 632148507539. Работаю по договору."
@@ -1514,22 +1528,41 @@ window.SITE_CONTENT = {
     "forWhom": {
       "eyebrow": "Who I work with",
       "heading": "Who I work with",
-      "subheading": "A quick overview of client types — so you can see right away if this is a fit.",
+      "subheading": "The briefs differ, but they come down to the same thing: the music has to sound right with live players, on time. Below are the situations I usually get called into.",
       "bgPhoto": "",
       "items": [
         {
-          "title": "Show producers & orchestral project directors",
-          "description": "Themed programs, soundtrack shows, concerts with full preparation cycle — from number structure to final scores.",
+          "title": "Orchestral shows and concert programmes",
+          "description": "The whole programme: from the running order and orchestration to the parts on the stands and the click in the conductor's ears.",
           "tasks": [
-            "Programme structure",
+            "Running order",
             "Orchestration",
             "Score and parts",
-            "Click and playback"
+            "Click and playback",
+            "Score for the broadcast director"
           ]
         },
         {
-          "title": "Film, games, advertising",
-          "description": "Music supervisors and producers — arranging and orchestration to picture, sound design, session-ready materials.",
+          "title": "Theatre and staged work",
+          "description": "Music for a particular production: scenes, transitions, and synchronisation with the video feed and the conductor's desk.",
+          "tasks": [
+            "Music for the production",
+            "Click and playback",
+            "Sync to video"
+          ]
+        },
+        {
+          "title": "Ensembles at music schools and cultural centres",
+          "description": "Music schools, colleges and community centres — parts written for the ensemble you actually have, not the one the original was scored for.",
+          "tasks": [
+            "Adapting to your forces",
+            "Parts for rehearsal",
+            "Educational rate"
+          ]
+        },
+        {
+          "title": "Film, advertising, games",
+          "description": "Music to a locked picture: hitting the cuts, sound design, and materials in the shape the recording studio expects them.",
           "tasks": [
             "Music to picture",
             "Sound design",
@@ -1537,30 +1570,21 @@ window.SITE_CONTENT = {
           ]
         },
         {
-          "title": "Theatres & production centers",
-          "description": "Scores for productions, click and playback, synchronization with picture and conductor's podium.",
+          "title": "Artists and bands",
+          "description": "Soloists and groups — arrangements for your line-up, charts for the recording session, click and playback for the live show.",
           "tasks": [
-            "Score for the staging",
-            "Click and playback",
-            "Sync with video"
+            "Arranging for your line-up",
+            "Lead sheet",
+            "Click for the show"
           ]
         },
         {
-          "title": "Новая карточка",
-          "description": "Assisting fellow composers and arrangers: preparing works for performance, re-arranging, turning demos into full scores and the other way round, completing or editing projects of any scale and form.",
+          "title": "Composers and fellow arrangers",
+          "description": "Working on someone else's score: engraving from manuscript, orchestrating a demo, bringing a finished piece to a state players will accept.",
           "tasks": [
             "Music engraving",
-            "Re-arranging",
-            "Score from a demo"
-          ]
-        },
-        {
-          "title": "Other musicians",
-          "description": "Colleagues for collaborations and referrals — chamber transcriptions, MIDI demos, session arrangements.",
-          "tasks": [
-            "Chamber versions",
-            "MIDI mockups",
-            "Arrangement for a session"
+            "Orchestrating a demo",
+            "Score editing"
           ]
         }
       ]
@@ -2179,7 +2203,7 @@ window.SITE_CONTENT = {
     "services": {
       "eyebrow": "Services",
       "heading": "Services & rates",
-      "subheading": "Three lines of work. Below: an indicative rate for each service, how the price is built, and a calculator for a preliminary estimate.",
+      "subheading": "Three lines of work. Below: an indicative rate for each service, how the price is built, and a calculator for a preliminary estimate. If this is our first time working together, start with a single number — a transcription, a lead sheet, some engraving: a small job that shows both my work and how we get on.",
       "viewAll": "All services & rates",
       "note": "The prices on this page are indicative and do not constitute a public offer. The final cost depends on the ensemble, scope and deadlines, and is fixed in the contract.",
       "bgPhoto": "",
@@ -2294,7 +2318,10 @@ window.SITE_CONTENT = {
       "calculator": {
         "eyebrow": "Estimate",
         "heading": "Cost calculator",
-        "subheading": "Start with the type of job — the stages and questions adjust to it. The estimate builds instantly: nothing is submitted anywhere, it stays in your browser."
+        "subheading": "A detailed estimate for those who want a figure before the conversation. Start with the type of job — the stages and questions adjust to it. Nothing is submitted anywhere, it stays in your browser.",
+      "openLabel": "Work out the cost",
+      "hideLabel": "Hide the estimate",
+      "toggleNote": "Seven steps, two or three minutes. If the questions don't fit your case — just write, and I'll work it out myself."
       },
       "extra": {
         "eyebrow": "Separately",
@@ -2750,6 +2777,7 @@ window.SITE_CONTENT = {
           "href": "https://www.youtube.com/@levlvovich2000"
         }
       ],
+      "primaryBadge": "fastest reply",
       "directHeading": "Message me directly",
       "directNote": "If a messenger is easier for you, write there — I usually reply within a day.",
       "directFoot": "Lev Maidenko, self-employed (NPD taxpayer), TIN 632148507539. I work under a contract."
