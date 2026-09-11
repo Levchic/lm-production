@@ -3,12 +3,31 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Услуги</title>
-<meta name="description" content="">
+<title>Услуги и цены — Лев Майденко</title>
+<meta name="description" content="Оркестровые аранжировки, оркестровка, нотный набор, клик и плейбэк: цены-ориентиры, принцип расчёта и калькулятор предварительной стоимости проекта.">
+<link rel="canonical" href="https://levchic.github.io/lm-production/services.html">
+
+<!-- Карточка ссылки в мессенджерах и соцсетях. Значения статические:
+     боты предпросмотра не выполняют JS, поэтому подставить их из
+     content.js во время загрузки нельзя. -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Лев Майденко · L.M.Production">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:url" content="https://levchic.github.io/lm-production/services.html">
+<meta property="og:title" content="Услуги и цены — Лев Майденко">
+<meta property="og:description" content="Цены-ориентиры, принцип расчёта и калькулятор предварительной стоимости оркестровых работ.">
+<meta property="og:image" content="https://levchic.github.io/lm-production/assets/media/og-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Оркестр на сцене во время концерта: дирижёр, струнная группа и свечи вдоль рампы">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="css/styles.css?v=12">
-<link rel="stylesheet" href="css/texture.css?v=12">
-<link rel="stylesheet" href="css/animations.css?v=12">
+<link rel="preload" href="assets/fonts/unbounded-cyrillic-normal-400-900.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/onest-cyrillic-normal-300-800.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/fonts.css?v=75">
+<link rel="stylesheet" href="css/styles.css?v=75">
+<link rel="stylesheet" href="css/texture.css?v=75">
+<link rel="stylesheet" href="css/animations.css?v=75">
 </head>
 <body data-title-key="services.heading">
 
@@ -48,13 +67,69 @@
     </svg>
   </div>
 
+  <!-- Витрина услуг: ориентиры по каждой работе. Точные цифры считает
+       калькулятор ниже, полный прайс высылается по запросу. -->
   <section class="section section-deep">
     <div class="wrap">
       <div class="services-groups" id="servicesGroups"></div>
-      <p class="services-note" id="note"></p>
-      <div class="section-foot">
-        <a href="index.html#contact" class="btn btn-primary" data-bind="nav.cta">Обсудить проект</a>
+    </div>
+  </section>
+
+  <!-- Принцип расчёта. Стоит перед калькулятором: сначала объясняем, из
+       чего складывается цена, потом даём считать. -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head reveal" data-reveal>
+        <span class="eyebrow" id="pricingEyebrow"></span>
+        <h2 id="pricingHeading"></h2>
+        <p class="section-sub" id="pricingSub"></p>
       </div>
+      <div class="principles" id="pricingPrinciples"></div>
+    </div>
+  </section>
+
+  <!-- Калькулятор. Разметку собирает js/pricing-ui.js, узел #calcHost
+       остаётся на месте между перерисовками — на нём висят обработчики. -->
+  <section class="section section-deep" id="calculator">
+    <div class="wrap">
+      <div class="section-head reveal" data-reveal>
+        <span class="eyebrow" id="calcEyebrow"></span>
+        <h2 id="calcHeading"></h2>
+        <p class="section-sub" id="calcSub"></p>
+      </div>
+      <div class="calc" id="calcHost"></div>
+    </div>
+  </section>
+
+  <!-- Работы, которые не считаются формулой. -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head reveal" data-reveal>
+        <span class="eyebrow" id="extraEyebrow"></span>
+        <h2 id="extraHeading"></h2>
+        <p class="section-sub" id="extraSub"></p>
+      </div>
+      <ul class="price-list" id="extraList"></ul>
+    </div>
+  </section>
+
+  <section class="section section-deep">
+    <div class="wrap">
+      <div class="section-head reveal" data-reveal>
+        <span class="eyebrow" id="termsEyebrow"></span>
+        <h2 id="termsHeading"></h2>
+      </div>
+      <div class="terms-grid" id="termsList"></div>
+
+      <div class="terms-cta reveal" data-reveal>
+        <div>
+          <h3 id="termsCtaHeading"></h3>
+          <p id="termsCtaText"></p>
+        </div>
+        <a href="index.html#contact" class="btn btn-primary" id="termsCtaLink"></a>
+      </div>
+
+      <p class="services-note" id="note"></p>
     </div>
   </section>
 </main>
@@ -68,9 +143,13 @@
   </div>
 </footer>
 
-<script src="js/content.js?v=12"></script>
-<script src="js/common.js?v=12"></script>
-<script src="js/page-services.js?v=12"></script>
-<script src="js/mobile-carousel.js?v=12"></script>
+<script src="js/content.js?v=75"></script>
+<script src="js/common.js?v=75"></script>
+<script src="js/pricing-config.js?v=75"></script>
+<script src="js/pricing-overrides.js?v=75"></script>
+<script src="js/pricing-calc.js?v=75"></script>
+<script src="js/pricing-ui.js?v=75"></script>
+<script src="js/page-services.js?v=75"></script>
+<script src="js/mobile-carousel.js?v=75"></script>
 </body>
 </html>

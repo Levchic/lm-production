@@ -204,3 +204,83 @@ code { background: var(--a-line-soft); padding: 1px 5px; border-radius: 4px; fon
   .sidebar button { width: auto; }
   .content { padding: 20px 16px 80px; }
 }
+
+/* ---------- Редактор прайса ----------
+   Полей под две сотни, поэтому всё держится на плотной сетке и на
+   свёрнутых группах: развёрнутый целиком раздел читать невозможно.
+   Изменённое поле подсвечено — без этого не видно, чем действующий
+   прайс отличается от того, что записан в pricing-config.js. */
+
+.price-summary {
+  background: var(--a-panel); border: 1px solid var(--a-line);
+  border-radius: var(--a-radius); padding: 14px 16px; margin-bottom: 18px;
+}
+.price-summary-empty { margin: 0; color: var(--a-mute); }
+.price-summary-head {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; margin-bottom: 10px;
+}
+
+.price-diff { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.price-diff li {
+  display: grid; grid-template-columns: 1fr auto auto; align-items: center; gap: 10px;
+  padding: 6px 0; border-top: 1px solid var(--a-line-soft);
+}
+.price-diff-name { color: var(--a-ink); }
+.price-diff-value { color: var(--a-mute); white-space: nowrap; }
+.price-diff-value s { opacity: 0.7; }
+.price-diff-value b { color: var(--a-accent); }
+/* Путь, которого в прайсе больше нет: этап удалили или переименовали
+   руками, а правка к нему осталась. Её видно и можно убрать. */
+.price-diff li.is-orphan .price-diff-name { color: var(--a-danger); }
+.price-diff li.is-orphan .price-diff-name::after { content: " — нет в прайсе"; opacity: 0.8; }
+
+.price-group {
+  background: var(--a-panel); border: 1px solid var(--a-line);
+  border-radius: var(--a-radius); margin-bottom: 10px;
+}
+.price-group > summary {
+  cursor: pointer; padding: 12px 16px; display: flex; align-items: baseline;
+  gap: 10px; list-style: none;
+}
+.price-group > summary::-webkit-details-marker { display: none; }
+.price-group > summary::before {
+  content: "▸"; color: var(--a-mute); transition: transform 0.15s;
+}
+.price-group[open] > summary::before { transform: rotate(90deg); }
+.price-group-title { font-weight: 700; }
+.price-group-note { color: var(--a-mute); font-size: 13px; }
+.price-group-body { padding: 0 16px 14px; }
+
+.price-block { padding: 12px 0; border-top: 1px solid var(--a-line-soft); }
+.price-block-title { font-weight: 600; margin-bottom: 2px; }
+.price-block-note { color: var(--a-mute); font-size: 13px; margin-bottom: 10px; }
+
+.price-grid {
+  display: grid; gap: 10px 14px;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+}
+.price-field { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.price-field--wide { grid-column: 1 / -1; }
+.price-field-label { color: var(--a-mute); font-size: 13px; }
+.price-field-row { display: flex; align-items: center; gap: 6px; }
+
+.price-input {
+  flex: 1; min-width: 0;
+  border: 1px solid var(--a-line); border-radius: 6px; background: #fff;
+  padding: 7px 10px;
+}
+.price-input:focus { outline: none; border-color: var(--a-accent); }
+.price-input.is-edited {
+  border-color: var(--a-accent); background: var(--a-accent-soft); font-weight: 600;
+}
+
+.price-undo {
+  flex: none; width: 28px; height: 28px; padding: 0;
+  border: 1px solid var(--a-line); border-radius: 6px; background: var(--a-panel);
+  color: var(--a-mute); cursor: pointer; line-height: 1;
+}
+.price-undo:hover { border-color: var(--a-accent); color: var(--a-accent); }
+/* Не display:none: место кнопка занимает всегда, иначе поле дёргается в
+   ширине от первой же правки. */
+.price-undo.is-hidden { visibility: hidden; }

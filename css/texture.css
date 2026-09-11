@@ -11,6 +11,9 @@
  * 4. .tear-divider  — рваный край между шапкой страницы и первым разделом.
  *
  * Все пятна декоративные: pointer-events: none и z-index ниже контента.
+ * Палитра пятен держится в одном тёплом семействе (медь → золото →
+ * винный): сиреневое и бирюзовое пятна из прежней версии читались как
+ * чужие — сайт одноакцентный, второй цвет размывает узнаваемость.
  * Насыщенность правится через opacity у .ink-blob / .glow.
  */
 
@@ -77,13 +80,13 @@
 .ink-blob.b4 {
   width: clamp(180px, 23vw, 350px); aspect-ratio: 1;
   right: 22%; top: 30%;
-  background: radial-gradient(circle at 50% 50%, rgba(92, 62, 138, 0.7), rgba(92, 62, 138, 0) 68%);
+  background: radial-gradient(circle at 50% 50%, rgba(104, 50, 88, 0.5), rgba(104, 50, 88, 0) 68%);
   animation-name: ink-drift-d; animation-duration: 63s;
 }
 .ink-blob.b5 {
   width: clamp(160px, 20vw, 310px); aspect-ratio: 1.15;
   left: 6%; top: 44%;
-  background: radial-gradient(circle at 50% 50%, rgba(32, 104, 104, 0.6), rgba(32, 104, 104, 0) 70%);
+  background: radial-gradient(circle at 50% 50%, rgba(158, 108, 44, 0.52), rgba(158, 108, 44, 0) 70%);
   animation-name: ink-drift-b; animation-duration: 58s; animation-delay: -20s;
 }
 .ink-blob.b6 {
@@ -162,7 +165,7 @@
 .glow.g3 {
   width: clamp(220px, 32vw, 500px); aspect-ratio: 1.4;
   left: 34%; bottom: -18%;
-  background: radial-gradient(circle at 50% 50%, rgba(90, 72, 130, 0.14), rgba(90, 72, 130, 0) 72%);
+  background: radial-gradient(circle at 50% 50%, rgba(138, 74, 34, 0.13), rgba(138, 74, 34, 0) 72%);
   animation-name: glow-drift-c, glow-pulse; animation-duration: 92s, 29s; animation-delay: 0s, -15s;
 }
 

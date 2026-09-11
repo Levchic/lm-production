@@ -1,0 +1,58 @@
+<div class="app">
+  <header class="app-head">
+    <div class="app-brand">
+      <span class="app-title">Калькулятор стоимости</span>
+      <span class="app-sub">Оркестровые и продакшн-работы · прайс <!--VERSION--></span>
+    </div>
+    <div class="app-actions">
+      <div class="app-modes" role="group" aria-label="Как показывать итог">
+        <input type="radio" id="mode-exact" name="app-mode" checked>
+        <label for="mode-exact" title="Точные суммы, ставки и баллы">Для себя</label>
+        <input type="radio" id="mode-range" name="app-mode">
+        <label for="mode-range" title="Итог вилкой, ставки скрыты">Для клиента</label>
+      </div>
+      <button type="button" class="app-btn" id="openSettings">Настроить прайс</button>
+    </div>
+  </header>
+
+  <p class="app-warn" id="storageNote" hidden>
+    <span>Этот браузер не разрешает странице, открытой прямо из файла, запоминать настройки.</span>
+    <span>Правки прайса будут работать, пока открыта вкладка. Чтобы сохранить их —
+      «Настроить прайс» → «Сохранить в файл», а в следующий раз загрузить обратно.
+      В Safari и Firefox, а также при открытии по ссылке, всё запоминается само.</span>
+  </p>
+
+  <p class="app-edited" id="editedNote" hidden>
+    <span>Прайс изменён под себя.</span>
+    <button type="button" data-reset>Вернуть исходный</button>
+  </p>
+
+  <main>
+    <div class="calc" id="calcHost"></div>
+  </main>
+
+  <footer class="app-foot">
+    <p>Работает без интернета: всё внутри этого файла. Настройки прайса
+       хранятся в браузере на этом устройстве и никуда не отправляются.</p>
+    <p>Свои ставки, баллы и названия — кнопка «Настроить прайс» вверху.
+       Там же прайс выгружается в файл и загружается обратно: так его можно
+       перенести на другое устройство или передать коллеге.</p>
+    <p>Расчёт предварительный. Точная стоимость определяется после разбора материала.</p>
+  </footer>
+</div>
+
+<div class="sheet" id="settings" hidden role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
+  <div class="sheet-head">
+    <h2 id="settingsTitle">Настройки прайса</h2>
+    <div class="sheet-actions">
+      <button type="button" class="app-btn" data-export>Сохранить в файл</button>
+      <button type="button" class="app-btn" data-import>Загрузить из файла</button>
+      <button type="button" class="app-btn" data-reset>Сбросить</button>
+      <button type="button" class="app-btn app-btn--primary" data-close>Готово</button>
+    </div>
+  </div>
+  <p class="sheet-status" id="sheetStatus" hidden aria-live="polite"></p>
+  <div class="sheet-body" id="settingsBody"></div>
+</div>
+
+<input type="file" id="importFile" accept=".json,application/json" hidden>

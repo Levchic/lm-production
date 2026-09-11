@@ -24,7 +24,7 @@
     if (!post) {
       $("#postTitle").textContent = d.blog.postNotFound || "Новость не найдена.";
       ["#postBodySection", "#postPhotosSection", "#postLinksSection"].forEach(function (s) { toggle($(s), false); });
-      $("#backLink").textContent = "← " + (d.blog.backLabel || d.blog.viewAll || "");
+      $("#backLink").innerHTML = C.withArrow(d.blog.backLabel || d.blog.viewAll || "", "left");
       return;
     }
 
@@ -97,7 +97,7 @@
     $("#postLinksHeading").textContent = d.blog.linksHeading || "";
     toggle($("#postLinksSection"), links.length > 0);
 
-    $("#backLink").textContent = "← " + (d.blog.backLabel || d.blog.viewAll || "");
+    $("#backLink").innerHTML = C.withArrow(d.blog.backLabel || d.blog.viewAll || "", "left");
   }
 
   document.addEventListener("DOMContentLoaded", function () { C.init(render); });

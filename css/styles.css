@@ -19,36 +19,67 @@
   --copper-dim: #8a4a22;
   --rule: #34302c;
 
-  /* Шрифты */
-  --font-display: "Helvetica Neue", "Inter", Arial, sans-serif;
-  --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-  --font-note: Georgia, "Iowan Old Style", "Times New Roman", serif;
+  /* Шрифты — самохостинг, объявления в css/fonts.css. Их два, и роли
+     разведены жёстко:
+       • дисплейный Unbounded — заголовки, логотип и ЦИФРЫ (номера этапов,
+         индексы разделов, цены): цифра в широком гротеске сама работает
+         акцентом, её не нужно выделять ничем ещё;
+       • текстовый Onest — весь остальной текст. Разница между служебной
+         строкой, лидом и цитатой держится на кегле, насыщенности и
+         трекинге, а не на третьей гарнитуре.
+     Текстовый шрифт — геометрический Jost (в духе Futura): он держит и
+     сплошной текст, и акцентные строки, поэтому гарнитур снова две.
+     Onest остался объявленным в css/fonts.css как запасной вариант —
+     достаточно вернуть его в --font-body, если геометрия надоест. */
+  --font-display: "Unbounded", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Jost", "Futura", "Century Gothic", sans-serif;
+  /* Акцентный — тот же Jost, но лёгким начертанием и с широким трекингом:
+     надписи над заголовками, подзаголовок первого экрана, титры, цитаты.
+     Отдельным токеном он оставлен намеренно: если акцентные строки
+     захочется отдать другой гарнитуре, менять придётся одну строку. */
+  --font-accent: var(--font-body);
 
   /* Шкала кегля — единая на весь сайт */
   --fs-2xs: 0.6875rem;  /* 11px — теги, подписи, категории */
-  --fs-xs:  0.78125rem; /* 12.5px — мелкие подписи, цена в карточке */
+  --fs-xs:  0.8125rem;  /* 13px — мелкие подписи, цена в карточке */
   --fs-sm:  0.875rem;   /* 14px — навигация, кнопки, служебный текст */
-  --fs-base: 0.9375rem; /* 15px — текст карточек */
-  --fs-md:  1.0625rem;  /* 17px — лид, подзаголовки секций, заголовки карточек */
-  --fs-lg:  1.1875rem;  /* 19px — цитаты, крупный текст */
-  --fs-h3:  1.0625rem;
-  --fs-h2:  clamp(1.75rem, 3vw, 2.5rem);
-  --fs-h1-page: clamp(1.9rem, 4.2vw, 2.9rem);
-  --fs-h1-hero: clamp(2.4rem, 5.6vw, 4.1rem);
+  /* У Jost очко мельче, чем у Onest, поэтому ступени чтения подняты на
+     6%: тот же кегль в пикселях выглядел бы мельче прежнего. */
+  --fs-base: 1.0625rem; /* 17px — текст карточек */
+  --fs-md:  1.1875rem;  /* 19px — лид, подзаголовки секций */
+  --fs-lg:  1.3125rem;  /* 21px — цитаты, крупный текст */
+  --fs-h3:  1.125rem;   /* 18px — заголовки карточек */
+  --fs-h2:  clamp(1.75rem, 3.2vw, 2.75rem);
+  --fs-h1-page: clamp(1.85rem, 3.9vw, 2.85rem);
+  /* Unbounded заметно шире Helvetica, поэтому верх шкалы ниже прежнего:
+     при 4.1rem «ЛЕВ МАЙДЕНКО» переставало помещаться в колонку. */
+  --fs-h1-hero: clamp(2.05rem, 4.4vw, 3.35rem);
 
   /* Интерлиньяж */
-  --lh-tight: 1.15;
-  --lh-body: 1.65;
+  --lh-tight: 1.08;
+  --lh-body: 1.62;
+  --tr-display: -0.03em;  /* трекинг дисплейного шрифта */
 
   /* Ритм */
-  --sp-section: clamp(64px, 7.5vw, 104px);
-  --sp-head: clamp(32px, 4vw, 48px);
+  --sp-section: clamp(72px, 8.5vw, 124px);
+  --sp-head: clamp(36px, 4.4vw, 56px);
   --sp-card: clamp(22px, 2.4vw, 30px);
 
   --container: 1180px;
   --gutter: clamp(20px, 4vw, 32px);
   --header-h: 72px;
-  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Движение. Кривые — сильный ease-out (вход/выход) и ease-in-out
+     (перемещение по экрану). Встроенных ease-* недостаточно: они слишком
+     вялые. Длительности интерфейса держим ниже 300 мс — иначе интерфейс
+     начинает казаться медленным, даже если анимация «красивая». */
+  --ease: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --dur-press: 120ms;   /* отклик на нажатие */
+  --dur-hover: 160ms;   /* наведение, смена цвета */
+  --dur-ui: 220ms;      /* раскрытие меню, панелей */
+  --dur-media: 460ms;   /* медленное: фото в карточке, появление блока */
 }
 
 /* ---------- База ---------- */
@@ -70,7 +101,7 @@ body {
 h1, h2, h3, h4 {
   font-family: var(--font-display);
   font-weight: 800;
-  letter-spacing: -0.015em;
+  letter-spacing: var(--tr-display);
   text-transform: uppercase;
   line-height: var(--lh-tight);
   margin: 0;
@@ -84,44 +115,77 @@ input, select, textarea { font-family: inherit; }
 img, svg { max-width: 100%; display: block; }
 :focus-visible { outline: 2px solid var(--copper); outline-offset: 3px; }
 
+/* ---------- Поверхности, которые рисует браузер ----------
+   Выделение, каретка, полоса прокрутки и подчёркивание по умолчанию
+   принадлежат не нашей теме, а браузеру. Пока их не покрасишь, страница
+   выглядит собранной, а не сделанной. */
+::selection { background: var(--copper); color: #17110a; }
+html { caret-color: var(--copper); scrollbar-color: var(--rule) var(--char-deep); scrollbar-width: thin; }
+::-webkit-scrollbar { width: 11px; height: 11px; }
+::-webkit-scrollbar-track { background: var(--char-deep); }
+::-webkit-scrollbar-thumb { background: var(--rule); border: 3px solid var(--char-deep); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: var(--copper-dim); }
+a:not(.btn):not(.brand) { text-underline-offset: 0.22em; text-decoration-thickness: 1px; }
+/* Цифры в ценах, датах и метаданных — моноширинные по ширине знака,
+   иначе столбцы «плывут» при смене значения. */
+time, .price, .project-meta, .service-price, .post-date { font-variant-numeric: tabular-nums; }
+
 .wrap { max-width: var(--container); margin: 0 auto; padding: 0 var(--gutter); }
 .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
-/* ---------- Курсивные пометки (используются точечно) ---------- */
+/* ---------- Служебные строки (используются точечно) ----------
+   Раньше их вёл курсивный Lora. Теперь тот же текстовый шрифт, но мелким
+   кеглем, прописными и с широким трекингом: строка остаётся служебной, а
+   гарнитур на странице становится на одну меньше. */
+/* Тонкие штрихи поверх фотографии теряются, поэтому у надписи над именем
+   кегль на ступень крупнее и цвет светлее, чем у надзаголовков разделов,
+   которые всегда лежат на ровном фоне. */
 .annotation {
-  font-family: var(--font-note);
-  font-style: italic;
+  font-family: var(--font-accent);
+  font-weight: 400;
   font-size: var(--fs-sm);
-  color: var(--copper);
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--copper-bright);
   display: flex;
   align-items: center;
   gap: 10px;
   margin-bottom: 18px;
 }
+/* Пометка на полях — каллиграфия: единственная рукописная строка на
+   сайте, поэтому шрифт подключён только под неё. У скрипта мелкое очко и
+   тонкий штрих, поэтому кегль заметно крупнее текстового. */
 .margin-note {
-  font-family: var(--font-note);
-  font-style: italic;
-  font-size: var(--fs-sm);
-  color: var(--mute);
+  font-family: "Great Vibes", "Snell Roundhand", cursive;
+  font-weight: 400;
+  font-size: clamp(1.5rem, 1.7vw, 1.95rem);
+  line-height: 1.25;
+  color: var(--bone-dim);
   padding-left: 16px;
   border-left: 1px solid var(--copper-dim);
   max-width: 44ch;
 }
 .eyebrow {
-  font-family: var(--font-note);
-  font-style: italic;
-  font-size: var(--fs-sm);
+  font-family: var(--font-accent);
+  font-weight: 400;
+  font-size: var(--fs-xs);
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
   color: var(--copper);
   margin-bottom: 12px;
   display: block;
 }
 
 /* ---------- Полоса прокрутки ---------- */
+/* Ширину не анимируем: это перерасчёт раскладки на каждый кадр прокрутки.
+   Полоса всегда во всю ширину, а прогресс задаёт scaleX (js/common.js). */
 .scroll-progress {
-  position: fixed; top: 0; left: 0; height: 2px; width: 0%;
+  position: fixed; top: 0; left: 0; height: 2px; width: 100%;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
   background: var(--copper);
   z-index: 1000;
-  transition: width 0.1s linear;
+  will-change: transform;
 }
 
 /* ---------- Шапка ---------- */
@@ -131,7 +195,7 @@ img, svg { max-width: 100%; display: block; }
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid transparent;
-  transition: border-color 0.3s var(--ease), background 0.3s var(--ease);
+  transition: border-color var(--dur-hover) var(--ease), background var(--dur-hover) var(--ease);
 }
 .site-header.scrolled { border-bottom-color: var(--rule); background: rgba(16, 14, 18, 0.94); }
 .header-inner {
@@ -140,29 +204,33 @@ img, svg { max-width: 100%; display: block; }
   gap: 20px; height: var(--header-h);
 }
 .brand { font-family: var(--font-display); font-weight: 800; letter-spacing: 0.02em; color: var(--bone); font-size: 1.1rem; flex: none; }
-.main-nav ul { display: flex; gap: clamp(14px, 1.8vw, 24px); }
+/* Кириллица в Onest шире прежнего системного шрифта: при старом шаге и
+   кегле меню выдавливало кнопку за правый край шапки. */
+.main-nav ul { display: flex; gap: clamp(11px, 1.25vw, 17px); }
 .main-nav a {
-  font-size: var(--fs-sm); color: var(--mute); position: relative;
-  padding: 4px 0; white-space: nowrap; transition: color 0.25s var(--ease);
+  font-size: var(--fs-xs); letter-spacing: 0.005em; color: var(--mute); position: relative;
+  padding: 4px 0; white-space: nowrap; transition: color var(--dur-hover) var(--ease);
 }
-.main-nav a::after { content: ''; position: absolute; left: 0; bottom: -2px; height: 1px; width: 0; background: var(--copper); transition: width 0.3s var(--ease); }
+/* Подчёркивание раскрывается через scaleX: анимация width пересчитывает
+   раскладку, transform — нет. */
+.main-nav a::after { content: ''; position: absolute; left: 0; bottom: -2px; height: 1px; width: 100%; background: var(--copper); transform: scaleX(0); transform-origin: 0 50%; transition: transform var(--dur-hover) var(--ease-out); }
 .main-nav a:hover { color: var(--bone); }
 .main-nav a.active { color: var(--copper); }
-.main-nav a.active::after { width: 100%; }
+.main-nav a.active::after { transform: scaleX(1); }
 
-.header-actions { display: flex; align-items: center; gap: 12px; flex: none; }
+.header-actions { display: flex; align-items: center; gap: 10px; flex: none; }
 .lang-toggle {
   background: transparent; border: 1px solid var(--rule); border-radius: 3px;
   padding: 6px 11px; font-size: var(--fs-xs); color: var(--mute);
   display: flex; gap: 5px; align-items: center;
-  transition: border-color 0.25s var(--ease), color 0.25s var(--ease);
+  transition: border-color var(--dur-hover) var(--ease), color var(--dur-hover) var(--ease);
 }
 .lang-toggle:hover { border-color: var(--copper); color: var(--bone); }
 .lang-current { color: var(--copper); font-weight: 700; }
 .lang-sep { opacity: 0.4; }
 
 .nav-burger { display: none; background: none; border: none; width: 28px; height: 20px; flex-direction: column; justify-content: space-between; padding: 0; }
-.nav-burger span { display: block; height: 1px; background: var(--bone); width: 100%; transition: transform 0.3s var(--ease), opacity 0.3s var(--ease); }
+.nav-burger span { display: block; height: 1px; background: var(--bone); width: 100%; transition: transform var(--dur-hover) var(--ease), opacity var(--dur-hover) var(--ease); }
 .nav-burger.open span:nth-child(1) { transform: translateY(9.5px) rotate(45deg); }
 .nav-burger.open span:nth-child(2) { opacity: 0; }
 .nav-burger.open span:nth-child(3) { transform: translateY(-9.5px) rotate(-45deg); }
@@ -173,55 +241,273 @@ img, svg { max-width: 100%; display: block; }
   padding: 13px 26px; border-radius: 2px;
   font-size: var(--fs-sm); font-weight: 700;
   letter-spacing: 0.03em; text-transform: uppercase; line-height: 1.2;
-  transition: transform 0.3s var(--ease), background 0.3s var(--ease), border-color 0.3s var(--ease), color 0.3s var(--ease);
+  transition: transform var(--dur-press) var(--ease-out),
+              background var(--dur-hover) ease,
+              border-color var(--dur-hover) ease,
+              color var(--dur-hover) ease;
 }
-.btn-small { padding: 8px 15px; font-size: var(--fs-xs); }
+.btn-small { padding: 8px 13px; font-size: var(--fs-xs); }
 .btn-primary { background: var(--copper); color: #17110a; }
-.btn-primary:hover { transform: translateY(-2px); background: var(--copper-bright); }
 .btn-ghost { border: 1px solid var(--rule); color: var(--bone); background: rgba(16,14,18,0.35); }
-.btn-ghost:hover { border-color: var(--copper); color: var(--copper); transform: translateY(-2px); }
-.text-link {
-  font-size: var(--fs-sm); color: var(--copper); display: inline-flex; align-items: center; gap: 6px;
-  border-bottom: 1px solid var(--copper-dim); padding-bottom: 2px;
-  transition: border-color 0.25s var(--ease), gap 0.25s var(--ease);
+/* Подъём при наведении — только там, где курсор действительно есть:
+   на тач-экране :hover срабатывает от касания и «залипает». */
+@media (hover: hover) and (pointer: fine) {
+  .btn-primary:hover { transform: translateY(-2px); background: var(--copper-bright); }
+  .btn-ghost:hover { border-color: var(--copper); color: var(--copper); transform: translateY(-2px); }
 }
-.text-link:hover { border-color: var(--copper); gap: 10px; }
+/* Нажатие должно ощущаться физически: кнопка уходит под палец. */
+.btn:active { transform: translateY(0) scale(0.985); }
+
+/* Текстовая ссылка. Раньше по наведению анимировался gap — свойство
+   раскладки, да ещё и без эффекта: внутри один текстовый узел. Вместо него
+   по линии слева направо прочерчивается вторая, яркая. */
+.text-link {
+  position: relative;
+  font-size: var(--fs-sm); color: var(--copper); display: inline-flex; align-items: center;
+  border-bottom: 1px solid var(--copper-dim); padding-bottom: 2px;
+  transition: color var(--dur-hover) ease;
+}
+.text-link::after {
+  content: '';
+  position: absolute; left: 0; right: 0; bottom: -1px; height: 1px;
+  background: var(--copper);
+  transform: scaleX(0); transform-origin: 0 50%;
+  transition: transform var(--dur-ui) var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) {
+  .text-link:hover::after { transform: scaleX(1); }
+}
+
+
+/* ---------- Стрелка в ссылках-переходах ----------
+   Отдельная иконка вместо символа «→»: тот брался из шрифта и не совпадал
+   с текстом по весу. Смещение при наведении — обратная связь, 160 мс. */
+.link-arrow {
+  /* глобальное правило svg { display: block } иначе роняет стрелку
+     на отдельную строку внутри span-подписи */
+  display: inline-block;
+  flex: none;
+  vertical-align: -0.16em;
+  margin-left: 0.42em;
+  transition: transform var(--dur-hover) var(--ease-out);
+}
+.link-arrow:first-child { margin-left: 0; margin-right: 0.42em; }
+@media (hover: hover) and (pointer: fine) {
+  .text-link:hover .link-arrow,
+  .project-card:hover .link-arrow,
+  .blog-card:hover .link-arrow,
+  .t-source-link:hover .link-arrow { transform: translateX(3px); }
+  /* «Назад» смотрит влево — и уезжает влево */
+  .text-link:hover .link-arrow:first-child { transform: translateX(-3px); }
+}
+.social-go .link-arrow { margin: 0; }
 
 /* =========================================================================
    ГЛАВНЫЙ ЭКРАН — фото на весь экран + градиентное затемнение
    ========================================================================= */
 .hero {
+  --ticker-h: 62px;   /* строка титров внизу — под неё же добирается отступ */
   position: relative;
   min-height: min(760px, 100svh);
   display: flex;
-  align-items: flex-end;
-  padding: calc(var(--header-h) + 40px) 0 clamp(56px, 8vh, 96px);
+  /* текст по центру экрана; в кинематографичном режиме положение задаёт
+     залипающий блок — см. css/hero-cinematic.css */
+  align-items: center;
+  padding: calc(var(--header-h) + 40px) 0 calc(clamp(56px, 8vh, 96px) + var(--ticker-h));
   overflow: hidden;
   isolation: isolate;
 }
+/* Фон первого экрана. Слои лежат друг на друге: видимый — с .is-current,
+   остальные ждут своей очереди с нулевой прозрачностью. Наезд (медленное
+   увеличение) идёт всё время показа кадра, поэтому кадр не выглядит
+   фотографией на стене. Смену кадров ведёт js/page-home.js. */
 .hero-media { position: absolute; inset: 0; z-index: -2; background: var(--char-deep); }
-.hero-media img {
+/* Отдельный слой под сдвиг за курсором: сам .hero-media в это время
+   масштабирует js/hero-cinematic.js, и два скрипта дрались бы за
+   один transform. */
+.hero-media-inner {
+  position: absolute; inset: 0;
+  transition: transform 600ms var(--ease-out);
+  will-change: transform;
+}
+.hero-media img, .hero-slide {
+  position: absolute; inset: 0;
   width: 100%; height: 100%;
   object-fit: cover;
-  object-position: center 42%;
+  object-position: 62% center;
 }
+.hero-slide {
+  opacity: 0;
+  transform: scale(1.06);
+  /* появление — 1.2 с (медиа, не интерфейс), наезд — всё время показа */
+  transition: opacity 1200ms var(--ease-out), transform 11s linear;
+}
+.hero-slide.is-current { opacity: 1; transform: scale(1.12); }
+
+/* Титры по низу первого экрана: дисциплины идут строкой, как в конце
+   фильма. Текст контурный и полупрозрачный — это фон, а не сообщение;
+   по краям он растворяется маской, чтобы строка не «обрубалась». */
+.hero-ticker {
+  position: absolute; left: 0; right: 0; bottom: 0; z-index: 1;
+  overflow: hidden;
+  padding: 18px 0 20px;
+  border-top: 1px solid rgba(236, 229, 214, 0.09);
+  background: linear-gradient(180deg, rgba(16,14,18,0) 0%, rgba(16,14,18,0.42) 100%);
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 9%, #000 91%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 9%, #000 91%, transparent 100%);
+}
+.hero-ticker-track {
+  display: flex;
+  width: max-content;
+  /* постоянное движение — только linear: любое ускорение здесь читается
+     как рывок. Дорожка склеена из двух одинаковых половин, поэтому сдвиг
+     ровно на -50% незаметно возвращает её в начало. */
+  animation: hero-ticker 64s linear infinite;
+}
+.hero-ticker-row { display: flex; align-items: center; flex: none; }
+/* Контурный набор жёстко ограничивает выбор шрифта: обводка идёт по
+   контуру буквы, поэтому у толстых начертаний каждый штрих превращается
+   в две линии, а в местах стыков (Ж, К, Д) они наезжают друг на друга.
+   Дисплейный Unbounded в 800 давал именно такую путаницу — вместо него
+   здесь текстовый Onest в самом лёгком начертании: буква читается одним
+   замкнутым контуром. Широкий трекинг и капитель уводят строку подальше
+   от обычного текста — голос у неё остаётся свой.
+   Толщина обводки задана в em: на телефоне и на 32" она держит одну и ту
+   же долю от кегля, иначе мелкий текст заплывает. Едва заметная заливка
+   (4%) добавляет буквам тела, не превращая их в сплошные. */
+.hero-ticker-row span {
+  font-family: var(--font-accent); font-weight: 300;
+  font-size: clamp(1.05rem, 1.3vw, 1.6rem);
+  letter-spacing: 0.2em; text-transform: uppercase;
+  white-space: nowrap;
+  padding: 0 clamp(18px, 2vw, 38px);
+  color: rgba(236, 229, 214, 0.04);
+  -webkit-text-stroke: 0.038em rgba(236, 229, 214, 0.5);
+}
+.hero-ticker-row b {
+  font-weight: 400; color: var(--copper-dim);
+  font-size: 0.7em; line-height: 1;
+}
+@keyframes hero-ticker { to { transform: translate3d(-50%, 0, 0); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-ticker-track { animation: none; }
+  .hero-slide { transition: opacity 200ms linear; transform: none; }
+  .hero-slide.is-current { transform: none; }
+  .hero-media-inner { transition: none; transform: none; }
+}
+/* Затемнение работает как разворот: слева почти глухая панель, на которой
+   лежит текст, справа фотография видна по-настоящему. Прежний вариант
+   держал 0.42 по всей ширине — снимок не читался нигде, но и текст
+   приходилось спасать. */
 .hero-scrim {
   position: absolute; inset: 0; z-index: -1;
   background:
-    linear-gradient(90deg, rgba(16,14,18,0.94) 0%, rgba(16,14,18,0.86) 34%, rgba(16,14,18,0.42) 66%, rgba(16,14,18,0.62) 100%),
-    linear-gradient(180deg, rgba(16,14,18,0.82) 0%, rgba(16,14,18,0.1) 22%, rgba(16,14,18,0.2) 55%, var(--char) 100%);
+    /* «Стена» держится дольше и отпускает позже: правые концы строк
+       раньше попадали в зону, где фотография уже почти открыта, и на
+       светлых кадрах текст терялся. Правая четверть кадра осталась
+       открытой — разворот сохраняется. */
+    linear-gradient(100deg,
+      rgba(16,14,18,0.97) 0%,
+      rgba(16,14,18,0.95) 40%,
+      rgba(16,14,18,0.78) 56%,
+      rgba(16,14,18,0.22) 76%,
+      rgba(16,14,18,0.36) 100%),
+    linear-gradient(180deg,
+      rgba(16,14,18,0.78) 0%,
+      rgba(16,14,18,0.06) 24%,
+      rgba(16,14,18,0.12) 58%,
+      var(--char) 100%);
 }
+/* На узком экране текст занимает всю ширину, и «разворот» слева направо
+   перестаёт работать: подпись ложится на светлую клавиатуру. Там затемнение
+   идёт сверху вниз — клавиши рояля вверху остаются видны, а низ, где лежит
+   текст, уходит в тень. */
+@media (max-width: 860px) {
+  .hero-media img { object-position: 52% 30%; }
+  .hero-scrim {
+    background: linear-gradient(180deg,
+      rgba(16,14,18,0.82) 0%,
+      rgba(16,14,18,0.34) 12%,
+      rgba(16,14,18,0.72) 23%,
+      rgba(16,14,18,0.90) 36%,
+      rgba(16,14,18,0.96) 62%,
+      var(--char) 100%);
+  }
+}
+
 .hero-inner { position: relative; z-index: 1; width: 100%; }
 .hero-text { max-width: 41rem; }
-.hero-text h1 { font-size: var(--fs-h1-hero); line-height: 0.96; margin-bottom: 20px; }
-.hero-role {
-  font-family: var(--font-note); font-style: italic;
-  color: var(--bone-dim); font-size: var(--fs-lg); margin-bottom: 18px;
+/* Имя открывается шторкой при загрузке — один раз и без участия скрипта:
+   ключевые кадры идут по своему времени, поэтому даже во вкладке, на
+   которую не смотрят, имя не останется закрытым. */
+.hero-text h1 {
+  /* подзаголовок подтянут к имени: это одна группа, а описание с кнопками
+     стоит отдельно, ниже */
+  font-size: var(--fs-h1-hero); line-height: 0.96; margin-bottom: 10px;
+  animation: hero-name 760ms var(--ease-out) 120ms both;
 }
-.hero-desc { max-width: 46ch; font-size: var(--fs-md); line-height: 1.7; color: var(--bone-dim); }
-.hero-cta { display: flex; gap: 14px; flex-wrap: wrap; margin: 30px 0 26px; }
+@keyframes hero-name {
+  from { clip-path: inset(0 0 108% 0); transform: translateY(0.1em); }
+  to   { clip-path: inset(0 0 -12% 0); transform: none; }
+}
+
+/* Метки кадров фона: сколько фотографий и какая сейчас. Кликабельны —
+   фон можно пролистать руками, не дожидаясь смены. */
+.hero-frames {
+  position: absolute; right: var(--gutter);
+  bottom: calc(52px + var(--ticker-h)); z-index: 2;
+  display: flex; gap: 7px;
+}
+.hero-frames:empty { display: none; }
+.hero-frames button {
+  position: relative;
+  width: 26px; height: 2px; padding: 0; border: 0; border-radius: 1px;
+  background: rgba(236, 229, 214, 0.26);
+  cursor: pointer;
+  transition: background var(--dur-hover) var(--ease);
+}
+.hero-frames button.is-current { background: var(--copper); }
+@media (hover: hover) and (pointer: fine) {
+  .hero-frames button:hover { background: var(--bone-dim); }
+  .hero-frames button.is-current:hover { background: var(--copper-bright); }
+}
+/* Палец в 2 px не попадёт — расширяем область нажатия, не трогая вид. */
+.hero-frames button::after {
+  content: ''; position: absolute; margin: -12px -3px; width: 32px; height: 26px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-text h1 { animation: none; }
+}
+/* Подзаголовок и лид — одного кегля: разница в 2 px ничего не выстраивала,
+   а ступенька в размере читалась как случайность. Роли теперь разводят
+   насыщенность и цвет: подзаголовок легче и светлее, лид — обычного веса
+   и приглушённый. */
+.hero-role {
+  font-family: var(--font-accent); font-weight: 700;
+  letter-spacing: 0.01em;
+  color: var(--bone); font-size: var(--fs-md); margin-bottom: 16px;
+}
+/* Отбивка перед описанием: имя с подзаголовком сверху, ниже — отдельная
+   группа «описание — кнопки — пометка». Отступ живёт внутри #heroLead,
+   поэтому при кинематографичной прокрутке он схлопывается вместе с ним и
+   пустоты после себя не оставляет. */
+.hero-desc {
+  margin-top: clamp(36px, 5.4vh, 80px);
+  max-width: 46ch; font-size: var(--fs-md); line-height: 1.7; color: var(--bone-dim);
+}
+/* Выделение внутри описания: **жирным** из админки. Кроме веса — акцентный
+   цвет сайта. Взят светлый вариант меди: строка лежит поверх фотографии,
+   и основной оттенок на светлых кадрах теряется. */
+.hero-desc strong { font-weight: 700; color: var(--copper-bright); }
+/* Кнопки идут одной группой с описанием, поэтому отбивка сверху меньше,
+   чем расстояние от подзаголовка до этой группы. */
+.hero-cta { display: flex; gap: 14px; flex-wrap: wrap; margin: 14px 0 26px; }
 .hero-credit {
-  position: absolute; right: var(--gutter); bottom: 26px; z-index: 1;
+  /* над титрами: 26 px + высота бегущей строки */
+  position: absolute; right: var(--gutter); bottom: calc(26px + var(--ticker-h)); z-index: 1;
   font-size: var(--fs-2xs); letter-spacing: 0.14em; text-transform: uppercase;
   color: var(--mute);
 }
@@ -266,9 +552,35 @@ img, svg { max-width: 100%; display: block; }
   background: var(--copper);
   box-shadow: 0 0 0 7px var(--char);
 }
-.section-head { max-width: 46rem; margin-bottom: var(--sp-head); }
-.section-head h2 { font-size: var(--fs-h2); margin-bottom: 12px; }
-.section-sub { color: var(--mute); font-size: var(--fs-md); max-width: 58ch; }
+/* Колонтитул раздела тянется во всю ширину полосы набора — он работает
+   как разделитель. Заголовок и подзаголовок остаются в узкой колонке. */
+.section-head { margin-bottom: var(--sp-head); }
+.section-head h2 { max-width: 46rem; }
+/* .section-sub ниже задаёт свою меру в ch — не перебиваем её здесь. */
+/* Курсивная подпись над заголовком спорила с ним за внимание и
+   повторяла его смысл. Здесь она уходит на линейку — работает как
+   колонтитул раздела, а заголовок остаётся один в своём весе.
+   Текст подписи по-прежнему редактируется в админке. */
+.section-head .eyebrow {
+  font-family: var(--font-accent);
+  font-style: normal;
+  font-size: var(--fs-xs);
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--mute);
+  display: flex; align-items: center; gap: 10px;
+  margin: 0 0 clamp(20px, 2.2vw, 30px);
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--rule);
+}
+.section-head .eyebrow:empty { display: none; }
+.section-head .eyebrow::before {
+  content: ''; flex: none; width: 18px; height: 1px; background: var(--copper);
+}
+.section-head h2 { font-size: var(--fs-h2); margin-bottom: 14px; }
+/* Мера строки: в Onest единица ch заметно шире средней строчной буквы,
+   поэтому 54ch — это примерно 70 знаков, верх комфортного диапазона. */
+.section-sub { color: var(--mute); font-size: var(--fs-md); max-width: 54ch; }
 .section-foot { display: flex; justify-content: flex-start; align-items: center; margin-top: 32px; flex-wrap: wrap; gap: 16px; }
 
 /* Фото-подложка секции */
@@ -311,63 +623,178 @@ img, svg { max-width: 100%; display: block; }
 .card-grid--3 { grid-template-columns: repeat(3, 1fr); }
 
 /* Общая типографика карточек */
-.card-title { font-family: var(--font-display); font-weight: 700; font-size: var(--fs-h3); text-transform: none; letter-spacing: 0; line-height: 1.3; margin-bottom: 10px; }
+/* Дисплейный Unbounded широк и в 18px становится нечитаемым частоколом:
+   заголовки карточек ведём текстовым шрифтом, контраст держим весом. */
+.card-title { font-family: var(--font-body); font-weight: 600; font-size: var(--fs-h3); text-transform: none; letter-spacing: -0.011em; line-height: 1.3; margin-bottom: 10px; }
+.for-whom-card h3, .process-step h3, .project-body h3, .service-card h3 {
+  font-family: var(--font-body); font-weight: 600; letter-spacing: -0.011em;
+}
 .card-text { color: var(--mute); font-size: var(--fs-base); }
 
 /* ---------- Для кого ----------
-   Не сетка, а поток: карточки сами разбираются по рядам и растягиваются
-   поровну, сколько бы их ни было — четыре, пять или семь. */
-.for-whom-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-}
-.for-whom-card {
-  position: relative;
-  flex: 1 1 clamp(260px, 30%, 420px);
-  border: 1px solid var(--rule);
-  background: rgba(19,17,22,0.88);
-  padding: var(--sp-card);
-  overflow: hidden;
-  transition: border-color 0.35s var(--ease), background 0.35s var(--ease), transform 0.35s var(--ease);
-}
-/* мягкая подсветка вместо смены фона — теплее и спокойнее */
-.for-whom-card::before {
-  content: '';
-  position: absolute; inset: 0;
-  /* центр берётся из --mx/--my, их обновляет js/common.js при движении мыши */
-  background: radial-gradient(320px circle at var(--mx, 50%) var(--my, 0%), rgba(194,98,43,0.26), rgba(194,98,43,0) 68%);
-  opacity: 0;
-  transition: opacity 0.45s var(--ease);
-  pointer-events: none;
-}
-.for-whom-card:hover { border-color: var(--copper-dim); transform: translateY(-3px); }
-.for-whom-card:hover::before { opacity: 1; }
-.for-whom-card h3, .for-whom-card p { position: relative; z-index: 1; }
-.for-whom-card h3 { font-size: var(--fs-h3); margin-bottom: 10px; text-transform: none; letter-spacing: 0; font-weight: 700; line-height: 1.3; }
-.for-whom-card p { color: var(--mute); font-size: var(--fs-base); }
+   Было пять одинаковых коробок: заголовки от 19 до 62 знаков, описания от
+   90 до 320 — стена текста с рваным ритмом и без единой точки, за которую
+   цепляется глаз. Стало реестром — тем же приёмом, что услуги на главной и
+   прайс: слева номер и «кто», справа описание и строка ярлыков «что обычно
+   нужно». Разметка и правила общие с .direction-card, поэтому страница
+   читается как одна вещь, а не набор блоков.
+   Стили — в блоке «Услуги на главной» ниже. */
 
-/* ---------- Процесс ---------- */
-.process-steps { display: flex; flex-direction: column; }
-.process-step { display: grid; grid-template-columns: 52px 1fr; gap: 20px; padding: 24px 0; border-top: 1px solid var(--rule); }
-.process-step:last-child { border-bottom: 1px solid var(--rule); }
-.process-step .idx { font-family: var(--font-note); font-style: italic; color: var(--copper); font-size: var(--fs-lg); line-height: 1.4; }
+/* ---------- Процесс ----------
+   Раньше этапы шли строками таблицы: пять одинаковых полос, порядок в
+   которых держался только на номерах. Теперь это маршрут — карточки идут
+   змейкой (слева, справа, слева), а между ними протянута линия со стрелкой:
+   последовательность видно раньше, чем прочитан первый заголовок.
+
+   Геометрию линии считает js/page-home.js по фактическому положению
+   карточек, поэтому раскладку ниже можно менять свободно — колонки,
+   отступы, порядок: кривые пересчитаются сами. Линия выходит и входит
+   ровно по колонке номера, с той стороны карточки, куда идёт маршрут. */
+.process-route { position: relative; }
+
+/* Линия лежит под карточками и не ловит курсор. Своей высоты не имеет —
+   размер берёт от .process-route, поэтому пересчёта раскладки не вызывает. */
+.process-route-line {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  overflow: visible;
+  pointer-events: none;
+  z-index: 0;
+}
+.process-link-line {
+  fill: none;
+  stroke: var(--copper-dim);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  /* длину каждой кривой подставляет скрипт: --len приходит в стиле узла */
+  stroke-dasharray: var(--len, 0);
+  stroke-dashoffset: var(--len, 0);
+  /* линия не появляется, а прочерчивается — это перемещение по экрану,
+     значит ease-in-out; объяснительное движение, поэтому длиннее 300 мс */
+  transition: stroke-dashoffset 560ms var(--ease-in-out);
+  transition-delay: 140ms;
+}
+.process-link.is-drawn .process-link-line { stroke-dashoffset: 0; }
+.process-link-tip {
+  fill: none;
+  stroke: var(--copper);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0;
+  /* остриё зажигается, когда линия дочерчена до карточки */
+  transition: opacity var(--dur-hover) var(--ease-out);
+  transition-delay: 640ms;
+}
+.process-link.is-drawn .process-link-tip { opacity: 1; }
+
+/* Колонка, а не сетка: карточка каждого этапа занимает свою строку
+   (в сетке соседние по номеру уезжали в одну строку) и прижимается к
+   своему краю — отсюда змейка. Число этапов задаётся в админке, поэтому
+   раскладка не должна зависеть от их количества. */
+.process-steps {
+  display: flex;
+  flex-direction: column;
+  row-gap: clamp(48px, 5.5vw, 88px);
+}
+.process-step {
+  position: relative;
+  z-index: 1;
+  width: min(48%, 520px);
+  align-self: flex-start;
+  background: var(--char-deep);
+  border: 1px solid var(--rule);
+  padding: var(--sp-card);
+  transition: border-color var(--dur-hover) var(--ease), background var(--dur-hover) var(--ease);
+}
+.process-step:nth-child(even) { align-self: flex-end; }
+.process-step .idx {
+  /* inline-block, а не block: по ширине этого номера скрипт находит
+     колонку, в которую приходит линия маршрута */
+  display: inline-block;
+  font-family: var(--font-display); font-weight: 500;
+  color: var(--copper); font-size: var(--fs-md); line-height: 1;
+  letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 14px;
+}
 .process-step h3 { font-size: var(--fs-h3); margin-bottom: 6px; text-transform: none; letter-spacing: 0; font-weight: 700; }
-.process-step p { color: var(--mute); font-size: var(--fs-base); max-width: 68ch; }
+.process-step p { color: var(--mute); font-size: var(--fs-base); max-width: 46ch; }
+/* Контурный номер в пустой половине строки. Тот же приём, что у титров на
+   первом экране: буква без заливки — это фон, а не сообщение. */
+.process-ghost {
+  position: absolute; top: -0.12em; z-index: -1;
+  font-family: var(--font-display); font-weight: 800;
+  font-size: clamp(4.5rem, 8vw, 9.5rem);
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(236, 229, 214, 0.09);
+  pointer-events: none;
+  user-select: none;
+}
+.process-step:nth-child(odd) .process-ghost { left: calc(100% + clamp(40px, 6vw, 110px)); }
+.process-step:nth-child(even) .process-ghost { right: calc(100% + clamp(40px, 6vw, 110px)); }
+/* На узком экране пустой половины нет — номер только в карточке. */
+@media (max-width: 1100px) { .process-ghost { display: none; } }
+
+/* Что заказчик получает на этом шаге. Ради этой строки шаг и существует —
+   она отделена линейкой и стоит последней, как итог. */
+.process-result {
+  margin-top: 16px; padding-top: 12px;
+  border-top: 1px solid var(--rule);
+  font-size: var(--fs-xs); color: var(--bone-dim);
+}
+.process-result span {
+  display: block; margin-bottom: 4px;
+  font-size: var(--fs-2xs); letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--copper);
+}
+
+/* Подъёма по наведению здесь нет намеренно: transform на карточке спорит
+   с появлением при прокрутке (.in-view держит translateY). Отклик даёт
+   контур и подложка. */
+@media (hover: hover) and (pointer: fine) {
+  .process-step:hover { border-color: var(--copper-dim); background: var(--char-raised); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .process-link-line { stroke-dashoffset: 0; transition: none; }
+  .process-link-tip { opacity: 1; transition: none; }
+}
+
+
+/* ---------- Перестроение сетки портфолио ----------
+   Длительности снимков перехода: 240 мс на переезд карточки (движение по
+   экрану — ease-in-out) и 160 мс на проявление и растворение. Дольше —
+   и фильтр начинает казаться медленным. */
+::view-transition-group(*) {
+  animation-duration: 240ms;
+  animation-timing-function: var(--ease-in-out);
+}
+::view-transition-old(*),
+::view-transition-new(*) {
+  animation-duration: 160ms;
+  animation-timing-function: var(--ease-out);
+}
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) { animation: none; }
+}
 
 /* ---------- Портфолио ---------- */
 .portfolio-filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 32px; }
 .filter-btn {
   background: transparent; border: 1px solid var(--rule); color: var(--mute);
   border-radius: 2px; padding: 8px 15px; font-size: var(--fs-xs);
-  transition: color 0.25s var(--ease), border-color 0.25s var(--ease), background 0.25s var(--ease);
+  transition: color var(--dur-hover) var(--ease), border-color var(--dur-hover) var(--ease), background var(--dur-hover) var(--ease);
 }
 .filter-btn:hover { color: var(--bone); border-color: var(--copper); }
 .filter-btn.active { background: var(--copper); color: #17110a; border-color: var(--copper); font-weight: 700; }
 
 .project-card {
   background: var(--char); display: flex; flex-direction: column;
-  transition: background 0.3s var(--ease);
+  transition: background var(--dur-hover) var(--ease);
 }
 .section-deep .project-card { background: var(--char-deep); }
 .project-card:hover { background: var(--char-raised); }
@@ -377,7 +804,7 @@ img, svg { max-width: 100%; display: block; }
   position: absolute; inset: 0;
   width: 100%; height: 100%;
   object-fit: cover;
-  transition: transform 0.6s var(--ease);
+  transition: transform var(--dur-media) var(--ease);
 }
 .project-category-tag {
   position: absolute; top: 12px; left: 12px; z-index: 2;
@@ -387,9 +814,9 @@ img, svg { max-width: 100%; display: block; }
 }
 .project-body { padding: var(--sp-card); flex: 1; display: flex; flex-direction: column; gap: 8px; }
 .project-body h3 { font-size: var(--fs-h3); text-transform: none; letter-spacing: 0; font-weight: 700; line-height: 1.3; }
-.project-meta { font-family: var(--font-note); font-style: italic; font-size: var(--fs-sm); color: var(--copper); }
+.project-meta { font-size: var(--fs-xs); letter-spacing: 0.02em; color: var(--copper); }
 .project-body p.project-desc { color: var(--mute); font-size: var(--fs-base); }
-.project-more { margin-top: auto; padding-top: 14px; font-size: var(--fs-xs); letter-spacing: 0.08em; text-transform: uppercase; color: var(--mute); transition: color 0.25s var(--ease); }
+.project-more { margin-top: auto; padding-top: 14px; font-size: var(--fs-xs); letter-spacing: 0.08em; text-transform: uppercase; color: var(--mute); transition: color var(--dur-hover) var(--ease); }
 .project-card:hover .project-more { color: var(--copper); }
 .project-card.hidden { display: none; }
 .placeholder-flag { align-self: flex-start; font-size: var(--fs-2xs); letter-spacing: 0.06em; text-transform: uppercase; color: var(--mute); border: 1px dashed var(--rule); padding: 3px 8px; }
@@ -411,48 +838,105 @@ img, svg { max-width: 100%; display: block; }
    услуг сознательно нет: снимки были из разных источников и превращали
    ровную сетку в мозаику, а цену — в мелочь на пёстром фоне. */
 
-/* --- Направления на главной --- */
-.direction-card {
-  position: relative;
-  background: var(--char);
-  padding: var(--sp-card);
-  display: flex; flex-direction: column;
-  transition: background 0.3s var(--ease);
+/* --- Направления на главной ---
+   Было три одинаковые карточки в ряд — самая узнаваемая «шаблонная»
+   раскладка, к тому же на узком экране в неё не влезал текст. Стало
+   реестром: направление слева, содержание справа, между строками —
+   линейка. Тот же приём, что в прайс-листе на services.html, так что
+   две страницы теперь читаются как одна вещь. */
+#servicesGrid,
+#forWhomGrid {
+  display: block;
+  border: 0;
+  border-top: 1px solid var(--rule);
 }
-.section-deep .direction-card { background: var(--char-deep); }
-.direction-card:hover { background: var(--char-raised); }
+#servicesGrid > *,
+#forWhomGrid > * { border: 0; border-bottom: 1px solid var(--rule); }
 
-/* медная нить сверху — растёт при наведении */
-.direction-card::before {
-  content: '';
-  position: absolute; top: 0; left: 0;
-  height: 2px; width: 0;
-  background: var(--copper);
-  transition: width 0.5s var(--ease);
+.direction-card,
+.whom-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 300px) minmax(0, 1fr);
+  column-gap: clamp(28px, 4vw, 64px);
+  align-items: start;
+  padding: clamp(26px, 3vw, 38px) 0;
+  transition: background var(--dur-hover) ease;
 }
-.direction-card:hover::before { width: 100%; }
+/* Медная нить слева от строки: разворачивается по вертикали за 160 мс —
+   ровно столько, сколько человек держит взгляд на строке. */
+.direction-card::before,
+.whom-row::before {
+  content: '';
+  position: absolute; left: calc(var(--gutter) * -0.5); top: 0; bottom: 0;
+  width: 2px;
+  background: var(--copper);
+  transform: scaleY(0); transform-origin: 50% 0;
+  transition: transform var(--dur-ui) var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) {
+  .direction-card:hover::before,
+  .whom-row:hover::before { transform: scaleY(1); }
+  .direction-card:hover h3,
+  .whom-row:hover h3 { color: var(--bone); }
+}
 
 .direction-index {
-  font-family: var(--font-note); font-style: italic;
-  color: var(--copper); font-size: var(--fs-sm);
-  display: block; margin-bottom: 10px;
+  grid-column: 1; grid-row: 1;
+  font-family: var(--font-display); font-weight: 500;
+  letter-spacing: 0.02em; font-variant-numeric: tabular-nums;
+  color: var(--copper); font-size: var(--fs-xs);
+  display: block; margin-bottom: 8px;
 }
-.direction-card h3 {
-  font-size: var(--fs-h3); margin-bottom: 10px;
-  text-transform: none; letter-spacing: 0; font-weight: 700; line-height: 1.3;
+.direction-card h3,
+.whom-row h3 {
+  grid-column: 1; grid-row: 2;
+  font-size: var(--fs-lg); margin: 0;
+  text-transform: none; letter-spacing: -0.015em; font-weight: 600; line-height: 1.25;
+  color: var(--bone-dim);
+  transition: color var(--dur-hover) ease;
 }
-.direction-card p { color: var(--mute); font-size: var(--fs-base); }
+.direction-card p,
+.whom-row p {
+  grid-column: 2; grid-row: 2;
+  color: var(--mute); font-size: var(--fs-base); max-width: 54ch;
+}
+/* Перечень — не столбик с буллитами, а строка ярлыков: он поясняет
+   направление, а не спорит с ним за место. */
 .direction-list {
-  margin-top: auto; padding-top: 20px;
-  display: flex; flex-direction: column; gap: 6px;
+  grid-column: 2; grid-row: 3;
+  margin-top: 16px;
+  display: flex; flex-wrap: wrap; gap: 8px 10px;
 }
+/* «Кто» в реестре аудиторий занимает до четырёх строк, и строка ярлыков
+   уезжала вниз, за высотой левой колонки. Заголовок растягиваем на обе
+   строки — ярлыки встают сразу под описанием. */
+.whom-row h3 { grid-row: 2 / span 2; align-self: start; }
+
 .direction-list li {
-  position: relative; padding-left: 18px;
-  color: var(--bone-dim); font-size: var(--fs-sm);
+  color: var(--bone-dim); font-size: var(--fs-xs);
+  letter-spacing: 0.02em;
+  border: 1px solid var(--rule);
+  padding: 5px 11px;
+  transition: border-color var(--dur-hover) ease, color var(--dur-hover) ease;
 }
-.direction-list li::before {
-  content: ''; position: absolute; left: 0; top: 0.72em;
-  width: 9px; height: 1px; background: var(--copper);
+.direction-card:hover .direction-list li,
+.whom-row:hover .direction-list li { border-color: var(--copper-dim); }
+
+@media (max-width: 860px) {
+  /* В одну колонку строки идут обычным потоком: явные grid-row из
+     двухколоночной раскладки иначе кладут заголовок и текст в одну ячейку. */
+  .direction-card,
+  .whom-row { display: block; }
+  .direction-index,
+  .direction-card h3, .direction-card p,
+  .whom-row h3, .whom-row p, .direction-list {
+    grid-column: auto; grid-row: auto; max-width: none;
+  }
+  .direction-card h3,
+  .whom-row h3 { margin-bottom: 10px; }
+  .direction-card::before,
+  .whom-row::before { left: -12px; }
 }
 
 /* --- Прайс-лист на странице услуг --- */
@@ -466,8 +950,9 @@ img, svg { max-width: 100%; display: block; }
 }
 .service-group-head { position: sticky; top: calc(var(--header-h) + 28px); }
 .service-group-index {
-  font-family: var(--font-note); font-style: italic;
-  color: var(--copper); font-size: var(--fs-sm);
+  font-family: var(--font-display); font-weight: 500;
+  letter-spacing: 0.02em; font-variant-numeric: tabular-nums;
+  color: var(--copper); font-size: var(--fs-xs);
   display: block; margin-bottom: 10px;
 }
 .service-group-head h2 { font-size: var(--fs-md); text-transform: none; letter-spacing: 0; font-weight: 700; line-height: 1.3; }
@@ -488,7 +973,7 @@ img, svg { max-width: 100%; display: block; }
   padding: 20px 0;
   background: none; border: 0;
   font: inherit; color: inherit; text-align: left;
-  transition: color 0.25s var(--ease);
+  transition: color var(--dur-hover) var(--ease);
 }
 .price-row.is-expandable .price-row-main { cursor: pointer; }
 .price-row-text { display: block; min-width: 0; }
@@ -496,14 +981,15 @@ img, svg { max-width: 100%; display: block; }
   display: block;
   font-family: var(--font-display); font-weight: 700;
   font-size: var(--fs-md); line-height: 1.3;
-  transition: color 0.25s var(--ease);
+  transition: color var(--dur-hover) var(--ease);
 }
 .price-row.is-expandable:hover .price-row-title,
 .price-row.open .price-row-title { color: var(--copper); }
 .price-row-desc { display: block; color: var(--mute); font-size: var(--fs-sm); margin-top: 6px; }
 .price-row-price {
-  font-family: var(--font-note); font-style: italic; color: var(--copper);
-  font-size: var(--fs-md); line-height: 1.3; white-space: nowrap;
+  font-family: var(--font-display); font-weight: 500; color: var(--copper);
+  font-variant-numeric: tabular-nums; letter-spacing: -0.01em;
+  font-size: var(--fs-base); line-height: 1.35; white-space: nowrap;
 }
 
 /* align-self: start — иначе кружок центрируется по всей строке и уезжает
@@ -512,14 +998,14 @@ img, svg { max-width: 100%; display: block; }
   position: relative; width: 15px; height: 15px;
   align-self: start; margin-top: 4px;
   border: 1px solid var(--mute); border-radius: 50%;
-  transition: border-color 0.25s var(--ease);
+  transition: border-color var(--dur-hover) var(--ease);
 }
 .price-row.is-expandable:hover .price-row-plus,
 .price-row.open .price-row-plus { border-color: var(--copper); }
 .price-row-plus::before, .price-row-plus::after {
   content: ''; position: absolute; left: 50%; top: 50%;
   background: currentColor; transform: translate(-50%, -50%);
-  transition: transform 0.3s var(--ease), opacity 0.3s var(--ease);
+  transition: transform var(--dur-hover) var(--ease), opacity var(--dur-hover) var(--ease);
 }
 .price-row-plus::before { width: 7px; height: 1px; }
 .price-row-plus::after { width: 1px; height: 7px; }
@@ -532,7 +1018,19 @@ img, svg { max-width: 100%; display: block; }
 .price-row-detail {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.45s var(--ease);
+  transition: max-height var(--dur-ui) var(--ease-out);
+}
+/* Где браузер умеет анимировать height до auto — идём этим путём: высота
+   всегда точная, скрипту не нужно её мерить, а после смены ширины ничего
+   не пересчитывается. Старые браузеры остаются на max-height выше. */
+@supports (interpolate-size: allow-keywords) {
+  :root { interpolate-size: allow-keywords; }
+  .price-row-detail {
+    max-height: none;
+    height: 0;
+    transition: height var(--dur-ui) var(--ease-out);
+  }
+  .price-row.open .price-row-detail { height: auto; }
 }
 .price-row-detail-inner { padding-bottom: 22px; max-width: 62ch; }
 .price-row-detail p { color: var(--bone-dim); font-size: var(--fs-base); line-height: 1.7; }
@@ -548,59 +1046,505 @@ img, svg { max-width: 100%; display: block; }
 
 .services-note { color: var(--mute); font-size: var(--fs-sm); margin-top: clamp(40px, 5vw, 64px); max-width: 70ch; }
 
-/* ---------- Частые вопросы ----------
-   Тот же приём, что и в прайсе: свёрнутый список читается как оглавление,
-   ответ раскрывается по клику (высоту подставляет toggleFaq в common.js).
-   Отдельные классы, а не .price-row: здесь нет колонки цены, и вопрос
-   набран крупнее — иначе список выглядел бы прайсом без цифр. */
-.faq-list { border-top: 1px solid var(--rule); max-width: 62rem; }
-.faq-row { border-bottom: 1px solid var(--rule); }
-.faq-question {
-  width: 100%;
+/* =========================================================================
+   ПРИНЦИП РАСЧЁТА И КАЛЬКУЛЯТОР (страница услуг)
+   Форма собрана из тех же деталей, что и остальной сайт: линейки вместо
+   рамок, цифры дисплейным шрифтом, медь только на выбранном и на итоге.
+   Ничего скруглённого и залитого — смета должна читаться как бланк, а не
+   как виджет тарифов.
+   ========================================================================= */
+
+/* ---------- Четыре принципа ---------- */
+.principles {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 15px;
-  align-items: baseline;
-  column-gap: clamp(20px, 3vw, 40px);
-  padding: 22px 0;
-  background: none; border: 0; cursor: pointer;
-  font: inherit; color: inherit; text-align: left;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
 }
-.faq-question-text {
+.principle { background: var(--char); padding: var(--sp-card); }
+.principle-index {
+  font-family: var(--font-display); font-weight: 500;
+  font-variant-numeric: tabular-nums; letter-spacing: 0.02em;
+  color: var(--copper); font-size: var(--fs-xs);
+  display: block; margin-bottom: 12px;
+}
+.principle h3 {
+  font-size: var(--fs-h3); text-transform: none; letter-spacing: 0;
+  font-weight: 700; line-height: 1.3;
+}
+.principle p { color: var(--mute); font-size: var(--fs-sm); margin-top: 10px; }
+
+/* ---------- Общий каркас калькулятора ---------- */
+.calc-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 380px);
+  gap: clamp(28px, 4vw, 56px);
+  align-items: start;
+}
+
+.calc-pro-badge {
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  margin-bottom: 24px; padding: 10px 14px;
+  border: 1px dashed var(--copper-dim);
+  color: var(--copper); font-size: var(--fs-xs);
+  letter-spacing: 0.08em; text-transform: uppercase;
+}
+.calc-pro-badge button {
+  background: none; border: 0; padding: 0;
+  color: var(--mute); font-size: inherit; letter-spacing: inherit;
+  text-transform: inherit; text-decoration: underline;
+  text-underline-offset: 0.22em;
+}
+
+/* ---------- Шаги ---------- */
+.calc-step + .calc-step {
+  border-top: 1px solid var(--rule);
+  margin-top: clamp(30px, 3.5vw, 44px);
+  padding-top: clamp(30px, 3.5vw, 44px);
+}
+.calc-step-head { margin-bottom: 22px; }
+.calc-step-index {
+  font-family: var(--font-display); font-weight: 500;
+  font-variant-numeric: tabular-nums; letter-spacing: 0.02em;
+  color: var(--copper); font-size: var(--fs-xs);
+  display: block; margin-bottom: 8px;
+}
+/* Заголовок и ссылка «задать вручную» стоят на одной строке: ссылка
+   принадлежит шагу, а не форме вообще, и висеть отдельно ей негде. */
+.calc-step-title {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 12px 20px; flex-wrap: wrap;
+}
+.calc-step-title h3 {
+  font-size: var(--fs-md); text-transform: none; letter-spacing: 0;
+  font-weight: 700; line-height: 1.3;
+}
+.calc-step-head p { color: var(--mute); font-size: var(--fs-sm); margin-top: 8px; max-width: 62ch; }
+
+.calc-linkbtn {
+  background: none; border: 0; padding: 0;
+  color: var(--mute); font-size: var(--fs-xs);
+  text-decoration: underline; text-underline-offset: 0.22em;
+  transition: color var(--dur-hover) var(--ease);
+  white-space: nowrap;
+}
+@media (hover: hover) and (pointer: fine) {
+  .calc-linkbtn:hover { color: var(--copper); }
+}
+
+/* ---------- Шаг 1: тип работы ---------- */
+.calc-types {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 10px;
+}
+.calc-type {
+  display: flex; flex-direction: column; gap: 6px;
+  padding: 14px 15px; text-align: left;
+  background: none; border: 1px solid var(--rule); color: var(--bone-dim);
+  transition: border-color var(--dur-hover) var(--ease),
+              background-color var(--dur-hover) var(--ease);
+}
+.calc-type-title {
   font-family: var(--font-display); font-weight: 700;
-  font-size: var(--fs-md); line-height: 1.35;
-  transition: color 0.25s var(--ease);
+  font-size: var(--fs-sm); line-height: 1.25; color: var(--bone);
+  transition: color var(--dur-hover) var(--ease);
 }
-.faq-row:hover .faq-question-text,
-.faq-row.open .faq-question-text { color: var(--copper); }
+.calc-type-desc { font-size: var(--fs-2xs); color: var(--mute); line-height: 1.5; }
+@media (hover: hover) and (pointer: fine) {
+  .calc-type:hover { border-color: var(--mute); }
+  .calc-type:hover .calc-type-title { color: var(--copper); }
+}
+.calc-type:active { transform: scale(0.99); }
+.calc-type.is-on {
+  border-color: var(--copper);
+  background: rgba(194, 98, 43, 0.09);
+}
+.calc-type.is-on .calc-type-title { color: var(--copper); }
 
-/* Кружок «+» — как в прайсе: та же оптическая линия с первой строкой текста. */
-.faq-sign {
-  position: relative; width: 15px; height: 15px;
-  align-self: start; margin-top: 5px;
+/* ---------- Шаг 2: объём ---------- */
+.calc-scope {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 22px 30px; align-items: start;
+}
+.calc-hint-block {
+  grid-column: 1 / -1;
+  padding-left: 12px; border-left: 1px solid var(--rule);
+  color: var(--mute); font-size: var(--fs-xs); line-height: 1.6;
+  max-width: 66ch;
+}
+
+/* ---------- Поля ввода ---------- */
+.calc-field { display: block; }
+.calc-field > span { display: block; font-size: var(--fs-base); color: var(--bone); }
+.calc-field > span em {
+  display: block; margin-top: 3px; font-style: normal;
+  font-size: var(--fs-xs); color: var(--mute); line-height: 1.45;
+}
+.calc-field--inline {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; flex-wrap: wrap;
+}
+.calc-field--inline > span { flex: 1 1 200px; font-size: var(--fs-sm); }
+.calc-field--pro { margin-top: 20px; padding-top: 18px; border-top: 1px dashed var(--rule); }
+
+.calc-input {
+  display: block; width: 100%; max-width: 200px; margin-top: 10px;
+  padding: 9px 0; background: none; color: var(--bone);
+  border: 0; border-bottom: 1px solid var(--rule);
+  font-family: var(--font-display); font-weight: 500;
+  font-size: var(--fs-md); font-variant-numeric: tabular-nums;
+  letter-spacing: var(--tr-display);
+  transition: border-color var(--dur-hover) var(--ease);
+}
+.calc-input--narrow { max-width: 96px; margin-top: 0; text-align: right; font-size: var(--fs-base); }
+.calc-input:hover { border-bottom-color: var(--mute); }
+.calc-input:focus { outline: none; border-bottom-color: var(--copper); }
+.calc-input:focus-visible { outline: none; }
+
+/* ---------- Радио и флажки ----------
+   Настоящие поля спрятаны, но остаются в потоке фокуса: рисуем подписи,
+   а состояние берём у поля. */
+.calc-radio,
+.calc-check input {
+  position: absolute; width: 1px; height: 1px;
+  opacity: 0; margin: 0; pointer-events: none;
+}
+
+.calc-options { display: flex; flex-wrap: wrap; gap: 8px; }
+.calc-option {
+  display: inline-flex; flex-direction: column; gap: 2px;
+  padding: 8px 13px; cursor: pointer;
+  border: 1px solid var(--rule); color: var(--bone-dim);
+  font-size: var(--fs-sm); line-height: 1.3;
+  transition: border-color var(--dur-hover) var(--ease),
+              color var(--dur-hover) var(--ease),
+              background-color var(--dur-hover) var(--ease);
+}
+.calc-option--sm { font-size: var(--fs-xs); padding: 7px 12px; }
+.calc-option-note { font-size: var(--fs-2xs); color: var(--mute); }
+.calc-option-score {
+  font-family: var(--font-display); font-size: var(--fs-2xs);
+  color: var(--mute); font-variant-numeric: tabular-nums;
+}
+@media (hover: hover) and (pointer: fine) {
+  .calc-option:hover { border-color: var(--mute); color: var(--bone); }
+}
+.calc-radio:checked + .calc-option {
+  border-color: var(--copper); color: var(--copper);
+  background: rgba(194, 98, 43, 0.09);
+}
+.calc-radio:checked + .calc-option .calc-option-note,
+.calc-radio:checked + .calc-option .calc-option-score { color: var(--copper-dim); }
+.calc-radio:focus-visible + .calc-option { outline: 2px solid var(--copper); outline-offset: 3px; }
+
+/* ---------- Шаг 3: этапы ---------- */
+.calc-modules { display: flex; flex-direction: column; border-top: 1px solid var(--rule); }
+.calc-modules--flat { margin-top: 22px; }
+.calc-module { border-bottom: 1px solid var(--rule); }
+.calc-check {
+  display: grid; grid-template-columns: 15px minmax(0, 1fr) auto;
+  align-items: start; column-gap: 14px;
+  padding: 16px 0; cursor: pointer;
+}
+.calc-check--sm { padding: 9px 0; grid-template-columns: 13px minmax(0, 1fr) auto; }
+.calc-check-box {
+  width: 15px; height: 15px; margin-top: 3px;
   border: 1px solid var(--mute); border-radius: 50%;
-  transition: border-color 0.25s var(--ease);
+  position: relative;
+  transition: border-color var(--dur-hover) var(--ease);
 }
-.faq-row:hover .faq-sign,
-.faq-row.open .faq-sign { border-color: var(--copper); }
-.faq-sign::before, .faq-sign::after {
+.calc-check--sm .calc-check-box { width: 13px; height: 13px; margin-top: 2px; }
+.calc-check-box::after {
   content: ''; position: absolute; left: 50%; top: 50%;
-  background: currentColor; transform: translate(-50%, -50%);
-  transition: transform 0.3s var(--ease), opacity 0.3s var(--ease);
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--copper);
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform var(--dur-press) var(--ease-out);
 }
-.faq-sign::before { width: 7px; height: 1px; }
-.faq-sign::after { width: 1px; height: 7px; }
-.faq-row.open .faq-sign { color: var(--copper); }
-.faq-row.open .faq-sign::after { transform: translate(-50%, -50%) rotate(90deg); opacity: 0; }
-
-.faq-answer {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.45s var(--ease);
+.calc-check--sm .calc-check-box::after { width: 6px; height: 6px; }
+.calc-check input:checked + .calc-check-box { border-color: var(--copper); }
+.calc-check input:checked + .calc-check-box::after { transform: translate(-50%, -50%) scale(1); }
+.calc-check input:focus-visible + .calc-check-box { outline: 2px solid var(--copper); outline-offset: 3px; }
+@media (hover: hover) and (pointer: fine) {
+  .calc-module:not(.is-blocked) .calc-check:hover .calc-check-box { border-color: var(--copper); }
+  .calc-module:not(.is-blocked) .calc-check:hover .calc-module-title { color: var(--copper); }
 }
-.faq-answer-inner { padding-bottom: 24px; max-width: 62ch; }
-.faq-answer p { color: var(--bone-dim); font-size: var(--fs-base); line-height: 1.7; }
 
-.faq-note { color: var(--mute); font-size: var(--fs-sm); margin-top: clamp(32px, 4vw, 48px); max-width: 70ch; }
+.calc-module-text { min-width: 0; }
+.calc-module-title {
+  display: block;
+  font-family: var(--font-display); font-weight: 700;
+  font-size: var(--fs-base); line-height: 1.3;
+  transition: color var(--dur-hover) var(--ease);
+}
+.calc-addon-title {
+  display: block;
+  font-family: var(--font-display); font-weight: 700;
+  font-size: var(--fs-sm); line-height: 1.3;
+}
+.calc-module.is-on .calc-module-title { color: var(--copper); }
+.calc-module-desc {
+  display: block; margin-top: 5px; max-width: 58ch;
+  color: var(--mute); font-size: var(--fs-xs); line-height: 1.55;
+}
+.calc-module-unit {
+  font-size: var(--fs-2xs); color: var(--mute);
+  letter-spacing: 0.06em; text-align: right;
+  white-space: nowrap; padding-top: 3px;
+}
+.calc-module-unit--rate {
+  font-family: var(--font-display); font-weight: 500;
+  font-size: var(--fs-xs); color: var(--copper-dim);
+  font-variant-numeric: tabular-nums; letter-spacing: 0;
+}
+
+/* Взаимоисключающий этап: гасим, но оставляем на месте и пишем причину.
+   Исчезающая строка выглядит как сбой, а погашенная — как объяснение. */
+.calc-module.is-blocked { opacity: 0.5; }
+/* Погашенный вариант выбора: ступень прав выше учебного потолка. */
+.calc-option.is-blocked { opacity: 0.45; cursor: not-allowed; }
+.calc-module.is-blocked .calc-check { cursor: not-allowed; }
+.calc-module-blocked {
+  padding: 0 0 15px 29px;
+  font-size: var(--fs-2xs); color: var(--mute); line-height: 1.55;
+}
+.calc-module-blocked span {
+  color: var(--copper-dim); text-transform: uppercase;
+  letter-spacing: 0.12em; margin-right: 8px;
+}
+
+/* Подполя выбранного этапа: единица расчёта, состояние исходника,
+   надбавки, минуты исходника. */
+.calc-module-extra {
+  padding: 0 0 14px 29px;
+  display: flex; flex-direction: column; gap: 12px;
+}
+.calc-subgroup { display: flex; flex-wrap: wrap; gap: 8px; }
+.calc-subfield { display: flex; flex-direction: column; gap: 7px; }
+.calc-subfield-label {
+  font-size: var(--fs-2xs); letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--mute);
+}
+/* Объяснение, почему у этапа сейчас льготная ставка. */
+.calc-subnote {
+  padding-left: 11px; border-left: 1px solid var(--copper-dim);
+  color: var(--mute); font-size: var(--fs-2xs); line-height: 1.55;
+  max-width: 56ch;
+}
+
+/* ---------- Шаг 4: вопросы ---------- */
+.calc-questions { display: flex; flex-direction: column; gap: 22px; }
+.calc-question { border: 0; padding: 0; margin: 0; min-width: 0; }
+.calc-question legend {
+  padding: 0; margin-bottom: 10px;
+  font-size: var(--fs-base); color: var(--bone); line-height: 1.35;
+}
+.calc-question-hint {
+  display: block; margin-top: 4px; max-width: 62ch;
+  font-size: var(--fs-xs); color: var(--mute); line-height: 1.5;
+}
+
+/* ---------- Смета ---------- */
+.calc-result { position: sticky; top: calc(var(--header-h) + 20px); }
+.calc-result-card {
+  background: var(--char-raised);
+  border: 1px solid var(--rule);
+  padding: var(--sp-card);
+}
+.section-deep .calc-result-card { background: var(--char); }
+.calc-result-card--empty { border-style: dashed; }
+.calc-result-empty-title {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: var(--fs-base); line-height: 1.3;
+}
+.calc-result-empty-text { color: var(--mute); font-size: var(--fs-sm); margin-top: 10px; }
+
+.calc-result-top { padding-bottom: 18px; border-bottom: 1px solid var(--rule); }
+.calc-result-label {
+  display: block; font-size: var(--fs-2xs);
+  letter-spacing: 0.16em; text-transform: uppercase; color: var(--mute);
+}
+/* Вилка из двух шестизначных сумм не помещается в узкую карточку одной
+   строкой. Кегль ниже прежнего, перенос разрешён, а разделитель вилки
+   окружён обычными пробелами — по ним строка и ломается. */
+.calc-result-sum {
+  margin-top: 10px;
+  font-family: var(--font-display); font-weight: 800;
+  font-size: clamp(1.1rem, 1.9vw, 1.5rem); line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--copper); font-variant-numeric: tabular-nums;
+  overflow-wrap: break-word;
+}
+
+/* Шкала категорий: положение видно взглядом, без пересчёта баллов. */
+.calc-result-cat { margin-top: 16px; }
+.calc-scale { display: flex; gap: 4px; }
+.calc-scale-step {
+  flex: 1; text-align: center; padding: 5px 0 0;
+  border-top: 2px solid var(--rule);
+  font-family: var(--font-display); font-weight: 500;
+  font-size: var(--fs-2xs); color: var(--mute);
+  transition: color var(--dur-hover) var(--ease), border-color var(--dur-hover) var(--ease);
+}
+.calc-scale-step.is-passed { border-top-color: var(--copper-dim); color: var(--bone-dim); }
+.calc-scale-step.is-current { border-top-color: var(--copper); color: var(--copper); }
+.calc-result-cat > span {
+  display: block; margin-top: 9px;
+  font-size: var(--fs-xs); color: var(--bone-dim);
+}
+
+.calc-lines { margin-top: 4px; }
+.calc-line {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: 16px; align-items: baseline;
+  padding: 11px 0; border-bottom: 1px solid var(--rule);
+  font-size: var(--fs-sm);
+}
+.calc-line-label { color: var(--bone-dim); min-width: 0; }
+.calc-line-meta {
+  display: block; margin-top: 3px; font-style: normal;
+  font-size: var(--fs-2xs); color: var(--mute);
+  font-variant-numeric: tabular-nums;
+}
+.calc-line-value {
+  font-family: var(--font-display); font-weight: 500;
+  font-variant-numeric: tabular-nums; white-space: nowrap;
+  letter-spacing: -0.01em; color: var(--bone);
+}
+.calc-line--coef .calc-line-value { color: var(--mute); }
+/* Итог складывается по флексу, а не по сетке: длинная вилка уезжает
+   на свою строку вместо того, чтобы вылезти за карточку. */
+.calc-line--total {
+  display: flex; justify-content: space-between; flex-wrap: wrap;
+  gap: 4px 16px; border-bottom: 0; margin-top: 4px;
+  padding-top: 16px; border-top: 1px solid var(--mute);
+}
+.calc-line--total .calc-line-label { color: var(--bone); font-size: var(--fs-base); }
+.calc-line--total .calc-line-value {
+  font-weight: 800; color: var(--copper);
+  font-size: var(--fs-base); white-space: normal;
+  overflow-wrap: break-word;
+}
+
+.calc-note, .calc-disclaimer, .calc-pricelist-note {
+  color: var(--mute); font-size: var(--fs-xs); line-height: 1.6;
+}
+.calc-note { margin-top: 16px; padding-left: 12px; border-left: 1px solid var(--copper-dim); }
+.calc-disclaimer { margin-top: 18px; }
+.calc-pricelist-note { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--rule); }
+
+.calc-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+.calc-copy {
+  padding: 8px 13px; background: none;
+  border: 1px solid var(--rule); color: var(--mute);
+  font-size: var(--fs-xs); line-height: 1.2;
+  transition: border-color var(--dur-hover) var(--ease), color var(--dur-hover) var(--ease);
+}
+@media (hover: hover) and (pointer: fine) {
+  .calc-copy:hover { border-color: var(--copper); color: var(--bone); }
+}
+.calc-copy:active { transform: scale(0.97); }
+.calc-copy.is-copied { border-color: var(--copper); color: var(--copper); }
+
+/* ---------- Условия работы ---------- */
+.terms-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+}
+.term { background: var(--char-deep); padding: var(--sp-card); }
+.term h3 {
+  font-size: var(--fs-h3); text-transform: none; letter-spacing: 0;
+  font-weight: 700; line-height: 1.3;
+}
+.term p { color: var(--mute); font-size: var(--fs-sm); margin-top: 10px; }
+
+.terms-cta {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: clamp(20px, 3vw, 40px); flex-wrap: wrap;
+  margin-top: clamp(36px, 4vw, 56px);
+  padding: clamp(24px, 3vw, 36px);
+  border: 1px solid var(--copper-dim);
+}
+.terms-cta h3 {
+  font-size: var(--fs-md); text-transform: none;
+  letter-spacing: 0; font-weight: 700; line-height: 1.3;
+}
+.terms-cta p {
+  color: var(--bone-dim); font-size: var(--fs-sm);
+  margin-top: 10px; max-width: 62ch;
+}
+
+/* ---------- Адаптив калькулятора ---------- */
+/* ---------- Полоса с итогом ----------
+   Появляется только там, где смета не помещается рядом с формой и
+   уезжает вниз. Прилипшая целиком карточка занимала половину экрана
+   телефона; полоса держит на виду одну строку — сумму, — и по нажатию
+   прокручивает к разбору. */
+.calc-bar {
+  display: none;
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 30;
+  align-items: baseline; gap: 10px;
+  width: 100%; padding: 13px var(--gutter);
+  padding-bottom: calc(13px + env(safe-area-inset-bottom, 0px));
+  background: var(--char-raised);
+  border: 0; border-top: 1px solid var(--copper-dim);
+  box-shadow: 0 -12px 28px rgba(0, 0, 0, 0.42);
+  text-align: left; color: inherit;
+}
+.calc-bar[hidden] { display: none !important; }
+.calc-bar-label {
+  font-size: var(--fs-2xs); letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--mute); white-space: nowrap;
+}
+.calc-bar-sum {
+  margin-left: auto;
+  font-family: var(--font-display); font-weight: 800;
+  font-size: clamp(0.92rem, 3.7vw, 1.1rem); line-height: 1.15;
+  letter-spacing: -0.02em; color: var(--copper);
+  font-variant-numeric: tabular-nums;
+}
+.calc-bar-go { color: var(--mute); align-self: center; display: flex; }
+.calc-bar:active { background: var(--char-deep); }
+
+@media (max-width: 980px) {
+  /* В одну колонку смета не липнет и стоит после формы: итог всё это
+     время виден в полосе снизу. */
+  .calc-layout { grid-template-columns: minmax(0, 1fr); }
+  .calc-result { position: static; }
+  .calc-result-card { background: var(--char-deep); }
+  .section-deep .calc-result-card { background: var(--char); }
+  .calc-bar { display: flex; }
+  /* Хвост формы не должен прятаться под полосой. */
+  .calc-form-host { padding-bottom: 56px; }
+}
+
+/* На совсем узких экранах длинная вилка забирает строку целиком. */
+@media (max-width: 340px) {
+  .calc-bar-label { display: none; }
+  .calc-bar-sum { margin-left: 0; }
+}
+
+@media (max-width: 760px) {
+  .calc-check { grid-template-columns: 15px minmax(0, 1fr); }
+  .calc-check--sm { grid-template-columns: 13px minmax(0, 1fr); }
+  .calc-module-unit { grid-column: 2; text-align: left; padding-top: 8px; }
+  .calc-types { grid-template-columns: minmax(0, 1fr); }
+  .terms-cta { flex-direction: column; align-items: flex-start; }
+}
+
+@media (min-width: 1900px) {
+  .calc-layout { grid-template-columns: minmax(0, 1fr) minmax(340px, 440px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .calc-check-box::after { transition: none; }
+}
 
 /* ---------- Отзывы ---------- */
 .carousel { position: relative; display: flex; align-items: center; gap: 12px; }
@@ -620,21 +1564,21 @@ img, svg { max-width: 100%; display: block; }
   flex: 0 0 auto; width: 42px; height: 42px; border-radius: 50%;
   border: 1px solid var(--rule); background: rgba(16,14,18,0.55); color: var(--bone);
   font-size: 22px; line-height: 1; cursor: pointer;
-  transition: border-color 0.25s var(--ease), color 0.25s var(--ease), opacity 0.25s var(--ease);
+  transition: border-color var(--dur-hover) var(--ease), color var(--dur-hover) var(--ease), opacity var(--dur-hover) var(--ease);
 }
 .carousel-arrow:hover:not(:disabled) { border-color: var(--copper); color: var(--copper); }
 .carousel-arrow:disabled { opacity: 0.25; cursor: default; }
 .carousel-dots { display: flex; justify-content: center; gap: 8px; margin-top: 22px; }
 .carousel-dots button {
   width: 7px; height: 7px; border-radius: 50%; border: 0; padding: 0; cursor: pointer;
-  background: var(--rule); transition: background 0.25s var(--ease), transform 0.25s var(--ease);
+  background: var(--rule); transition: background var(--dur-hover) var(--ease), transform var(--dur-hover) var(--ease);
 }
 .carousel-dots button.on { background: var(--copper); transform: scale(1.35); }
 
 .testimonial-card {
   background: var(--char); padding: var(--sp-card); display: flex; flex-direction: column;
   border: 1px solid var(--rule); border-top: 2px solid var(--copper-dim);
-  transition: border-color 0.3s var(--ease), transform 0.3s var(--ease);
+  transition: border-color var(--dur-hover) var(--ease), transform var(--dur-hover) var(--ease);
 }
 .section-deep .testimonial-card { background: var(--char-deep); }
 .testimonial-card:hover { border-top-color: var(--copper); transform: translateY(-2px); }
@@ -661,11 +1605,21 @@ a.testimonial-name:hover { color: var(--copper); }
 .t-rating { display: flex; gap: 2px; margin-bottom: 12px; font-size: var(--fs-sm); }
 .t-rating .star { color: var(--rule); }
 .t-rating .star.on { color: var(--copper); }
-.quote-box { overflow: hidden; max-height: 11.5em; transition: max-height 0.35s var(--ease); }
+/* Ровно семь строк цитаты. Считаем от её кегля и интерлиньяжа, а не в em
+   этого блока: em здесь считался бы от размера родителя, и обрезка резала
+   строку пополам. */
+.quote-box {
+  overflow: hidden;
+  max-height: calc(var(--fs-lg) * 1.6 * 7);
+  transition: max-height var(--dur-ui) var(--ease);
+}
 .testimonial-card.expanded .quote-box { max-height: 200em; }
 .testimonial-card p.quote {
-  font-family: var(--font-note); font-style: italic; font-size: var(--fs-md);
-  line-height: 1.65; color: var(--bone);
+  /* цитату отделяет от остального текста лёгкое начертание и крупный
+     кегль — раньше это делал курсив третьей гарнитуры */
+  font-family: var(--font-accent); font-weight: 300;
+  font-size: var(--fs-lg); letter-spacing: 0.01em;
+  line-height: 1.6; color: var(--bone);
 }
 .quote-more {
   align-self: flex-start; margin-top: 10px; background: none; border: 0; padding: 0; cursor: pointer;
@@ -675,37 +1629,17 @@ a.testimonial-name:hover { color: var(--copper); }
   margin-top: auto; padding-top: 18px; display: flex; align-items: baseline;
   justify-content: space-between; gap: 12px; flex-wrap: wrap;
 }
-.t-date { font-family: var(--font-note); font-style: italic; font-size: var(--fs-xs); color: var(--mute); }
+.t-date { font-size: var(--fs-xs); color: var(--mute); }
 .t-source-link { font-size: var(--fs-xs); color: var(--copper); }
 .t-source-link:hover { color: var(--copper-bright); }
 
-/* Форма отзыва */
-.testimonial-add { margin-top: 28px; display: flex; justify-content: center; }
-.review-form-wrap { margin-top: 28px; display: flex; justify-content: center; }
-.review-form {
-  width: min(640px, 100%); background: var(--char); border: 1px solid var(--rule);
-  padding: clamp(22px, 3vw, 34px); display: flex; flex-direction: column; gap: 16px;
-}
-.section-deep .review-form { background: var(--char-deep); }
-.review-form h3 { font-size: var(--fs-h3); text-transform: none; letter-spacing: 0; }
-.review-form-sub { color: var(--mute); font-size: var(--fs-sm); margin-top: -8px; }
-.review-identity { display: flex; gap: 10px; flex-wrap: wrap; }
-.form-hint { color: var(--mute); font-size: var(--fs-2xs); }
-.field-consent { display: flex; gap: 10px; align-items: flex-start; font-size: var(--fs-xs); color: var(--mute); cursor: pointer; }
-.field-consent input { margin-top: 2px; accent-color: var(--copper); }
-.rating-input { display: flex; gap: 4px; }
-.star-btn { background: none; border: 0; padding: 0 2px; cursor: pointer; font-size: 24px; line-height: 1; color: var(--rule); transition: color 0.2s var(--ease); }
-.star-btn.on, .star-btn:hover { color: var(--copper); }
-.review-form-actions { display: flex; gap: 12px; flex-wrap: wrap; }
-.hp-field { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
-.empty-note { color: var(--mute); font-size: var(--fs-base); font-style: italic; font-family: var(--font-note); }
 
 /* ---------- Новости ---------- */
 .blog-card {
   background: var(--char); display: flex; flex-direction: column;
   color: inherit; text-decoration: none; overflow: hidden;
   border: 1px solid var(--rule);
-  transition: border-color 0.3s var(--ease), transform 0.35s var(--ease), background 0.3s var(--ease);
+  transition: border-color var(--dur-hover) var(--ease), transform var(--dur-ui) var(--ease), background var(--dur-hover) var(--ease);
 }
 .section-deep .blog-card { background: var(--char-deep); }
 .blog-card:hover { border-color: var(--copper-dim); transform: translateY(-3px); }
@@ -715,7 +1649,7 @@ a.testimonial-name:hover { color: var(--copper); }
   position: relative; aspect-ratio: 16 / 10; overflow: hidden;
   background: var(--char-deep); flex: none;
 }
-.blog-cover img { transition: transform 0.7s var(--ease); }
+.blog-cover img { transition: transform var(--dur-media) var(--ease); }
 .blog-card:hover .blog-cover img { transform: scale(1.05); }
 .blog-cover::after {
   content: ''; position: absolute; inset: 0;
@@ -741,13 +1675,13 @@ a.testimonial-name:hover { color: var(--copper); }
   width: 40px; height: 40px; border-radius: 50%;
   background: var(--copper); color: #17110a;
   display: flex; align-items: center; justify-content: center;
-  transition: transform 0.3s var(--ease), background 0.3s var(--ease);
+  transition: transform var(--dur-hover) var(--ease), background var(--dur-hover) var(--ease);
 }
 .blog-card:hover .blog-play { transform: scale(1.1); background: var(--copper-bright); }
 .blog-play svg { transform: translateX(1px); }
 
 .blog-card .blog-body-wrap { padding: var(--sp-card); display: flex; flex-direction: column; flex: 1; }
-.blog-meta { font-family: var(--font-note); font-style: italic; font-size: var(--fs-xs); color: var(--copper); margin-bottom: 10px; }
+.blog-meta { font-weight: 500; font-size: var(--fs-2xs); letter-spacing: 0.12em; text-transform: uppercase; color: var(--copper); margin-bottom: 10px; }
 .blog-card h3 { font-size: var(--fs-h3); margin-bottom: 10px; text-transform: none; letter-spacing: 0; font-weight: 700; line-height: 1.3; }
 .blog-card p { color: var(--mute); font-size: var(--fs-base); }
 .blog-card .blog-more {
@@ -786,7 +1720,7 @@ a.testimonial-name:hover { color: var(--copper); }
 }
 .media-tile img.media-fill { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .media-tile.is-clickable { cursor: zoom-in; }
-.media-tile.is-clickable img.media-fill { transition: transform 0.6s var(--ease); }
+.media-tile.is-clickable img.media-fill { transition: transform var(--dur-media) var(--ease); }
 .media-tile.is-clickable:hover img.media-fill { transform: scale(1.04); }
 
 /* Заглушка-плитка (когда фото ещё нет) */
@@ -824,7 +1758,7 @@ a.testimonial-name:hover { color: var(--copper); }
   content: ''; position: absolute; inset: 0; z-index: 2;
   background: linear-gradient(180deg, rgba(16,14,18,0.12), rgba(16,14,18,0.5));
   pointer-events: none;
-  transition: opacity 0.3s var(--ease);
+  transition: opacity var(--dur-hover) var(--ease);
 }
 .video-tile.is-playing::after, .video-tile.is-playing .video-blur { display: none; }
 .video-play {
@@ -832,7 +1766,7 @@ a.testimonial-name:hover { color: var(--copper); }
   width: 56px; height: 56px; border-radius: 50%;
   background: var(--copper); color: #17110a;
   border: none; display: flex; align-items: center; justify-content: center;
-  transition: transform 0.25s var(--ease), background 0.25s var(--ease);
+  transition: transform var(--dur-hover) var(--ease), background var(--dur-hover) var(--ease);
 }
 .video-play svg { transform: translateX(2px); }
 .video-tile:hover .video-play { transform: translate(-50%, -50%) scale(1.08); background: var(--copper-bright); }
@@ -854,9 +1788,78 @@ a.testimonial-name:hover { color: var(--copper); }
 .intro-video-text .section-head { margin-bottom: 0; }
 /* Пропорции плитке задаёт JS — по кадру-заглушке или по метаданным ролика.
    Вертикальные ролики дополнительно получают класс .video-tile--tall. */
+/* «Коротко из ролика»: пересказ видео текстом. Стоит под описанием
+   раздела и занимает место, которое рядом с вертикальной плиткой всё
+   равно пустовало. Номера — дисплейным, как у этапов работы. */
+.intro-digest { margin-top: clamp(26px, 3vw, 40px); max-width: 46ch; }
+.intro-digest-head {
+  display: flex; align-items: center; gap: 12px;
+  font-size: var(--fs-2xs); letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--mute);
+  padding-bottom: 10px; margin-bottom: 16px;
+  border-bottom: 1px solid var(--rule);
+}
+.intro-digest-time {
+  margin-left: auto;
+  font-family: var(--font-display); font-weight: 500;
+  font-variant-numeric: tabular-nums; letter-spacing: 0.02em;
+  color: var(--copper);
+}
+.intro-digest-summary { color: var(--bone-dim); font-size: var(--fs-base); line-height: 1.65; }
+.intro-digest-summary strong { font-weight: 700; color: var(--bone); }
+.intro-digest-points { display: flex; flex-direction: column; margin-top: 18px; }
+.intro-digest-points li {
+  display: grid; grid-template-columns: 34px 1fr; gap: 12px;
+  padding: 11px 0;
+  border-top: 1px solid var(--rule);
+  color: var(--bone-dim); font-size: var(--fs-base); line-height: 1.5;
+}
+.intro-digest-points li:last-child { border-bottom: 1px solid var(--rule); }
+.intro-digest-points i {
+  font-style: normal;
+  font-family: var(--font-display); font-weight: 500; font-size: var(--fs-xs);
+  font-variant-numeric: tabular-nums; letter-spacing: 0.02em;
+  color: var(--copper); line-height: 1.6;
+}
+.intro-digest-points strong { font-weight: 700; color: var(--bone); }
+
+/* ---------- Плитка ознакомительного ролика ----------
+   Рамка в две линии: тонкий контур по краю кадра и медная нить, отбитая
+   от него на десяток пикселей, — паспарту. Обе нарисованы на самой
+   плитке (border и outline с offset), поэтому качаются вместе с ней.
+   Тень даёт глубину, тёплое свечение — только намёк, чтобы плитка не
+   выглядела наклейкой на фоне. */
+.intro-video-tile,
+.hero-intro-video .video-tile {
+  border: 1px solid rgba(236, 229, 214, 0.16);
+  outline: 1px solid rgba(194, 98, 43, 0.28);
+  outline-offset: clamp(8px, 0.7vw, 14px);
+  box-shadow:
+    0 30px 60px -28px rgba(0, 0, 0, 0.85),
+    0 0 90px -12px rgba(194, 98, 43, 0.30);
+  /* Покачивание: 10 px за 7 секунд. Кривая — синусоида, а не linear:
+     предмет, висящий в воздухе, у краёв замедляется. */
+  animation: tile-float 7s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  will-change: transform;
+}
+/* Во время просмотра плитка стоит на месте: качать то, на что смотрят, —
+   значит мешать смотреть. */
+.intro-video-tile.is-playing,
+.hero-intro-video .video-tile.is-playing {
+  animation: none;
+  transform: none;
+}
+@keyframes tile-float {
+  0%, 100% { transform: translate3d(0, -5px, 0); }
+  50%      { transform: translate3d(0, 5px, 0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .intro-video-tile,
+  .hero-intro-video .video-tile { animation: none; transform: none; }
+}
+
 .intro-video-tile {
   width: min(480px, 100%);
-  border: 1px solid var(--rule);
   justify-self: end;
 }
 .intro-video-tile.video-tile--tall { width: clamp(230px, 26vw, 330px); }
@@ -871,21 +1874,33 @@ a.testimonial-name:hover { color: var(--copper); }
 .audio-item audio { width: 100%; height: 36px; }
 
 /* Лайтбокс для фото галереи */
+/* Фон затемнения и сама фотография появляются по-разному: фон просто
+   проявляется, снимок ещё и подрастает с 0.96. Ничто не возникает из
+   ничего — scale(0) выглядел бы фокусом, а не открытием. Выход идёт тем же
+   путём в обратную сторону, поэтому закрытие читается как «убрали». */
 .lightbox {
   position: fixed; inset: 0; z-index: 1200;
   background: rgba(9, 8, 10, 0.94);
   display: flex; align-items: center; justify-content: center;
   padding: clamp(16px, 4vw, 48px);
   opacity: 0; pointer-events: none;
-  transition: opacity 0.25s var(--ease);
+  transition: opacity var(--dur-ui) var(--ease-out);
 }
 .lightbox.open { opacity: 1; pointer-events: auto; }
-.lightbox img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.lightbox img {
+  max-width: 100%; max-height: 100%; object-fit: contain;
+  transform: scale(0.96);
+  transition: transform var(--dur-ui) var(--ease-out);
+}
+.lightbox.open img { transform: scale(1); }
+@media (prefers-reduced-motion: reduce) {
+  .lightbox img, .lightbox.open img { transform: none; transition: none; }
+}
 .lightbox-close, .lightbox-nav {
   position: absolute; background: rgba(23,21,26,0.8); border: 1px solid var(--rule);
   color: var(--bone); width: 44px; height: 44px; border-radius: 50%;
   display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
-  transition: border-color 0.25s var(--ease), color 0.25s var(--ease);
+  transition: border-color var(--dur-hover) var(--ease), color var(--dur-hover) var(--ease);
 }
 .lightbox-close:hover, .lightbox-nav:hover { border-color: var(--copper); color: var(--copper); }
 .lightbox-close { top: 20px; right: 20px; }
@@ -899,8 +1914,24 @@ a.testimonial-name:hover { color: var(--copper); }
 .page-header { padding: calc(var(--header-h) + clamp(48px, 7vw, 80px)) 0 clamp(36px, 5vw, 56px); position: relative; overflow: hidden; }
 /* текст обязан лежать над чернильным полем — иначе пятна ложатся поверх букв */
 .page-header > .wrap { position: relative; z-index: 2; }
+/* Тот же колонтитул, что и в разделах главной, — чтобы шапка внутренней
+   страницы и заголовок раздела читались одним приёмом. */
+.page-header .eyebrow {
+  font-family: var(--font-body);
+  font-style: normal;
+  font-size: var(--fs-2xs);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--mute);
+  display: flex; align-items: center; gap: 10px;
+  margin: 0 0 clamp(20px, 2.2vw, 30px);
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--rule);
+}
+.page-header .eyebrow:empty { display: none; }
+.page-header .eyebrow::before { content: ''; flex: none; width: 18px; height: 1px; background: var(--copper); }
 .page-header h1 { font-size: var(--fs-h1-page); margin-bottom: 14px; }
-.page-header .desc { max-width: 62ch; color: var(--bone-dim); font-size: var(--fs-md); }
+.page-header .desc { max-width: 54ch; color: var(--bone-dim); font-size: var(--fs-md); }
 .page-header .desc p + p { margin-top: 14px; }
 
 /* Обо мне */
@@ -913,7 +1944,7 @@ a.testimonial-name:hover { color: var(--copper); }
 .about-long { max-width: 68ch; }
 .about-long p { color: var(--bone-dim); font-size: var(--fs-md); line-height: 1.75; margin-bottom: 20px; }
 .about-tags { display: flex; flex-wrap: wrap; gap: 10px; align-content: flex-start; }
-.about-tags span { border: 1px solid var(--rule); border-radius: 2px; padding: 7px 14px; font-size: var(--fs-xs); color: var(--mute); transition: border-color 0.25s var(--ease), color 0.25s var(--ease); }
+.about-tags span { border: 1px solid var(--rule); border-radius: 2px; padding: 7px 14px; font-size: var(--fs-xs); color: var(--mute); transition: border-color var(--dur-hover) var(--ease), color var(--dur-hover) var(--ease); }
 .about-tags span:hover { border-color: var(--copper); color: var(--copper); }
 .about-tags-block { margin-top: clamp(32px, 5vw, 52px); padding-top: 28px; border-top: 1px solid var(--rule); }
 
@@ -933,7 +1964,7 @@ a.testimonial-name:hover { color: var(--copper); }
 .case-hero-bg {
   position: absolute; inset: 0; z-index: 0;
   background-size: cover; background-position: center 30%;
-  opacity: 0; transition: opacity 0.4s var(--ease);
+  opacity: 0; transition: opacity var(--dur-ui) var(--ease);
 }
 .case-hero-bg.visible { opacity: 1; }
 .case-hero-bg::after {
@@ -944,7 +1975,7 @@ a.testimonial-name:hover { color: var(--copper); }
 .case-header > .wrap { position: relative; z-index: 2; }
 .case-header .tag { display: inline-block; font-size: var(--fs-2xs); letter-spacing: 0.1em; text-transform: uppercase; color: var(--copper); border: 1px solid var(--copper-dim); padding: 5px 11px; margin-bottom: 18px; }
 .case-header h1 { font-size: var(--fs-h1-page); margin-bottom: 14px; }
-.case-header .meta { font-family: var(--font-note); font-style: italic; color: var(--bone-dim); font-size: var(--fs-md); margin-bottom: 22px; }
+.case-header .meta { font-family: var(--font-accent); font-weight: 300; letter-spacing: 0.02em; color: var(--bone-dim); font-size: var(--fs-lg); margin-bottom: 22px; }
 .case-header .desc { max-width: 64ch; color: var(--bone-dim); font-size: var(--fs-md); line-height: 1.7; }
 
 .case-stats { display: flex; flex-wrap: wrap; gap: 12px; margin: 36px 0 0; }
@@ -955,7 +1986,7 @@ a.testimonial-name:hover { color: var(--copper); }
   border-top: 2px solid var(--copper-dim);
   border-radius: 3px;
   padding: 14px 22px;
-  transition: border-color 0.25s var(--ease), transform 0.25s var(--ease);
+  transition: border-color var(--dur-hover) var(--ease), transform var(--dur-hover) var(--ease);
 }
 .stat-card:hover { border-top-color: var(--copper); transform: translateY(-2px); }
 .stat-card .icon { flex: none; color: var(--copper); opacity: 0.9; display: flex; }
@@ -967,7 +1998,11 @@ a.testimonial-name:hover { color: var(--copper); }
 .scope-list { display: flex; flex-direction: column; counter-reset: scope; max-width: 52rem; }
 .scope-list li { counter-increment: scope; display: grid; grid-template-columns: 40px 1fr; gap: 16px; padding: 16px 0; border-top: 1px solid var(--rule); color: var(--bone-dim); font-size: var(--fs-md); }
 .scope-list li:last-child { border-bottom: 1px solid var(--rule); }
-.scope-list li::before { content: counter(scope, decimal-leading-zero); font-family: var(--font-note); font-style: italic; color: var(--copper); }
+.scope-list li::before {
+  content: counter(scope, decimal-leading-zero);
+  font-family: var(--font-display); font-weight: 500; font-size: var(--fs-sm);
+  letter-spacing: 0.02em; font-variant-numeric: tabular-nums; color: var(--copper);
+}
 
 /* Медиа кейса — фото, видео и аудио идут отдельными блоками */
 .case-media { padding: var(--sp-section) 0 0; }
@@ -979,48 +2014,125 @@ a.testimonial-name:hover { color: var(--copper); }
 .video-tile--tall { width: min(340px, 100%); border: 1px solid var(--rule); }
 .case-back { padding: var(--sp-section) 0; }
 
-/* ---------- Контакты ---------- */
-.contact-grid { display: grid; grid-template-columns: 1.25fr 0.75fr; gap: clamp(32px, 5vw, 56px); }
-.contact-form { display: flex; flex-direction: column; gap: 18px; }
-.form-row { display: flex; flex-direction: column; gap: 8px; }
-.form-row label { font-size: var(--fs-xs); color: var(--mute); letter-spacing: 0.04em; text-transform: uppercase; }
-.form-row input, .form-row select, .form-row textarea {
-  background: var(--char-raised); border: 1px solid var(--rule); border-radius: 2px;
-  padding: 12px 14px; color: var(--bone); font-size: var(--fs-base);
-  transition: border-color 0.25s var(--ease);
+
+/* ---------- Контакты ----------
+   Формы обратной связи нет: сайт не собирает персональные данные.
+   Раздел устроен как лестница по убыванию важности — почта крупно,
+   мессенджеры строками реестра (тот же приём, что в услугах и этапах). */
+
+/* --- Почта: главное действие раздела --- */
+.contact-mail {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  column-gap: clamp(20px, 3vw, 40px);
+  padding-bottom: clamp(24px, 2.8vw, 34px);
+  border-bottom: 1px solid var(--rule);
 }
-.form-row textarea { resize: vertical; min-height: 110px; }
-.form-row input:focus, .form-row select:focus, .form-row textarea:focus { outline: none; border-color: var(--copper); }
-.contact-form .btn { align-self: flex-start; }
-.form-note { color: var(--mute); font-size: var(--fs-xs); }
-.contact-info { display: flex; flex-direction: column; gap: 14px; align-items: flex-start; }
-/* Правая колонка контактов — самостоятельная карточка, а не список ссылок,
-   висящий в воздухе рядом с формой. */
-.contact-info {
-  background: var(--char); border: 1px solid var(--rule);
-  border-top: 2px solid var(--copper-dim);
-  padding: clamp(22px, 2.6vw, 32px);
-  display: flex; flex-direction: column; align-self: start;
+.contact-mail[hidden] { display: none; }
+.contact-mail-label {
+  grid-column: 1 / -1;
+  font-size: var(--fs-2xs); letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--mute);
+  margin-bottom: clamp(14px, 1.6vw, 20px);
 }
-.section-deep .contact-info { background: var(--char-deep); }
-.contact-info h3 { font-size: var(--fs-h3); text-transform: none; letter-spacing: 0; margin-bottom: 10px; }
-.contact-direct-note { color: var(--mute); font-size: var(--fs-sm); line-height: 1.6; }
-.contact-social { display: flex; flex-direction: column; gap: 2px; margin-top: 22px; }
+.contact-mail-value {
+  position: relative;
+  font-size: clamp(1.3rem, 3.2vw, 2.2rem);
+  font-weight: 500; letter-spacing: -0.02em; line-height: 1.15;
+  color: var(--bone);
+  word-break: break-word;
+  padding-bottom: 6px;
+  transition: color var(--dur-hover) ease;
+}
+/* Подчёркивание прочерчивается слева направо: transform, а не border-width */
+.contact-mail-value::after {
+  content: '';
+  position: absolute; left: 0; right: 0; bottom: 0; height: 1px;
+  background: var(--copper);
+  transform: scaleX(0); transform-origin: 0 50%;
+  transition: transform var(--dur-ui) var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) {
+  .contact-mail-value:hover { color: var(--copper); }
+  .contact-mail-value:hover::after { transform: scaleX(1); }
+}
+
+.contact-copy {
+  justify-self: end;
+  background: transparent; border: 1px solid var(--rule); border-radius: 2px;
+  color: var(--mute);
+  font-size: var(--fs-xs); letter-spacing: 0.04em; text-transform: uppercase;
+  padding: 9px 14px; white-space: nowrap;
+  transition: border-color var(--dur-hover) ease, color var(--dur-hover) ease,
+              transform var(--dur-press) var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) {
+  .contact-copy:hover { border-color: var(--copper); color: var(--bone); }
+}
+.contact-copy:active { transform: scale(0.97); }
+.contact-copy.is-copied { border-color: var(--copper); color: var(--copper); }
+
+/* --- Каналы: заголовок слева, строки справа --- */
+.contact-channels {
+  margin-top: clamp(38px, 4.4vw, 60px);
+  display: grid;
+  grid-template-columns: minmax(0, 300px) minmax(0, 1fr);
+  column-gap: clamp(28px, 4vw, 64px);
+  align-items: start;
+}
+/* Заголовок с пояснением — один элемент сетки: если раскладывать их по
+   отдельным строкам, высокий список каналов растягивает первую строку и
+   отрывает пояснение от заголовка. */
+.contact-channels-head {
+  font-family: var(--font-body); font-weight: 600;
+  font-size: var(--fs-lg); text-transform: none; letter-spacing: -0.015em;
+  line-height: 1.25; color: var(--bone-dim);
+}
+.contact-channels-note {
+  margin-top: 12px; color: var(--mute); font-size: var(--fs-base); max-width: 34ch;
+}
+.contact-social { border-top: 1px solid var(--rule); }
 .social-row {
-  display: flex; align-items: center; gap: 12px;
-  padding: 13px 4px; border-bottom: 1px solid var(--rule);
-  color: var(--bone); font-size: var(--fs-base);
-  transition: color 0.25s var(--ease), padding-left 0.25s var(--ease);
+  display: grid;
+  grid-template-columns: 18px minmax(0, auto) minmax(0, 1fr) 16px;
+  align-items: center;
+  gap: 14px;
+  padding: 17px 0;
+  border-bottom: 1px solid var(--rule);
+  color: var(--bone); font-size: var(--fs-md);
+  transition: color var(--dur-hover) ease, border-color var(--dur-hover) ease;
 }
-.social-row:first-child { border-top: 1px solid var(--rule); }
-.social-row:hover { color: var(--copper); padding-left: 8px; }
 .social-icon { display: flex; color: var(--copper); flex: none; }
-.social-name { flex: 1; }
-.social-go { color: var(--mute); transition: transform 0.25s var(--ease); }
-.social-row:hover .social-go { color: var(--copper); transform: translateX(3px); }
-.contact-direct-foot {
-  margin-top: 22px; padding-top: 16px; border-top: 1px solid var(--rule);
-  color: var(--mute); font-size: var(--fs-2xs); font-family: var(--font-note); font-style: italic;
+.social-name { min-width: 0; }
+/* Адрес канала видно сразу — понятно, куда ведёт ссылка, до нажатия */
+.social-handle {
+  justify-self: end; text-align: right; min-width: 0;
+  color: var(--mute); font-size: var(--fs-sm);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.social-go { color: var(--mute); transition: transform var(--dur-hover) var(--ease-out), color var(--dur-hover) ease; }
+@media (hover: hover) and (pointer: fine) {
+  .social-row:hover { color: var(--copper); border-bottom-color: var(--copper-dim); }
+  .social-row:hover .social-handle { color: var(--bone-dim); }
+  .social-row:hover .social-go { color: var(--copper); transform: translateX(4px); }
+}
+
+.contact-legal {
+  margin-top: clamp(34px, 4vw, 52px);
+  padding-top: 16px;
+  border-top: 1px solid var(--rule);
+  color: var(--mute); font-size: var(--fs-xs); font-weight: 300;
+}
+
+@media (max-width: 860px) {
+  .contact-mail { grid-template-columns: minmax(0, 1fr); }
+  .contact-copy { justify-self: start; margin-top: 16px; }
+  .contact-channels { grid-template-columns: minmax(0, 1fr); }
+  .contact-social { margin-top: 26px; }
+  .contact-channels-note { max-width: none; }
+  .social-row { grid-template-columns: 18px minmax(0, 1fr) 16px; row-gap: 2px; }
+  .social-handle { grid-column: 2; justify-self: start; text-align: left; }
 }
 
 /* ---------- Подвал ---------- */
@@ -1048,7 +2160,7 @@ a.testimonial-name:hover { color: var(--copper); }
     background: rgba(16,14,18,0.98); backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--rule);
     transform: translateY(-8px); opacity: 0; pointer-events: none;
-    transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
+    transition: opacity var(--dur-hover) var(--ease), transform var(--dur-hover) var(--ease);
     overflow-y: auto;
   }
   .main-nav.open { opacity: 1; pointer-events: auto; transform: translateY(0); }
@@ -1058,7 +2170,7 @@ a.testimonial-name:hover { color: var(--copper); }
 }
 
 @media (max-width: 980px) {
-  .about-grid, .contact-grid, .about-hero-grid { grid-template-columns: 1fr; }
+  .about-grid, .about-hero-grid { grid-template-columns: 1fr; }
   /* Прайс: направление уходит наверх, строки услуг — под ним */
   .service-group { grid-template-columns: 1fr; gap: 20px; }
   .service-group-head { position: static; }
@@ -1076,12 +2188,15 @@ a.testimonial-name:hover { color: var(--copper); }
 
 @media (max-width: 760px) {
   .header-actions .btn-small { display: none; }
-  .hero { min-height: auto; padding: calc(var(--header-h) + 56px) 0 56px; }
-  .hero-media img { object-position: center 28%; }
-  .hero-scrim {
-    background:
-      linear-gradient(180deg, rgba(16,14,18,0.9) 0%, rgba(16,14,18,0.62) 26%, rgba(16,14,18,0.74) 56%, rgba(16,14,18,0.93) 82%, var(--char) 100%);
-  }
+  /* место под титры внизу первого экрана — как и на широком экране */
+  .hero { min-height: auto; padding: calc(var(--header-h) + 56px) 0 calc(56px + var(--ticker-h)); --ticker-h: 54px; }
+  /* Блок стоит по центру, но чуть ниже середины — ближе к тому, что идёт
+     следом. Сдвиг именно сдвигом, а не отступом: отступ увеличил бы высоту
+     первого экрана, и на невысоком телефоне низ бы обрезался. */
+  .hero-inner { transform: translateY(clamp(14px, 3.5vh, 40px)); }
+  /* Метки кадров опускаем к самым титрам: на прежней высоте они вставали
+     в одну строку с пометкой на полях. */
+  .hero-frames { bottom: calc(14px + var(--ticker-h)); }
   .hero-credit { display: none; }
   .hero-cta { flex-direction: column; align-items: stretch; }
   .card-grid--2, .card-grid--3 { grid-template-columns: 1fr; }
@@ -1091,7 +2206,11 @@ a.testimonial-name:hover { color: var(--copper); }
   .blog-page-grid .blog-card.is-lead { grid-column: auto; }
   .blog-page-grid .blog-card.is-lead .blog-cover { aspect-ratio: 16 / 10; }
   .carousel-arrow { display: none; }
-  .process-step { grid-template-columns: 40px 1fr; gap: 14px; }
+  /* Змейка на узком экране не помещается: маршрут выпрямляется в столбик,
+     линия идёт вертикально по колонке номеров. */
+  .process-steps { row-gap: clamp(34px, 8vw, 52px); }
+  .process-step,
+  .process-step:nth-child(even) { width: 100%; align-self: stretch; }
   .scope-list li { grid-template-columns: 32px 1fr; gap: 12px; }
   /* На узком экране цена не влезает рядом с названием — уводим её под текст,
      плюс остаётся в правом верхнем углу строки. */
@@ -1176,7 +2295,7 @@ a.testimonial-name:hover { color: var(--copper); }
   .mcar-dots[hidden] { display: none; }
   .mcar-dots button {
     width: 7px; height: 7px; border-radius: 50%; border: 0; padding: 0; cursor: pointer;
-    background: var(--rule); transition: background 0.25s var(--ease), transform 0.25s var(--ease);
+    background: var(--rule); transition: background var(--dur-hover) var(--ease), transform var(--dur-hover) var(--ease);
   }
   .mcar-dots button.on { background: var(--copper); transform: scale(1.35); }
 }
@@ -1194,6 +2313,158 @@ a.testimonial-name:hover { color: var(--copper); }
   margin-top: 40px; padding: 18px 20px; border-left: 2px solid var(--copper-dim);
   background: rgba(255,255,255,0.02); font-size: var(--fs-sm) !important; color: var(--mute) !important;
 }
-.footer-privacy, .footer-link { font-size: var(--fs-xs); color: var(--mute); border-bottom: 1px solid transparent; }
-.footer-privacy:hover, .footer-link:hover { color: var(--copper); border-bottom-color: var(--copper-dim); }
-.field-consent a { color: var(--copper); border-bottom: 1px solid var(--copper-dim); }
+.footer-privacy,
+.footer-link { font-size: var(--fs-xs); color: var(--mute); border-bottom: 1px solid transparent; }
+.footer-privacy:hover,
+.footer-link:hover { color: var(--copper); border-bottom-color: var(--copper-dim); }
+
+
+/* =========================================================================
+   ТАЧ-ЭКРАНЫ
+   :hover на тач-устройстве срабатывает от касания и держится до следующего
+   тапа: подъём карточки и наезд фотографии выглядят там не откликом, а
+   зависшей вёрсткой. Перемещение отключаем, изменение цвета оставляем.
+   ========================================================================= */
+@media (hover: none) {
+  .for-whom-card:hover,
+  .testimonial-card:hover,
+  .blog-card:hover,
+  .stat-card:hover,
+  .project-card:hover .card-photo,
+  .blog-card:hover .blog-cover img,
+  .blog-card:hover .blog-play,
+  .media-tile.is-clickable:hover img.media-fill,
+  .social-row:hover .social-go { transform: none; }
+  /* у кнопки воспроизведения transform держит центрирование — сбрасываем
+     только увеличение */
+  .video-tile:hover .video-play { transform: translate(-50%, -50%); }
+}
+
+/* =========================================================================
+   БОЛЬШИЕ ЭКРАНЫ
+   На 27–32" (2560×1440) полоса набора в 1180 px занимает меньше половины
+   ширины, а шкала кегля упирается в свой потолок — сайт выглядит
+   уменьшенной копией самого себя, с пустыми полями по бокам.
+
+   Правим двумя ручками:
+   • ширина полосы набора (--container) и поля (--gutter);
+   • базовый кегль (html font-size). Вся шкала задана в rem, поэтому
+     базовый размер двигает её целиком — заголовки, текст, кнопки, меню.
+   Потолки clamp() у крупных заголовков подняты отдельно: иначе на широком
+   экране имя и заголовки разделов остаются мелкими при крупном тексте.
+
+   Ниже 1500 px ничего не меняется — ноутбуки и планшеты как были.
+   ========================================================================= */
+@media (min-width: 1500px) {
+  :root {
+    --container: 1340px;
+    --gutter: 40px;
+    --header-h: 78px;
+    --sp-section: clamp(88px, 7vw, 132px);
+  }
+  html { font-size: 16.5px; }
+  .hero { min-height: min(860px, 94svh); --ticker-h: 68px; }
+}
+
+@media (min-width: 1900px) {
+  :root {
+    --container: 1560px;
+    --gutter: 48px;
+    --header-h: 84px;
+    --sp-section: clamp(104px, 6.4vw, 152px);
+    --fs-h1-hero: clamp(2.05rem, 4.4vw, 4rem);
+    --fs-h1-page: clamp(1.85rem, 3.9vw, 3.4rem);
+    --fs-h2: clamp(1.75rem, 3.2vw, 3.15rem);
+  }
+  html { font-size: 17.5px; }
+  .hero { min-height: min(940px, 94svh); --ticker-h: 74px; }
+  .intro-video-text { max-width: 42rem; }
+  .intro-video-tile.video-tile--tall { width: clamp(300px, 19vw, 420px); }
+  /* Карточки этапов упирались в 520 px и на широком экране плавали в
+     пустоте, а линия между ними растягивалась через полполосы. */
+  .process-step { width: min(46%, 620px); }
+}
+
+@media (min-width: 2300px) {
+  :root {
+    --container: 1760px;
+    --gutter: 56px;
+    --header-h: 92px;
+  }
+  html { font-size: 19px; }
+  .hero { min-height: min(1020px, 94svh); --ticker-h: 80px; }
+  .intro-video-tile.video-tile--tall { width: clamp(340px, 19vw, 480px); }
+}
+
+
+/* ---------- Частые вопросы ----------
+   Тот же приём, что и в прайсе: свёрнутый список читается как оглавление,
+   ответ раскрывается по клику. Отдельные классы, а не .price-row: здесь нет
+   колонки цены, и вопрос набран крупнее — иначе список выглядел бы прайсом
+   без цифр. Раскрытие идёт через interpolate-size там, где он есть, и через
+   max-height в остальных браузерах — ровно как у прайса выше. */
+.faq-list { border-top: 1px solid var(--rule); max-width: 62rem; }
+
+.faq-row { border-bottom: 1px solid var(--rule); }
+
+.faq-question {
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 15px;
+  align-items: baseline;
+  column-gap: clamp(20px, 3vw, 40px);
+  padding: 22px 0;
+  background: none; border: 0; cursor: pointer;
+  font: inherit; color: inherit; text-align: left;
+}
+
+.faq-question-text {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: var(--fs-md); line-height: 1.35;
+  transition: color var(--dur-ui) var(--ease-out);
+}
+
+.faq-row:hover .faq-question-text,
+.faq-row.open .faq-question-text { color: var(--copper); }
+
+/* Кружок «+» — как в прайсе: та же оптическая линия с первой строкой текста. */
+.faq-sign {
+  position: relative; width: 15px; height: 15px;
+  align-self: start; margin-top: 5px;
+  border: 1px solid var(--mute); border-radius: 50%;
+  transition: border-color var(--dur-ui) var(--ease-out);
+}
+
+.faq-row:hover .faq-sign,
+.faq-row.open .faq-sign { border-color: var(--copper); }
+
+.faq-sign::before, .faq-sign::after {
+  content: ''; position: absolute; left: 50%; top: 50%;
+  background: currentColor; transform: translate(-50%, -50%);
+  transition: transform var(--dur-ui) var(--ease-out), opacity var(--dur-ui) var(--ease-out);
+}
+
+.faq-sign::before { width: 7px; height: 1px; }
+.faq-sign::after { width: 1px; height: 7px; }
+
+.faq-row.open .faq-sign { color: var(--copper); }
+.faq-row.open .faq-sign::after { transform: translate(-50%, -50%) rotate(90deg); opacity: 0; }
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--dur-ui) var(--ease-out);
+}
+@supports (interpolate-size: allow-keywords) {
+  .faq-answer {
+    max-height: none;
+    height: 0;
+    transition: height var(--dur-ui) var(--ease-out);
+  }
+  .faq-row.open .faq-answer { height: auto; }
+}
+
+.faq-answer-inner { padding-bottom: 24px; max-width: 62ch; }
+.faq-answer p { color: var(--bone-dim); font-size: var(--fs-base); line-height: 1.7; }
+
+.faq-note { color: var(--mute); font-size: var(--fs-sm); margin-top: clamp(32px, 4vw, 48px); max-width: 70ch; }

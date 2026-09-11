@@ -48,13 +48,19 @@
   --intro-video-w: clamp(220px, 22vw, 300px);
   --intro-gap: clamp(28px, 4vw, 64px);
   position: sticky;
-  top: calc(var(--header-h) + 6vh);
+  /* Значение считает js/hero-cinematic.js — так, чтобы текст встал по
+     центру окна. Запасной вариант на случай, если скрипт не отработал. */
+  top: var(--hero-sticky-top, calc(var(--header-h) + 6vh));
   display: grid;
   grid-template-columns: minmax(0, 1fr) var(--intro-video-w);
   gap: var(--intro-gap);
   align-items: start;
 }
-.hero-cinematic .hero-credit { position: fixed; bottom: 26px; }
+/* Подпись, титры и метки кадров прибиты к окну вместе с фотографией:
+   первый экран здесь вытянут на 210vh, и его «низ» уехал бы далеко вниз. */
+.hero-cinematic .hero-credit { position: fixed; bottom: calc(26px + var(--ticker-h)); }
+.hero-cinematic .hero-ticker { position: fixed; left: 0; right: 0; bottom: 0; }
+.hero-cinematic .hero-frames { position: fixed; bottom: calc(52px + var(--ticker-h)); }
 
 /* Блок-«мостик»: надпись и заголовок ролика подъезжают снизу вверх
    к тексту о Льве Майденко и занимают место описания. */
@@ -85,20 +91,39 @@
    по мере прокрутки, вместе с появлением ролика. */
 /* Вне кинематографичного режима стрелки нет вовсе. */
 .hero-intro-arrow { display: none; }
+
+/* Стрелка привязана к тексту, а не к ролику.
+   • По горизонтали — от правого края текстового блока плюс небольшой
+     отступ: раньше она отсчитывалась от плитки и прилипала к ней, а слева
+     висела в пустоте посреди полосы.
+   • По вертикали — top не задан вовсе: у абсолютно позиционированного
+     элемента без top остаётся то место, где он стоял бы в потоке, а в
+     разметке он идёт сразу за строкой «Смотреть ролик». Двигается текст —
+     двигается стрелка, без единой строки скрипта.
+   • Ширина — от текста до плитки минус зазор; считает скрипт, потому что
+     расстояние зависит от ширины колонок. Значение в CSS остаётся
+     запасным, на случай если скрипт не отработал. */
+.hero-cinematic .hero-intro-bridge { position: relative; }
 .hero-cinematic .hero-intro-arrow {
   display: block;
   position: absolute;
-  /* остриё упирается в левый край ролика, где бы тот ни оказался */
-  right: calc(var(--intro-video-w) + var(--intro-gap) - 14px);
-  top: 42%;
-  /* пошире — чтобы начало завитка стояло вплотную к тексту,
-     а остриё упиралось в ролик: сразу видно, откуда и куда ведёт */
-  width: clamp(240px, 24vw, 330px);
+  left: calc(100% + clamp(16px, 1.6vw, 44px));
+  width: clamp(150px, 12vw, 300px);   /* запасное значение; точное ставит js */
+  /* глобальное img, svg { max-width: 100% } иначе ужало бы стрелку */
+  max-width: none;
   height: auto;
+  transform: translateY(-42%);
   color: var(--copper);
   overflow: visible;
   pointer-events: none;
 }
+
+/* Ниже 1300 px между колонками места почти нет — стрелку убираем совсем,
+   а не сжимаем в закорючку. */
+@media (max-width: 1300px) {
+  .hero-cinematic .hero-intro-arrow { display: none; }
+}
+
 .hero-intro-arrow path {
   stroke-dasharray: 1;
   stroke-dashoffset: 1;
@@ -111,7 +136,7 @@
   transform: translateY(38px);
   will-change: opacity, transform;
 }
-.hero-intro-video .video-tile { border: 1px solid var(--rule); }
+/* рамка, тень и покачивание плитки — в css/styles.css, блок «Плитка ознакомительного ролика» */
 
 /* Отдельный раздел с роликом больше не нужен — он теперь часть первого экрана. */
 .hero-cinematic #intro-video { display: none; }
@@ -126,7 +151,7 @@
 @media (max-width: 1024px) {
   .hero-cinematic .hero {
     min-height: min(760px, 100svh);
-    align-items: flex-end;
+    align-items: center;
     overflow: hidden;
     padding-bottom: clamp(56px, 8vh, 96px);
   }
@@ -138,6 +163,11 @@
     display: block;
   }
   .hero-cinematic .hero-credit { position: absolute; }
+  /* Первый экран здесь обычной высоты, поэтому титры и метки кадров
+     возвращаются к его низу: прибитые к окну, они уезжали на следующий
+     раздел и просвечивали полосой. */
+  .hero-cinematic .hero-ticker,
+  .hero-cinematic .hero-frames { position: absolute; }
   .hero-cinematic .hero-lead { height: auto !important; opacity: 1 !important; overflow: visible; }
   .hero-cinematic .hero-intro-bridge,
   .hero-cinematic .hero-intro-video,
@@ -149,7 +179,7 @@
 @media (prefers-reduced-motion: reduce) {
   .hero-cinematic .hero {
     min-height: min(760px, 100svh);
-    align-items: flex-end;
+    align-items: center;
     overflow: hidden;
     padding-bottom: clamp(56px, 8vh, 96px);
   }
@@ -157,9 +187,45 @@
   .hero-cinematic .hero-scrim { position: absolute; opacity: 1 !important; transform: none !important; }
   .hero-cinematic .hero-glow { display: none; }
   .hero-cinematic .hero-inner { position: relative; top: auto; display: block; }
+  .hero-cinematic .hero-credit,
+  .hero-cinematic .hero-ticker,
+  .hero-cinematic .hero-frames { position: absolute; }
   .hero-cinematic .hero-lead { height: auto !important; opacity: 1 !important; overflow: visible; }
   .hero-cinematic .hero-intro-bridge,
   .hero-cinematic .hero-intro-video,
   .hero-cinematic .hero-intro-arrow { display: none; }
   .hero-cinematic #intro-video { display: block; }
 }
+
+/* =========================================================================
+   БОЛЬШИЕ ЭКРАНЫ
+   Ролик рядом с текстом упирался в потолок 300 px: на 27–32" он выглядел
+   маркой, приклеенной к краю. Колонка растёт вместе с полосой набора —
+   стрелка подстраивается сама, она считает своё место от той же
+   переменной.
+   ========================================================================= */
+@media (min-width: 1900px) {
+  .hero-cinematic .hero-inner { --intro-video-w: clamp(300px, 19vw, 420px); }
+}
+@media (min-width: 2300px) {
+  .hero-cinematic .hero-inner { --intro-video-w: clamp(340px, 19vw, 480px); }
+}
+
+/* Пересказ ролика в «мостике» первого экрана: тот же блок, что и в
+   разделе, но плотнее — рядом стоит плитка с видео, и колонка уже.
+   Тезисы идут в две колонки: в одну шесть строк не помещаются в экран,
+   а первый экран прокруткой не растягивают. */
+.hero-cinematic .hero-intro-bridge .intro-digest { margin-top: clamp(18px, 1.8vw, 26px); max-width: none; }
+.hero-cinematic .hero-intro-bridge .intro-digest-summary { font-size: var(--fs-sm); max-width: 52ch; }
+.hero-cinematic .hero-intro-bridge .intro-digest-points {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: clamp(20px, 2vw, 36px);
+  margin-top: 14px;
+}
+.hero-cinematic .hero-intro-bridge .intro-digest-points li {
+  padding: 8px 0; font-size: var(--fs-sm);
+  grid-template-columns: 28px 1fr; gap: 10px;
+}
+/* В сетке линейка сверху нужна каждой строке, а «последней» больше нет */
+.hero-cinematic .hero-intro-bridge .intro-digest-points li:last-child { border-bottom: 0; }

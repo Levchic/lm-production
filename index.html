@@ -4,12 +4,31 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Лев Майденко — аранжировка, оркестровка, саунд-продакшн</title>
-<meta name="description" content="">
+<meta name="description" content="Оркестровые шоу, партитуры и аранжировки для кино, театра и концертных программ. Полный цикл — от идеи до концертных партий.">
+<link rel="canonical" href="https://levchic.github.io/lm-production/">
+
+<!-- Карточка ссылки в мессенджерах и соцсетях. Значения статические:
+     боты предпросмотра не выполняют JS, поэтому подставить их из
+     content.js во время загрузки нельзя. -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Лев Майденко · L.M.Production">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:url" content="https://levchic.github.io/lm-production/">
+<meta property="og:title" content="Лев Майденко — аранжировка, оркестровка, саунд-продакшн">
+<meta property="og:description" content="Оркестровые шоу, партитуры и аранжировки для кино, театра и концертных программ. Полный цикл — от идеи до концертных партий.">
+<meta property="og:image" content="https://levchic.github.io/lm-production/assets/media/og-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Оркестр на сцене во время концерта: дирижёр, струнная группа и свечи вдоль рампы">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="css/styles.css?v=12">
-<link rel="stylesheet" href="css/texture.css?v=12">
-<link rel="stylesheet" href="css/animations.css?v=12">
-<link rel="stylesheet" href="css/hero-cinematic.css?v=12">
+<link rel="preload" href="assets/fonts/unbounded-cyrillic-normal-400-900.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/jost-cyrillic-normal-200-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/fonts.css?v=74">
+<link rel="stylesheet" href="css/styles.css?v=74">
+<link rel="stylesheet" href="css/texture.css?v=74">
+<link rel="stylesheet" href="css/animations.css?v=74">
+<link rel="stylesheet" href="css/hero-cinematic.css?v=74">
 </head>
 <body>
 
@@ -37,8 +56,12 @@
 
   <!-- Главный экран: фото на весь экран + градиентное затемнение -->
   <section class="hero">
+    <!-- Фон первого экрана. Если в админке задано несколько фотографий,
+         js/page-home.js достраивает слои и медленно их сменяет. -->
     <div class="hero-media" aria-hidden="true">
-      <img id="heroPhotoImg" src="" alt="">
+      <div class="hero-media-inner" id="heroMedia">
+        <img id="heroPhotoImg" class="hero-slide is-current" src="" alt="">
+      </div>
     </div>
     <div class="hero-scrim" aria-hidden="true"></div>
     <div class="wrap hero-inner">
@@ -68,6 +91,21 @@
           <h2 id="heroIntroHeading"></h2>
           <p class="hero-intro-sub" id="heroIntroSub"></p>
           <span class="hero-intro-cue" id="heroIntroCue"></span>
+          <!-- Стрелка от строки «Смотреть ролик» к плитке с видео.
+               Рисуется по мере прокрутки; положение и размер — в
+               css/hero-cinematic.css. -->
+          <svg class="hero-intro-arrow" id="heroIntroArrow" viewBox="0 0 250 132" fill="none" aria-hidden="true">
+            <path class="arrow-line" pathLength="1"
+                  d="M10 92 C 26 118, 88 124, 88 84
+                     C 88 52, 40 52, 44 86
+                     C 47 112, 96 108, 128 92
+                     C 168 72, 200 52, 232 34"
+                  stroke="currentColor" stroke-width="2.1" stroke-linecap="round"/>
+            <path class="arrow-head" pathLength="1"
+                  d="M204 31 L 232 34 L 220 59"
+                  stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <div id="heroIntroDigest"></div>
 
         </div>
       </div>
@@ -76,21 +114,16 @@
            включённом флаге heroCinematic в js/flags.js -->
       <div class="hero-intro-video" id="heroIntroVideo" hidden></div>
 
-      <!-- Стрелка от текста к ролику: «рисуется» по мере прокрутки.
-           Привязана к левому краю колонки с видео. -->
-      <svg class="hero-intro-arrow" id="heroIntroArrow" viewBox="0 0 250 132" fill="none" aria-hidden="true">
-        <path class="arrow-line" pathLength="1"
-              d="M10 92 C 26 118, 88 124, 88 84
-                 C 88 52, 40 52, 44 86
-                 C 47 112, 96 108, 128 92
-                 C 168 72, 200 52, 232 34"
-              stroke="currentColor" stroke-width="2.1" stroke-linecap="round"/>
-        <path class="arrow-head" pathLength="1"
-              d="M204 31 L 232 34 L 220 59"
-              stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
     </div>
     <span class="hero-credit" id="heroPhotoCaption"></span>
+    <!-- Метки кадров фона; заполняются, только если фотографий больше одной -->
+    <div class="hero-frames" id="heroFrames"></div>
+
+    <!-- Титры: чем занимается человек — бегущей строкой по низу первого
+         экрана. Список слов редактируется в админке. -->
+    <div class="hero-ticker" id="heroTicker" aria-hidden="true">
+      <div class="hero-ticker-track" id="heroTickerTrack"></div>
+    </div>
   </section>
 
   <!-- Видео. Фон любого раздела ниже — фото или однотонный: зависит от того,
@@ -104,6 +137,8 @@
           <h2 id="introVideoHeading"></h2>
           <p class="section-sub" id="introVideoSub"></p>
         </div>
+        <!-- Пересказ ролика текстом; наполняется из админки -->
+        <div class="reveal" data-reveal id="introVideoDigest"></div>
       </div>
       <div class="reveal" data-reveal id="introVideoPlayer"></div>
     </div>
@@ -121,7 +156,7 @@
         <div class="reveal" data-reveal>
           <div class="about-text" id="aboutParagraphs"></div>
           <div class="about-tags" id="aboutTags"></div>
-          <p class="about-more"><a href="about.html" class="text-link" id="aboutReadMore">Подробнее обо мне →</a></p>
+          <p class="about-more"><a href="about.html" class="text-link" id="aboutReadMore">Подробнее обо мне</a></p>
         </div>
         <div class="about-portrait reveal" data-reveal id="aboutPortrait"></div>
       </div>
@@ -150,7 +185,12 @@
         <h2 id="processHeading"></h2>
         <p class="section-sub" id="processSub"></p>
       </div>
-      <ol class="process-steps" id="processSteps"></ol>
+      <!-- Маршрут: карточки-этапы + линия между ними.
+           Кривые рисует js/page-home.js по координатам карточек. -->
+      <div class="process-route" id="processRoute">
+        <svg class="process-route-line" id="processRouteLine" aria-hidden="true" focusable="false"></svg>
+        <ol class="process-steps" id="processSteps"></ol>
+      </div>
     </div>
   </section>
 
@@ -165,7 +205,7 @@
       </div>
       <div class="card-grid card-grid--3" id="portfolioGrid"></div>
       <div class="section-foot">
-        <a href="portfolio.html" class="text-link" id="portfolioViewAll">Все проекты →</a>
+        <a href="portfolio.html" class="text-link" id="portfolioViewAll">Все проекты</a>
       </div>
     </div>
   </section>
@@ -181,7 +221,7 @@
       </div>
       <div class="card-grid card-grid--3" id="servicesGrid"></div>
       <div class="section-foot">
-        <a href="services.html" class="text-link" id="servicesViewAll">Все услуги →</a>
+        <a href="services.html" class="text-link" id="servicesViewAll">Все услуги</a>
       </div>
     </div>
   </section>
@@ -203,50 +243,6 @@
       </div>
       <div class="carousel-dots" id="testimonialsDots" aria-hidden="true"></div>
 
-      <div class="testimonial-add">
-        <button class="btn btn-ghost" id="reviewOpen" type="button"></button>
-      </div>
-
-      <!-- Форма отзыва: скрыта до нажатия кнопки -->
-      <div class="review-form-wrap" id="reviewFormWrap" hidden>
-        <form class="review-form" id="reviewForm" novalidate>
-          <h3 id="reviewFormHeading"></h3>
-          <p class="review-form-sub" id="reviewFormSub"></p>
-
-          <div class="review-identity">
-            <button class="btn btn-small btn-ghost" type="button" id="reviewVkBtn"></button>
-            <button class="btn btn-small btn-ghost" type="button" id="reviewTgBtn"></button>
-          </div>
-
-          <div class="form-row"><label id="reviewNameLabel" for="reviewName"></label>
-            <input type="text" id="reviewName" name="name" maxlength="80" required></div>
-          <div class="form-row"><label id="reviewRoleLabel" for="reviewRole"></label>
-            <input type="text" id="reviewRole" name="role" maxlength="120"></div>
-          <div class="form-row"><label id="reviewProfileLabel" for="reviewProfile"></label>
-            <input type="url" id="reviewProfile" name="profileUrl" maxlength="200" placeholder="https://">
-            <span class="form-hint" id="reviewProfileHint"></span></div>
-
-          <div class="form-row">
-            <label id="reviewRatingLabel"></label>
-            <div class="rating-input" id="reviewRating" role="radiogroup"></div>
-          </div>
-
-          <div class="form-row"><label id="reviewTextLabel" for="reviewText"></label>
-            <textarea id="reviewText" name="text" rows="5" maxlength="1500" required></textarea></div>
-
-          <label class="field-consent"><input type="checkbox" id="reviewConsent" required>
-            <span id="reviewConsentLabel"></span></label>
-
-          <!-- Ловушка для спам-ботов: живой человек это поле не видит -->
-          <div class="hp-field" aria-hidden="true"><label>Не заполняйте<input type="text" id="reviewHp" name="website" tabindex="-1" autocomplete="off"></label></div>
-
-          <div class="review-form-actions">
-            <button type="submit" class="btn btn-primary" id="reviewSubmit"></button>
-            <button type="button" class="btn btn-ghost" id="reviewCancel"></button>
-          </div>
-          <p class="form-note" id="reviewNote"></p>
-        </form>
-      </div>
     </div>
   </section>
 
@@ -261,30 +257,16 @@
       </div>
       <div class="card-grid card-grid--3" id="blogGrid"></div>
       <div class="section-foot">
-        <a href="blog.html" class="text-link" id="blogViewAll">Все новости →</a>
+        <a href="blog.html" class="text-link" id="blogViewAll">Все новости</a>
       </div>
     </div>
   </section>
 
-  <!-- Частые вопросы (однотонный фон + световые пятна). На главной — первые
-       пять вопросов, полный список живёт на faq.html -->
-  <section class="section" id="faq" data-glow>
-    <div class="section-photo-bg" id="faqBgPhoto" aria-hidden="true"></div>
-    <div class="wrap">
-      <div class="section-head reveal" data-reveal>
-        <span class="eyebrow" id="faqEyebrow"></span>
-        <h2 id="faqHeading"></h2>
-        <p class="section-sub" id="faqSub"></p>
-      </div>
-      <ul class="faq-list" id="faqList"></ul>
-      <div class="section-foot">
-        <a href="faq.html" class="text-link" id="faqViewAll">Все вопросы →</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Контакты (тёмный фон — чередуем с предыдущим разделом) -->
-  <section class="section section-deep" id="contact" data-glow>
+  <!-- Контакты (однотонный фон + световые пятна) -->
+  <!-- Контакты. Формы обратной связи здесь намеренно нет: сайт не собирает
+       и не хранит персональные данные. Все каналы связи прямые, порядок —
+       по убыванию: почта крупно, мессенджеры строками. -->
+  <section class="section" id="contact" data-glow>
     <div class="section-photo-bg" id="contactBgPhoto" aria-hidden="true"></div>
     <div class="wrap">
       <div class="section-head reveal" data-reveal>
@@ -292,27 +274,24 @@
         <h2 id="contactHeading"></h2>
         <p class="section-sub" id="contactSub"></p>
       </div>
-      <div class="contact-grid">
-        <form class="contact-form reveal" data-reveal id="contactForm">
-          <div class="form-row"><label id="labelName" for="fieldName">Имя</label><input type="text" id="fieldName" name="name" required></div>
-          <div class="form-row"><label id="labelContact" for="fieldContact">Контакт</label><input type="text" id="fieldContact" name="contact" required></div>
-          <div class="form-row"><label id="labelType" for="fieldType">Тип услуги</label><select id="fieldType" name="type"></select></div>
-          <div class="form-row"><label id="labelMessage" for="fieldMessage">Описание задачи</label><textarea id="fieldMessage" name="message" rows="4" required></textarea></div>
-          <label class="field-consent"><input type="checkbox" id="fieldConsent" required>
-            <span id="labelConsent"></span></label>
 
-          <!-- Ловушка для спам-ботов: живой человек это поле не видит -->
-          <div class="hp-field" aria-hidden="true"><label>Не заполняйте<input type="text" id="fieldSite" name="website" tabindex="-1" autocomplete="off"></label></div>
-          <button type="submit" class="btn btn-primary" id="formSubmit">Отправить</button>
-          <p class="form-note" id="formNote"></p>
-        </form>
-        <aside class="contact-info reveal" data-reveal>
-          <h3 id="contactDirectHeading"></h3>
-          <p class="contact-direct-note" id="contactDirectNote"></p>
-          <div class="contact-social" id="contactSocial"></div>
-          <p class="contact-direct-foot" id="contactDirectFoot"></p>
-        </aside>
+      <div class="contact-mail reveal" data-reveal>
+        <span class="contact-mail-label" id="contactMailLabel"></span>
+        <a class="contact-mail-value" id="contactMail" href="#"></a>
+        <button class="contact-copy" id="contactCopy" type="button">
+          <span class="contact-copy-label" id="contactCopyLabel" aria-live="polite"></span>
+        </button>
       </div>
+
+      <div class="contact-channels reveal" data-reveal>
+        <div class="contact-channels-intro">
+          <h3 class="contact-channels-head" id="contactDirectHeading"></h3>
+          <p class="contact-channels-note" id="contactDirectNote"></p>
+        </div>
+        <div class="contact-social" id="contactSocial"></div>
+      </div>
+
+      <p class="contact-legal" id="contactDirectFoot"></p>
     </div>
   </section>
 
@@ -327,12 +306,12 @@
   </div>
 </footer>
 
-<script src="js/flags.js?v=12"></script>
-<script src="js/content.js?v=12"></script>
-<script src="js/common.js?v=12"></script>
-<script src="js/reviews.js?v=12"></script>
-<script src="js/hero-cinematic.js?v=12"></script>
-<script src="js/page-home.js?v=12"></script>
-<script src="js/mobile-carousel.js?v=12"></script>
+<script src="js/flags.js?v=74"></script>
+<script src="js/content.js?v=74"></script>
+<script src="js/common.js?v=74"></script>
+<script src="js/reviews.js?v=74"></script>
+<script src="js/hero-cinematic.js?v=74"></script>
+<script src="js/page-home.js?v=74"></script>
+<script src="js/mobile-carousel.js?v=74"></script>
 </body>
 </html>

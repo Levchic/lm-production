@@ -17,11 +17,13 @@ window.SiteHeroCinematic = (function () {
   var C = window.SiteCommon;
   var $ = C.$;
   var enabled = !!(window.SITE_FLAGS && window.SITE_FLAGS.heroCinematic);
+  // верхняя группа прибита к верху экрана — переключатель в js/flags.js
+  var topAnchored = !!(window.SITE_FLAGS && window.SITE_FLAGS.heroTopAnchored);
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var started = false;
   var glowNode = null;
 
-  var FADED = [".hero-credit"];
+  var FADED = [".hero-credit", ".hero-ticker", ".hero-frames"];
   var leadHeight = 0;
 
   // Ниже этой ширины ролик рядом с текстом уже не помещается, поэтому
@@ -59,6 +61,162 @@ window.SiteHeroCinematic = (function () {
     glowNode.setAttribute("aria-hidden", "true");
     hero.insertBefore(glowNode, hero.firstChild);
     return glowNode;
+  }
+
+  /**
+   * Первый экран центрируем по вертикали: залипающий блок встаёт так,
+   * чтобы текст оказался посередине окна.
+   *
+   * Считаем от ПОЛНОЙ высоты блока — с раскрытым описанием, даже если
+   * сейчас оно наполовину сжато прокруткой. Иначе центр пересчитывался бы
+   * на каждом кадре сцены, и текст поехал бы вверх вслед за сжимающимся
+   * описанием. При такой привязке имя стоит на месте от начала до конца.
+   */
+  function updateStickyTop() {
+    var hero = $(".hero"), text = $(".hero-text"), lead = $("#heroLead");
+    var bridge = $("#heroIntroBridge"), video = $("#heroIntroVideo");
+    if (!hero || !text) return;
+    if (!isActive()) {
+      hero.style.removeProperty("--hero-sticky-top");
+      if (video) video.style.marginTop = "";
+      return;
+    }
+
+    /* Меряем два состояния сцены — начало и конец. В начале раскрыто
+       описание с кнопками, в конце оно сжато, зато развёрнут «мостик» с
+       пересказом ролика. Оба раза берём прямоугольники, а не offsetTop:
+       у блоков свои отступы, и арифметика по offset'ам промахивалась на
+       десяток пикселей. */
+    var savedHeight = lead ? lead.style.height : "";
+    var savedOpacity = lead ? lead.style.opacity : "";
+    function band(bottomNode) {
+      if (!bottomNode) return 0;
+      return bottomNode.getBoundingClientRect().bottom - text.getBoundingClientRect().top;
+    }
+
+    if (lead) { lead.style.height = "auto"; lead.style.opacity = "1"; }
+    var startHeight = lead ? band(lead) : text.offsetHeight;
+
+    function measureScene() {
+      if (!bridge || bridge.hidden) return 0;
+      var keep = lead ? lead.style.height : "";
+      if (lead) lead.style.height = "0px";
+      var value = band(bridge);
+      if (lead) lead.style.height = keep;
+      return value;
+    }
+    var sceneHeight = measureScene();
+    if (lead) { lead.style.height = savedHeight; lead.style.opacity = savedOpacity; }
+
+    var styles = getComputedStyle(document.documentElement);
+    var header = parseFloat(styles.getPropertyValue("--header-h")) || 72;
+    // Центр считаем не по всему окну, а по свободной полосе между шапкой
+    // и титрами внизу — иначе текст оптически проваливается вниз.
+    var ticker = parseFloat(getComputedStyle(hero).getPropertyValue("--ticker-h")) || 0;
+    var free = window.innerHeight - header - ticker;
+    var top;
+
+    if (topAnchored) {
+      /* Верхняя группа стоит у верхнего края, а не по центру. Всё, что
+         ниже, центрируется в оставшейся высоте — этим занимается
+         centerBelowTop(). */
+      top = header + Math.max(20, Math.round(window.innerHeight * 0.05));
+    } else {
+      top = header + Math.max(16, Math.round((free - startHeight) / 2));
+      /* В конце сцены блок выше, чем в начале: если центрировать только по
+         началу, низ пересказа уезжает за край окна. Титры к этому моменту
+         погашены, поэтому нижнюю границу считаем по всей высоте окна. */
+      if (sceneHeight) {
+        top = Math.min(top, Math.max(header + 16, window.innerHeight - sceneHeight - 24));
+      }
+    }
+    hero.style.setProperty("--hero-sticky-top", Math.round(top) + "px");
+    centerBelowTop(text, lead, bridge, top, ticker);
+    // поля сдвинули содержимое — высоту сцены пересчитываем заново
+    sceneHeight = measureScene();
+
+    /* Ролик равняем по тексту, а не по окну: колонки в сетке стоят по
+       верху, высота у них разная, и по центру окна ролик уезжал
+       относительно соседней колонки. Теперь у обеих колонок общая
+       середина. Двигаем отступом, а не сдвигом: transform у ролика занят
+       появлением сцены. */
+    if (!video) return;
+    var videoHeight = video.offsetHeight;
+    if (!videoHeight || !sceneHeight) { video.style.marginTop = ""; return; }
+    var shift = Math.round((sceneHeight - videoHeight) / 2);
+    shift = Math.max(shift, Math.round(header + 16 - top));   // выше шапки не поднимаем
+    video.style.marginTop = shift + "px";
+
+    updateArrow(video);
+  }
+
+  /**
+   * Раскладка «верх прибит, низ по центру».
+   *
+   * Верхняя группа — надпись над именем, имя и подзаголовок — стоит у
+   * верхнего края. Ниже идут описание с кнопками, а по ходу сцены — надпись
+   * о ролике с пересказом; они центрируются в оставшейся высоте.
+   *
+   * Отступы ставятся полями, а не выравниванием: во время сцены описание
+   * сжимается до нуля, но своё поле сохраняет — поэтому «мостик» считает
+   * своё положение с оглядкой на него. При выключенном переключателе поля
+   * снимаются, и всё возвращается к сплошному центрированию.
+   */
+  function centerBelowTop(text, lead, bridge, top, ticker) {
+    if (!topAnchored) {
+      if (lead) lead.style.marginTop = "";
+      if (bridge) bridge.style.marginTop = "";
+      return;
+    }
+    var role = $(".hero-role");
+    if (!role || !lead) return;
+
+    var textTop = text.getBoundingClientRect().top;
+    var topGroup = role.getBoundingClientRect().bottom - textTop;   // до конца подзаголовка
+    // свободная высота под верхней группой; титры внизу оставляем себе
+    var band = window.innerHeight - ticker - top - topGroup - 24;
+
+    var savedHeight = lead.style.height, savedMargin = lead.style.marginTop;
+    lead.style.marginTop = "0px";
+    lead.style.height = "auto";
+    var leadHeight = lead.getBoundingClientRect().height;
+    lead.style.height = savedHeight;
+
+    var leadMargin = Math.max(24, Math.round((band - leadHeight) / 2));
+    lead.style.marginTop = leadMargin + "px";
+
+    if (!bridge || bridge.hidden) return;
+    bridge.style.marginTop = "0px";
+    var bridgeHeight = bridge.getBoundingClientRect().height;
+    /* В конце сцены описание сжато до нуля, но его поле остаётся — значит
+       «мостику» достаётся разница, и она бывает отрицательной: он выше
+       описания и его центр приходится поднять. Выше подзаголовка всё же
+       не пускаем — там начинается верхняя группа. */
+    var bridgeMargin = Math.round((band - bridgeHeight) / 2) - leadMargin;
+    bridgeMargin = Math.max(bridgeMargin, 24 - leadMargin);
+    bridge.style.marginTop = bridgeMargin + "px";
+  }
+
+  /**
+   * Ширина стрелки: от её начала (сразу за текстом) до плитки минус
+   * зазор. В CSS этого не выразить — расстояние зависит от ширины обеих
+   * колонок, а они резиновые. Пропорции рисунка сохраняются: высота
+   * растёт вместе с шириной.
+   */
+  function updateArrow(video) {
+    var arrow = $("#heroIntroArrow");
+    if (!arrow || !video) return;
+    if (!isActive() || getComputedStyle(arrow).display === "none") {
+      arrow.style.width = "";
+      return;
+    }
+    arrow.style.width = "";                     // сначала вернём значение из CSS
+    var from = arrow.getBoundingClientRect().left;
+    var to = video.getBoundingClientRect().left;
+    // остриё не упирается в кадр: зазор растёт вместе с окном
+    var gap = Math.min(90, Math.max(40, Math.round(window.innerWidth * 0.03)));
+    var width = Math.round(to - from - gap);
+    if (width > 150) arrow.style.width = width + "px";
   }
 
   /** Своя высота блока описания — нужна, чтобы плавно её схлопывать. */
@@ -130,6 +288,10 @@ window.SiteHeroCinematic = (function () {
       var node = $(sel);
       if (node) node.style.opacity = String(1 - swap);
     });
+    // метки кадров кликабельны, поэтому их мало погасить — на погасшие
+    // нельзя и нажимать
+    var frames = $(".hero-frames");
+    if (frames) frames.style.pointerEvents = swap > 0.6 ? "none" : "";
 
     // описание сжимается, и всё, что ниже, само подтягивается вверх
     var lead = $("#heroLead");
@@ -177,8 +339,13 @@ window.SiteHeroCinematic = (function () {
     bridge.hidden = false;
     $("#heroIntroEyebrow").textContent = intro.eyebrow || "";
     $("#heroIntroHeading").textContent = intro.heading || "";
+    /* Описание раздела и пересказ ролика говорят одно и то же. В «мостике»
+       место дорого, поэтому при заполненном пересказе описание убираем. */
+    var digest = C.introDigest(intro);
     $("#heroIntroSub").textContent = intro.subheading || "";
+    $("#heroIntroSub").hidden = !!digest;
     $("#heroIntroCue").textContent = C.state.lang === "en" ? "Play the video" : "Смотреть ролик";
+    $("#heroIntroDigest").innerHTML = digest;
 
     video.hidden = false;
     video.innerHTML = C.videoTile(intro.src, intro.poster, "intro-video-tile");
@@ -200,8 +367,20 @@ window.SiteHeroCinematic = (function () {
     window.addEventListener("resize", function () {
       leadHeight = 0;
       renderIntro();   // окно могло пересечь границу узкого режима
+      updateStickyTop();
       onScroll();
     }, { passive: true });
+    // шрифты меняют высоту текста уже после первой отрисовки
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(updateStickyTop);
+    }
+    /* Высоту ролику проставляет JS по пропорциям кадра — то есть позже,
+       чем считается раскладка. Пересчитываем, когда она появится. */
+    var videoNode = $("#heroIntroVideo");
+    if (videoNode && window.ResizeObserver) {
+      new ResizeObserver(function () { updateStickyTop(); }).observe(videoNode);
+    }
+    updateStickyTop();
     paint();
   }
 
@@ -211,6 +390,7 @@ window.SiteHeroCinematic = (function () {
     start();
     renderIntro();
     leadHeight = 0;   // текст мог смениться (например, при переключении языка)
+    updateStickyTop();
     paint();
   }
 

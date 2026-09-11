@@ -29,6 +29,16 @@ window.SiteCommon = (function () {
     if (html !== undefined) e.innerHTML = html;
     return e;
   }
+  /**
+   * Выделение куска текста жирным — звёздочками, как в мессенджерах:
+   *   «полный цикл **от идеи до концертных партий.**»
+   * Текст сначала экранируется, поэтому вставить через админку разметку
+   * или скрипт нельзя — только это выделение.
+   */
+  function emphasize(text) {
+    return esc(text || "").replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+  }
+
   function esc(str) {
     return String(str === undefined || str === null ? "" : str)
       .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -125,8 +135,11 @@ window.SiteCommon = (function () {
       var y = window.scrollY || window.pageYOffset;
       if (header) header.classList.toggle("scrolled", y > 20);
       if (progress) {
+        // scaleX вместо width: ширина — свойство раскладки, её пересчёт
+        // на каждый кадр прокрутки бьёт по плавности
         var docHeight = document.documentElement.scrollHeight - window.innerHeight;
-        progress.style.width = (docHeight > 0 ? (y / docHeight) * 100 : 0) + "%";
+        var ratio = docHeight > 0 ? Math.min(1, Math.max(0, y / docHeight)) : 0;
+        progress.style.transform = "scaleX(" + ratio + ")";
       }
       updateGlowParallax();
     }
@@ -405,13 +418,34 @@ window.SiteCommon = (function () {
     applyVideoAspects();
   }
 
+  /**
+   * Проекты, которые видно на сайте. Черновики (галочка «Черновик» в
+   * админке) остаются в данных и в админке, но из портфолио и с главной
+   * исчезают: незаконченный проект можно сохранять и дозаполнять, не
+   * удаляя и не показывая его посетителям.
+   */
+  function visibleProjects(d) {
+    return ((d || t()).portfolio.projects || []).filter(function (p) { return !p.hidden; });
+  }
+
   /* ---------- Появление при скролле ---------- */
   function initReveal() {
     if (revealObserver) revealObserver.disconnect();
     if (reduceMotion) { $all("[data-reveal]").forEach(function (n) { n.classList.add("in-view"); }); return; }
     revealObserver = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) { entry.target.classList.add("in-view"); revealObserver.unobserve(entry.target); }
+      // Если в кадр въезжает сразу ряд карточек, они появлялись
+      // одновременно — стеной. Расставляем каскад по 60 мс: порядок
+      // чтения становится виден, но ждать последнюю карточку не приходится.
+      var arriving = entries.filter(function (e) { return e.isIntersecting; });
+      arriving.sort(function (a, b) {
+        return a.boundingClientRect.top - b.boundingClientRect.top ||
+               a.boundingClientRect.left - b.boundingClientRect.left;
+      });
+      arriving.forEach(function (entry, i) {
+        var delay = Math.min(i, 5) * 60; // потолок — чтобы хвост списка не ждал
+        if (delay) entry.target.style.setProperty("--reveal-delay", delay + "ms");
+        entry.target.classList.add("in-view");
+        revealObserver.unobserve(entry.target);
       });
     }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
     $all("[data-reveal]").forEach(function (n) { revealObserver.observe(n); });
@@ -445,6 +479,27 @@ window.SiteCommon = (function () {
   }
 
   /** Иконка соцсети по названию из админки — узнаём по ключевому слову. */
+  /**
+   * Стрелка в ссылках-переходах. Раньше здесь стоял символ «→» из шрифта:
+   * он не совпадал по весу и оптическому размеру с текстом и менялся вместе
+   * с гарнитурой. Нарисованная стрелка живёт в одном штрихе с остальными
+   * иконками сайта.
+   */
+  function arrowSVG(dir) {
+    var path = dir === "left"
+      ? "M10.5 4 4.5 10l6 6M5 10h11"
+      : "M9.5 4l6 6-6 6M15 10H4";
+    return '<svg class="link-arrow" viewBox="0 0 20 20" width="15" height="15" fill="none" ' +
+      'stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" ' +
+      'aria-hidden="true"><path d="' + path + '"/></svg>';
+  }
+
+  /** Подпись со стрелкой: текст экранируется, стрелка добавляется разметкой. */
+  function withArrow(text, dir) {
+    var label = esc(text || "");
+    return dir === "left" ? arrowSVG("left") + label : label + arrowSVG();
+  }
+
   function socialIconSVG(label) {
     var key = String(label || "").toLowerCase();
     var icons = {
@@ -454,7 +509,19 @@ window.SiteCommon = (function () {
       instagram: '<path d="M12 2.8c3 0 3.3 0 4.5.1 1.1.1 1.7.2 2.1.4.5.2.9.5 1.3.9.4.4.7.8.9 1.3.2.4.3 1 .4 2.1.1 1.2.1 1.5.1 4.4s0 3.2-.1 4.4c-.1 1.1-.2 1.7-.4 2.1-.2.5-.5.9-.9 1.3-.4.4-.8.7-1.3.9-.4.2-1 .3-2.1.4-1.2.1-1.5.1-4.5.1s-3.3 0-4.5-.1c-1.1-.1-1.7-.2-2.1-.4-.5-.2-.9-.5-1.3-.9-.4-.4-.7-.8-.9-1.3-.2-.4-.3-1-.4-2.1-.1-1.2-.1-1.5-.1-4.4s0-3.2.1-4.4c.1-1.1.2-1.7.4-2.1.2-.5.5-.9.9-1.3.4-.4.8-.7 1.3-.9.4-.2 1-.3 2.1-.4C8.7 2.8 9 2.8 12 2.8Zm0 3.9a5.3 5.3 0 1 0 0 10.6 5.3 5.3 0 0 0 0-10.6Zm0 8.7a3.4 3.4 0 1 1 0-6.8 3.4 3.4 0 0 1 0 6.8Zm6.7-8.9a1.2 1.2 0 1 1-2.5 0 1.2 1.2 0 0 1 2.5 0Z"/>',
       rutube: '<path d="M4 5h11.5c2.5 0 4 1.5 4 3.8 0 2-1.2 3.4-3.1 3.7l3.4 6.5h-3l-3.1-6.2H6.8V19H4V5Zm2.8 2.4v3.1h8.3c1 0 1.6-.6 1.6-1.5s-.6-1.6-1.6-1.6H6.8Z"/>'
     };
-    var name = Object.keys(icons).filter(function (k) { return key.indexOf(k) > -1; })[0];
+    // Подписи в контенте русские («Сообщество ВКонтакте», «Телеграм»),
+    // поэтому ищем и по кириллическим названиям — иначе вместо иконки
+    // соцсети везде вставал запасной глобус.
+    var aliases = {
+      telegram: ["telegram", "телеграм", "тг"],
+      vk: ["vk", "вконтакте", "вк"],
+      youtube: ["youtube", "ютуб"],
+      instagram: ["instagram", "инстаграм"],
+      rutube: ["rutube", "рутуб"]
+    };
+    var name = Object.keys(aliases).filter(function (k) {
+      return aliases[k].some(function (a) { return key.indexOf(a) > -1; });
+    })[0];
     var path = name ? icons[name] : '<path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm0 3.2a19 19 0 0 1 2.3 5.6H9.7A19 19 0 0 1 12 5.2ZM5.4 10.8a6.8 6.8 0 0 1 3.4-4.5 21 21 0 0 0-1.6 4.5H5.4Zm0 2.4h1.8a21 21 0 0 0 1.6 4.5 6.8 6.8 0 0 1-3.4-4.5Zm6.6 5.6a19 19 0 0 1-2.3-5.6h4.6a19 19 0 0 1-2.3 5.6Zm3.2-1.1a21 21 0 0 0 1.6-4.5h1.8a6.8 6.8 0 0 1-3.4 4.5Zm1.6-6.9a21 21 0 0 0-1.6-4.5 6.8 6.8 0 0 1 3.4 4.5h-1.8Z"/>';
     return '<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">' + path + "</svg>";
   }
@@ -501,7 +568,7 @@ window.SiteCommon = (function () {
         '<p class="project-meta">' + esc(proj.meta) + "</p>" +
         '<p class="project-desc">' + esc(proj.description) + "</p>" +
         (proj.isPlaceholder ? '<span class="placeholder-flag">' + esc(d.common.placeholderFlag) + "</span>" : "") +
-        '<span class="project-more">' + esc(d.portfolio.detailsLabel) + " →</span>" +
+        '<span class="project-more">' + withArrow(d.portfolio.detailsLabel) + "</span>" +
       "</div>";
   }
 
@@ -530,7 +597,7 @@ window.SiteCommon = (function () {
         "<h3>" + esc(post.title) + "</h3>" +
         "<p>" + esc(post.excerpt) + "</p>" +
         (post.isPlaceholder ? '<span class="placeholder-flag">' + esc(d.common.placeholderFlag) + "</span>" : "") +
-        '<span class="blog-more">' + esc(d.blog.readMore || "Читать") + " →</span>" +
+        '<span class="blog-more">' + withArrow(d.blog.readMore || "Читать") + "</span>" +
       "</div>";
   }
 
@@ -539,7 +606,7 @@ window.SiteCommon = (function () {
     var card = el("a", "blog-card reveal" + (post.cover ? " has-cover" : ""), blogCardHTML(post, d));
     card.href = "post.html?id=" + encodeURIComponent(post.id || "");
     card.setAttribute("data-reveal", "");
-    card.style.transitionDelay = Math.min(index, 8) * 55 + "ms";
+    card.style.setProperty("--reveal-delay", Math.min(index, 8) * 55 + "ms");
     return card;
   }
 
@@ -607,35 +674,6 @@ window.SiteCommon = (function () {
     return row;
   }
 
-  /** Карточка направления на главной: название, суть и состав услуг. */
-  function directionCard(bucket, index, d) {
-    var group = bucket.group || {};
-    var card = el("article", "direction-card reveal",
-      '<span class="direction-index">' + String(index + 1).padStart(2, "0") + "</span>" +
-      "<h3>" + esc(group.title || "") + "</h3>" +
-      (group.summary ? "<p>" + esc(group.summary) + "</p>" : "") +
-      '<ul class="direction-list">' +
-        bucket.items.map(function (item) { return "<li>" + esc(item.title) + "</li>"; }).join("") +
-      "</ul>");
-    card.setAttribute("data-reveal", "");
-    card.style.transitionDelay = Math.min(index, 8) * 50 + "ms";
-    return card;
-  }
-
-  function toggleService(row) {
-    var open = row.classList.toggle("open");
-    var detail = $(".price-row-detail", row);
-    if (detail) detail.style.maxHeight = open ? detail.scrollHeight + "px" : "";
-
-    var button = $(".price-row-main", row);
-    if (!button) return;
-    button.setAttribute("aria-expanded", open ? "true" : "false");
-    var labels = t().services || {};
-    var title = $(".price-row-title", row);
-    button.setAttribute("aria-label", (title ? title.textContent : "") + " — " +
-      (open ? (labels.hideLabel || "Свернуть") : (labels.detailsLabel || "Подробнее")));
-  }
-
   /**
    * Строка «вопрос — ответ» в разделе частых вопросов. Механика та же, что у
    * прайса: ответ скрыт и раскрывается по клику — но без цены, и вопрос набран
@@ -645,7 +683,7 @@ window.SiteCommon = (function () {
     var labels = (d && d.faq) || {};
     var row = el("li", "faq-row reveal");
     row.setAttribute("data-reveal", "");
-    row.style.transitionDelay = Math.min(index || 0, 8) * 45 + "ms";
+    row.style.setProperty("--reveal-delay", Math.min(index || 0, 8) * 45 + "ms");
 
     var main = el("button", "faq-question",
       '<span class="faq-question-text">' + esc(item.question) + "</span>" +
@@ -660,10 +698,45 @@ window.SiteCommon = (function () {
     return row;
   }
 
+  /** Карточка направления на главной: название, суть и состав услуг. */
+  function directionCard(bucket, index, d) {
+    var group = bucket.group || {};
+    var card = el("article", "direction-card reveal",
+      '<span class="direction-index">' + String(index + 1).padStart(2, "0") + "</span>" +
+      "<h3>" + esc(group.title || "") + "</h3>" +
+      (group.summary ? "<p>" + esc(group.summary) + "</p>" : "") +
+      '<ul class="direction-list">' +
+        bucket.items.map(function (item) { return "<li>" + esc(item.title) + "</li>"; }).join("") +
+      "</ul>");
+    card.setAttribute("data-reveal", "");
+    card.style.setProperty("--reveal-delay", Math.min(index, 8) * 50 + "ms");
+    return card;
+  }
+
+  /* Современные браузеры умеют анимировать height до auto
+     (interpolate-size). Там, где умеют, высоту не измеряем и не
+     пересчитываем после смены ширины — этим занимается CSS. */
+  var AUTO_HEIGHT = typeof CSS !== "undefined" && CSS.supports &&
+    CSS.supports("interpolate-size", "allow-keywords");
+
+  function toggleService(row) {
+    var open = row.classList.toggle("open");
+    var detail = $(".price-row-detail", row);
+    if (detail && !AUTO_HEIGHT) detail.style.maxHeight = open ? detail.scrollHeight + "px" : "";
+
+    var button = $(".price-row-main", row);
+    if (!button) return;
+    button.setAttribute("aria-expanded", open ? "true" : "false");
+    var labels = t().services || {};
+    var title = $(".price-row-title", row);
+    button.setAttribute("aria-label", (title ? title.textContent : "") + " — " +
+      (open ? (labels.hideLabel || "Свернуть") : (labels.detailsLabel || "Подробнее")));
+  }
+
   function toggleFaq(row) {
     var open = row.classList.toggle("open");
     var answer = $(".faq-answer", row);
-    if (answer) answer.style.maxHeight = open ? answer.scrollHeight + "px" : "";
+    if (answer && !AUTO_HEIGHT) answer.style.maxHeight = open ? answer.scrollHeight + "px" : "";
 
     var button = $(".faq-question", row);
     if (!button) return;
@@ -674,8 +747,10 @@ window.SiteCommon = (function () {
       (open ? (labels.hideLabel || "Свернуть ответ") : (labels.openLabel || "Раскрыть ответ")));
   }
 
-  /** После смены ширины высота раскрытого текста меняется — пересчитываем. */
+  /** Запасной путь: после смены ширины высота раскрытого текста меняется,
+      и зафиксированный max-height приходится пересчитывать. */
   function refreshOpenServices() {
+    if (AUTO_HEIGHT) return;
     $all(".price-row.open .price-row-detail, .faq-row.open .faq-answer").forEach(function (detail) {
       detail.style.maxHeight = "none";
       var height = detail.scrollHeight;
@@ -714,7 +789,9 @@ window.SiteCommon = (function () {
     if (!u) return "";
     var m;
     if ((m = u.match(/(?:youtube\.com\/(?:watch\?(?:.*&)?v=|shorts\/|embed\/)|youtu\.be\/)([\w-]{6,})/i))) {
-      return "https://www.youtube.com/embed/" + m[1];
+      // youtube-nocookie: плеер не ставит отслеживающие cookie, пока ролик
+      // не запустили. Функционально это тот же плеер.
+      return "https://www.youtube-nocookie.com/embed/" + m[1];
     }
     if (u.indexOf("video_ext.php") > -1) return u;
     if ((m = u.match(/vk(?:video)?\.(?:com|ru)\/(?:[^?]*[?&]z=)?video(-?\d+)_(\d+)/i))) {
@@ -740,6 +817,34 @@ window.SiteCommon = (function () {
       "</div>";
   }
 
+  /**
+   * «Коротко из ролика»: пересказ видео текстом — для тех, кто не хочет
+   * смотреть, у кого не грузится видео, и для поисковых систем, которым
+   * звук из mp4 недоступен. Пустые поля блок не рисуют.
+   */
+  function introDigest(intro) {
+    intro = intro || {};
+    var summary = (intro.summary || "").trim();
+    var points = (intro.points || []).filter(Boolean);
+    if (!summary && !points.length) return "";
+
+    var head = "";
+    if (intro.digestLabel || intro.duration) {
+      head = '<div class="intro-digest-head">' +
+        (intro.digestLabel ? "<span>" + esc(intro.digestLabel) + "</span>" : "") +
+        (intro.duration ? '<span class="intro-digest-time">' + esc(intro.duration) + "</span>" : "") +
+        "</div>";
+    }
+    return '<div class="intro-digest">' + head +
+      (summary ? '<p class="intro-digest-summary">' + emphasize(summary) + "</p>" : "") +
+      (points.length
+        ? '<ul class="intro-digest-points">' + points.map(function (point, i) {
+            return "<li><i>" + String(i + 1).padStart(2, "0") + "</i>" + emphasize(point) + "</li>";
+          }).join("") + "</ul>"
+        : "") +
+      "</div>";
+  }
+
   /* ---------- Точка входа для каждой страницы ---------- */
   function init(renderPageFn) {
     pageRenderFn = renderPageFn || null;
@@ -758,14 +863,15 @@ window.SiteCommon = (function () {
   }
 
   return {
-    state: state, t: t, $: $, $all: $all, el: el, esc: esc, getPath: getPath,
+    state: state, t: t, $: $, $all: $all, el: el, esc: esc, emphasize: emphasize, getPath: getPath,
     bindTexts: bindTexts, renderChrome: renderChrome, initReveal: initReveal, afterRender: afterRender,
+    visibleProjects: visibleProjects,
     waveformHTML: waveformHTML, iconSVG: iconSVG, statIconSVG: statIconSVG,
     projectThumb: projectThumb, projectCardHTML: projectCardHTML,
     servicesByGroup: servicesByGroup, priceRow: priceRow, directionCard: directionCard,
     faqRow: faqRow,
-    socialIconSVG: socialIconSVG,
-    blogCardHTML: blogCardHTML, blogCard: blogCard,
+    socialIconSVG: socialIconSVG, arrowSVG: arrowSVG, withArrow: withArrow,
+    blogCardHTML: blogCardHTML, blogCard: blogCard, introDigest: introDigest,
     photoTile: photoTile, videoTile: videoTile, videoEmbed: videoEmbed, audioItem: audioItem,
     init: init
   };

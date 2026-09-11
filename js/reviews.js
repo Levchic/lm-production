@@ -1,14 +1,13 @@
 /**
- * Отзывы: карточки, карусель и форма «оставить отзыв».
+ * Отзывы: карточки и карусель.
  *
  * Отзывы хранятся там же, где весь контент — в js/content.js
  * (раздел testimonials.items). На сайте видны только те, у которых
- * status = "published"; форма присылает новый отзыв со статусом "pending",
- * и он появляется в админке в разделе «Отзывы».
+ * status = "published"; добавляет и публикует их владелец сайта через
+ * админку.
  *
- * Отправка идёт на send.php: он ничего не хранит, а сразу пересылает отзыв
- * в Telegram. Оттуда отзыв переносится на сайт через админку — так на сервере
- * не накапливаются чужие персональные данные.
+ * Формы «оставить отзыв» здесь намеренно нет: сайт ничего не принимает
+ * от посетителей и не собирает персональные данные.
  */
 window.SiteReviews = (function () {
   "use strict";
@@ -66,7 +65,7 @@ window.SiteReviews = (function () {
         '<span class="t-date">' + esc(item.date || "") + "</span>" +
         (item.sourceUrl
           ? '<a class="t-source-link" href="' + esc(item.sourceUrl) + '" target="_blank" rel="noopener noreferrer nofollow">' +
-              esc(d.testimonials.sourceLinkLabel || "Первоисточник") + " →</a>"
+              C.withArrow(d.testimonials.sourceLinkLabel || "Первоисточник") + "</a>"
           : "") +
       "</div>";
   }
@@ -203,130 +202,10 @@ window.SiteReviews = (function () {
     setupClamp(track);
   }
 
-  /* ---------------- форма ---------------- */
-
-  var formState = { rating: 0 };
-
-  function renderRatingInput() {
-    var box = $("#reviewRating");
-    if (!box) return;
-    box.innerHTML = "";
-    for (var i = 1; i <= 5; i++) {
-      var star = el("button", "star-btn" + (i <= formState.rating ? " on" : ""), "★");
-      star.type = "button";
-      star.setAttribute("aria-label", i + " / 5");
-      (function (value) {
-        star.onclick = function () {
-          formState.rating = formState.rating === value ? 0 : value;
-          renderRatingInput();
-        };
-      })(i);
-      box.appendChild(star);
-    }
-  }
-
-  function renderForm() {
-    var d = t();
-    var f = d.testimonials.form || {};
-    $("#reviewOpen").textContent = d.testimonials.addLabel || f.heading || "";
-    $("#reviewFormHeading").textContent = f.heading || "";
-    $("#reviewFormSub").textContent = f.sub || "";
-    $("#reviewNameLabel").textContent = f.name || "";
-    $("#reviewName").placeholder = f.namePlaceholder || "";
-    $("#reviewRoleLabel").textContent = f.role || "";
-    $("#reviewProfileLabel").textContent = f.profile || "";
-    $("#reviewProfileHint").textContent = f.profileHint || "";
-    $("#reviewVkBtn").textContent = f.vkButton || "";
-    $("#reviewTgBtn").textContent = f.tgButton || "";
-    $("#reviewRatingLabel").textContent = f.rating || "";
-    $("#reviewTextLabel").textContent = f.text || "";
-    $("#reviewConsentLabel").innerHTML = esc(f.consent || "") +
-      ' <a href="privacy.html" target="_blank" rel="noopener">' +
-      esc(C.state.lang === "en" ? "Privacy policy" : "Политика конфиденциальности") + "</a>";
-    $("#reviewSubmit").textContent = f.submit || "";
-    $("#reviewCancel").textContent = f.cancel || "";
-    renderRatingInput();
-  }
-
-  function note(text, isError) {
-    var node = $("#reviewNote");
-    node.textContent = text;
-    node.style.color = isError ? "var(--copper)" : "var(--bone-dim)";
-  }
-
-  function openForm(open) {
-    var wrap = $("#reviewFormWrap");
-    wrap.hidden = !open;
-    $("#reviewOpen").hidden = open;
-    if (open) $("#reviewName").focus();
-  }
-
-  function prefillProfile(prefix) {
-    var input = $("#reviewProfile");
-    if (!input.value || /^https:\/\/(vk\.com|t\.me)\/?$/.test(input.value)) input.value = prefix;
-    input.focus();
-    input.setSelectionRange(input.value.length, input.value.length);
-  }
-
-  function submitForm(e) {
-    e.preventDefault();
-    var d = t();
-    var f = d.testimonials.form || {};
-
-    var payload = {
-      type: "review",
-      name: $("#reviewName").value.trim(),
-      role: $("#reviewRole").value.trim(),
-      profileUrl: $("#reviewProfile").value.trim(),
-      rating: formState.rating,
-      text: $("#reviewText").value.trim(),
-      consent: $("#reviewConsent").checked,
-      website: $("#reviewHp").value,   // ловушка для ботов, проверяет сервер
-      lang: C.state.lang
-    };
-    if (!payload.name || !payload.text || !payload.consent) {
-      note(f.required || "", true);
-      return;
-    }
-
-    var button = $("#reviewSubmit");
-    button.disabled = true;
-    note("…");
-
-    fetch("send.php", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload)
-    })
-      .then(function (res) { return res.json().then(function (data) { return { ok: res.ok, data: data }; }); })
-      .then(function (r) {
-        if (!r.ok) throw new Error(r.data && r.data.error ? r.data.error : "error");
-        $("#reviewForm").reset();
-        formState.rating = 0;
-        renderRatingInput();
-        note(f.success || "");
-        window.setTimeout(function () { openForm(false); note(""); }, 4000);
-      })
-      .catch(function () { note(f.error || "", true); })
-      .then(function () { button.disabled = false; });
-  }
-
-  function setupForm() {
-    if (!$("#reviewForm")) return;
-    $("#reviewOpen").onclick = function () { openForm(true); };
-    $("#reviewCancel").onclick = function () { openForm(false); note(""); };
-    $("#reviewVkBtn").onclick = function () { prefillProfile("https://vk.com/"); };
-    $("#reviewTgBtn").onclick = function () { prefillProfile("https://t.me/"); };
-    $("#reviewForm").addEventListener("submit", submitForm);
-  }
-
   /** Вызывается при каждом рендере главной (в том числе при смене языка). */
   function render() {
     renderList();
-    renderForm();
   }
-
-  document.addEventListener("DOMContentLoaded", setupForm);
 
   return { render: render };
 })();

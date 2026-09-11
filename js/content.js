@@ -60,11 +60,29 @@ window.SITE_CONTENT = {
       "annotation": "Личный сайт-портфолио",
       "name": "Лев Майденко",
       "role": "Аранжировка, оркестровка, саунд-продакшн",
-      "description": "Продакшн оркестровой музыки для концертов и шоу — полный цикл от идеи до концертных партий, и не только.",
+      "description": "Продакшн оркестровой музыки для концертов и шоу — полный цикл **от идеи до концертных партий.**",
       "ctaPrimary": "Обсудить проект",
       "ctaSecondary": "Перейти в портфолио",
-      "photoCaption": "Рабочий стол",
-      "photoSrc": "assets/media/home/hero.jpg",
+      "photoCaption": "Галерея",
+      "frameLabel": "Кадр",
+      "photoSrc": "assets/media/home/img_48.jpg",
+      "photos": [
+        "assets/media/home/img_48.jpg",
+        "assets/media/portfolio/burton-show/05.jpg",
+        "assets/media/na-glavnuyu.jpg",
+        "assets/media/6.jpg",
+        "assets/media/snimok-ekrana-2026-08-11-v-15.43.32-2.jpg"
+      ],
+      "ticker": [
+        "Аранжировка",
+        "Оркестровка",
+        "Саунд-дизайн",
+        "Партитуры и партии",
+        "Нотный набор",
+        "MIDI-демо",
+        "Оркестровые шоу",
+        "Запись и сведение"
+      ],
       "marginNote": "«Шоу маст гоу он!»"
     },
     "introVideo": {
@@ -72,7 +90,18 @@ window.SITE_CONTENT = {
       "heading": "Как создаётся оркестровое шоу?",
       "subheading": "Своими словами о том, как устроена работа над оркестровым шоу от идеи до сцены.",
       "src": "assets/media/home/intro.mp4",
-      "poster": "assets/media/home/intro-poster.jpg",
+      "poster": "assets/media/home/about-1.jpg",
+      "digestLabel": "Коротко из ролика",
+      "duration": "1:23",
+      "summary": "За полторы минуты — весь маршрут работы над музыкой оркестрового шоу: от отбора материала по фильмам до партий, которые лежат на пультах у музыкантов. **Самое долгое здесь — снятие по слуху**: партию каждого инструмента нужно услышать, вычленить и записать.",
+      "points": [
+        "Программа: отбор материала и монтаж драматургии",
+        "Темпо-трек и сетка будущей партитуры",
+        "Снятие по слуху — партия каждого инструмента",
+        "Аранжировка под состав, саунд-дизайн, плейбек",
+        "Клик: синхронизация с видеорядом и светом",
+        "Партитура, вёрстка партий, репетиция"
+      ],
       "bgPhoto": ""
     },
     "about": {
@@ -101,7 +130,7 @@ window.SITE_CONTENT = {
       ],
       "portrait": "assets/media/about/photo_2026-08-10-23.33.43.jpg",
       "readMore": "Подробнее обо мне",
-      "bgPhoto": "assets/media/home/photo_2026-08-11-16.47.31.jpg"
+      "bgPhoto": ""
     },
     "forWhom": {
       "eyebrow": "Для кого",
@@ -111,23 +140,49 @@ window.SITE_CONTENT = {
       "items": [
         {
           "title": "Продюсеры шоу и художественные руководители оркестровых проектов",
-          "description": "Тематические программы, шоу саундтреков, концерты с полным циклом подготовки — от структуры номеров до партитур."
+          "description": "Тематические программы, шоу саундтреков, концерты с полным циклом подготовки — от структуры номеров до партитур.",
+          "tasks": [
+            "Структура программы",
+            "Оркестровка",
+            "Партитура и партии",
+            "Клик и плейбэк"
+          ]
         },
         {
           "title": "Кино, игры, реклама",
-          "description": "Музыкальные супервайзеры и продюсеры — аранжировка и оркестровка под видеоряд, саунд-дизайн, подготовка материалов к сессии."
+          "description": "Музыкальные супервайзеры и продюсеры — аранжировка и оркестровка под видеоряд, саунд-дизайн, подготовка материалов к сессии.",
+          "tasks": [
+            "Музыка под видеоряд",
+            "Саунд-дизайн",
+            "Материалы для записи"
+          ]
         },
         {
           "title": "Театры и продюсерские центры",
-          "description": "Партитуры под постановку, клик и плейбэк, синхронизация с видеорядом и дирижёрским пультом."
+          "description": "Партитуры под постановку, клик и плейбэк, синхронизация с видеорядом и дирижёрским пультом.",
+          "tasks": [
+            "Партитура под постановку",
+            "Клик и плейбэк",
+            "Синхронизация с видео"
+          ]
         },
         {
           "title": "Композиторы и аранжировщики",
-          "description": "Ассистентирование коллегам по цеху - помощь с оформлением сочинений, переаранжировкой, созданием партитур из демо-записей и наоборот, досочинение или редакция проектов различной сложности и формы."
+          "description": "Ассистентирование коллегам по цеху - помощь с оформлением сочинений, переаранжировкой, созданием партитур из демо-записей и наоборот, досочинение или редакция проектов различной сложности и формы.",
+          "tasks": [
+            "Нотный набор",
+            "Переаранжировка",
+            "Партитура из демо"
+          ]
         },
         {
           "title": "Музыканты и любители",
-          "description": "Любые коллаборации, совместные проекты или заказ с отчуждением — возможны различные варианты сотрудничества с различными музыкально-прикладными задачами: камерные переложения, MIDI-демо, набор нот, озвучивание сочинений профессиональными библиотеками, аранжировки под сессию записи или для любых других личных целей."
+          "description": "Любые коллаборации, совместные проекты или заказ с отчуждением — возможны различные варианты сотрудничества с различными музыкально-прикладными задачами: камерные переложения, MIDI-демо, набор нот, озвучивание сочинений профессиональными библиотеками, аранжировки под сессию записи или для любых других личных целей.",
+          "tasks": [
+            "Камерные переложения",
+            "MIDI-демо",
+            "Аранжировка под сессию"
+          ]
         }
       ]
     },
@@ -138,31 +193,37 @@ window.SITE_CONTENT = {
       "steps": [
         {
           "title": "Бриф и референсы",
-          "description": "Обсуждаем задачу, состав, сроки, права на материал и формат сдачи."
+          "description": "Обсуждаем задачу, состав, сроки, права на материал и формат сдачи.",
+          "result": "понятная задача, состав и срок"
         },
         {
           "title": "Оценка и план",
-          "description": "Даю ориентир по стоимости и этапам; при необходимости — промежуточное демо."
+          "description": "Даю ориентир по стоимости и этапам; при необходимости — промежуточное демо.",
+          "result": "смета и план этапов"
         },
         {
           "title": "Договор и предоплата 50%",
-          "description": "Работаем по договору: в нём фиксируем объём, даты и количество кругов правок. К работе приступаю после предоплаты 50%, остаток — при сдаче всех материалов и правок."
+          "description": "Работаем по договору: в нём фиксируем объём, даты и количество кругов правок. К работе приступаю после предоплаты 50%, остаток — при сдаче всех материалов и правок.",
+          "result": "договор с объёмом, датами и кругами правок"
         },
         {
           "title": "Черновики и репетиции",
-          "description": "Материалы проходят проверку в репетиционном процессе — вношу правки по согласованию."
+          "description": "Материалы проходят проверку в репетиционном процессе — вношу правки по согласованию.",
+          "result": "рабочие материалы и правки по репетициям"
         },
         {
           "title": "Финал",
-          "description": "Выдача финальных материалов в нужных форматах, сопровождение на площадке по согласованию."
+          "description": "Выдача финальных материалов в нужных форматах, сопровождение на площадке по согласованию.",
+          "result": "партитура, партии, клик и плейбэк"
         }
       ],
-      "bgPhoto": "assets/media/home/img_48.jpg"
+      "bgPhoto": "",
+      "resultLabel": "На выходе"
     },
     "portfolio": {
       "eyebrow": "Портфолио",
       "heading": "Портфолио",
-      "subheading": "Оркестровые шоу, аранжировки саундтреков, театральные партитуры и саунд-продакшн.",
+      "subheading": "Оркестровые шоу, аранжировки саундтреков, концертные партитуры и саунд-продакшн. То, что создавалось мной или при моем участии.",
       "viewAll": "Все проекты",
       "backToList": "← Все проекты",
       "detailsLabel": "Подробнее",
@@ -459,7 +520,8 @@ window.SITE_CONTENT = {
           "photos": [],
           "videos": [],
           "audio": [],
-          "isPlaceholder": false
+          "isPlaceholder": false,
+          "hidden": true
         },
         {
           "id": "dune-3",
@@ -475,12 +537,19 @@ window.SITE_CONTENT = {
             "Партитура и партии"
           ],
           "media": {
-            "type": "score",
-            "placeholder": true
+            "type": "photo",
+            "src": "assets/media/portfolio/dune-3/cover.jpg"
           },
-          "heroImage": "",
+          "heroImage": "assets/media/portfolio/dune-3/cover.jpg",
           "photos": [],
-          "videos": [],
+          "videos": [
+            {
+              "title": "Трейлер «Дюна, часть 3» — Imperial Orchestra",
+              "url": "https://www.youtube.com/watch?v=_KL8ab5f8NE",
+              "src": "",
+              "poster": ""
+            }
+          ],
           "audio": [],
           "isPlaceholder": false
         },
@@ -506,12 +575,19 @@ window.SITE_CONTENT = {
             "Партитуры и партии"
           ],
           "media": {
-            "type": "score",
-            "placeholder": true
+            "type": "photo",
+            "src": "assets/media/portfolio/gladiator/cover.jpg"
           },
-          "heroImage": "",
+          "heroImage": "assets/media/portfolio/gladiator/cover.jpg",
           "photos": [],
-          "videos": [],
+          "videos": [
+            {
+              "title": "«Гладиатор» — Imperial Orchestra, Hans Zimmer's Universe",
+              "url": "https://www.youtube.com/watch?v=mEqzV23sDgo",
+              "src": "",
+              "poster": ""
+            }
+          ],
           "audio": [],
           "isPlaceholder": false
         },
@@ -519,7 +595,7 @@ window.SITE_CONTENT = {
           "id": "james-bond",
           "category": "arrangement",
           "categoryLabel": "Аранжировка и оркестровка",
-          "title": "Аранжировка саундтрека из фильмов о Джеймсе Бонде",
+          "title": "Аранжировка саундтрека из фильма \"Джеймс Бонд\"",
           "meta": "12 минут · полный цикл продакшена",
           "description": "Аранжировка для оркестрового шоу: полный цикл продакшена — от снятия материала на слух до партитур, плейбэка и сдачи в репетиционный процесс.",
           "stats": [
@@ -537,12 +613,19 @@ window.SITE_CONTENT = {
             "Партитуры и партии"
           ],
           "media": {
-            "type": "score",
-            "placeholder": true
+            "type": "photo",
+            "src": "assets/media/portfolio/james-bond/cover.jpg"
           },
-          "heroImage": "",
+          "heroImage": "assets/media/portfolio/james-bond/cover.jpg",
           "photos": [],
-          "videos": [],
+          "videos": [
+            {
+              "title": "Джеймс Бонд — Imperial Orchestra, Cinema Medley 2",
+              "url": "https://www.youtube.com/watch?v=Tq55IojXt0Q",
+              "src": "",
+              "poster": ""
+            }
+          ],
           "audio": [],
           "isPlaceholder": false
         },
@@ -599,12 +682,19 @@ window.SITE_CONTENT = {
             "Партитуры и партии"
           ],
           "media": {
-            "type": "score",
-            "placeholder": true
+            "type": "photo",
+            "src": "assets/media/portfolio/the-boys/cover.jpg"
           },
-          "heroImage": "",
+          "heroImage": "assets/media/portfolio/the-boys/cover.jpg",
           "photos": [],
-          "videos": [],
+          "videos": [
+            {
+              "title": "Тема Хоумлендера, «Пацаны» — Imperial Orchestra Live",
+              "url": "https://www.youtube.com/watch?v=9TA8fujWBss",
+              "src": "",
+              "poster": ""
+            }
+          ],
           "audio": [],
           "isPlaceholder": false
         },
@@ -630,12 +720,19 @@ window.SITE_CONTENT = {
             "Партитуры и партии"
           ],
           "media": {
-            "type": "score",
-            "placeholder": true
+            "type": "photo",
+            "src": "assets/media/portfolio/stranger-things/cover.jpg"
           },
-          "heroImage": "",
+          "heroImage": "assets/media/portfolio/stranger-things/cover.jpg",
           "photos": [],
-          "videos": [],
+          "videos": [
+            {
+              "title": "«Очень странные дела» — Imperial Orchestra",
+              "url": "https://www.youtube.com/watch?v=7Yy_uveisEg",
+              "src": "",
+              "poster": ""
+            }
+          ],
           "audio": [],
           "isPlaceholder": false
         },
@@ -661,6 +758,32 @@ window.SITE_CONTENT = {
             "Партитуры и партии"
           ],
           "media": {
+            "type": "photo",
+            "src": "assets/media/portfolio/house-of-the-dragon/cover.jpg"
+          },
+          "heroImage": "assets/media/portfolio/house-of-the-dragon/cover.jpg",
+          "photos": [],
+          "videos": [
+            {
+              "title": "",
+              "url": "https://www.youtube.com/watch?v=asQEnl-mH-0&si=tVp45N8KglplBRo8",
+              "src": "",
+              "poster": ""
+            }
+          ],
+          "audio": [],
+          "isPlaceholder": false
+        },
+        {
+          "id": "new-project",
+          "category": "arrangement",
+          "categoryLabel": "Аранжировка и оркестровка",
+          "title": "Аранжировка саундтрека из фильма \"Одиссея\"",
+          "meta": "",
+          "description": "",
+          "stats": [],
+          "scope": [],
+          "media": {
             "type": "score",
             "placeholder": true
           },
@@ -668,6 +791,7 @@ window.SITE_CONTENT = {
           "photos": [],
           "videos": [],
           "audio": [],
+          "hidden": true,
           "isPlaceholder": false
         }
       ],
@@ -676,10 +800,10 @@ window.SITE_CONTENT = {
     "services": {
       "eyebrow": "Услуги",
       "heading": "Услуги и цены",
-      "subheading": "Три направления работы. Цены — ориентир; итог зависит от состава, сложности материала и сроков.",
+      "subheading": "Три направления работы. Ниже — ориентиры по каждой услуге, принцип расчёта и калькулятор предварительной стоимости.",
       "viewAll": "Все услуги и цены",
-      "note": "Цены ориентировочные и не являются публичной офертой: итоговая стоимость зависит от состава, объёма и сроков и фиксируется в договоре. Для точного расчёта свяжитесь со мной — обсудим задачу, дедлайны и формат сдачи. Работа ведётся по договору, старт — после предоплаты 50%.",
-      "bgPhoto": "assets/media/home/about-2.jpg",
+      "note": "Цены на этой странице — ориентиры и не являются публичной офертой. Итоговая стоимость зависит от состава, объёма и сроков и фиксируется в договоре.",
+      "bgPhoto": "",
       "detailsLabel": "Подробнее",
       "hideLabel": "Свернуть",
       "groups": [
@@ -709,11 +833,11 @@ window.SITE_CONTENT = {
           "bullets": []
         },
         {
-          "title": "Клик-трек и плейбэк",
+          "title": "Клик, плейбэк и саунд-дизайн",
           "group": "production",
-          "description": "Темповая сетка, метки, экспорт для сцены.",
-          "detail": "Собираю темповую сетку, метки перехода, экспортирую плейбэк в формате, готовом для звукорежиссёра и дирижёрского пульта.",
-          "price": "от 1 500 ₽ / номер",
+          "description": "Темповая сетка, метки, синтезаторные слои, шумы и переходы.",
+          "detail": "Собираю темповую сетку и метки перехода, программирую синтезаторные партии, хор и дополнительные слои, делаю шумы, атмосферы и переходы номеров. Экспортирую стемы и клик в формате, готовом для звукорежиссёра и дирижёрского пульта. Саунд-дизайн считается надбавкой к плейбэку: он делается в том же проекте и в ту же сдачу.",
+          "price": "от 1 500 ₽ / мин",
           "bullets": []
         },
         {
@@ -721,7 +845,7 @@ window.SITE_CONTENT = {
           "group": "arrangement",
           "description": "Оркестровка под заданный состав, динамический план.",
           "detail": "Работаю от эскиза или референса до полной партитуры под заданный состав: распределяю материал по секциям, выстраиваю динамический план всего номера, слежу за балансом и играбельностью партий. Стоимость зависит от состава и сложности материала.",
-          "price": "от 5 000 ₽ / мин",
+          "price": "от 7 000 ₽ / мин",
           "bullets": []
         },
         {
@@ -729,23 +853,31 @@ window.SITE_CONTENT = {
           "group": "arrangement",
           "description": "Адаптация под конкретный ансамбль без потери характера.",
           "detail": "Переношу партитуру или трек на камерный состав без потери характера оригинала — с учётом реальных возможностей конкретного ансамбля. Струнные и духовые составы.",
-          "price": "от 3 000 ₽ / мин",
+          "price": "от 3 500 ₽ / мин",
           "bullets": []
         },
         {
-          "title": "Саунд-дизайн",
+          "title": "Аудиоверсия партитуры",
           "group": "arrangement",
-          "description": "Синтетические партии и звуковой дизайн номеров.",
-          "detail": "Подбираю и программирую синтетические партии там, где живой состав не покрывает задачу, делаю звуковой дизайн номеров и переходов — с нуля или по присланным референсам. Слежу за тем, чтобы синтез не спорил с живым звуком.",
+          "description": "Послушать номер до того, как соберётся оркестр.",
+          "detail": "Озвучиваю партитуру оркестровыми библиотеками — с балансом, штрихами и динамикой, а не просто воспроизведением нот. Нужно, чтобы показать номер заказчику или худсовету до первой репетиции. Чаще всего идёт добавкой к набору или оркестровке: партитура уже в работе, и озвучить её стоит недорого. Отдельным заказом дороже — чужую партитуру сначала нужно внести в проект.",
           "price": "от 1 000 ₽ / мин",
           "bullets": []
         },
         {
-          "title": "Набор нот: партитура и партии",
+          "title": "Нотный набор",
           "group": "score",
-          "description": "Вёрстка, вычитка, подготовка к печати и архиву.",
-          "detail": "Набор и вёрстка в нотном редакторе, вычитка на предмет ошибок и неудобных мест, разметка страниц, подготовка комплекта партий к печати и архиву. Партитура — от 500 ₽ за страницу, партии — от 250 ₽ за страницу.",
-          "price": "от 500 ₽ / стр.",
+          "description": "Набор и вёрстка в редакторе: с файла, PDF или рукописи.",
+          "detail": "Переношу материал в нотный редактор: набор, вёрстка, вычитка на ошибки и неудобные места. Считается так, как удобнее мерить объём — постранично, по минутам или за номер. Отдельно оплачивается нотная подготовка: комплект партий каждому инструменту, с репетиционными цифрами и переворотами страниц в паузах. Цена зависит от состояния оригинала: чистый файл, разборчивая рукопись или черновик с правками.",
+          "price": "от 12 000 ₽ / номер",
+          "bullets": []
+        },
+        {
+          "title": "Мелодическая строка",
+          "group": "score",
+          "description": "Мелодия, слова и гармония на одном листе.",
+          "detail": "Снимаю с записи то, по чему играет группа и поёт солист: мелодическую линию, текст под ней и буквенные обозначения гармонии. Без партий и без партитуры — самая короткая дорога от фонограммы к нотам. Если нужны партии по инструментам, это уже снятие на слух или нотный набор.",
+          "price": "от 1 800 ₽ / мин",
           "bullets": []
         },
         {
@@ -753,10 +885,80 @@ window.SITE_CONTENT = {
           "group": "score",
           "description": "Расшифровка плотной фактуры с записи.",
           "detail": "Расшифровываю плотную многослойную фактуру с записи, когда нот не существует. Результат сверяется с референсом на каждом этапе.",
-          "price": "от 2 000 ₽ / мин",
+          "price": "от 3 000 ₽ / мин",
           "bullets": []
         }
-      ]
+      ],
+      "pricing": {
+        "eyebrow": "Принцип",
+        "heading": "Как формируется цена",
+        "subheading": "Четыре правила, по которым считается любой проект — от одного номера до программы на два отделения.",
+        "principles": [
+          {
+            "title": "Оплата помодульно",
+            "text": "Проект разбирается на этапы, и в счёт попадают только нужные. Есть партитура — снятие не нужно. Структура программы собрана — драматургия не нужна. Каждый этап можно взять отдельно."
+          },
+          {
+            "title": "Объём меряется тем, чем его удобно мерить",
+            "text": "Основа — минута звучащей музыки. Нотный набор считается ещё и постранично или за номер: иногда объём виден по стопке страниц, а не по хронометражу. И отдельно считается число номеров: десять коротких пьес требуют десяти проектов, десяти выводов партитуры и десяти комплектов партий, одна длинная — одного."
+          },
+          {
+            "title": "Сложность считается, а не назначается",
+            "text": "Категория выводится из семи формальных признаков партитуры: число станов, divisi, слои фактуры, хор, ударные, редкие инструменты, переменные метры. Ни вкус, ни размер оркестра на неё не влияют."
+          },
+          {
+            "title": "Цена фиксируется до начала работы",
+            "text": "Стоимость и объём согласуются письменно, до старта. Два круга правок входят в стоимость. Если по ходу меняется состав или структура — категория пересчитывается, и это обсуждается отдельно."
+          }
+        ]
+      },
+      "calculator": {
+        "eyebrow": "Расчёт",
+        "heading": "Калькулятор стоимости",
+        "subheading": "Начните с типа работы — этапы и вопросы подстроятся под него. Смета собирается сразу: ничего никуда не отправляется, расчёт остаётся в браузере."
+      },
+      "extra": {
+        "eyebrow": "Отдельно",
+        "heading": "Прикладные работы",
+        "subheading": "Задачи, которые не считаются формулой: слишком разные по объёму. Ставки стартовые, точная — после того, как увижу материал."
+      },
+      "terms": {
+        "eyebrow": "Условия",
+        "heading": "Условия работы",
+        "items": [
+          {
+            "title": "Предоплата 50%",
+            "text": "Работа начинается после предоплаты. Для проектов дольше месяца возможна поэтапная оплата."
+          },
+          {
+            "title": "Остаток — 5 рабочих дней",
+            "text": "Оплачивается в течение пяти рабочих дней после сдачи материала. Дата оплаты не привязана к дате премьеры или концерта."
+          },
+          {
+            "title": "Два круга правок включены",
+            "text": "Последующие круги и изменения после сдачи — 5 000 ₽ за круг. Правки, меняющие структуру, состав или тональный план, считаются новым объёмом."
+          },
+          {
+            "title": "Что сдаётся",
+            "text": "Партитура и партии в PDF, плейбэк стемами, клик отдельной дорожкой. Редактируемые исходники Sibelius и Logic Pro — по отдельному соглашению."
+          },
+          {
+            "title": "Сроки",
+            "text": "Считаются от момента, когда получен полный исходный материал и предоплата, а не от даты договорённости."
+          },
+          {
+            "title": "Ведение проекта",
+            "text": "3 000 ₽ один раз на проект, отдельной строкой в смете: разбор присланного материала, согласование сметы, документы и чек, переписка по ходу работы, хранение архива. Это не нотная работа — ноты считаются отдельно, по числу номеров. Доплаты до минимального заказа нет: короткая работа стоит столько, сколько стоит."
+          },
+          {
+            "title": "Права на результат",
+            "text": "Работа и права на неё — две разные цены. В базовую входит разовое исполнение; репертуар коллектива, исключительная лицензия и полная передача прав считаются надбавкой. Аранжировка чужого произведения — переработка: права на оригинал заказчик получает отдельно, у правообладателя или через РАО."
+          }
+        ],
+        "ctaHeading": "Точный прайс-лист — по запросу",
+        "ctaText": "Калькулятор показывает порядок суммы. Полный прайс со ставками по каждому модулю и категории высылаю по запросу — вместе с расчётом по вашему материалу и сроками.",
+        "ctaLabel": "Запросить прайс и расчёт"
+      }
     },
     "testimonials": {
       "eyebrow": "Отзывы",
@@ -872,27 +1074,7 @@ window.SITE_CONTENT = {
       },
       "sourceLinkLabel": "Смотреть первоисточник",
       "prevLabel": "Предыдущий отзыв",
-      "nextLabel": "Следующий отзыв",
-      "addLabel": "Оставить отзыв",
-      "form": {
-        "heading": "Оставить отзыв",
-        "sub": "Отзыв появится на сайте после проверки — обычно в течение дня.",
-        "name": "Как вас представить",
-        "namePlaceholder": "Имя или имя и фамилия",
-        "role": "Кем работаете / проект (необязательно)",
-        "profile": "Ссылка на ваш профиль (необязательно)",
-        "profileHint": "Так посетители увидят, что отзыв настоящий. Ссылка на VK или Telegram.",
-        "vkButton": "Указать профиль VK",
-        "tgButton": "Указать Telegram",
-        "rating": "Оценка",
-        "text": "Текст отзыва",
-        "consent": "Согласен(на) на публикацию отзыва на сайте и на обработку указанных данных",
-        "submit": "Отправить отзыв",
-        "cancel": "Отмена",
-        "success": "Спасибо! Отзыв отправлен на проверку и скоро появится на сайте.",
-        "error": "Не получилось отправить отзыв. Напишите его, пожалуйста, в Telegram или ВКонтакте — ссылки в разделе «Контакты».",
-        "required": "Заполните имя, текст отзыва и отметьте согласие."
-      }
+      "nextLabel": "Следующий отзыв"
     },
     "blog": {
       "eyebrow": "Новости",
@@ -1111,7 +1293,7 @@ window.SITE_CONTENT = {
           "isPlaceholder": false
         }
       ],
-      "bgPhoto": "assets/media/home/studio-screen.jpg",
+      "bgPhoto": "",
       "readMore": "Читать статью",
       "backLabel": "Все новости",
       "photosHeading": "Фото",
@@ -1165,22 +1347,12 @@ window.SITE_CONTENT = {
     "contact": {
       "eyebrow": "Контакты",
       "heading": "Контакты",
-      "subheading": "Коротко опишите задачу — отвечу с ориентиром по срокам и стоимости.",
-      "formLabels": {
-        "name": "Имя",
-        "contact": "Телефон или email",
-        "type": "Тип услуги",
-        "typeOptions": [
-          "Концертный продакшн",
-          "Аранжировка и оркестровка",
-          "Нотный цех",
-          "Другое / консультация"
-        ],
-        "message": "Описание задачи",
-        "submit": "Отправить",
-        "consent": "Согласен(на) на обработку персональных данных в соответствии с политикой конфиденциальности"
-      },
-      "formNote": "Заявка приходит мне в Telegram. Данные не сохраняются на сайте и никуда больше не передаются.",
+      "subheading": "Пишите на почту или в мессенджер — отвечу с ориентиром по срокам и стоимости.",
+      "email": "lev.maidenkoo@yandex.ru",
+      "emailLabel": "Почта",
+      "copyLabel": "Скопировать",
+      "copiedLabel": "Скопировано",
+      "copyFailLabel": "Не вышло — выделите вручную",
       "social": [
         {
           "label": "Telegram",
@@ -1267,11 +1439,29 @@ window.SITE_CONTENT = {
       "annotation": "score, rehearsal no. 3",
       "name": "Lev Maidenko",
       "role": "Arranging, orchestration, sound production",
-      "description": "Orchestral music production for concerts and shows — the full cycle, from the idea to the parts on the stands.",
+      "description": "Orchestral music production for concerts and shows — the full cycle, **from the idea to the parts on the stands.**",
       "ctaPrimary": "Discuss a project",
       "ctaSecondary": "View portfolio",
       "photoCaption": "At the desk",
-      "photoSrc": "assets/media/home/hero.jpg",
+      "frameLabel": "Frame",
+      "photoSrc": "assets/media/home/img_48.jpg",
+      "photos": [
+        "assets/media/home/img_48.jpg",
+        "assets/media/portfolio/burton-show/05.jpg",
+        "assets/media/na-glavnuyu.jpg",
+        "assets/media/6.jpg",
+        "assets/media/snimok-ekrana-2026-08-11-v-15.43.32-2.jpg"
+      ],
+      "ticker": [
+        "Arranging",
+        "Orchestration",
+        "Sound design",
+        "Scores and parts",
+        "Music engraving",
+        "MIDI mockups",
+        "Orchestral shows",
+        "Recording and mixing"
+      ],
       "marginNote": "“Patience and hard work will pull the fish from the pond”"
     },
     "introVideo": {
@@ -1279,7 +1469,18 @@ window.SITE_CONTENT = {
       "heading": "How an orchestral show comes together",
       "subheading": "A short, personal walkthrough of how work on an orchestral show goes — from idea to stage.",
       "src": "assets/media/home/intro.mp4",
-      "poster": "assets/media/home/intro-poster.jpg",
+      "poster": "assets/media/home/about-1.jpg",
+      "digestLabel": "In short",
+      "duration": "1:23",
+      "summary": "A minute and a half on the whole route of work on an orchestral show: from picking material out of the films to the parts sitting on the musicians’ stands. **The longest part is transcribing by ear** — every instrument’s line has to be heard, separated and written down.",
+      "points": [
+        "The programme: picking material, editing the drama",
+        "Tempo track and the grid of the score",
+        "Transcribing by ear — every instrument’s line",
+        "Arranging for the line-up, sound design, playback",
+        "Click track: syncing with video and lights",
+        "Score, engraved parts, rehearsal"
+      ],
       "bgPhoto": ""
     },
     "about": {
@@ -1308,7 +1509,7 @@ window.SITE_CONTENT = {
       ],
       "portrait": "assets/media/about/photo_2026-08-10-23.33.43.jpg",
       "readMore": "More about me",
-      "bgPhoto": "assets/media/home/photo_2026-08-11-16.47.31.jpg"
+      "bgPhoto": ""
     },
     "forWhom": {
       "eyebrow": "Who I work with",
@@ -1318,23 +1519,49 @@ window.SITE_CONTENT = {
       "items": [
         {
           "title": "Show producers & orchestral project directors",
-          "description": "Themed programs, soundtrack shows, concerts with full preparation cycle — from number structure to final scores."
+          "description": "Themed programs, soundtrack shows, concerts with full preparation cycle — from number structure to final scores.",
+          "tasks": [
+            "Programme structure",
+            "Orchestration",
+            "Score and parts",
+            "Click and playback"
+          ]
         },
         {
           "title": "Film, games, advertising",
-          "description": "Music supervisors and producers — arranging and orchestration to picture, sound design, session-ready materials."
+          "description": "Music supervisors and producers — arranging and orchestration to picture, sound design, session-ready materials.",
+          "tasks": [
+            "Music to picture",
+            "Sound design",
+            "Materials for the session"
+          ]
         },
         {
           "title": "Theatres & production centers",
-          "description": "Scores for productions, click and playback, synchronization with picture and conductor's podium."
+          "description": "Scores for productions, click and playback, synchronization with picture and conductor's podium.",
+          "tasks": [
+            "Score for the staging",
+            "Click and playback",
+            "Sync with video"
+          ]
         },
         {
           "title": "Новая карточка",
-          "description": "Assisting fellow composers and arrangers: preparing works for performance, re-arranging, turning demos into full scores and the other way round, completing or editing projects of any scale and form."
+          "description": "Assisting fellow composers and arrangers: preparing works for performance, re-arranging, turning demos into full scores and the other way round, completing or editing projects of any scale and form.",
+          "tasks": [
+            "Music engraving",
+            "Re-arranging",
+            "Score from a demo"
+          ]
         },
         {
           "title": "Other musicians",
-          "description": "Colleagues for collaborations and referrals — chamber transcriptions, MIDI demos, session arrangements."
+          "description": "Colleagues for collaborations and referrals — chamber transcriptions, MIDI demos, session arrangements.",
+          "tasks": [
+            "Chamber versions",
+            "MIDI mockups",
+            "Arrangement for a session"
+          ]
         }
       ]
     },
@@ -1345,26 +1572,32 @@ window.SITE_CONTENT = {
       "steps": [
         {
           "title": "Brief & references",
-          "description": "We discuss the task, ensemble, timeline, material rights and delivery format."
+          "description": "We discuss the task, ensemble, timeline, material rights and delivery format.",
+          "result": "a clear brief, line-up and deadline"
         },
         {
           "title": "Estimate & plan",
-          "description": "I give a cost and timeline estimate; a demo along the way if needed."
+          "description": "I give a cost and timeline estimate; a demo along the way if needed.",
+          "result": "an estimate and a stage plan"
         },
         {
           "title": "Contract & 50% deposit",
-          "description": "We work under a contract that fixes scope, calendar and the number of revision rounds. Work starts after a 50% deposit; the balance is due on delivery."
+          "description": "We work under a contract that fixes scope, calendar and the number of revision rounds. Work starts after a 50% deposit; the balance is due on delivery.",
+          "result": "a contract with scope, dates and revision rounds"
         },
         {
           "title": "Drafts & rehearsals",
-          "description": "Materials get checked in rehearsal — revisions as agreed."
+          "description": "Materials get checked in rehearsal — revisions as agreed.",
+          "result": "working materials and rehearsal fixes"
         },
         {
           "title": "Final delivery",
-          "description": "Final materials, project archive, on-site support if needed."
+          "description": "Final materials, project archive, on-site support if needed.",
+          "result": "score, parts, click and playback"
         }
       ],
-      "bgPhoto": "assets/media/home/img_48.jpg"
+      "bgPhoto": "",
+      "resultLabel": "You get"
     },
     "portfolio": {
       "eyebrow": "Portfolio",
@@ -1666,7 +1899,8 @@ window.SITE_CONTENT = {
           "photos": [],
           "videos": [],
           "audio": [],
-          "isPlaceholder": false
+          "isPlaceholder": false,
+          "hidden": true
         },
         {
           "id": "dune-3",
@@ -1682,12 +1916,19 @@ window.SITE_CONTENT = {
             "Score and parts"
           ],
           "media": {
-            "type": "score",
-            "placeholder": true
+            "type": "photo",
+            "src": "assets/media/portfolio/dune-3/cover.jpg"
           },
-          "heroImage": "",
+          "heroImage": "assets/media/portfolio/dune-3/cover.jpg",
           "photos": [],
-          "videos": [],
+          "videos": [
+            {
+              "title": "“Dune: Part Three” trailer — Imperial Orchestra",
+              "url": "https://www.youtube.com/watch?v=_KL8ab5f8NE",
+              "src": "",
+              "poster": ""
+            }
+          ],
           "audio": [],
           "isPlaceholder": false
         },
@@ -1713,12 +1954,19 @@ window.SITE_CONTENT = {
             "Scores and parts"
           ],
           "media": {
-            "type": "score",
-            "placeholder": true
+            "type": "photo",
+            "src": "assets/media/portfolio/gladiator/cover.jpg"
           },
-          "heroImage": "",
+          "heroImage": "assets/media/portfolio/gladiator/cover.jpg",
           "photos": [],
-          "videos": [],
+          "videos": [
+            {
+              "title": "“Gladiator” — Imperial Orchestra, Hans Zimmer's Universe",
+              "url": "https://www.youtube.com/watch?v=mEqzV23sDgo",
+              "src": "",
+              "poster": ""
+            }
+          ],
           "audio": [],
           "isPlaceholder": false
         },
@@ -1744,12 +1992,19 @@ window.SITE_CONTENT = {
             "Scores and parts"
           ],
           "media": {
-            "type": "score",
-            "placeholder": true
+            "type": "photo",
+            "src": "assets/media/portfolio/james-bond/cover.jpg"
           },
-          "heroImage": "",
+          "heroImage": "assets/media/portfolio/james-bond/cover.jpg",
           "photos": [],
-          "videos": [],
+          "videos": [
+            {
+              "title": "James Bond — Imperial Orchestra, Cinema Medley 2",
+              "url": "https://www.youtube.com/watch?v=Tq55IojXt0Q",
+              "src": "",
+              "poster": ""
+            }
+          ],
           "audio": [],
           "isPlaceholder": false
         },
@@ -1806,12 +2061,19 @@ window.SITE_CONTENT = {
             "Scores and parts"
           ],
           "media": {
-            "type": "score",
-            "placeholder": true
+            "type": "photo",
+            "src": "assets/media/portfolio/the-boys/cover.jpg"
           },
-          "heroImage": "",
+          "heroImage": "assets/media/portfolio/the-boys/cover.jpg",
           "photos": [],
-          "videos": [],
+          "videos": [
+            {
+              "title": "Homelander theme, “The Boys” — Imperial Orchestra Live",
+              "url": "https://www.youtube.com/watch?v=9TA8fujWBss",
+              "src": "",
+              "poster": ""
+            }
+          ],
           "audio": [],
           "isPlaceholder": false
         },
@@ -1837,12 +2099,19 @@ window.SITE_CONTENT = {
             "Scores and parts"
           ],
           "media": {
-            "type": "score",
-            "placeholder": true
+            "type": "photo",
+            "src": "assets/media/portfolio/stranger-things/cover.jpg"
           },
-          "heroImage": "",
+          "heroImage": "assets/media/portfolio/stranger-things/cover.jpg",
           "photos": [],
-          "videos": [],
+          "videos": [
+            {
+              "title": "“Stranger Things” — Imperial Orchestra",
+              "url": "https://www.youtube.com/watch?v=7Yy_uveisEg",
+              "src": "",
+              "poster": ""
+            }
+          ],
           "audio": [],
           "isPlaceholder": false
         },
@@ -1868,6 +2137,32 @@ window.SITE_CONTENT = {
             "Scores and parts"
           ],
           "media": {
+            "type": "photo",
+            "src": "assets/media/portfolio/house-of-the-dragon/cover.jpg"
+          },
+          "heroImage": "assets/media/portfolio/house-of-the-dragon/cover.jpg",
+          "photos": [],
+          "videos": [
+            {
+              "title": "",
+              "url": "https://www.youtube.com/watch?v=asQEnl-mH-0&si=tVp45N8KglplBRo8",
+              "src": "",
+              "poster": ""
+            }
+          ],
+          "audio": [],
+          "isPlaceholder": false
+        },
+        {
+          "id": "new-project",
+          "category": "arrangement",
+          "categoryLabel": "Аранжировка и оркестровка",
+          "title": "Новый проект",
+          "meta": "",
+          "description": "",
+          "stats": [],
+          "scope": [],
+          "media": {
             "type": "score",
             "placeholder": true
           },
@@ -1875,6 +2170,7 @@ window.SITE_CONTENT = {
           "photos": [],
           "videos": [],
           "audio": [],
+          "hidden": true,
           "isPlaceholder": false
         }
       ],
@@ -1883,10 +2179,10 @@ window.SITE_CONTENT = {
     "services": {
       "eyebrow": "Services",
       "heading": "Services & rates",
-      "subheading": "Three lines of work. Prices are indicative; the final quote depends on the ensemble, the complexity of the material and the timeline.",
+      "subheading": "Three lines of work. Below: an indicative rate for each service, how the price is built, and a calculator for a preliminary estimate.",
       "viewAll": "All services & rates",
-      "note": "Prices are indicative and do not constitute a public offer: the final cost depends on the ensemble, scope and deadlines and is fixed in the contract. Get in touch for an exact quote — we'll discuss the task, deadlines and delivery format. Work is done under a contract, starting after a 50% advance payment.",
-      "bgPhoto": "assets/media/home/about-2.jpg",
+      "note": "The prices on this page are indicative and do not constitute a public offer. The final cost depends on the ensemble, scope and deadlines, and is fixed in the contract.",
+      "bgPhoto": "",
       "detailsLabel": "Details",
       "hideLabel": "Hide",
       "groups": [
@@ -1916,11 +2212,11 @@ window.SITE_CONTENT = {
           "bullets": []
         },
         {
-          "title": "Click track & playback",
+          "title": "Click, playback and sound design",
           "group": "production",
-          "description": "Tempo grid, markers, export for the stage.",
-          "detail": "I build the tempo grid and transition markers, and export playback in a format ready for the sound engineer and conductor's podium.",
-          "price": "from 1,500 ₽ / piece",
+          "description": "Tempo grid, markers, synth layers, textures and transitions.",
+          "detail": "I build the tempo grid and transition markers, program synth parts, choir and extra layers, and create textures, atmospheres and transitions between numbers. Stems and click are exported ready for the sound engineer and the conductor’s podium. Sound design is priced as an addition to playback: it happens in the same project and the same delivery.",
+          "price": "from 1,500 ₽ / min",
           "bullets": []
         },
         {
@@ -1928,7 +2224,7 @@ window.SITE_CONTENT = {
           "group": "arrangement",
           "description": "Orchestration for the given ensemble, dynamic plan.",
           "detail": "I work from a sketch or reference to a full score for the given ensemble: spreading material across sections, shaping the dynamic plan of the whole number, watching balance and playability. The rate depends on the ensemble and the complexity of the material.",
-          "price": "from 5,000 ₽ / min",
+          "price": "from 7,000 ₽ / min",
           "bullets": []
         },
         {
@@ -1936,23 +2232,31 @@ window.SITE_CONTENT = {
           "group": "arrangement",
           "description": "Adapted to a specific ensemble, character intact.",
           "detail": "I move a score or track onto a chamber ensemble without losing the original's character — accounting for what that specific ensemble can actually play. Strings and winds.",
-          "price": "from 3,000 ₽ / min",
+          "price": "from 3,500 ₽ / min",
           "bullets": []
         },
         {
-          "title": "Sound design",
+          "title": "Audio version of the score",
           "group": "arrangement",
-          "description": "Synth parts and sound design for the numbers.",
-          "detail": "I select and program synth parts where the live ensemble can't cover the task, and design the sound of numbers and transitions — from scratch or to the references you send. I make sure synthesis doesn't fight the live sound.",
+          "description": "Hear the number before the orchestra ever gathers.",
+          "detail": "I play the score back through orchestral libraries — with balance, articulation and dynamics, not a bare rendering of the notes. It exists so you can show the number to a client or a board before the first rehearsal. Most often it rides along with engraving or orchestration: the score is already open, so it costs little. Commissioned on its own it costs more — someone else’s score has to be entered into a project first.",
           "price": "from 1,000 ₽ / min",
           "bullets": []
         },
         {
-          "title": "Engraving: score & parts",
+          "title": "Music engraving",
           "group": "score",
-          "description": "Setting, proofreading, print- and archive-ready delivery.",
-          "detail": "Setting and engraving in a notation editor, proofreading for errors and awkward passages, page layout, preparing a full set of parts for print and archive. Score — from 500 ₽ per page, parts — from 250 ₽ per page.",
-          "price": "from 500 ₽ / page",
+          "description": "Setting and layout in a notation editor: from a file, PDF or manuscript.",
+          "detail": "I move the material into a notation editor: setting, layout, proofreading for errors and awkward passages. Priced by whichever unit measures the job best — per page, per minute or per piece. Music preparation is billed separately: a part for every instrument, with rehearsal marks and page turns falling in the rests. The rate depends on the state of the original: a clean file, a legible manuscript or a draft full of corrections.",
+          "price": "from 12,000 ₽ / piece",
+          "bullets": []
+        },
+        {
+          "title": "Lead sheet",
+          "group": "score",
+          "description": "Melody, words and chords on a single sheet.",
+          "detail": "I take down from the recording what the band plays from and the singer sings from: the melodic line, the words under it and chord symbols above. No parts, no full score — the shortest road from a recording to notation. If parts for individual instruments are needed, that is transcription or engraving instead.",
+          "price": "from 1,800 ₽ / min",
           "bullets": []
         },
         {
@@ -1960,10 +2264,80 @@ window.SITE_CONTENT = {
           "group": "score",
           "description": "Decoding dense material from a recording.",
           "detail": "I decode dense, layered material from a recording where no score exists, checking the result against the reference at every step.",
-          "price": "from 2,000 ₽ / min",
+          "price": "from 3,000 ₽ / min",
           "bullets": []
         }
-      ]
+      ],
+      "pricing": {
+        "eyebrow": "Principle",
+        "heading": "How the price is built",
+        "subheading": "Four rules that govern every project, from a single number to a two-act programme.",
+        "principles": [
+          {
+            "title": "You pay per module",
+            "text": "The project is split into stages and only the stages you need are billed. If a score exists, no transcription. If the programme is already structured, no dramaturgy. Each stage can be commissioned on its own."
+          },
+          {
+            "title": "The job is measured by whatever measures it best",
+            "text": "The base unit is a minute of sounding music. Engraving can also be priced per page or per piece: sometimes the job is visible as a stack of pages rather than a running time. And the count of separate numbers is priced on top: ten short pieces mean ten projects, ten score exports and ten sets of parts; one long piece means one."
+          },
+          {
+            "title": "Complexity is calculated, not assigned",
+            "text": "The category follows from seven formal features of the score: staves, divisi, textural layers, choir, percussion, rare instruments, metre changes. Neither taste nor orchestra size affects it."
+          },
+          {
+            "title": "The price is fixed before work starts",
+            "text": "Cost and scope are agreed in writing, up front. Two rounds of revisions are included. If the ensemble or structure changes along the way, the category is recalculated and discussed separately."
+          }
+        ]
+      },
+      "calculator": {
+        "eyebrow": "Estimate",
+        "heading": "Cost calculator",
+        "subheading": "Start with the type of job — the stages and questions adjust to it. The estimate builds instantly: nothing is submitted anywhere, it stays in your browser."
+      },
+      "extra": {
+        "eyebrow": "Separately",
+        "heading": "Applied work",
+        "subheading": "Tasks a formula cannot price: they differ too much in scope. The rates below are starting points; the exact figure comes once I have seen the material."
+      },
+      "terms": {
+        "eyebrow": "Terms",
+        "heading": "Terms of work",
+        "items": [
+          {
+            "title": "50% advance",
+            "text": "Work begins once the advance is paid. Projects longer than a month can be paid in stages."
+          },
+          {
+            "title": "Balance within 5 working days",
+            "text": "Paid within five working days of delivery. The payment date is not tied to the premiere or the concert."
+          },
+          {
+            "title": "Two rounds of revisions included",
+            "text": "Further rounds, and changes made after delivery, are 5,000 ₽ per round. Revisions that alter structure, ensemble or key plan count as new scope."
+          },
+          {
+            "title": "What you receive",
+            "text": "Score and parts as PDF, playback as stems, click on a separate track. Editable Sibelius and Logic Pro projects by separate agreement."
+          },
+          {
+            "title": "Deadlines",
+            "text": "Counted from the moment the complete source material and the advance are received, not from the date we agreed."
+          },
+          {
+            "title": "Running the project",
+            "text": "3,000 ₽ once per project, as its own line in the estimate: reviewing the material you send, agreeing the figures, paperwork and receipt, correspondence along the way, keeping the archive. This is not notation work — the music itself is priced separately, per number. There is no top-up to a minimum order: a short job costs what it costs."
+          },
+          {
+            "title": "Rights to the result",
+            "text": "The work and the rights to it are two different prices. A single performance is included; ensemble repertoire, an exclusive licence and a full assignment are priced on top. An arrangement of someone else's work is a derivative: rights to the original are cleared separately by the client."
+          }
+        ],
+        "ctaHeading": "The full rate card, on request",
+        "ctaText": "The calculator shows the order of magnitude. The full rate card, with the rate for every module and category, is available on request — together with a quote for your material and a timeline.",
+        "ctaLabel": "Request the rate card and a quote"
+      }
     },
     "testimonials": {
       "eyebrow": "Testimonials",
@@ -2079,27 +2453,7 @@ window.SITE_CONTENT = {
       },
       "sourceLinkLabel": "See the original",
       "prevLabel": "Previous review",
-      "nextLabel": "Next review",
-      "addLabel": "Leave a review",
-      "form": {
-        "heading": "Leave a review",
-        "sub": "Your review will appear on the site after a quick check — usually within a day.",
-        "name": "Your name",
-        "namePlaceholder": "First name or full name",
-        "role": "Role / project (optional)",
-        "profile": "Link to your profile (optional)",
-        "profileHint": "Helps visitors see the review is genuine. A VK or Telegram link.",
-        "vkButton": "Add VK profile",
-        "tgButton": "Add Telegram",
-        "rating": "Rating",
-        "text": "Your review",
-        "consent": "I agree to publish this review on the site and to the processing of the data provided",
-        "submit": "Send review",
-        "cancel": "Cancel",
-        "success": "Thank you! The review has been sent for moderation.",
-        "error": "The review could not be sent. Please send it via Telegram or VK — links are in the Contacts section.",
-        "required": "Please fill in your name, the review text and tick the consent box."
-      }
+      "nextLabel": "Next review"
     },
     "blog": {
       "eyebrow": "News",
@@ -2318,7 +2672,7 @@ window.SITE_CONTENT = {
           "isPlaceholder": false
         }
       ],
-      "bgPhoto": "assets/media/home/studio-screen.jpg",
+      "bgPhoto": "",
       "readMore": "Read the article",
       "backLabel": "All news",
       "photosHeading": "Photos",
@@ -2372,22 +2726,12 @@ window.SITE_CONTENT = {
     "contact": {
       "eyebrow": "Contact",
       "heading": "Contact",
-      "subheading": "Briefly describe the task — I'll reply with a timeline and cost estimate.",
-      "formLabels": {
-        "name": "Name",
-        "contact": "Phone or email",
-        "type": "Service type",
-        "typeOptions": [
-          "Concert production",
-          "Arranging & orchestration",
-          "Music engraving",
-          "Other / consultation"
-        ],
-        "message": "Task description",
-        "submit": "Send",
-        "consent": "I consent to the processing of my personal data in accordance with the privacy policy"
-      },
-      "formNote": "Your message goes straight to my Telegram. Nothing is stored on the site and nothing is passed on to anyone else.",
+      "subheading": "Write by email or messenger — I'll reply with a timeline and cost estimate.",
+      "email": "lev.maidenkoo@yandex.ru",
+      "emailLabel": "Email",
+      "copyLabel": "Copy",
+      "copiedLabel": "Copied",
+      "copyFailLabel": "Couldn't copy — select it manually",
       "social": [
         {
           "label": "Telegram",

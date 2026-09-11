@@ -11,16 +11,6 @@
       "url": "http://localhost:4000"
     },
     {
-      "name": "site-4300",
-      "runtimeExecutable": "/bin/sh",
-      "runtimeArgs": [
-        "-c",
-        "PORT=4300 node server/server.js"
-      ],
-      "port": 4300,
-      "url": "http://localhost:4300"
-    },
-    {
       "name": "site-v2",
       "runtimeExecutable": "node",
       "runtimeArgs": [
@@ -28,15 +18,6 @@
       ],
       "port": 4100,
       "url": "http://localhost:4100"
-    },
-    {
-      "name": "site-v3",
-      "runtimeExecutable": "node",
-      "runtimeArgs": [
-        "/Volumes/T9/VibeCoding/ScoreProductionLab-v3/server/preview-4200.js"
-      ],
-      "port": 4200,
-      "url": "http://localhost:4200"
     }
   ]
 }

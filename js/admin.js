@@ -36,7 +36,8 @@
     { key: "title", label: "Название проекта", type: "text" },
     { key: "meta", label: "Подзаголовок (хронометраж, состав)", type: "text" },
     { key: "description", label: "Описание", type: "textarea" },
-    { key: "__cover", label: "Главное фото проекта", type: "cover" },
+    { key: "__cover", label: "Главное фото проекта", type: "cover",
+      hint: "Если у проекта есть ссылка на ролик, обложку можно забрать из него кнопкой «Взять кадр из ролика»." },
     {
       key: "stats", label: "Цифры в шапке проекта", type: "objects",
       titleKey: "value", addLabel: "Добавить цифру",
@@ -58,8 +59,8 @@
         { key: "url", label: "Ссылка на YouTube / VK / Rutube", type: "text", shared: true,
           hint: "Вставьте ссылку из адресной строки. Если она заполнена, файл ниже не нужен." },
         { key: "src", label: "Файл видео", type: "media", accept: "video", shared: true, posterKey: "poster" },
-        { key: "poster", label: "Кадр-заглушка", type: "media", accept: "photo", shared: true,
-          hint: "Подставляется автоматически при загрузке видео через админку." }
+        { key: "poster", label: "Кадр-заглушка", type: "media", accept: "photo", shared: true, fromVideo: "url",
+          hint: "Подставляется автоматически при загрузке видео через админку. Для ссылки на YouTube или Rutube — кнопка «Взять кадр из ролика»." }
       ]
     },
     {
@@ -72,7 +73,9 @@
       ]
     },
     { key: "isPlaceholder", label: "Пометить как незаполненный", type: "checkbox", shared: true,
-      hint: "На карточке появится значок «заполните»." }
+      hint: "На карточке появится значок «заполните»." },
+    { key: "hidden", label: "Черновик — не показывать на сайте", type: "checkbox", shared: true,
+      hint: "Проект остаётся здесь со всеми полями, но исчезает из портфолио и с главной. Снимите галочку, когда решите опубликовать." }
   ];
 
   var SECTIONS = [
@@ -91,8 +94,7 @@
             { key: "nav.brand", label: "Логотип (инициалы)", type: "text" },
             { key: "nav.cta", label: "Кнопка в шапке", type: "text" },
             { key: "footer.tagline", label: "Подпись в подвале", type: "text" },
-            { key: "footer.rights", label: "Строка о правах", type: "text" },
-            { key: "footer.faq", label: "Ссылка «Частые вопросы» в подвале", type: "text" }
+            { key: "footer.rights", label: "Строка о правах", type: "text" }
           ]
         },
         {
@@ -120,7 +122,8 @@
             { key: "hero.annotation", label: "Пометка сверху", type: "text" },
             { key: "hero.name", label: "Имя", type: "text" },
             { key: "hero.role", label: "Чем занимаетесь", type: "text" },
-            { key: "hero.description", label: "Описание", type: "textarea" },
+            { key: "hero.description", label: "Описание", type: "textarea",
+              hint: "Часть фразы можно выделить жирным, обернув её в двойные звёздочки: **вот так**." },
             { key: "hero.ctaPrimary", label: "Основная кнопка", type: "text" },
             { key: "hero.ctaSecondary", label: "Вторая кнопка", type: "text" },
             { key: "hero.marginNote", label: "Заметка на полях", type: "text" }
@@ -129,8 +132,13 @@
         {
           title: "Фото", fields: [
             { key: "hero.photoSrc", label: "Фоновое фото", type: "media", accept: "photo", shared: true, folder: "home",
-              hint: "Лучше горизонтальное или вертикальное фото не меньше 1600px по длинной стороне." },
-            { key: "hero.photoCaption", label: "Подпись к фото (правый нижний угол)", type: "text" }
+              hint: "Работает, только если галерея ниже пуста. Лучше горизонтальное фото не меньше 2000px по ширине." },
+            { key: "hero.photos", label: "Галерея на первом экране", type: "photos",
+              hint: "Два фото и больше — кадры будут медленно сменять друг друга. Первое фото видно сразу, поэтому оно должно быть самым крупным и резким." },
+            { key: "hero.photoCaption", label: "Подпись к фото (правый нижний угол)", type: "text" },
+            { key: "hero.ticker", label: "Бегущая строка внизу первого экрана", type: "strings", shared: false,
+              addLabel: "Добавить слово",
+              hint: "Короткие слова о том, чем вы занимаетесь. Меньше двух — строка не показывается." }
           ]
         },
         {
@@ -138,6 +146,14 @@
             { key: "introVideo.eyebrow", label: "Надзаголовок", type: "text" },
             { key: "introVideo.heading", label: "Заголовок", type: "text" },
             { key: "introVideo.subheading", label: "Описание", type: "textarea" },
+            { key: "introVideo.digestLabel", label: "Подпись над пересказом", type: "text",
+              hint: "Например: «Коротко из ролика». Пусто — подписи не будет." },
+            { key: "introVideo.duration", label: "Хронометраж ролика", type: "text", shared: true,
+              hint: "Например: 1:23. Показывается справа от подписи." },
+            { key: "introVideo.summary", label: "Пересказ ролика", type: "textarea",
+              hint: "Два-три предложения для тех, кто не смотрит видео. Часть текста можно выделить жирным: **вот так**." },
+            { key: "introVideo.points", label: "Тезисы из ролика", type: "strings", addLabel: "Добавить тезис",
+              hint: "Короткие строки, 3–5 штук. Нумерация проставляется сама." },
             { key: "introVideo.src", label: "Файл видео", type: "media", accept: "video", shared: true, folder: "home", posterKey: "introVideo.poster" },
             { key: "introVideo.poster", label: "Кадр-заглушка", type: "media", accept: "photo", shared: true, folder: "home",
               hint: "Подставляется сама при загрузке видео выше." },
@@ -183,10 +199,12 @@
             {
               key: "forWhom.items", label: "", type: "objects",
               titleKey: "title", addLabel: "Добавить карточку",
-              newItem: { title: "Новая карточка", description: "" },
+              newItem: { title: "Новая карточка", description: "", tasks: [] },
               item: [
                 { key: "title", label: "Заголовок", type: "text" },
-                { key: "description", label: "Описание", type: "textarea" }
+                { key: "description", label: "Описание", type: "textarea" },
+                { key: "tasks", label: "Что обычно нужно", type: "strings", addLabel: "Добавить пункт",
+                  hint: "Короткие ярлыки под описанием — 3–4 штуки. Пусто — строки ярлыков не будет." }
               ]
             }
           ]
@@ -201,6 +219,7 @@
             { key: "process.eyebrow", label: "Надзаголовок", type: "text" },
             { key: "process.heading", label: "Заголовок", type: "text" },
             { key: "process.subheading", label: "Описание", type: "textarea" },
+            { key: "process.resultLabel", label: "Подпись перед «что на выходе»", type: "text" },
             { key: "process.bgPhoto", label: "Фото в фоне раздела", type: "media", accept: "photo", shared: true, folder: "home",
               hint: "Оставьте пустым — раздел будет однотонным со световыми пятнами." }
           ]
@@ -210,10 +229,12 @@
             {
               key: "process.steps", label: "", type: "objects",
               titleKey: "title", addLabel: "Добавить шаг",
-              newItem: { title: "Новый шаг", description: "" },
+              newItem: { title: "Новый шаг", description: "", result: "" },
               item: [
                 { key: "title", label: "Название шага", type: "text" },
-                { key: "description", label: "Описание", type: "textarea" }
+                { key: "description", label: "Описание", type: "textarea" },
+                { key: "result", label: "Что на выходе", type: "text",
+                  hint: "Одна строка: что заказчик получает после этого шага. Пусто — строки не будет." }
               ]
             }
           ]
@@ -258,12 +279,15 @@
             {
               key: "portfolio.projects", label: "", type: "objects",
               folder: function (project) { return project && project.id ? "portfolio/" + project.id : "portfolio"; },
-              titleKey: "title", addLabel: "Добавить проект", collapsed: true,
+              titleKey: "title", addLabel: "Добавить проект", collapsed: true, draftKey: "hidden",
               newItem: {
                 id: "new-project", category: "arrangement", categoryLabel: "Аранжировка и оркестровка",
                 title: "Новый проект", meta: "", description: "",
                 stats: [], scope: [], media: { type: "score", placeholder: true },
-                heroImage: "", photos: [], videos: [], audio: [], isPlaceholder: false
+                heroImage: "", photos: [], videos: [], audio: [], isPlaceholder: false,
+                /* новый проект заводится черновиком: на сайт он попадёт,
+                   когда снимут галочку — а не в момент создания */
+                hidden: true
               },
               item: PROJECT_ITEM
             }
@@ -412,8 +436,8 @@
                 { key: "excerpt", label: "Короткий анонс (виден на карточке)", type: "textarea" },
                 { key: "body", label: "Полный текст статьи", type: "textarea",
                   hint: "Пустая строка между абзацами = новый абзац на странице." },
-                { key: "cover", label: "Обложка", type: "media", accept: "photo", shared: true,
-                  hint: "Показывается и на карточке, и фоном в шапке статьи. Если не выбрать — возьмётся первое фото." },
+                { key: "cover", label: "Обложка", type: "media", accept: "photo", shared: true, fromVideo: "video",
+                  hint: "Показывается и на карточке, и фоном в шапке статьи. Если не выбрать — возьмётся первое фото. Есть ссылка на ролик — кадр можно забрать кнопкой." },
                 { key: "video", label: "Ссылка на видео (YouTube / VK / Rutube)", type: "text", shared: true,
                   hint: "Вставьте ссылку из адресной строки — на странице появится встроенный плеер." },
                 { key: "photos", label: "Фотографии в статье", type: "photos" },
@@ -434,39 +458,6 @@
       ]
     },
     {
-      id: "faq", title: "Вопросы",
-      hint: "На главной показываются первые пять вопросов, полный список — на странице faq.html.",
-      groups: [
-        {
-          title: "Заголовки", fields: [
-            { key: "faq.eyebrow", label: "Надзаголовок", type: "text" },
-            { key: "faq.heading", label: "Заголовок", type: "text" },
-            { key: "faq.subheading", label: "Описание", type: "textarea" },
-            { key: "faq.viewAll", label: "Ссылка «все вопросы»", type: "text" },
-            { key: "faq.note", label: "Примечание под списком", type: "textarea" },
-            { key: "faq.bgPhoto", label: "Фото в фоне раздела", type: "media", accept: "photo", shared: true, folder: "home",
-              hint: "Оставьте пустым — раздел будет однотонным со световыми пятнами." },
-            { key: "faq.openLabel", label: "Подпись «раскрыть ответ»", type: "text" },
-            { key: "faq.hideLabel", label: "Подпись «свернуть ответ»", type: "text" }
-          ]
-        },
-        {
-          title: "Вопросы и ответы", fields: [
-            {
-              key: "faq.items", label: "", type: "objects",
-              titleKey: "question", addLabel: "Добавить вопрос", collapsed: true,
-              newItem: { question: "Новый вопрос", answer: "" },
-              item: [
-                { key: "question", label: "Вопрос", type: "text",
-                  hint: "Формулируйте так, как спрашивает заказчик, — по этой строке вопрос ищут глазами." },
-                { key: "answer", label: "Ответ", type: "textarea" }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
       id: "contact", title: "Контакты",
       groups: [
         {
@@ -474,7 +465,9 @@
             { key: "contact.eyebrow", label: "Надзаголовок", type: "text" },
             { key: "contact.heading", label: "Заголовок", type: "text" },
             { key: "contact.subheading", label: "Описание", type: "textarea" },
-            { key: "contact.formNote", label: "Примечание под формой", type: "textarea" },
+            { key: "contact.email", label: "Почта", type: "text",
+              hint: "Показывается крупно первой строкой раздела. Оставьте пустым — блок почты исчезнет." },
+            { key: "contact.emailLabel", label: "Подпись над почтой", type: "text" },
             { key: "contact.directHeading", label: "Заголовок блока соцсетей", type: "text" },
             { key: "contact.directNote", label: "Текст над соцсетями", type: "textarea" },
             { key: "contact.directFoot", label: "Строчка под соцсетями", type: "text" },
@@ -483,13 +476,10 @@
           ]
         },
         {
-          title: "Подписи в форме", fields: [
-            { key: "contact.formLabels.name", label: "Поле «Имя»", type: "text" },
-            { key: "contact.formLabels.contact", label: "Поле «Контакт»", type: "text" },
-            { key: "contact.formLabels.type", label: "Поле «Тип услуги»", type: "text" },
-            { key: "contact.formLabels.message", label: "Поле «Описание задачи»", type: "text" },
-            { key: "contact.formLabels.submit", label: "Кнопка отправки", type: "text" },
-            { key: "contact.formLabels.typeOptions", label: "Варианты в списке услуг", type: "strings", addLabel: "Добавить вариант" }
+          title: "Кнопка копирования почты", fields: [
+            { key: "contact.copyLabel", label: "Обычная подпись", type: "text" },
+            { key: "contact.copiedLabel", label: "Подпись после копирования", type: "text" },
+            { key: "contact.copyFailLabel", label: "Подпись, если скопировать не вышло", type: "text" }
           ]
         },
         {
@@ -507,6 +497,8 @@
         }
       ]
     },
+    { id: "pricing", title: "Калькулятор", custom: "pricing",
+      hint: "Ставки, коэффициенты и вопросы калькулятора на странице услуг." },
     { id: "media", title: "Медиатека", custom: "media", hint: "Все файлы сайта: загрузка, просмотр и удаление." }
   ];
 
@@ -517,9 +509,22 @@
   var state = {
     token: localStorage.getItem("admin-token") || "",
     content: null,
+    /* Правки прайса — плоская карта «путь → значение», только отличия от
+       js/pricing-config.js. Сам прайс здесь не хранится: он приходит
+       обычным скриптом, тем же файлом, что и на сайте. */
+    pricing: {},
+    /* Снимок того, что лежит на диске. Нужен, чтобы «есть несохранённые
+       изменения» не загоралось от правки, которую тут же и отменили. */
+    pricingSaved: "{}",
     lang: "ru",
     section: "general",
     dirty: false,
+    /* Кнопка «Сохранить» одна, а разделов, которые она сохраняет, два.
+       Флаги отдельно, чтобы не переписывать контент из-за правки ставки
+       и наоборот. */
+    dirtyContent: false,
+    dirtyPricing: false,
+    pricingOpen: {},
     collapsed: {}
   };
 
@@ -555,12 +560,32 @@
   }
 
   function markDirty() {
+    state.dirtyContent = true;
+    flagDirty();
+  }
+  /** Сравнение с сохранённым, а не безусловный флаг: правка и возврат к
+      исходному — это отсутствие изменений, а не два изменения подряд. */
+  function markDirtyPricing() {
+    state.dirtyPricing = JSON.stringify(sortedPricing()) !== state.pricingSaved;
+    if (state.dirtyPricing || state.dirtyContent) flagDirty();
+    else if (!state.dirtyContent) markClean();
+  }
+
+  /* Ключи сортируются, чтобы снимок не зависел от порядка правок. */
+  function sortedPricing() {
+    var out = {};
+    Object.keys(state.pricing).sort().forEach(function (k) { out[k] = state.pricing[k]; });
+    return out;
+  }
+  function flagDirty() {
     state.dirty = true;
     $("#dirtyFlag").hidden = false;
     $("#btnSave").disabled = false;
   }
   function markClean() {
     state.dirty = false;
+    state.dirtyContent = false;
+    state.dirtyPricing = false;
     $("#dirtyFlag").hidden = true;
     $("#btnSave").disabled = true;
   }
@@ -713,6 +738,7 @@
 
     if (field.type === "media") {
       wrap.appendChild(labelNode(field));
+      var mediaFolder = folderOf(field, active);
       wrap.appendChild(mediaControl(getIn(active, field.key) || "", field.accept, function (src, file) {
         write(src);
         // видео при загрузке отдаёт кадр-заглушку — сразу кладём его в поле постера
@@ -721,7 +747,9 @@
           setIn(other, field.posterKey, file.poster);
         }
         rerender();
-      }, folderOf(field, active)));
+      }, mediaFolder,
+      // fromVideo — ключ соседнего поля со ссылкой на ролик
+      field.fromVideo ? videoCoverAction(getIn(active, field.fromVideo), mediaFolder) : null));
       var h3 = hintNode(field); if (h3) wrap.appendChild(h3);
       host.appendChild(wrap);
       return;
@@ -732,6 +760,7 @@
       wrap.appendChild(coverControl(ruParent, enParent, rerender, folderOf(field, active)));
       wrap.appendChild(el("div", "media-path",
         "Используется и на карточке в списке, и фоном в шапке страницы проекта."));
+      var hc = hintNode(field); if (hc) wrap.appendChild(hc);
       host.appendChild(wrap);
       return;
     }
@@ -793,6 +822,12 @@
         head.appendChild(el("span", "item-index", String(i + 1)));
         var titleText = (field.titleKey ? activeItem[field.titleKey] : "") || "Без названия";
         head.appendChild(el("span", "item-title", String(titleText)));
+
+        /* Черновик видно в свёрнутом списке — иначе о скрытом проекте
+           вспоминаешь, только открыв его карточку. */
+        if (field.draftKey && activeItem[field.draftKey]) {
+          head.appendChild(el("span", "status-pill hidden", "Черновик"));
+        }
 
         if (field.statusKey) {
           var status = activeItem[field.statusKey] || "published";
@@ -864,7 +899,23 @@
     return box;
   }
 
-  function mediaControl(src, accept, onChange, folder) {
+  /**
+   * Действие «взять кадр из ролика» для медиа-поля: сервер скачивает
+   * заставку с YouTube или Rutube и кладёт её в ту же папку, что и
+   * файлы, загруженные руками. Возвращает null, если ссылки нет, —
+   * тогда кнопки просто не будет.
+   */
+  function videoCoverAction(url, folder, label) {
+    if (!String(url || "").trim()) return null;
+    return {
+      label: label || "Взять кадр из ролика",
+      run: function () {
+        return api("/api/video-cover", { method: "POST", json: { url: url, folder: folder || "" } });
+      }
+    };
+  }
+
+  function mediaControl(src, accept, onChange, folder, extra) {
     var wrap = el("div", "media-field");
     wrap.appendChild(previewNode(src));
     var meta = el("div", "media-meta");
@@ -879,6 +930,25 @@
       });
     };
     actions.appendChild(pick);
+
+    if (extra) {
+      var grab = el("button", "btn btn-small", extra.label);
+      grab.type = "button";
+      grab.onclick = function () {
+        var back = grab.textContent;
+        grab.disabled = true;
+        grab.textContent = "Забираю кадр…";
+        extra.run().then(function (data) {
+          toast("Обложка взята из ролика");
+          onChange(data.src, { src: data.src });
+        }).catch(function (err) {
+          grab.disabled = false;
+          grab.textContent = back;
+          toast(err.message, true);
+        });
+      };
+      actions.appendChild(grab);
+    }
 
     if (src) {
       var clear = el("button", "btn btn-small btn-danger", "Убрать");
@@ -911,7 +981,10 @@
       markDirty();
       rerender();
     }
-    return mediaControl(current, "photo", apply, folder);
+    // Ссылку берём из первого ролика проекта: обычно он там один и есть.
+    var video = (ruItem.videos || []).filter(function (v) { return v && v.url; })[0];
+    return mediaControl(current, "photo", apply, folder,
+      video ? videoCoverAction(video.url, folder, "Взять кадр из ролика") : null);
   }
 
   function photosControl(ruItem, enItem, key, rerender, folder) {
@@ -1081,6 +1154,237 @@
      РЕНДЕР РАЗДЕЛА
      ===================================================================== */
 
+  /* =====================================================================
+     РЕДАКТОР ПРАЙСА
+     =====================================================================
+     Правится не сам js/pricing-config.js, а накладка поверх него: карта
+     «путь → значение» с одними отличиями (см. server/pricing-store.js).
+     Поэтому у каждого поля есть исходное значение, с которым его можно
+     сравнить, — отсюда и подсветка изменённого, и «вернуть».
+
+     Список полей сюда не вписан: его собирает js/pricing-schema.js прямо
+     из прайса. Новый этап, дописанный в прайс руками, появится в этом
+     разделе сам.
+     ===================================================================== */
+
+  var Schema = window.PricingSchema;
+
+  /** Исходный прайс — снимок до правок. С ним сравниваем и к нему возвращаем. */
+  function basePricing() { return window.PRICING_CONFIG; }
+
+  /** Действующий прайс: исходный плюс правки. */
+  function effectivePricing() { return Schema.apply(basePricing(), state.pricing); }
+
+  function pricingValue(path) {
+    return Object.prototype.hasOwnProperty.call(state.pricing, path)
+      ? state.pricing[path]
+      : Schema.getPath(basePricing(), path);
+  }
+  function pricingEdited(path) {
+    return Object.prototype.hasOwnProperty.call(state.pricing, path);
+  }
+
+  /** Значение, совпавшее с исходным, правкой не считается — иначе накладка
+      копила бы записи «поменял и вернул обратно». */
+  function pricingSet(path, value) {
+    if (value === null) return;
+    if (JSON.stringify(value) === JSON.stringify(Schema.getPath(basePricing(), path))) {
+      delete state.pricing[path];
+    } else {
+      state.pricing[path] = value;
+    }
+    markDirtyPricing();
+  }
+  function pricingReset(path) {
+    delete state.pricing[path];
+    markDirtyPricing();
+  }
+
+  /** Подпись поля по пути — чтобы в сводке изменений было видно, что это. */
+  function pricingLabels() {
+    var map = {};
+    Schema.build(effectivePricing()).forEach(function (group) {
+      group.blocks.forEach(function (blk) {
+        blk.fields.forEach(function (fl) {
+          map[fl.path] = { group: group.title, block: blk.title, label: fl.label, kind: fl.kind };
+        });
+      });
+    });
+    return map;
+  }
+
+  function pricingField(fl) {
+    var wrap = el("label", "price-field" + (fl.wide ? " price-field--wide" : ""));
+    var kind = Schema.KIND[fl.kind];
+
+    var caption = el("span", "price-field-label");
+    caption.textContent = fl.label;
+    wrap.appendChild(caption);
+
+    var row = el("span", "price-field-row");
+    var input = document.createElement("input");
+    input.type = "text";
+    input.inputMode = fl.kind === "text" ? "text" : "decimal";
+    input.value = kind.show(pricingValue(fl.path));
+    input.className = "price-input" + (pricingEdited(fl.path) ? " is-edited" : "");
+    input.setAttribute("data-path", fl.path);
+
+    row.appendChild(input);
+
+    /* Кнопка возврата есть у каждого поля, но видна только у изменённого.
+       Держать её в разметке всегда, а не дорисовывать по месту, нужно по
+       двум причинам: она должна появляться сразу при вводе (перерисовать
+       форму в этот момент нельзя — из поля выпрыгнет курсор), и ширина
+       поля не должна прыгать от того, тронули его или нет. */
+    var undo = el("button", "price-undo", "⟲");
+    undo.type = "button";
+    undo.title = "Вернуть исходное: " + kind.show(Schema.getPath(basePricing(), fl.path));
+    undo.classList.toggle("is-hidden", !pricingEdited(fl.path));
+    undo.onclick = function () {
+      pricingReset(fl.path);
+      input.value = kind.show(Schema.getPath(basePricing(), fl.path));
+      input.classList.remove("is-edited");
+      undo.classList.add("is-hidden");
+      refreshPricingSummary();
+    };
+    row.appendChild(undo);
+
+    input.addEventListener("input", function () {
+      var parsed = kind.parse(input.value);
+      if (parsed === null) return;          /* пустое поле — просто ждём ввода */
+      pricingSet(fl.path, parsed);
+      var edited = pricingEdited(fl.path);
+      input.classList.toggle("is-edited", edited);
+      undo.classList.toggle("is-hidden", !edited);
+      refreshPricingSummary();
+    });
+
+    wrap.appendChild(row);
+    return wrap;
+  }
+
+  /** Сводка «что изменено»: было → стало, с возвратом по одному и всех разом. */
+  function pricingSummary() {
+    var box = el("div", "price-summary");
+    var paths = Object.keys(state.pricing).sort();
+    var labels = pricingLabels();
+
+    if (!paths.length) {
+      box.appendChild(el("p", "price-summary-empty",
+        "Прайс не правился — калькулятор считает по js/pricing-config.js."));
+      return box;
+    }
+
+    var head = el("div", "price-summary-head");
+    head.appendChild(el("strong", null,
+      "Изменено полей: " + paths.length));
+    var resetAll = el("button", "btn btn-small", "Вернуть всё к исходному");
+    resetAll.type = "button";
+    resetAll.onclick = function () {
+      if (!confirm("Убрать все правки прайса и вернуться к js/pricing-config.js?")) return;
+      state.pricing = {};
+      markDirtyPricing();
+      renderSection();
+    };
+    head.appendChild(resetAll);
+    box.appendChild(head);
+
+    var list = el("ul", "price-diff");
+    paths.forEach(function (path) {
+      var meta = labels[path];
+      var kind = Schema.KIND[(meta && meta.kind) || "text"];
+      var was = kind.show(Schema.getPath(basePricing(), path));
+      var now = kind.show(state.pricing[path]);
+
+      var li = el("li");
+      var name = el("span", "price-diff-name");
+      name.textContent = meta ? meta.block + " · " + meta.label : path;
+      li.appendChild(name);
+
+      var change = el("span", "price-diff-value");
+      change.innerHTML = "<s></s> → <b></b>";
+      change.querySelector("s").textContent = was;
+      change.querySelector("b").textContent = now;
+      li.appendChild(change);
+
+      /* Путь, которого в схеме нет: остался от этапа, удалённого из
+         прайса руками. Показываем как есть, чтобы его было видно и
+         можно было убрать. */
+      if (!meta) li.classList.add("is-orphan");
+
+      var undo = el("button", "price-undo", "⟲");
+      undo.type = "button";
+      undo.title = "Вернуть исходное";
+      undo.onclick = function () { pricingReset(path); renderSection(); };
+      li.appendChild(undo);
+      /* В сводке кнопка видна всегда: там перечислены только изменённые. */
+      undo.classList.remove("is-hidden");
+
+      list.appendChild(li);
+    });
+    box.appendChild(list);
+    return box;
+  }
+
+  /** Перерисовать только сводку — при вводе в поле трогать форму нельзя,
+      иначе курсор выпрыгивает из инпута. */
+  function refreshPricingSummary() {
+    var host = $("#priceSummary");
+    if (!host) return;
+    host.innerHTML = "";
+    host.appendChild(pricingSummary());
+  }
+
+  function renderPricing(host) {
+    var intro = el("p", "section-hint",
+      "Здесь правятся только цифры и подписи. Сами ставки живут в js/pricing-config.js — " +
+      "рядом с объяснением, откуда каждая взялась; админка их не переписывает, " +
+      "а держит отдельным файлом отличий. Поэтому любое поле можно вернуть к исходному.");
+    host.appendChild(intro);
+
+    var summaryHost = el("div", null);
+    summaryHost.id = "priceSummary";
+    summaryHost.appendChild(pricingSummary());
+    host.appendChild(summaryHost);
+
+    var cfg = effectivePricing();
+    Schema.build(cfg).forEach(function (group) {
+      var open = state.pricingOpen[group.title];
+      if (open === undefined) open = !!group.open;
+
+      var det = el("details", "price-group");
+      det.open = open;
+      det.addEventListener("toggle", function () { state.pricingOpen[group.title] = det.open; });
+
+      var sum = el("summary");
+      sum.appendChild(el("span", "price-group-title", group.title));
+      if (group.note) sum.appendChild(el("span", "price-group-note", group.note));
+      det.appendChild(sum);
+
+      var body = el("div", "price-group-body");
+      group.blocks.forEach(function (blk) {
+        var b = el("div", "price-block");
+        b.appendChild(el("div", "price-block-title", blk.title));
+        if (blk.note) {
+          var note = el("div", "price-block-note");
+          note.textContent = blk.note;
+          b.appendChild(note);
+        }
+        var grid = el("div", "price-grid");
+        blk.fields.forEach(function (fl) { grid.appendChild(pricingField(fl)); });
+        b.appendChild(grid);
+        body.appendChild(b);
+      });
+      det.appendChild(body);
+      host.appendChild(det);
+    });
+
+    var foot = el("p", "section-hint",
+      "После сохранения обновите вкладку со страницей услуг. Автономную версию " +
+      "калькулятора нужно пересобрать отдельно: npm run build:calc.");
+    host.appendChild(foot);
+  }
+
   function renderSidebar() {
     var nav = $("#sidebar");
     nav.innerHTML = "";
@@ -1103,6 +1407,11 @@
     host.innerHTML = "";
     host.appendChild(el("h2", null, section.title));
     if (section.hint) host.appendChild(el("p", "section-hint", section.hint));
+
+    if (section.custom === "pricing") {
+      renderPricing(host);
+      return;
+    }
 
     if (section.custom === "media") {
       var open = el("button", "btn btn-primary", "Открыть медиатеку");
@@ -1131,26 +1440,54 @@
      ===================================================================== */
 
   function loadContent() {
-    return api("/api/content").then(function (data) {
-      state.content = data.content;
+    /* Правки прайса грузятся вместе с контентом: файл крошечный, а
+       ждать их при первом заходе в раздел — значит рисовать редактор
+       дважды. */
+    return Promise.all([api("/api/content"), api("/api/pricing")]).then(function (res) {
+      state.content = res[0].content;
+      state.pricing = res[1].overrides || {};
+      state.pricingSaved = JSON.stringify(sortedPricing());
       renderSidebar();
       renderSection();
       markClean();
     });
   }
 
+  /**
+   * Кнопка «Сохранить» одна, файлов за ней два: контент сайта и правки
+   * прайса. Пишем только то, что действительно менялось, — иначе правка
+   * одной ставки создавала бы бэкап всего контента, и наоборот.
+   */
   function save() {
     $("#btnSave").disabled = true;
-    api("/api/content", { method: "PUT", json: { content: state.content } })
-      .then(function (data) {
+    var jobs = [];
+    var notes = [];
+
+    if (state.dirtyContent) {
+      jobs.push(api("/api/content", { method: "PUT", json: { content: state.content } })
+        .then(function (data) {
+          // сервер заодно приводит папки медиатеки в соответствие с контентом
+          var f = (data && data.folders) || {};
+          if (f.created && f.created.length) notes.push("новых папок: " + f.created.length);
+          if (f.archived && f.archived.length) notes.push("в архив убрано папок: " + f.archived.length);
+        }));
+    }
+    if (state.dirtyPricing) {
+      jobs.push(api("/api/pricing", { method: "PUT", json: { overrides: state.pricing } })
+        .then(function (data) {
+          state.pricingSaved = JSON.stringify(sortedPricing());
+          notes.push(data && data.count
+            ? "правок прайса: " + data.count
+            : "прайс вернулся к исходному");
+        }));
+    }
+    if (!jobs.length) { markClean(); return; }
+
+    Promise.all(jobs)
+      .then(function () {
         markClean();
-        // сервер заодно приводит папки медиатеки в соответствие с контентом
-        var f = (data && data.folders) || {};
-        var extra = [];
-        if (f.created && f.created.length) extra.push("новых папок: " + f.created.length);
-        if (f.archived && f.archived.length) extra.push("в архив убрано папок: " + f.archived.length);
         toast("Сохранено — обновите вкладку сайта, чтобы увидеть изменения" +
-          (extra.length ? " (" + extra.join(", ") + ")" : ""));
+          (notes.length ? " (" + notes.join(", ") + ")" : ""));
       })
       .catch(function (e) {
         $("#btnSave").disabled = false;
@@ -1227,7 +1564,9 @@
     bindEvents();
     if (state.token) {
       // Проверяем, жив ли токен: сервер мог перезапуститься
-      api("/api/content").then(showApp).catch(function () {
+      /* Зонд именно на защищённый маршрут: /api/status отвечает всем,
+         живой токен им не проверить. */
+      api("/api/pricing").then(showApp).catch(function () {
         localStorage.removeItem("admin-token");
         state.token = "";
       });

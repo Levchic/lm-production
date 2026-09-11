@@ -4,7 +4,9 @@
   "private": true,
   "description": "Портфолио-сайт (статика) + локальная админка для редактирования контента",
   "scripts": {
-    "start": "node server/server.js"
+    "start": "node server/server.js",
+    "test": "node tests/pricing-calc.test.js",
+    "build:calc": "node standalone/build.js"
   },
   "engines": {
     "node": ">=18"

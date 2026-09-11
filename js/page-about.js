@@ -15,7 +15,7 @@
     d.about.long.forEach(function (p, i) {
       var node = el("p", "reveal", esc(p));
       node.setAttribute("data-reveal", "");
-      node.style.transitionDelay = Math.min(i, 8) * 60 + "ms";
+      node.style.setProperty("--reveal-delay", Math.min(i, 8) * 60 + "ms");
       long.appendChild(node);
     });
 
@@ -30,7 +30,7 @@
       heroPortrait.style.display = "none";
     }
 
-    $("#aboutToPortfolio").textContent = d.portfolio.viewAll + " →";
+    $("#aboutToPortfolio").innerHTML = C.withArrow(d.portfolio.viewAll);
   }
 
   document.addEventListener("DOMContentLoaded", function () { C.init(render); });

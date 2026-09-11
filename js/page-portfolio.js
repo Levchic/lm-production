@@ -8,7 +8,7 @@
     var d = t();
     var wrap = $("#portfolioFilters"); wrap.innerHTML = "";
     var keysInUse = {};
-    d.portfolio.projects.forEach(function (p) { keysInUse[p.category] = true; });
+    C.visibleProjects(d).forEach(function (p) { keysInUse[p.category] = true; });
     d.portfolio.filters.forEach(function (f) {
       if (f.key !== "all" && !keysInUse[f.key]) return;
       var btn = el("button", "filter-btn" + (f.key === filter ? " active" : ""), C.esc(f.label));
@@ -18,12 +18,25 @@
     });
   }
 
-  function applyFilter() {
+  /**
+   * @param {boolean} byClick — фильтр переключил человек. Тогда карточки
+   *   показываем сразу и без каскада: он рассказывает про прокрутку, а
+   *   здесь событие другое. При первой отрисовке каскад, наоборот, нужен.
+   */
+  function applyFilter(byClick) {
     var shown = 0;
     $all(".project-card").forEach(function (card) {
       var match = filter === "all" || card.getAttribute("data-category") === filter;
       card.classList.toggle("hidden", !match);
-      if (match) shown++;
+      if (match) {
+        shown++;
+        if (byClick) {
+          // Скрытая фильтром карточка ни разу не попадала в поле зрения
+          // наблюдателя и осталась прозрачной — показываем её сами.
+          card.style.setProperty("--reveal-delay", "0ms");
+          card.classList.add("in-view");
+        }
+      }
     });
     var empty = $("#portfolioEmpty");
     if (empty) {
@@ -32,15 +45,35 @@
     }
   }
 
+  /**
+   * Смена фильтра. Раньше карточки просто исчезали и появлялись — сетка
+   * перескакивала, и было не понять, что убралось, а что осталось.
+   * View Transitions делают перестроение сами: браузер снимает состояние
+   * до и после и довозит карточки на новые места.
+   * Там, где API нет или человек просил меньше движения, — как раньше.
+   */
+  function runFilter() {
+    var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce || !document.startViewTransition) { applyFilter(true); return; }
+    document.startViewTransition(function () { applyFilter(true); });
+  }
+
   function renderGrid() {
     var d = t();
     var grid = $("#portfolioGrid"); grid.innerHTML = "";
-    d.portfolio.projects.forEach(function (proj, i) {
+    C.visibleProjects(d).forEach(function (proj, i) {
       var card = el("a", "project-card reveal", C.projectCardHTML(proj, d));
       card.href = "project.html?id=" + encodeURIComponent(proj.id);
       card.setAttribute("data-reveal", "");
       card.setAttribute("data-category", proj.category);
-      card.style.transitionDelay = Math.min(i, 8) * 45 + "ms";
+      // Инлайновый transitionDelay здесь раньше задавал каскад появления,
+      // но заодно тормозил и наведение: у восьмой карточки отклик приходил
+      // через 360 мс. Каскад теперь через переменную, она действует только
+      // на появление.
+      card.style.setProperty("--reveal-delay", Math.min(i, 8) * 45 + "ms");
+      // Имя для View Transitions: по нему браузер узнаёт карточку
+      // в состояниях «до» и «после» и переносит её, а не перерисовывает.
+      card.style.viewTransitionName = "proj-" + String(proj.id).replace(/[^a-zA-Z0-9_-]/g, "-");
       grid.appendChild(card);
     });
     applyFilter();
@@ -62,8 +95,7 @@
       if (!btn) return;
       filter = btn.getAttribute("data-filter");
       $all(".filter-btn").forEach(function (b) { b.classList.toggle("active", b === btn); });
-      applyFilter();
-      C.initReveal();
+      runFilter();
     });
   });
 })();

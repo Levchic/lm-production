@@ -3,9 +3,13 @@
   var C = window.SiteCommon;
   var $ = C.$, el = C.el, t = C.t, esc = C.esc;
 
+  /* Черновик по прямой ссылке открывается — так его можно посмотреть
+     перед публикацией. Ссылок на него на сайте нет, а «проект по
+     умолчанию» берётся уже из опубликованных. */
   function getProject(d) {
     var id = new URLSearchParams(location.search).get("id");
-    return d.portfolio.projects.find(function (p) { return p.id === id; }) || d.portfolio.projects[0];
+    return d.portfolio.projects.find(function (p) { return p.id === id; }) ||
+           C.visibleProjects(d)[0] || d.portfolio.projects[0];
   }
 
   function toggle(node, visible) {
@@ -103,7 +107,7 @@
       });
     }
 
-    $("#backLink").textContent = d.portfolio.backToList;
+    $("#backLink").innerHTML = C.withArrow(d.portfolio.backToList, "left");
   }
 
   document.addEventListener("DOMContentLoaded", function () { C.init(render); });

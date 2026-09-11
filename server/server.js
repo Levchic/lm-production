@@ -25,8 +25,9 @@ const path = require("path");
 const crypto = require("crypto");
 
 const store = require("./content-store");
+const pricing = require("./pricing-store");
 const media = require("./media");
-const telegram = require("./telegram");
+const videoCover = require("./video-cover");
 
 const ROOT = path.resolve(__dirname, "..");
 const PORT = Number(process.env.PORT || 4000);
@@ -311,6 +312,26 @@ async function handleAPI(req, res, url) {
     return;
   }
 
+  /* Прайс калькулятора. Сам js/pricing-config.js админка не трогает —
+     она правит только накладку с отличиями, см. server/pricing-store.js.
+     Исходный прайс админке отдавать не нужно: она грузит его обычным
+     скриптом, тем же файлом, что и сайт. */
+  if (route === "/api/pricing" && req.method === "GET") {
+    sendJSON(res, 200, { overrides: pricing.read() });
+    return;
+  }
+
+  if (route === "/api/pricing" && req.method === "PUT") {
+    const body = JSON.parse((await readBody(req, 1024 * 1024)).toString("utf8"));
+    pricing.write(body.overrides || {});
+    sendJSON(res, 200, {
+      ok: true,
+      savedAt: new Date().toISOString(),
+      count: Object.keys(body.overrides || {}).length
+    });
+    return;
+  }
+
   if (route === "/api/media" && req.method === "GET") {
     sendJSON(res, 200, {
       folders: media.listFolders(),
@@ -340,6 +361,17 @@ async function handleAPI(req, res, url) {
     return;
   }
 
+  // Обложка из ролика по ссылке: сервер скачивает кадр-заставку у YouTube
+  // или Rutube и кладёт его в медиатеку как обычную загрузку — с тем же
+  // сжатием и теми же правилами имени файла.
+  if (route === "/api/video-cover" && req.method === "POST") {
+    const body = JSON.parse((await readBody(req, 1024 * 64)).toString("utf8") || "{}");
+    const cover = await videoCover.fetchCover(body.url);
+    const saved = media.save(cover.buffer, cover.name, body.folder || "");
+    sendJSON(res, 200, { src: saved.src, size: saved.size, note: saved.note || null });
+    return;
+  }
+
   if (route === "/api/upload" && req.method === "POST") {
     const raw = await readBody(req, MAX_UPLOAD);
     const { fields, files } = parseMultipart(raw, req.headers["content-type"]);
@@ -356,16 +388,6 @@ async function handleAPI(req, res, url) {
 
 const server = http.createServer((req, res) => {
   const url = new URL(req.url, `http://${req.headers.host || "localhost"}`);
-
-  // На хостинге формы обрабатывает send.php; локально Node отвечает по тому же
-  // адресу, поэтому на сайте и там и там один и тот же запрос.
-  if (url.pathname === "/send.php" && req.method === "POST") {
-    readBody(req, 64 * 1024)
-      .then((body) => telegram.send(JSON.parse(body.toString("utf8") || "{}")))
-      .then(() => sendJSON(res, 200, { ok: true }))
-      .catch((err) => sendJSON(res, 400, { ok: false, error: err.message }));
-    return;
-  }
 
   if (url.pathname.startsWith("/api/")) {
     handleAPI(req, res, url).catch((err) => {
@@ -395,6 +417,10 @@ function lanAddresses() {
   const isHome = (ip) => /^(192\.168\.|10\.|172\.(1[6-9]|2\d|3[01])\.)/.test(ip);
   return found.sort((a, b) => (isHome(b) ? 1 : 0) - (isHome(a) ? 1 : 0));
 }
+
+/* Сайт грузит накладку безусловным <script>, поэтому файл должен быть
+   на месте даже когда прайс ещё ни разу не правили. */
+pricing.ensure();
 
 server.listen(PORT, HOST, () => {
   console.log("");
