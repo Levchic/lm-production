@@ -1457,6 +1457,14 @@ time, .price, .project-meta, .service-price, .post-date { font-variant-numeric: 
   background: var(--rule);
   border: 1px solid var(--rule);
 }
+/* Потолок в четыре колонки. Без него на 32" auto-fit раскладывает условия
+   в шесть узких столбцов, а остаток ряда — одной карточкой во всю полосу:
+   ритм рассыпается. Четыре — предел, при котором заголовок условия ещё
+   помещается в две строки. Остаток последнего ряда добирает сама последняя
+   карточка — fitTermsGrid в js/page-services.js. */
+@media (min-width: 1100px) {
+  .terms-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
 .term { background: var(--char-deep); padding: var(--sp-card); }
 .term h3 {
   font-size: var(--fs-h3); text-transform: none; letter-spacing: 0;

@@ -131,6 +131,34 @@
     });
   }
 
+  /* Условий семь, а колонок в сетке от одной до четырёх — остаток
+     последнего ряда всегда разный, и пустая ячейка светится фоном
+     контейнера (он же цвет разделительных линий). Поэтому последняя
+     карточка растягивается на остаток ряда. Число колонок замеряем, а
+     не считаем: сетка на auto-fit, и оно зависит от ширины окна, а число
+     условий правится из админки. */
+  function fitTermsGrid() {
+    var host = $("#termsList");
+    if (!host || !host.children.length) return;
+    var last = host.lastElementChild;
+    /* Сначала снимаем прежний растяг: иначе замер вернёт уже подогнанную сетку. */
+    last.style.gridColumn = "";
+    var cols = getComputedStyle(host).gridTemplateColumns.split(" ").filter(Boolean).length;
+    if (cols < 2) return;
+    var rest = host.children.length % cols;
+    if (rest) last.style.gridColumn = "span " + (cols - rest + 1);
+  }
+
+  function setupTermsFit() {
+    if (setupTermsFit.bound) return;
+    setupTermsFit.bound = true;
+    var timer = null;
+    window.addEventListener("resize", function () {
+      clearTimeout(timer);
+      timer = setTimeout(fitTermsGrid, 120);
+    });
+  }
+
   function render() {
     var d = t();
     renderShowcase(d);
@@ -139,6 +167,8 @@
     renderExtras(d);
     renderTerms(d);
     setupCalcToggle();
+    fitTermsGrid();
+    setupTermsFit();
   }
 
   document.addEventListener("DOMContentLoaded", function () { C.init(render); });
