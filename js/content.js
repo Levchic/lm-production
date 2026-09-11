@@ -818,11 +818,6 @@ window.SITE_CONTENT = {
       "hideLabel": "Свернуть",
       "groups": [
         {
-          "id": "production",
-          "title": "Концертный продакшн",
-          "summary": "Программа целиком: структура номеров, аранжировки, клик и плейбэк."
-        },
-        {
           "id": "arrangement",
           "title": "Аранжировка и оркестровка",
           "summary": "От эскиза до партитуры: оркестр, камерный состав, синтетические партии."
@@ -831,25 +826,14 @@ window.SITE_CONTENT = {
           "id": "score",
           "title": "Нотный цех",
           "summary": "Партитуры и партии: набор, вычитка, расшифровка записи на слух."
+        },
+        {
+          "id": "production",
+          "title": "Концертный продакшн",
+          "summary": "Программа целиком: структура номеров, аранжировки, клик и плейбэк."
         }
       ],
       "items": [
-        {
-          "title": "Концертная программа под ключ",
-          "group": "production",
-          "description": "Структура номеров, аранжировки, клик, плейбэк, партитуры.",
-          "detail": "Беру программу целиком: собираем структуру вечера и отдельных номеров, снимаю и аранжирую материал, готовлю клик-треки и плейбэки, оформляю партитуры и партии, при необходимости сопровождаю репетиции. Цена считается по объёму программы.",
-          "price": "от 150 000 ₽ / программа",
-          "bullets": []
-        },
-        {
-          "title": "Клик, плейбэк и саунд-дизайн",
-          "group": "production",
-          "description": "Темповая сетка, метки, синтезаторные слои, шумы и переходы.",
-          "detail": "Собираю темповую сетку и метки перехода, программирую синтезаторные партии, хор и дополнительные слои, делаю шумы, атмосферы и переходы номеров. Экспортирую стемы и клик в формате, готовом для звукорежиссёра и дирижёрского пульта. Саунд-дизайн считается надбавкой к плейбэку: он делается в том же проекте и в ту же сдачу.",
-          "price": "от 1 500 ₽ / мин",
-          "bullets": []
-        },
         {
           "title": "Аранжировка для оркестра",
           "group": "arrangement",
@@ -896,6 +880,22 @@ window.SITE_CONTENT = {
           "description": "Расшифровка плотной фактуры с записи.",
           "detail": "Расшифровываю плотную многослойную фактуру с записи, когда нот не существует. Результат сверяется с референсом на каждом этапе.",
           "price": "от 3 000 ₽ / мин",
+          "bullets": []
+        },
+        {
+          "title": "Клик, плейбэк и саунд-дизайн",
+          "group": "production",
+          "description": "Темповая сетка, метки, синтезаторные слои, шумы и переходы.",
+          "detail": "Собираю темповую сетку и метки перехода, программирую синтезаторные партии, хор и дополнительные слои, делаю шумы, атмосферы и переходы номеров. Экспортирую стемы и клик в формате, готовом для звукорежиссёра и дирижёрского пульта. Саунд-дизайн считается надбавкой к плейбэку: он делается в том же проекте и в ту же сдачу.",
+          "price": "от 1 500 ₽ / мин",
+          "bullets": []
+        },
+        {
+          "title": "Концертная программа под ключ",
+          "group": "production",
+          "description": "Структура номеров, аранжировки, клик, плейбэк, партитуры.",
+          "detail": "Беру программу целиком: собираем структуру вечера и отдельных номеров, снимаю и аранжирую материал, готовлю клик-треки и плейбэки, оформляю партитуры и партии, при необходимости сопровождаю репетиции. Цена считается по объёму программы.",
+          "price": "от 150 000 ₽ / программа",
           "bullets": []
         }
       ],
@@ -2211,11 +2211,6 @@ window.SITE_CONTENT = {
       "hideLabel": "Hide",
       "groups": [
         {
-          "id": "production",
-          "title": "Concert production",
-          "summary": "The whole programme: number structure, arrangements, click and playback."
-        },
-        {
           "id": "arrangement",
           "title": "Arranging & orchestration",
           "summary": "From sketch to score: orchestra, chamber ensemble, synth parts."
@@ -2224,25 +2219,14 @@ window.SITE_CONTENT = {
           "id": "score",
           "title": "Music engraving",
           "summary": "Scores and parts: setting, proofreading, transcription by ear."
+        },
+        {
+          "id": "production",
+          "title": "Concert production",
+          "summary": "The whole programme: number structure, arrangements, click and playback."
         }
       ],
       "items": [
-        {
-          "title": "Turnkey concert programme",
-          "group": "production",
-          "description": "Number structure, arrangements, click, playback, scores.",
-          "detail": "I take on the whole program: we build the structure of the evening and of each number, I transcribe and arrange the material, prepare click tracks and playback, engrave scores and parts, and support rehearsals if needed. Quoted per program.",
-          "price": "from 150,000 ₽ / programme",
-          "bullets": []
-        },
-        {
-          "title": "Click, playback and sound design",
-          "group": "production",
-          "description": "Tempo grid, markers, synth layers, textures and transitions.",
-          "detail": "I build the tempo grid and transition markers, program synth parts, choir and extra layers, and create textures, atmospheres and transitions between numbers. Stems and click are exported ready for the sound engineer and the conductor’s podium. Sound design is priced as an addition to playback: it happens in the same project and the same delivery.",
-          "price": "from 1,500 ₽ / min",
-          "bullets": []
-        },
         {
           "title": "Orchestral arrangement",
           "group": "arrangement",
@@ -2289,6 +2273,22 @@ window.SITE_CONTENT = {
           "description": "Decoding dense material from a recording.",
           "detail": "I decode dense, layered material from a recording where no score exists, checking the result against the reference at every step.",
           "price": "from 3,000 ₽ / min",
+          "bullets": []
+        },
+        {
+          "title": "Click, playback and sound design",
+          "group": "production",
+          "description": "Tempo grid, markers, synth layers, textures and transitions.",
+          "detail": "I build the tempo grid and transition markers, program synth parts, choir and extra layers, and create textures, atmospheres and transitions between numbers. Stems and click are exported ready for the sound engineer and the conductor’s podium. Sound design is priced as an addition to playback: it happens in the same project and the same delivery.",
+          "price": "from 1,500 ₽ / min",
+          "bullets": []
+        },
+        {
+          "title": "Turnkey concert programme",
+          "group": "production",
+          "description": "Number structure, arrangements, click, playback, scores.",
+          "detail": "I take on the whole program: we build the structure of the evening and of each number, I transcribe and arrange the material, prepare click tracks and playback, engrave scores and parts, and support rehearsals if needed. Quoted per program.",
+          "price": "from 150,000 ₽ / programme",
           "bullets": []
         }
       ],
