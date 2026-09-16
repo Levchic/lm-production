@@ -9,15 +9,6 @@
       ],
       "port": 4000,
       "url": "http://localhost:4000"
-    },
-    {
-      "name": "site-v2",
-      "runtimeExecutable": "node",
-      "runtimeArgs": [
-        "/Volumes/T9/VibeCoding/ScoreProductionLab-v2/server/preview-4100.js"
-      ],
-      "port": 4100,
-      "url": "http://localhost:4100"
     }
   ]
 }
