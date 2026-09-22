@@ -135,7 +135,7 @@ window.SITE_CONTENT = {
     "forWhom": {
       "eyebrow": "Для кого",
       "heading": "С кем я работаю",
-      "subheading": "Задачи приходят разные, но сводятся к одному: нужно, чтобы музыка прозвучала живым составом и в срок. Ниже — ситуации, в которых меня обычно и зовут.",
+      "subheading": "Задачи приходят разные, но сводятся к одному: нужно, чтобы музыка прозвучала живым составом и в срок. Ниже — ситуации, в которых я могу работать.",
       "bgPhoto": "",
       "items": [
         {
@@ -270,7 +270,7 @@ window.SITE_CONTENT = {
           "categoryLabel": "Оркестровое шоу",
           "title": "Шоу саундтреков по фильмам Тима Бёртона",
           "meta": "90 минут музыки · симфонический оркестр",
-          "description": "Полный цикл подготовки концертной программы по музыке фильмов Тима Бёртона: от структуры номеров до сдачи партитур и сопровождения на репетициях и премьере. В программе двенадцать номеров: «Кошмар перед Рождеством», «Труп невесты», «Эдвард руки-ножницы», «Суини Тодд», «Алиса в стране чудес», «Битлджус», «Уэнсдэй», «Мрачные тени», «Сонная лощина», «Франкенвини», «Чарли и шоколадная фабрика» и второй номер по «Уэнсдэй».",
+          "description": "Полный цикл подготовки концертной программы по музыке фильмов Тима Бёртона: от структуры номеров до сдачи партитур и сопровождения на репетициях и премьере. В программе двенадцать номеров: «Кошмар перед Рождеством», «Труп невесты», «Эдвард руки-ножницы», «Суини Тодд», «Алиса в стране чудес», «Битлджус», «Уэнсдэй» по первому сезону, «Мрачные тени», «Сонная лощина», «Франкенвини», «Чарли и шоколадная фабрика» и «Уэнсдэй» по второму сезону.",
           "stats": [
             {
               "value": "90′",
@@ -600,12 +600,19 @@ window.SITE_CONTENT = {
             "Подготовка мультитрека"
           ],
           "media": {
-            "type": "audio",
+            "type": "video",
             "src": ""
           },
           "heroImage": "",
           "photos": [],
-          "videos": [],
+          "videos": [
+            {
+              "title": "«Лужа» — Манка (Яндекс Музыка)",
+              "url": "https://music.yandex.ru/album/36335579/track/138470477",
+              "src": "",
+              "poster": ""
+            }
+          ],
           "audio": [],
           "isPlaceholder": false
         },
@@ -789,6 +796,32 @@ window.SITE_CONTENT = {
               "poster": ""
             }
           ],
+          "audio": [],
+          "isPlaceholder": false
+        },
+        {
+          "id": "obraz-disney",
+          "category": "arrangement",
+          "categoryLabel": "Аранжировка и оркестровка",
+          "title": "Вокальные номера Disney для театра «Образ»",
+          "meta": "Театр «Образ» · русскоязычные версии песен",
+          "description": "Отдельные песни из мультфильмов в русскоязычных версиях — не оркестровые попурри, а вокальные номера под конкретных исполнителей театра. Работа идёт набором: часть номеров сдана, часть в работе.",
+          "stats": [],
+          "scope": [
+            "«Холодное сердце» — «Отпусти и забудь», дуэт Анны и Ханса, песни Кристофа и Анны",
+            "«Красавица и чудовище» — песня Белль, «Гастон», ария Чудовища",
+            "«Русалочка» — песня Урсулы",
+            "«Аладдин» — песня Жасмин",
+            "«Король Лев» — песня Шрама",
+            "«Анастасия» — песня Распутина"
+          ],
+          "media": {
+            "type": "score",
+            "src": ""
+          },
+          "heroImage": "",
+          "photos": [],
+          "videos": [],
           "audio": [],
           "isPlaceholder": false
         },
@@ -1316,8 +1349,8 @@ window.SITE_CONTENT = {
           "date": "",
           "category": "Работа",
           "title": "Аранжировка трейлера «Дюна, часть 3»",
-          "excerpt": "Полная версия аранжировки эпик-трейлера вышла на YouTube.",
-          "body": "На YouTube выложили полную версию аранжировки «эпик»-трейлера «Дюны».\n\nОтдельно отмечу солиста: партия непростая, а спета уверенно и ровно — именно она держит всю кульминацию номера.",
+          "excerpt": "Полную версию аранжировки эпик-трейлера выложили на YouTube.",
+          "body": "На YouTube выложили полную версию нашей аранжировки «эпик»-трейлера «Дюны».\n\nОтдельно отмечу солиста: партия непростая, а спета уверенно и точно попадая в нужный образ. На волне ",
           "cover": "assets/media/blog/dune-trailer/cover.jpg",
           "photos": [],
           "video": "https://youtu.be/_KL8ab5f8NE",
@@ -1333,7 +1366,7 @@ window.SITE_CONTENT = {
           "id": "the-boys-track",
           "date": "17.06.2026",
           "category": "Работа",
-          "title": "Очередной трек по сериалу «Пацаны»",
+          "title": "Закончил работу над новым треком «Пацаны»",
           "excerpt": "Новый трек в работе над сериалом — и несколько слов про инструменты.",
           "body": "Сделали очередной трек по сериалу «Пацаны». Отдельно радует, как ребята сводят материал: по сравнению с сырой концертной записью разница слышна сразу.\n\nВместо живой записи в этот раз использовал библиотеку народных инструментов Ильи Ефимова — баян в ней звучит достаточно убедительно для такой задачи.",
           "cover": "assets/media/blog/the-boys-track/cover.jpg",
@@ -1878,7 +1911,7 @@ window.SITE_CONTENT = {
           "categoryLabel": "Orchestral show",
           "title": "Tim Burton Film Soundtracks Show",
           "meta": "90 minutes of music · symphony orchestra",
-          "description": "Full preparation cycle for a concert program based on Tim Burton's film music: from number structures to final scores and rehearsal support. The programme holds twelve numbers: The Nightmare Before Christmas, Corpse Bride, Edward Scissorhands, Sweeney Todd, Alice in Wonderland, Beetlejuice, Wednesday, Dark Shadows, Sleepy Hollow, Frankenweenie, Charlie and the Chocolate Factory, and a second Wednesday number.",
+          "description": "Full preparation cycle for a concert program based on Tim Burton's film music: from number structures to final scores and rehearsal support. The programme holds twelve numbers: The Nightmare Before Christmas, Corpse Bride, Edward Scissorhands, Sweeney Todd, Alice in Wonderland, Beetlejuice, Wednesday (season one), Dark Shadows, Sleepy Hollow, Frankenweenie, Charlie and the Chocolate Factory, and Wednesday (season two).",
           "stats": [
             {
               "value": "90′",
@@ -2208,12 +2241,19 @@ window.SITE_CONTENT = {
             "Preparing the multitrack"
           ],
           "media": {
-            "type": "audio",
+            "type": "video",
             "src": ""
           },
           "heroImage": "",
           "photos": [],
-          "videos": [],
+          "videos": [
+            {
+              "title": "«Лужа» — Манка (Яндекс Музыка)",
+              "url": "https://music.yandex.ru/album/36335579/track/138470477",
+              "src": "",
+              "poster": ""
+            }
+          ],
           "audio": [],
           "isPlaceholder": false
         },
@@ -2397,6 +2437,32 @@ window.SITE_CONTENT = {
               "poster": ""
             }
           ],
+          "audio": [],
+          "isPlaceholder": false
+        },
+        {
+          "id": "obraz-disney",
+          "category": "arrangement",
+          "categoryLabel": "Arranging & orchestration",
+          "title": "Disney vocal numbers for the Obraz theatre",
+          "meta": "Obraz theatre · Russian-language versions",
+          "description": "Individual songs from animated films in their Russian-language versions — not orchestral medleys but vocal numbers written for particular singers in the company. The set is ongoing: some numbers are delivered, some still in progress.",
+          "stats": [],
+          "scope": [
+            "Frozen — Let It Go, the Anna and Hans duet, Kristoff's and Anna's songs",
+            "Beauty and the Beast — Belle, Gaston, the Beast's aria",
+            "The Little Mermaid — Ursula's song",
+            "Aladdin — Jasmine's song",
+            "The Lion King — Scar's song",
+            "Anastasia — Rasputin's song"
+          ],
+          "media": {
+            "type": "score",
+            "src": ""
+          },
+          "heroImage": "",
+          "photos": [],
+          "videos": [],
           "audio": [],
           "isPlaceholder": false
         },

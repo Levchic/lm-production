@@ -87,7 +87,12 @@
     videoGrid.innerHTML = "";
     videoGrid.classList.toggle("is-single", videos.length === 1);
     if (videos.length) {
-      $("#videoHeading").textContent = d.portfolio.videoLabel;
+      /* Плеер стриминга — это запись, а не видео: над ним «Видео» читается
+         как ошибка. Отдельной подписи не заводим, берём готовую «Аудио». */
+      var всеМузыка = videos.every(function (v) {
+        return v.url && /music\.yandex\./i.test(v.url);
+      });
+      $("#videoHeading").textContent = всеМузыка ? d.portfolio.audioLabel : d.portfolio.videoLabel;
       videos.forEach(function (v) {
         // ссылка на YouTube/VK/Rutube — плеер сервиса, иначе свой файл
         videoGrid.insertAdjacentHTML("beforeend",

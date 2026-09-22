@@ -800,13 +800,20 @@ window.SiteCommon = (function () {
     if ((m = u.match(/rutube\.ru\/(?:video|play\/embed)\/([\w-]+)/i))) {
       return "https://rutube.ru/play/embed/" + m[1];
     }
+    /* Яндекс.Музыка: страница релиза даёт полосу плеера, а не видео —
+       высоту ей задаёт класс video-embed--strip ниже. Аудио при этом
+       остаётся на стороне площадки, мы его у себя не публикуем. */
+    if ((m = u.match(/music\.yandex\.(?:ru|com)\/album\/(\d+)\/track\/(\d+)/i))) {
+      return "https://music.yandex.ru/iframe/track/" + m[2] + "/" + m[1];
+    }
     return u;
   }
 
   function videoEmbed(url, title) {
     var src = embedURL(url);
     if (!src) return "";
-    return '<div class="video-embed"><iframe src="' + esc(src) + '" title="' + esc(title || "") +
+    var strip = src.indexOf("music.yandex.") > -1 ? " video-embed--strip" : "";
+    return '<div class="video-embed' + strip + '"><iframe src="' + esc(src) + '" title="' + esc(title || "") +
       '" loading="lazy" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe></div>';
   }
 

@@ -1795,6 +1795,9 @@ a.testimonial-name:hover { color: var(--copper); }
 /* Ролик с YouTube / VK / Rutube — вставляется плеером сервиса */
 .video-embed { position: relative; aspect-ratio: 16 / 9; background: var(--char-deep); border: 1px solid var(--rule); }
 .video-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+/* Плеер стриминга — горизонтальная полоса, а не кадр: в пропорции 16:9
+   он тонул бы в пустоте. */
+.video-embed--strip { aspect-ratio: auto; height: 180px; }
 
 /* Вертикальное видео на главной */
 .intro-video-section { padding: var(--sp-section) 0; }
