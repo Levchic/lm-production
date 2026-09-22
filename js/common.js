@@ -425,7 +425,15 @@ window.SiteCommon = (function () {
    * удаляя и не показывая его посетителям.
    */
   function visibleProjects(d) {
-    return ((d || t()).portfolio.projects || []).filter(function (p) { return !p.hidden; });
+    return ((d || t()).portfolio.projects || [])
+      .filter(function (p) { return !p.hidden; })
+      /* Проекты без обложки уходят в конец: карточка с типовой заглушкой
+         посреди ряда живых фотографий читается как дыра в списке.
+         Сортировка устойчивая, поэтому внутри каждой из двух групп
+         порядок, заданный в админке, сохраняется. */
+      .sort(function (x, y) {
+        return (y.media && y.media.src ? 1 : 0) - (x.media && x.media.src ? 1 : 0);
+      });
   }
 
   /* ---------- Появление при скролле ---------- */

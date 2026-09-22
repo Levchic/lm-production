@@ -965,7 +965,7 @@ window.SITE_CONTENT = {
           "id": "james-bond",
           "category": "arrangement",
           "categoryLabel": "Аранжировка и оркестровка",
-          "title": "Аранжировка саундтрека из фильма \"Джеймс Бонд\"",
+          "title": "Аранжировка саундтрека из фильма «Джеймс Бонд»",
           "meta": "12 минут · полный цикл продакшена",
           "description": "Аранжировка для оркестрового шоу: полный цикл продакшена — от снятия материала на слух до партитур, плейбэка и сдачи в репетиционный процесс.",
           "stats": [
@@ -1134,11 +1134,23 @@ window.SITE_CONTENT = {
           "id": "new-project",
           "category": "arrangement",
           "categoryLabel": "Аранжировка и оркестровка",
-          "title": "Аранжировка саундтрека из фильма \"Одиссея\"",
-          "meta": "",
-          "description": "",
-          "stats": [],
-          "scope": [],
+          "title": "Аранжировка саундтрека из фильма «Одиссея»",
+          "meta": "16 минут музыки · оркестр, синтезаторы и этнические инструменты",
+          "description": "Самая объёмная из отдельных аранжировок: шестнадцать минут непрерывной музыки. Партитура Людвига Йоранссона держится на сочетании, которое встречаешь нечасто — греческие этнические инструменты, современный саунд-дизайн и симфонический оркестр звучат одним организмом, а не тремя слоями друг поверх друга. Основная работа была не в нотах, а в поиске: какими синтезаторами набрать нужный тембр и как посадить его в оркестр, чтобы он не спорил с живыми инструментами и не тонул в них.",
+          "stats": [
+            {
+              "value": "16′",
+              "label": "хронометраж",
+              "icon": "clock"
+            }
+          ],
+          "scope": [
+            "Съём материала на слух",
+            "Оркестровка на симфонический состав",
+            "Подбор синтезаторов и тембров",
+            "Баланс электроники и живого оркестра",
+            "Партитура и партии"
+          ],
           "media": {
             "type": "photo",
             "src": "assets/media/portfolio/new-project/1200x675_cmsv2_c2af739c-5ea8-55d4-b5b6-d0ea1b4bc478-9839988..avif"
@@ -1581,13 +1593,15 @@ window.SITE_CONTENT = {
               "href": "https://t.me/levlvovichmusicwork/52"
             }
           ],
-          "isPlaceholder": false
+          "isPlaceholder": false,
+          "videoSrc": "assets/media/blog/video.mp4",
+          "videoPoster": "assets/media/blog/video-poster.jpg"
         },
         {
           "id": "imperial-burton",
           "date": "13.12.2025",
           "category": "Отчёт",
-          "title": "Программа для Imperial Orchestra: самая сложная работа на сегодня",
+          "title": "Программа для Imperial Orchestra: самая сложная работа на данный момент",
           "excerpt": "Три месяца над хэллоуинской программой по фильмам Тима Бёртона.",
           "body": "С августа по конец октября работал над программой для Imperial Orchestra — на сегодня, пожалуй, самой сложной для меня: и по уровню задач, и по срокам.\n\nТематика была приурочена к Хэллоуину, поэтому выбор пал на Тима Бёртона с его готическим фэнтези и очень разнообразной музыкой Дэнни Эльфмана.\n\nЭта работа заметно подняла планку: после неё многие вещи, казавшиеся сложными, стали рабочей рутиной.",
           "cover": "assets/media/blog/imperial-burton/01.jpg",
@@ -1610,9 +1624,9 @@ window.SITE_CONTENT = {
           "date": "10.12.2025",
           "category": "Видео",
           "title": "Как создаются концертные оркестровые программы",
-          "excerpt": "Рассказал на видео весь путь — от идеи программы до партий на пультах.",
+          "excerpt": "Рассказал в видео весь путь — от идеи программы до партий на пультах.",
           "body": "Как создаются концертные оркестровые программы для шоу саундтреков? Рассказываю в этом видео.\n\nСъёмка и монтаж — Даня Жадаев. Фрагмент концертной записи взят с YouTube-канала Imperial Orchestra.",
-          "cover": "",
+          "cover": "assets/media/archive/about-3.jpg",
           "photos": [],
           "video": "https://youtu.be/6zIsDrHYI0c",
           "links": [
@@ -1634,11 +1648,12 @@ window.SITE_CONTENT = {
           "title": "Арт-школа «Тавриды»: песенный саунд-продакшн с нуля",
           "excerpt": "Записывали вокал, гитары, скрипку и духовые — в студиях, домиках и беседках у моря.",
           "body": "Случайно попав в арт-школу «Тавриды», получилось прокачаться в саунд-продакшне песенного формата — практически не имея в этом опыта.\n\nЗаписывали вокал и бэк-вокал, гитары, скрипку, саксофон и флейту. Утром, днём, вечером и ночью, с перерывами на еду. В студиях, в жилых домиках и в беседках под шум моря.\n\nВ первые дни был некоторый хаос в организации, но в итоге всё сложилось — и опыт оказался из тех, что двигают вперёд сильнее любого курса.",
-          "cover": "assets/media/blog/tavrida-artschool/01.jpg",
+          "cover": "assets/media/blog/tavrida-artschool/04.jpg",
           "photos": [
             "assets/media/blog/tavrida-artschool/02.jpg",
             "assets/media/blog/tavrida-artschool/03.jpg",
-            "assets/media/blog/tavrida-artschool/04.jpg"
+            "assets/media/blog/tavrida-artschool/04.jpg",
+            "assets/media/blog/tavrida-artschool/01.jpg"
           ],
           "video": "",
           "links": [
@@ -2872,10 +2887,22 @@ window.SITE_CONTENT = {
           "category": "arrangement",
           "categoryLabel": "Аранжировка и оркестровка",
           "title": "Новый проект",
-          "meta": "",
-          "description": "",
-          "stats": [],
-          "scope": [],
+          "meta": "16 minutes of music · orchestra, synthesizers and ethnic instruments",
+          "description": "The largest of the standalone arrangements: sixteen unbroken minutes of music. Ludwig Göransson's score rests on a combination you do not meet often — Greek ethnic instruments, modern sound design and a symphony orchestra sounding as one organism rather than three layers stacked on each other. The real work was not in the notes but in the search: which synthesizers give the timbre, and how to seat it in the orchestra so it neither fights the live instruments nor drowns in them.",
+          "stats": [
+            {
+              "value": "16′",
+              "label": "running time",
+              "icon": "clock"
+            }
+          ],
+          "scope": [
+            "Transcribing by ear",
+            "Orchestrating for symphony orchestra",
+            "Choosing synthesizers and timbres",
+            "Balancing electronics against the live orchestra",
+            "Score and parts"
+          ],
           "media": {
             "type": "photo",
             "src": "assets/media/portfolio/new-project/1200x675_cmsv2_c2af739c-5ea8-55d4-b5b6-d0ea1b4bc478-9839988..avif"
@@ -3318,7 +3345,9 @@ window.SITE_CONTENT = {
               "href": "https://t.me/levlvovichmusicwork/52"
             }
           ],
-          "isPlaceholder": false
+          "isPlaceholder": false,
+          "videoSrc": "assets/media/blog/video.mp4",
+          "videoPoster": "assets/media/blog/video-poster.jpg"
         },
         {
           "id": "imperial-burton",
@@ -3349,7 +3378,7 @@ window.SITE_CONTENT = {
           "title": "How concert orchestral programmes are made",
           "excerpt": "I walk through the whole path on video — from the idea of a programme to the parts on the stands.",
           "body": "How are concert orchestral programmes for soundtrack shows made? I explain it in this video.\n\nFilming and editing by Danya Zhadaev. The fragment of the concert recording is taken from the Imperial Orchestra YouTube channel.",
-          "cover": "",
+          "cover": "assets/media/archive/about-3.jpg",
           "photos": [],
           "video": "https://youtu.be/6zIsDrHYI0c",
           "links": [
@@ -3371,11 +3400,12 @@ window.SITE_CONTENT = {
           "title": "Tavrida art school: song production from scratch",
           "excerpt": "We recorded vocals, guitars, violin and winds — in studios, cabins and gazebos by the sea.",
           "body": "Having ended up at the Tavrida art school almost by chance, I got to level up in song-format sound production — with practically no experience in it.\n\nWe recorded lead and backing vocals, guitars, violin, saxophone and flute. Morning, afternoon, evening and night, with breaks for food. In studios, in living cabins and in gazebos by the sound of the sea.\n\nThe first days were somewhat chaotic, but in the end it all came together — the kind of experience that moves you forward more than any course.",
-          "cover": "assets/media/blog/tavrida-artschool/01.jpg",
+          "cover": "assets/media/blog/tavrida-artschool/04.jpg",
           "photos": [
             "assets/media/blog/tavrida-artschool/02.jpg",
             "assets/media/blog/tavrida-artschool/03.jpg",
-            "assets/media/blog/tavrida-artschool/04.jpg"
+            "assets/media/blog/tavrida-artschool/04.jpg",
+            "assets/media/blog/tavrida-artschool/01.jpg"
           ],
           "video": "",
           "links": [
