@@ -270,7 +270,7 @@ window.SITE_CONTENT = {
           "categoryLabel": "Оркестровое шоу",
           "title": "Шоу саундтреков по фильмам Тима Бёртона",
           "meta": "90 минут музыки · симфонический оркестр",
-          "description": "Полный цикл подготовки концертной программы по музыке фильмов Тима Бёртона: от структуры номеров до сдачи партитур и сопровождения на репетициях и премьере.",
+          "description": "Полный цикл подготовки концертной программы по музыке фильмов Тима Бёртона: от структуры номеров до сдачи партитур и сопровождения на репетициях и премьере. В программе двенадцать номеров: «Кошмар перед Рождеством», «Труп невесты», «Эдвард руки-ножницы», «Суини Тодд», «Алиса в стране чудес», «Битлджус», «Уэнсдэй», «Мрачные тени», «Сонная лощина», «Франкенвини», «Чарли и шоколадная фабрика» и второй номер по «Уэнсдэй».",
           "stats": [
             {
               "value": "90′",
@@ -363,6 +363,90 @@ window.SITE_CONTENT = {
           "photos": [
             "assets/media/portfolio/harry-potter-show/44b6c2e6bb00421db5fa60fa3c07.jpg"
           ],
+          "videos": [
+            {
+              "title": "",
+              "url": "",
+              "src": "",
+              "poster": ""
+            }
+          ],
+          "audio": [],
+          "isPlaceholder": false
+        },
+        {
+          "id": "multiland",
+          "category": "show",
+          "categoryLabel": "Оркестровое шоу",
+          "title": "Шоу мультипликационных саундтреков «Мультиленд»",
+          "meta": "Imperial Orchestra · симфонический оркестр",
+          "description": "Детская программа по музыке мультфильмов. Роль в номерах разная: что-то сделано целиком, где-то это набор партитуры с оригинала под аранжировку другого автора, где-то — съём недостающего материала на слух.",
+          "stats": [],
+          "scope": [
+            "«Аллилуйя» из «Шрека» — номер целиком: съём, аранжировка, партитура и партии",
+            "«Аладдин» — набор партитуры с оригинала, переаранжировка, сборка нескольких тем в один номер",
+            "«Рапунцель» — то же, часть материала снята на слух",
+            "«Моана» — съём вокальных партий",
+            "«Русалочка» и «Красавица и Чудовище» — набор партитур с оригиналов, аранжировка другого автора"
+          ],
+          "media": {
+            "type": "score",
+            "src": ""
+          },
+          "heroImage": "",
+          "photos": [],
+          "videos": [],
+          "audio": [],
+          "isPlaceholder": false
+        },
+        {
+          "id": "kish",
+          "category": "show",
+          "categoryLabel": "Оркестровое шоу",
+          "title": "Шоу «Король и Шут» с симфоническим оркестром",
+          "meta": "Imperial Orchestra · две редакции программы",
+          "description": "Первая редакция сделана вместе со вторым аранжировщиком. Обновлённую программу вёл уже сам: новые номера, работа с хором, пересборка партитур и клика, репетиции и концерты.",
+          "stats": [],
+          "scope": [
+            "Набор основ и правка партитур первой редакции",
+            "Клик-треки",
+            "Три новых номера целиком",
+            "Новые хоровые партии и запись хора",
+            "Проверка и исправление партитур других авторов",
+            "Пересборка программы, партитур и партий",
+            "Новый клик и плейбэк",
+            "Участие в репетициях и концертах"
+          ],
+          "media": {
+            "type": "score",
+            "src": ""
+          },
+          "heroImage": "",
+          "photos": [],
+          "videos": [],
+          "audio": [],
+          "isPlaceholder": false
+        },
+        {
+          "id": "duduk",
+          "category": "show",
+          "categoryLabel": "Оркестровое шоу",
+          "title": "Программа «Магия дудука»",
+          "meta": "Imperial Orchestra · сборка программы",
+          "description": "Роль здесь не аранжировщика, а того, кто собирает программу целиком: проверял чужие партитуры, подгонял номера под состав, правил ошибки и готовил всё, что нужно сцене.",
+          "stats": [],
+          "scope": [
+            "Проверка и редактура партитур других авторов",
+            "Подгонка номеров под состав",
+            "Клик-треки и плейбэки",
+            "Комплекты партий"
+          ],
+          "media": {
+            "type": "score",
+            "src": ""
+          },
+          "heroImage": "",
+          "photos": [],
           "videos": [],
           "audio": [],
           "isPlaceholder": false
@@ -422,9 +506,9 @@ window.SITE_CONTENT = {
           ],
           "media": {
             "type": "photo",
-            "src": "assets/media/portfolio/polnolunie/snimok-ekrana-2026-08-10-v-23.48.15.jpg"
+            "src": "assets/media/portfolio/polnolunie/snimok-ekrana-2026-09-22-v-03.18.13.jpg"
           },
-          "heroImage": "assets/media/portfolio/polnolunie/snimok-ekrana-2026-08-10-v-23.48.15.jpg",
+          "heroImage": "assets/media/portfolio/polnolunie/snimok-ekrana-2026-09-22-v-03.18.13.jpg",
           "photos": [],
           "videos": [],
           "audio": [],
@@ -478,6 +562,51 @@ window.SITE_CONTENT = {
               "src": "assets/media/portfolio/tavrida-2025/bulatov-22privet-22-demo.mp3"
             }
           ],
+          "isPlaceholder": false
+        },
+        {
+          "id": "romashka",
+          "category": "production",
+          "categoryLabel": "Саунд-продакшн",
+          "title": "Песня-заставка «Раз, ромашка! Два, цветы!»",
+          "meta": "Детский спектакль · аранжировка и сведение",
+          "description": "Заказчик напел мелодию и текст голосом — из этого собрана аранжировка по его пожеланиям, сведена и отдана мультитреком.",
+          "stats": [],
+          "scope": [
+            "Аранжировка по напетому референсу",
+            "Сведение",
+            "Сдача мультитреком"
+          ],
+          "media": {
+            "type": "audio",
+            "src": ""
+          },
+          "heroImage": "",
+          "photos": [],
+          "videos": [],
+          "audio": [],
+          "isPlaceholder": false
+        },
+        {
+          "id": "luzha",
+          "category": "production",
+          "categoryLabel": "Саунд-продакшн",
+          "title": "Запись песни «Лужа» — Манка",
+          "meta": "Запись · релиз на стриминге",
+          "description": "Запись песни и подготовка материала. Сведение делал другой инженер; релиз доступен на стриминговых площадках.",
+          "stats": [],
+          "scope": [
+            "Запись",
+            "Подготовка мультитрека"
+          ],
+          "media": {
+            "type": "audio",
+            "src": ""
+          },
+          "heroImage": "",
+          "photos": [],
+          "videos": [],
+          "audio": [],
           "isPlaceholder": false
         },
         {
@@ -564,6 +693,106 @@ window.SITE_CONTENT = {
           "isPlaceholder": false
         },
         {
+          "id": "legends-heroes",
+          "category": "arrangement",
+          "categoryLabel": "Аранжировка и оркестровка",
+          "title": "Четыре номера программы «Легенды и герои»",
+          "meta": "Imperial Orchestra · «Дюна», Skyrim, Assassin's Creed, God of War",
+          "description": "Четыре номера программы сделаны целиком — от выстраивания формы до готовых нот.",
+          "stats": [],
+          "scope": [
+            "Создание формы номера",
+            "Съём материала на слух",
+            "Аранжировка на состав",
+            "Партитура и партии"
+          ],
+          "media": {
+            "type": "score",
+            "src": ""
+          },
+          "heroImage": "",
+          "photos": [],
+          "videos": [],
+          "audio": [],
+          "isPlaceholder": false
+        },
+        {
+          "id": "richter",
+          "category": "arrangement",
+          "categoryLabel": "Аранжировка и оркестровка",
+          "title": "Пять номеров программы по музыке Макса Рихтера",
+          "meta": "Imperial Orchestra · пять номеров из программы",
+          "description": "Пять номеров программы: The Quality of Mercy, Mercy, Infra 5, The Trees и November / Memoryhouse. Остальные номера делали другие авторы.",
+          "stats": [],
+          "scope": [
+            "Съём материала на слух",
+            "Аранжировка на состав",
+            "Партитура и партии"
+          ],
+          "media": {
+            "type": "score",
+            "src": ""
+          },
+          "heroImage": "",
+          "photos": [],
+          "videos": [],
+          "audio": [],
+          "isPlaceholder": false
+        },
+        {
+          "id": "einaudi",
+          "category": "arrangement",
+          "categoryLabel": "Аранжировка и оркестровка",
+          "title": "Два номера программы по музыке Людовико Эйнауди",
+          "meta": "Imperial Orchestra · Fly и Life",
+          "description": "Два номера программы — Fly и Life. Остальные номера делали другие авторы.",
+          "stats": [],
+          "scope": [
+            "Съём материала на слух",
+            "Аранжировка на состав",
+            "Партитура и партии"
+          ],
+          "media": {
+            "type": "score",
+            "src": ""
+          },
+          "heroImage": "",
+          "photos": [],
+          "videos": [],
+          "audio": [],
+          "isPlaceholder": false
+        },
+        {
+          "id": "oppenheimer",
+          "category": "arrangement",
+          "categoryLabel": "Аранжировка и оркестровка",
+          "title": "«Оппенгеймер» — Can You Hear the Music",
+          "meta": "Imperial Orchestra · совместная работа",
+          "description": "Номер сделан вдвоём со вторым композитором-аранжировщиком: материал снят на слух и переложен на состав оркестра.",
+          "stats": [],
+          "scope": [
+            "Съём материала на слух",
+            "Аранжировка на состав",
+            "Партитура и партии"
+          ],
+          "media": {
+            "type": "video",
+            "src": ""
+          },
+          "heroImage": "",
+          "photos": [],
+          "videos": [
+            {
+              "title": "Oppenheimer / Can You Hear The Music — Imperial Orchestra",
+              "url": "https://www.youtube.com/watch?v=TmfqYXZx9FA",
+              "src": "",
+              "poster": ""
+            }
+          ],
+          "audio": [],
+          "isPlaceholder": false
+        },
+        {
           "id": "gladiator",
           "category": "arrangement",
           "categoryLabel": "Аранжировка и оркестровка",
@@ -586,16 +815,16 @@ window.SITE_CONTENT = {
           ],
           "media": {
             "type": "photo",
-            "src": "assets/media/portfolio/gladiator/cover.jpg"
+            "src": "assets/media/portfolio/gladiator/youtube-5fi0-8d9b_0-maxresdefault.jpg"
           },
-          "heroImage": "assets/media/portfolio/gladiator/cover.jpg",
+          "heroImage": "assets/media/portfolio/gladiator/youtube-5fi0-8d9b_0-maxresdefault.jpg",
           "photos": [],
           "videos": [
             {
               "title": "«Гладиатор» — Imperial Orchestra, Hans Zimmer's Universe",
-              "url": "https://www.youtube.com/watch?v=mEqzV23sDgo",
+              "url": "https://youtu.be/5fi0-8d9B_0?si=Q6O5ak20qrMFisYj",
               "src": "",
-              "poster": ""
+              "poster": "assets/media/portfolio/gladiator/youtube-meqzv23sdgo-maxresdefault.jpg"
             }
           ],
           "audio": [],
@@ -624,18 +853,11 @@ window.SITE_CONTENT = {
           ],
           "media": {
             "type": "photo",
-            "src": "assets/media/portfolio/james-bond/cover.jpg"
+            "src": "assets/media/portfolio/james-bond/c6u8rhrir4sslltu8a10.jpg"
           },
-          "heroImage": "assets/media/portfolio/james-bond/cover.jpg",
+          "heroImage": "assets/media/portfolio/james-bond/c6u8rhrir4sslltu8a10.jpg",
           "photos": [],
-          "videos": [
-            {
-              "title": "Джеймс Бонд — Imperial Orchestra, Cinema Medley 2",
-              "url": "https://www.youtube.com/watch?v=Tq55IojXt0Q",
-              "src": "",
-              "poster": ""
-            }
-          ],
+          "videos": [],
           "audio": [],
           "isPlaceholder": false
         },
@@ -661,10 +883,10 @@ window.SITE_CONTENT = {
             "Партитуры и партии"
           ],
           "media": {
-            "type": "score",
-            "placeholder": true
+            "type": "photo",
+            "src": "assets/media/portfolio/top-gun/756599473916784.jpg"
           },
-          "heroImage": "",
+          "heroImage": "assets/media/portfolio/top-gun/756599473916784.jpg",
           "photos": [],
           "videos": [],
           "audio": [],
@@ -731,18 +953,11 @@ window.SITE_CONTENT = {
           ],
           "media": {
             "type": "photo",
-            "src": "assets/media/portfolio/stranger-things/cover.jpg"
+            "src": "assets/media/portfolio/stranger-things/960x540.jpg"
           },
-          "heroImage": "assets/media/portfolio/stranger-things/cover.jpg",
+          "heroImage": "assets/media/portfolio/stranger-things/960x540.jpg",
           "photos": [],
-          "videos": [
-            {
-              "title": "«Очень странные дела» — Imperial Orchestra",
-              "url": "https://www.youtube.com/watch?v=7Yy_uveisEg",
-              "src": "",
-              "poster": ""
-            }
-          ],
+          "videos": [],
           "audio": [],
           "isPlaceholder": false
         },
@@ -794,14 +1009,14 @@ window.SITE_CONTENT = {
           "stats": [],
           "scope": [],
           "media": {
-            "type": "score",
-            "placeholder": true
+            "type": "photo",
+            "src": "assets/media/portfolio/new-project/1200x675_cmsv2_c2af739c-5ea8-55d4-b5b6-d0ea1b4bc478-9839988..avif"
           },
-          "heroImage": "",
+          "heroImage": "assets/media/portfolio/new-project/1200x675_cmsv2_c2af739c-5ea8-55d4-b5b6-d0ea1b4bc478-9839988..avif",
           "photos": [],
           "videos": [],
           "audio": [],
-          "hidden": true,
+          "hidden": false,
           "isPlaceholder": false
         }
       ],
@@ -926,9 +1141,9 @@ window.SITE_CONTENT = {
         "eyebrow": "Расчёт",
         "heading": "Калькулятор стоимости",
         "subheading": "Подробный расчёт для тех, кому нужна цифра до разговора. Начните с типа работы — этапы и вопросы подстроятся под него. Ничего никуда не отправляется, расчёт остаётся в браузере.",
-      "openLabel": "Посчитать стоимость",
-      "hideLabel": "Свернуть расчёт",
-      "toggleNote": "Семь шагов, две-три минуты. Если отвечать не на что — просто напишите, посчитаю сам."
+        "openLabel": "Посчитать стоимость",
+        "hideLabel": "Свернуть расчёт",
+        "toggleNote": "Семь шагов, две-три минуты. Если отвечать не на что — просто напишите, посчитаю сам."
       },
       "extra": {
         "eyebrow": "Отдельно",
@@ -1663,7 +1878,7 @@ window.SITE_CONTENT = {
           "categoryLabel": "Orchestral show",
           "title": "Tim Burton Film Soundtracks Show",
           "meta": "90 minutes of music · symphony orchestra",
-          "description": "Full preparation cycle for a concert program based on Tim Burton's film music: from number structures to final scores and rehearsal support.",
+          "description": "Full preparation cycle for a concert program based on Tim Burton's film music: from number structures to final scores and rehearsal support. The programme holds twelve numbers: The Nightmare Before Christmas, Corpse Bride, Edward Scissorhands, Sweeney Todd, Alice in Wonderland, Beetlejuice, Wednesday, Dark Shadows, Sleepy Hollow, Frankenweenie, Charlie and the Chocolate Factory, and a second Wednesday number.",
           "stats": [
             {
               "value": "90′",
@@ -1756,6 +1971,90 @@ window.SITE_CONTENT = {
           "photos": [
             "assets/media/portfolio/harry-potter-show/44b6c2e6bb00421db5fa60fa3c07.jpg"
           ],
+          "videos": [
+            {
+              "title": "",
+              "url": "",
+              "src": "",
+              "poster": ""
+            }
+          ],
+          "audio": [],
+          "isPlaceholder": false
+        },
+        {
+          "id": "multiland",
+          "category": "show",
+          "categoryLabel": "Orchestral show",
+          "title": "“Multiland” — a show of animation soundtracks",
+          "meta": "Imperial Orchestra · symphony orchestra",
+          "description": "A children's programme built on music from animated films. My role differs from number to number: some were done end to end, some were engraved from the original score under another arranger's chart, and some needed missing material transcribed by ear.",
+          "stats": [],
+          "scope": [
+            "“Hallelujah” from Shrek — the whole number: transcription, arrangement, score and parts",
+            "Aladdin — engraving from the original, re-arranging, several themes assembled into one number",
+            "Rapunzel — the same, with part of the material transcribed by ear",
+            "Moana — transcribing the vocal parts",
+            "The Little Mermaid and Beauty and the Beast — engraving from the originals, arrangement by another author"
+          ],
+          "media": {
+            "type": "score",
+            "src": ""
+          },
+          "heroImage": "",
+          "photos": [],
+          "videos": [],
+          "audio": [],
+          "isPlaceholder": false
+        },
+        {
+          "id": "kish",
+          "category": "show",
+          "categoryLabel": "Orchestral show",
+          "title": "“Korol i Shut” with a symphony orchestra",
+          "meta": "Imperial Orchestra · two editions of the programme",
+          "description": "The first edition was made together with a second arranger. The updated programme I ran myself: new numbers, choral work, rebuilding the scores and the click, rehearsals and shows.",
+          "stats": [],
+          "scope": [
+            "Engraving the groundwork and correcting the first edition's scores",
+            "Click tracks",
+            "Three new numbers end to end",
+            "New choral parts and the choir recording",
+            "Checking and correcting other authors' scores",
+            "Rebuilding the programme, the scores and the parts",
+            "New click and playback",
+            "Rehearsals and performances"
+          ],
+          "media": {
+            "type": "score",
+            "src": ""
+          },
+          "heroImage": "",
+          "photos": [],
+          "videos": [],
+          "audio": [],
+          "isPlaceholder": false
+        },
+        {
+          "id": "duduk",
+          "category": "show",
+          "categoryLabel": "Orchestral show",
+          "title": "“The Magic of the Duduk” programme",
+          "meta": "Imperial Orchestra · assembling the programme",
+          "description": "Here the role was not the arranger's but the one who assembles the whole programme: checking other people's scores, fitting numbers to the ensemble, correcting errors and preparing everything the stage needs.",
+          "stats": [],
+          "scope": [
+            "Checking and editing other authors' scores",
+            "Fitting the numbers to the ensemble",
+            "Click tracks and playbacks",
+            "Sets of parts"
+          ],
+          "media": {
+            "type": "score",
+            "src": ""
+          },
+          "heroImage": "",
+          "photos": [],
           "videos": [],
           "audio": [],
           "isPlaceholder": false
@@ -1815,9 +2114,9 @@ window.SITE_CONTENT = {
           ],
           "media": {
             "type": "photo",
-            "src": "assets/media/portfolio/polnolunie/snimok-ekrana-2026-08-10-v-23.48.15.jpg"
+            "src": "assets/media/portfolio/polnolunie/snimok-ekrana-2026-09-22-v-03.18.13.jpg"
           },
-          "heroImage": "assets/media/portfolio/polnolunie/snimok-ekrana-2026-08-10-v-23.48.15.jpg",
+          "heroImage": "assets/media/portfolio/polnolunie/snimok-ekrana-2026-09-22-v-03.18.13.jpg",
           "photos": [],
           "videos": [],
           "audio": [],
@@ -1871,6 +2170,51 @@ window.SITE_CONTENT = {
               "src": "assets/media/portfolio/tavrida-2025/bulatov-22privet-22-demo.mp3"
             }
           ],
+          "isPlaceholder": false
+        },
+        {
+          "id": "romashka",
+          "category": "production",
+          "categoryLabel": "Sound production",
+          "title": "“Raz, romashka!” — a title song",
+          "meta": "Children's theatre · arrangement and mix",
+          "description": "The client sang the melody and the words into a phone — the arrangement was built from that to their brief, mixed, and delivered as a multitrack.",
+          "stats": [],
+          "scope": [
+            "Arranging from a sung reference",
+            "Mixing",
+            "Delivery as a multitrack"
+          ],
+          "media": {
+            "type": "audio",
+            "src": ""
+          },
+          "heroImage": "",
+          "photos": [],
+          "videos": [],
+          "audio": [],
+          "isPlaceholder": false
+        },
+        {
+          "id": "luzha",
+          "category": "production",
+          "categoryLabel": "Sound production",
+          "title": "Recording the song “Luzha” — Manka",
+          "meta": "Recording · released on streaming",
+          "description": "Recording the song and preparing the material. The mix was done by another engineer; the release is available on streaming services.",
+          "stats": [],
+          "scope": [
+            "Recording",
+            "Preparing the multitrack"
+          ],
+          "media": {
+            "type": "audio",
+            "src": ""
+          },
+          "heroImage": "",
+          "photos": [],
+          "videos": [],
+          "audio": [],
           "isPlaceholder": false
         },
         {
@@ -1957,6 +2301,106 @@ window.SITE_CONTENT = {
           "isPlaceholder": false
         },
         {
+          "id": "legends-heroes",
+          "category": "arrangement",
+          "categoryLabel": "Arranging & orchestration",
+          "title": "Four numbers from the “Legends and Heroes” programme",
+          "meta": "Imperial Orchestra · Dune, Skyrim, Assassin's Creed, God of War",
+          "description": "Four numbers of the programme done end to end — from shaping the form to finished parts.",
+          "stats": [],
+          "scope": [
+            "Shaping the form of the number",
+            "Transcribing by ear",
+            "Arranging for the ensemble",
+            "Score and parts"
+          ],
+          "media": {
+            "type": "score",
+            "src": ""
+          },
+          "heroImage": "",
+          "photos": [],
+          "videos": [],
+          "audio": [],
+          "isPlaceholder": false
+        },
+        {
+          "id": "richter",
+          "category": "arrangement",
+          "categoryLabel": "Arranging & orchestration",
+          "title": "Five numbers from a Max Richter programme",
+          "meta": "Imperial Orchestra · five numbers from the programme",
+          "description": "Five numbers of the programme: The Quality of Mercy, Mercy, Infra 5, The Trees and November / Memoryhouse. The rest were done by other authors.",
+          "stats": [],
+          "scope": [
+            "Transcribing by ear",
+            "Arranging for the ensemble",
+            "Score and parts"
+          ],
+          "media": {
+            "type": "score",
+            "src": ""
+          },
+          "heroImage": "",
+          "photos": [],
+          "videos": [],
+          "audio": [],
+          "isPlaceholder": false
+        },
+        {
+          "id": "einaudi",
+          "category": "arrangement",
+          "categoryLabel": "Arranging & orchestration",
+          "title": "Two numbers from a Ludovico Einaudi programme",
+          "meta": "Imperial Orchestra · Fly and Life",
+          "description": "Two numbers of the programme — Fly and Life. The rest were done by other authors.",
+          "stats": [],
+          "scope": [
+            "Transcribing by ear",
+            "Arranging for the ensemble",
+            "Score and parts"
+          ],
+          "media": {
+            "type": "score",
+            "src": ""
+          },
+          "heroImage": "",
+          "photos": [],
+          "videos": [],
+          "audio": [],
+          "isPlaceholder": false
+        },
+        {
+          "id": "oppenheimer",
+          "category": "arrangement",
+          "categoryLabel": "Arranging & orchestration",
+          "title": "“Oppenheimer” — Can You Hear the Music",
+          "meta": "Imperial Orchestra · a joint piece of work",
+          "description": "The number was made with a second composer-arranger: the material was transcribed by ear and set for the orchestra.",
+          "stats": [],
+          "scope": [
+            "Transcribing by ear",
+            "Arranging for the ensemble",
+            "Score and parts"
+          ],
+          "media": {
+            "type": "video",
+            "src": ""
+          },
+          "heroImage": "",
+          "photos": [],
+          "videos": [
+            {
+              "title": "Oppenheimer / Can You Hear The Music — Imperial Orchestra",
+              "url": "https://www.youtube.com/watch?v=TmfqYXZx9FA",
+              "src": "",
+              "poster": ""
+            }
+          ],
+          "audio": [],
+          "isPlaceholder": false
+        },
+        {
           "id": "gladiator",
           "category": "arrangement",
           "categoryLabel": "Arranging & orchestration",
@@ -1979,16 +2423,16 @@ window.SITE_CONTENT = {
           ],
           "media": {
             "type": "photo",
-            "src": "assets/media/portfolio/gladiator/cover.jpg"
+            "src": "assets/media/portfolio/gladiator/youtube-5fi0-8d9b_0-maxresdefault.jpg"
           },
-          "heroImage": "assets/media/portfolio/gladiator/cover.jpg",
+          "heroImage": "assets/media/portfolio/gladiator/youtube-5fi0-8d9b_0-maxresdefault.jpg",
           "photos": [],
           "videos": [
             {
               "title": "“Gladiator” — Imperial Orchestra, Hans Zimmer's Universe",
-              "url": "https://www.youtube.com/watch?v=mEqzV23sDgo",
+              "url": "https://youtu.be/5fi0-8d9B_0?si=Q6O5ak20qrMFisYj",
               "src": "",
-              "poster": ""
+              "poster": "assets/media/portfolio/gladiator/youtube-meqzv23sdgo-maxresdefault.jpg"
             }
           ],
           "audio": [],
@@ -2017,18 +2461,11 @@ window.SITE_CONTENT = {
           ],
           "media": {
             "type": "photo",
-            "src": "assets/media/portfolio/james-bond/cover.jpg"
+            "src": "assets/media/portfolio/james-bond/c6u8rhrir4sslltu8a10.jpg"
           },
-          "heroImage": "assets/media/portfolio/james-bond/cover.jpg",
+          "heroImage": "assets/media/portfolio/james-bond/c6u8rhrir4sslltu8a10.jpg",
           "photos": [],
-          "videos": [
-            {
-              "title": "James Bond — Imperial Orchestra, Cinema Medley 2",
-              "url": "https://www.youtube.com/watch?v=Tq55IojXt0Q",
-              "src": "",
-              "poster": ""
-            }
-          ],
+          "videos": [],
           "audio": [],
           "isPlaceholder": false
         },
@@ -2054,10 +2491,10 @@ window.SITE_CONTENT = {
             "Scores and parts"
           ],
           "media": {
-            "type": "score",
-            "placeholder": true
+            "type": "photo",
+            "src": "assets/media/portfolio/top-gun/756599473916784.jpg"
           },
-          "heroImage": "",
+          "heroImage": "assets/media/portfolio/top-gun/756599473916784.jpg",
           "photos": [],
           "videos": [],
           "audio": [],
@@ -2124,18 +2561,11 @@ window.SITE_CONTENT = {
           ],
           "media": {
             "type": "photo",
-            "src": "assets/media/portfolio/stranger-things/cover.jpg"
+            "src": "assets/media/portfolio/stranger-things/960x540.jpg"
           },
-          "heroImage": "assets/media/portfolio/stranger-things/cover.jpg",
+          "heroImage": "assets/media/portfolio/stranger-things/960x540.jpg",
           "photos": [],
-          "videos": [
-            {
-              "title": "“Stranger Things” — Imperial Orchestra",
-              "url": "https://www.youtube.com/watch?v=7Yy_uveisEg",
-              "src": "",
-              "poster": ""
-            }
-          ],
+          "videos": [],
           "audio": [],
           "isPlaceholder": false
         },
@@ -2187,14 +2617,14 @@ window.SITE_CONTENT = {
           "stats": [],
           "scope": [],
           "media": {
-            "type": "score",
-            "placeholder": true
+            "type": "photo",
+            "src": "assets/media/portfolio/new-project/1200x675_cmsv2_c2af739c-5ea8-55d4-b5b6-d0ea1b4bc478-9839988..avif"
           },
-          "heroImage": "",
+          "heroImage": "assets/media/portfolio/new-project/1200x675_cmsv2_c2af739c-5ea8-55d4-b5b6-d0ea1b4bc478-9839988..avif",
           "photos": [],
           "videos": [],
           "audio": [],
-          "hidden": true,
+          "hidden": false,
           "isPlaceholder": false
         }
       ],
@@ -2319,9 +2749,9 @@ window.SITE_CONTENT = {
         "eyebrow": "Estimate",
         "heading": "Cost calculator",
         "subheading": "A detailed estimate for those who want a figure before the conversation. Start with the type of job — the stages and questions adjust to it. Nothing is submitted anywhere, it stays in your browser.",
-      "openLabel": "Work out the cost",
-      "hideLabel": "Hide the estimate",
-      "toggleNote": "Seven steps, two or three minutes. If the questions don't fit your case — just write, and I'll work it out myself."
+        "openLabel": "Work out the cost",
+        "hideLabel": "Hide the estimate",
+        "toggleNote": "Seven steps, two or three minutes. If the questions don't fit your case — just write, and I'll work it out myself."
       },
       "extra": {
         "eyebrow": "Separately",

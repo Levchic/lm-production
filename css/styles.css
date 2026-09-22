@@ -815,7 +815,14 @@ time, .price, .project-meta, .service-price, .post-date { font-variant-numeric: 
 .project-body { padding: var(--sp-card); flex: 1; display: flex; flex-direction: column; gap: 8px; }
 .project-body h3 { font-size: var(--fs-h3); text-transform: none; letter-spacing: 0; font-weight: 700; line-height: 1.3; }
 .project-meta { font-size: var(--fs-xs); letter-spacing: 0.02em; color: var(--copper); }
-.project-body p.project-desc { color: var(--mute); font-size: var(--fs-base); }
+/* Описание в карточке обрезается пятью строками: у некоторых проектов в нём
+   перечислены номера программы, и без ограничения одна карточка становится
+   вдвое выше соседних. Полный текст — на странице проекта. */
+.project-body p.project-desc {
+  color: var(--mute); font-size: var(--fs-base);
+  display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 5;
+  overflow: hidden;
+}
 .project-more { margin-top: auto; padding-top: 14px; font-size: var(--fs-xs); letter-spacing: 0.08em; text-transform: uppercase; color: var(--mute); transition: color var(--dur-hover) var(--ease); }
 .project-card:hover .project-more { color: var(--copper); }
 .project-card.hidden { display: none; }
