@@ -375,6 +375,46 @@ window.SITE_CONTENT = {
           "isPlaceholder": false
         },
         {
+          "id": "hp-planetarium",
+          "category": "show",
+          "categoryLabel": "Оркестровое шоу",
+          "title": "«Гарри Поттер» в планетарии",
+          "meta": "Amadeus · 50 минут музыки · уменьшенный состав",
+          "description": "Программа по музыке всех фильмов франшизы. Главная трудность была не в объёме, а в составе: плотную оркестровку Джона Уильямса, Николаса Хупера и Александра Депла нужно было уместить в ансамбль существенно меньше симфонического, не растеряв узнаваемости. Сделано за две с половиной недели вдвоём — часть номеров взял на себя второй человек.",
+          "stats": [
+            {
+              "value": "50′",
+              "label": "хронометраж",
+              "icon": "clock"
+            },
+            {
+              "value": "7",
+              "label": "фильмов франшизы",
+              "icon": "steps"
+            },
+            {
+              "value": "2025",
+              "label": "премьера",
+              "icon": "calendar"
+            }
+          ],
+          "scope": [
+            "Съём материала на слух",
+            "Сборка номеров по каждому фильму",
+            "Переложение на уменьшенный состав",
+            "Партитуры и комплекты партий"
+          ],
+          "media": {
+            "type": "score",
+            "src": ""
+          },
+          "heroImage": "",
+          "photos": [],
+          "videos": [],
+          "audio": [],
+          "isPlaceholder": false
+        },
+        {
           "id": "multiland",
           "category": "show",
           "categoryLabel": "Оркестровое шоу",
@@ -814,6 +854,29 @@ window.SITE_CONTENT = {
             "«Аладдин» — песня Жасмин",
             "«Король Лев» — песня Шрама",
             "«Анастасия» — песня Распутина"
+          ],
+          "media": {
+            "type": "score",
+            "src": ""
+          },
+          "heroImage": "",
+          "photos": [],
+          "videos": [],
+          "audio": [],
+          "isPlaceholder": false
+        },
+        {
+          "id": "mtv-orchestra",
+          "category": "arrangement",
+          "categoryLabel": "Аранжировка и оркестровка",
+          "title": "Две песни для оркестра, MTV",
+          "meta": "Spice Girls и «Отпетые мошенники»",
+          "description": "Два популярных трека переложены на симфонический оркестр целиком — от съёма на слух до готовых партий. Заказ пришёл через коллегу-аранжировщика.",
+          "stats": [],
+          "scope": [
+            "Съём материала на слух",
+            "Аранжировка на симфонический оркестр",
+            "Партитура и партии"
           ],
           "media": {
             "type": "score",
@@ -2020,6 +2083,46 @@ window.SITE_CONTENT = {
           "isPlaceholder": false
         },
         {
+          "id": "hp-planetarium",
+          "category": "show",
+          "categoryLabel": "Orchestral show",
+          "title": "“Harry Potter” at the planetarium",
+          "meta": "Amadeus · 50 minutes of music · reduced ensemble",
+          "description": "A programme drawn from the music of the whole franchise. The hard part was not the length but the forces: the dense orchestration of John Williams, Nicholas Hooper and Alexandre Desplat had to fit an ensemble far smaller than a symphony orchestra without losing what makes it recognisable. Done in two and a half weeks between two of us — a second person took on part of the numbers.",
+          "stats": [
+            {
+              "value": "50′",
+              "label": "running time",
+              "icon": "clock"
+            },
+            {
+              "value": "7",
+              "label": "films in the franchise",
+              "icon": "steps"
+            },
+            {
+              "value": "2025",
+              "label": "premiere",
+              "icon": "calendar"
+            }
+          ],
+          "scope": [
+            "Transcribing by ear",
+            "Assembling a number for each film",
+            "Setting it for a reduced ensemble",
+            "Scores and sets of parts"
+          ],
+          "media": {
+            "type": "score",
+            "src": ""
+          },
+          "heroImage": "",
+          "photos": [],
+          "videos": [],
+          "audio": [],
+          "isPlaceholder": false
+        },
+        {
           "id": "multiland",
           "category": "show",
           "categoryLabel": "Orchestral show",
@@ -2459,6 +2562,29 @@ window.SITE_CONTENT = {
             "Aladdin — Jasmine's song",
             "The Lion King — Scar's song",
             "Anastasia — Rasputin's song"
+          ],
+          "media": {
+            "type": "score",
+            "src": ""
+          },
+          "heroImage": "",
+          "photos": [],
+          "videos": [],
+          "audio": [],
+          "isPlaceholder": false
+        },
+        {
+          "id": "mtv-orchestra",
+          "category": "arrangement",
+          "categoryLabel": "Arranging & orchestration",
+          "title": "Two songs for orchestra, MTV",
+          "meta": "Spice Girls and Otpetye Moshenniki",
+          "description": "Two well-known tracks set for symphony orchestra end to end — from transcribing by ear to finished parts. The commission came through a fellow arranger.",
+          "stats": [],
+          "scope": [
+            "Transcribing by ear",
+            "Arranging for symphony orchestra",
+            "Score and parts"
           ],
           "media": {
             "type": "score",
