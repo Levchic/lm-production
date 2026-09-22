@@ -823,10 +823,10 @@ window.SITE_CONTENT = {
             "Партитура и партии"
           ],
           "media": {
-            "type": "video",
-            "src": ""
+            "type": "photo",
+            "src": "assets/media/portfolio/oppenheimer/youtube-tmfqyxzx9fa-maxresdefault.jpg"
           },
-          "heroImage": "",
+          "heroImage": "assets/media/portfolio/oppenheimer/youtube-tmfqyxzx9fa-maxresdefault.jpg",
           "photos": [],
           "videos": [
             {
@@ -2575,10 +2575,10 @@ window.SITE_CONTENT = {
             "Score and parts"
           ],
           "media": {
-            "type": "video",
-            "src": ""
+            "type": "photo",
+            "src": "assets/media/portfolio/oppenheimer/youtube-tmfqyxzx9fa-maxresdefault.jpg"
           },
-          "heroImage": "",
+          "heroImage": "assets/media/portfolio/oppenheimer/youtube-tmfqyxzx9fa-maxresdefault.jpg",
           "photos": [],
           "videos": [
             {
