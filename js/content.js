@@ -871,12 +871,41 @@ window.SITE_CONTENT = {
           "categoryLabel": "Аранжировка и оркестровка",
           "title": "Две песни для оркестра, MTV",
           "meta": "Spice Girls и «Отпетые мошенники»",
-          "description": "Два популярных трека переложены на симфонический оркестр целиком — от съёма на слух до готовых партий. Заказ пришёл через коллегу-аранжировщика.",
+          "description": "Два популярных трека переложены на симфонический оркестр целиком — от съёма на слух до готовых партий.",
           "stats": [],
           "scope": [
             "Съём материала на слух",
             "Аранжировка на симфонический оркестр",
             "Партитура и партии"
+          ],
+          "media": {
+            "type": "score",
+            "src": ""
+          },
+          "heroImage": "",
+          "photos": [],
+          "videos": [],
+          "audio": [],
+          "isPlaceholder": false
+        },
+        {
+          "id": "karamanov",
+          "category": "arrangement",
+          "categoryLabel": "Нотный набор",
+          "title": "Набор партитуры с рукописи: Концерт для скрипки А. Караманова",
+          "meta": "175 страниц партитуры · с рукописного оригинала",
+          "description": "Партитура концерта набрана с рукописи — сто семьдесят пять страниц. Работа не творческая, а въедливая: разобрать почерк, восстановить неразборчивые места, свести разночтения между страницами и выдать текст, по которому оркестр играет без вопросов к нотам.",
+          "stats": [
+            {
+              "value": "175",
+              "label": "страниц партитуры",
+              "icon": "steps"
+            }
+          ],
+          "scope": [
+            "Разбор рукописного оригинала",
+            "Набор партитуры",
+            "Вычитка и сверка разночтений"
           ],
           "media": {
             "type": "score",
@@ -2579,12 +2608,41 @@ window.SITE_CONTENT = {
           "categoryLabel": "Arranging & orchestration",
           "title": "Two songs for orchestra, MTV",
           "meta": "Spice Girls and Otpetye Moshenniki",
-          "description": "Two well-known tracks set for symphony orchestra end to end — from transcribing by ear to finished parts. The commission came through a fellow arranger.",
+          "description": "Two well-known tracks set for symphony orchestra end to end — from transcribing by ear to finished parts.",
           "stats": [],
           "scope": [
             "Transcribing by ear",
             "Arranging for symphony orchestra",
             "Score and parts"
+          ],
+          "media": {
+            "type": "score",
+            "src": ""
+          },
+          "heroImage": "",
+          "photos": [],
+          "videos": [],
+          "audio": [],
+          "isPlaceholder": false
+        },
+        {
+          "id": "karamanov",
+          "category": "arrangement",
+          "categoryLabel": "Music engraving",
+          "title": "Engraving a score from manuscript: A. Karamanov's Violin Concerto",
+          "meta": "175 pages of score · from the handwritten original",
+          "description": "The concerto's score engraved from manuscript — one hundred and seventy-five pages. Not creative work but painstaking work: reading the hand, restoring what is illegible, reconciling discrepancies between pages, and producing a text an orchestra can play without asking questions of the notes.",
+          "stats": [
+            {
+              "value": "175",
+              "label": "pages of score",
+              "icon": "steps"
+            }
+          ],
+          "scope": [
+            "Reading the handwritten original",
+            "Engraving the score",
+            "Proofreading and reconciling discrepancies"
           ],
           "media": {
             "type": "score",
