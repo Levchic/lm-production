@@ -64,9 +64,14 @@
     paragraphs.forEach(function (text) { body.appendChild(el("p", null, esc(text).replace(/\n/g, "<br>"))); });
     toggle($("#postBodySection"), paragraphs.length > 0);
 
-    // Ссылка на YouTube / VK / Rutube превращается во встроенный плеер
+    /* Свой файл важнее ссылки: если ролик загружен через админку, показываем
+       его, а не чужой плеер. Ссылка на YouTube / VK / Rutube превращается во
+       встроенный плеер, как и раньше. */
     var videoBox = $("#postVideo");
-    if (post.video) {
+    if (post.videoSrc) {
+      videoBox.innerHTML = C.videoTile(post.videoSrc, post.videoPoster);
+      toggle($("#postVideoSection"), true);
+    } else if (post.video) {
       videoBox.innerHTML = C.videoEmbed(post.video, post.title);
       toggle($("#postVideoSection"), true);
     } else {

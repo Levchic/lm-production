@@ -858,6 +858,12 @@ window.SITE_CONTENT = {
               "url": "https://youtu.be/5fi0-8d9B_0?si=Q6O5ak20qrMFisYj",
               "src": "",
               "poster": "assets/media/portfolio/gladiator/youtube-meqzv23sdgo-maxresdefault.jpg"
+            },
+            {
+              "title": "",
+              "url": "",
+              "src": "assets/media/portfolio/gladiator/gladiator-part-1-1.mp4",
+              "poster": "assets/media/portfolio/gladiator/gladiator-part-1-1-poster.jpg"
             }
           ],
           "audio": [],
@@ -1046,7 +1052,9 @@ window.SITE_CONTENT = {
             "src": "assets/media/portfolio/new-project/1200x675_cmsv2_c2af739c-5ea8-55d4-b5b6-d0ea1b4bc478-9839988..avif"
           },
           "heroImage": "assets/media/portfolio/new-project/1200x675_cmsv2_c2af739c-5ea8-55d4-b5b6-d0ea1b4bc478-9839988..avif",
-          "photos": [],
+          "photos": [
+            "assets/media/portfolio/new-project/snimok-ekrana-2026-09-22-v-03.50.14.jpg"
+          ],
           "videos": [],
           "audio": [],
           "hidden": false,
@@ -1387,13 +1395,9 @@ window.SITE_CONTENT = {
           "title": "Пять дней над двумя большими треками",
           "excerpt": "Фрагмент работы и несколько мыслей о том, как не «замылить» слух за долгую смену.",
           "body": "Готовлю два больших трека для оркестра и решил показать фрагмент того, что успел сделать за пять дней работы.\n\nСамое сложное в такой долгой работе — даже не написать, а удержать концентрацию: через несколько часов слух «замыливается», и решения начинают приниматься по инерции. Помогают перерывы, сон и спорт — банально, но без этого качество на длинной дистанции падает быстрее, чем кажется.",
-          "cover": "assets/media/blog/orchestral-tracks/01.jpg",
-          "photos": [
-            "assets/media/blog/orchestral-tracks/02.jpg",
-            "assets/media/blog/orchestral-tracks/03.jpg",
-            "assets/media/blog/orchestral-tracks/04.jpg"
-          ],
-          "video": "",
+          "cover": "assets/media/blog/orchestral-tracks/photo_2026-09-22-05.37.14.jpg",
+          "photos": [],
+          "video": "https://t.me/levlvovichmusicwork/107",
           "links": [
             {
               "label": "Пост в Telegram",
@@ -2499,6 +2503,12 @@ window.SITE_CONTENT = {
               "url": "https://youtu.be/5fi0-8d9B_0?si=Q6O5ak20qrMFisYj",
               "src": "",
               "poster": "assets/media/portfolio/gladiator/youtube-meqzv23sdgo-maxresdefault.jpg"
+            },
+            {
+              "title": "",
+              "url": "",
+              "src": "assets/media/portfolio/gladiator/gladiator-part-1-1.mp4",
+              "poster": "assets/media/portfolio/gladiator/gladiator-part-1-1-poster.jpg"
             }
           ],
           "audio": [],
@@ -2687,7 +2697,9 @@ window.SITE_CONTENT = {
             "src": "assets/media/portfolio/new-project/1200x675_cmsv2_c2af739c-5ea8-55d4-b5b6-d0ea1b4bc478-9839988..avif"
           },
           "heroImage": "assets/media/portfolio/new-project/1200x675_cmsv2_c2af739c-5ea8-55d4-b5b6-d0ea1b4bc478-9839988..avif",
-          "photos": [],
+          "photos": [
+            "assets/media/portfolio/new-project/snimok-ekrana-2026-09-22-v-03.50.14.jpg"
+          ],
           "videos": [],
           "audio": [],
           "hidden": false,
@@ -3028,13 +3040,9 @@ window.SITE_CONTENT = {
           "title": "Five days on two large orchestral tracks",
           "excerpt": "A work-in-progress excerpt and a few thoughts on keeping your ears fresh.",
           "body": "I'm working on two large orchestral tracks and decided to share a fragment of what I managed in five days.\n\nThe hardest part of long work is not the writing but holding concentration: after a few hours your ears go dull and decisions start being made by inertia. Breaks, sleep and sport help — obvious, but without them quality drops faster than you'd expect.",
-          "cover": "assets/media/blog/orchestral-tracks/01.jpg",
-          "photos": [
-            "assets/media/blog/orchestral-tracks/02.jpg",
-            "assets/media/blog/orchestral-tracks/03.jpg",
-            "assets/media/blog/orchestral-tracks/04.jpg"
-          ],
-          "video": "",
+          "cover": "assets/media/blog/orchestral-tracks/photo_2026-09-22-05.37.14.jpg",
+          "photos": [],
+          "video": "https://t.me/levlvovichmusicwork/107",
           "links": [
             {
               "label": "Post on Telegram",
