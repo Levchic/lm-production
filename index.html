@@ -24,11 +24,11 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preload" href="assets/fonts/unbounded-cyrillic-normal-400-900.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/jost-cyrillic-normal-200-700.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/fonts.css?v=74">
-<link rel="stylesheet" href="css/styles.css?v=74">
-<link rel="stylesheet" href="css/texture.css?v=74">
-<link rel="stylesheet" href="css/animations.css?v=74">
-<link rel="stylesheet" href="css/hero-cinematic.css?v=74">
+<link rel="stylesheet" href="css/fonts.css?v=80">
+<link rel="stylesheet" href="css/styles.css?v=80">
+<link rel="stylesheet" href="css/texture.css?v=80">
+<link rel="stylesheet" href="css/animations.css?v=80">
+<link rel="stylesheet" href="css/hero-cinematic.css?v=80">
 </head>
 <body>
 
@@ -131,16 +131,18 @@
   <section class="section intro-video-section" id="intro-video" data-glow>
     <div class="section-photo-bg" id="introVideoBgPhoto" aria-hidden="true"></div>
     <div class="wrap intro-video-inner">
+      <!-- Три блока в сетке: на широком экране заголовок и пересказ слева,
+           ролик справа; на узком — заголовок, ролик, под ним пересказ -->
       <div class="intro-video-text">
         <div class="section-head reveal" data-reveal>
           <span class="eyebrow" id="introVideoEyebrow"></span>
           <h2 id="introVideoHeading"></h2>
           <p class="section-sub" id="introVideoSub"></p>
         </div>
-        <!-- Пересказ ролика текстом; наполняется из админки -->
-        <div class="reveal" data-reveal id="introVideoDigest"></div>
       </div>
       <div class="reveal" data-reveal id="introVideoPlayer"></div>
+      <!-- Пересказ ролика текстом; наполняется из админки -->
+      <div class="intro-video-digest reveal" data-reveal id="introVideoDigest"></div>
     </div>
   </section>
 
@@ -263,27 +265,11 @@
     </div>
   </section>
 
-  <!-- Новости (фото в фоне) -->
-  <section class="section section-deep" id="blog" data-glow>
-    <div class="section-photo-bg" id="blogBgPhoto" aria-hidden="true"></div>
-    <div class="wrap">
-      <div class="section-head reveal" data-reveal>
-        <span class="eyebrow" id="blogEyebrow"></span>
-        <h2 id="blogHeading"></h2>
-        <p class="section-sub" id="blogSub"></p>
-      </div>
-      <div class="card-grid card-grid--3" id="blogGrid"></div>
-      <div class="section-foot">
-        <a href="blog.html" class="text-link" id="blogViewAll">Все новости</a>
-      </div>
-    </div>
-  </section>
-
   <!-- Контакты (однотонный фон + световые пятна) -->
   <!-- Контакты. Формы обратной связи здесь намеренно нет: сайт не собирает
        и не хранит персональные данные. Все каналы связи прямые, порядок —
        по убыванию: почта крупно, мессенджеры строками. -->
-  <section class="section" id="contact" data-glow>
+  <section class="section section-deep" id="contact" data-glow>
     <div class="section-photo-bg" id="contactBgPhoto" aria-hidden="true"></div>
     <div class="wrap">
       <div class="section-head reveal" data-reveal>
@@ -323,12 +309,12 @@
   </div>
 </footer>
 
-<script src="js/flags.js?v=74"></script>
-<script src="js/content.js?v=74"></script>
-<script src="js/common.js?v=74"></script>
-<script src="js/reviews.js?v=74"></script>
-<script src="js/hero-cinematic.js?v=74"></script>
-<script src="js/page-home.js?v=74"></script>
-<script src="js/mobile-carousel.js?v=74"></script>
+<script src="js/flags.js?v=80"></script>
+<script src="js/content.js?v=80"></script>
+<script src="js/common.js?v=80"></script>
+<script src="js/reviews.js?v=80"></script>
+<script src="js/hero-cinematic.js?v=80"></script>
+<script src="js/page-home.js?v=80"></script>
+<script src="js/mobile-carousel.js?v=80"></script>
 </body>
 </html>

@@ -7,11 +7,14 @@
   function renderFilters() {
     var d = t();
     var wrap = $("#portfolioFilters"); wrap.innerHTML = "";
-    var keysInUse = {};
-    C.visibleProjects(d).forEach(function (p) { keysInUse[p.category] = true; });
+    var count = {};
+    var projects = C.visibleProjects(d);
+    projects.forEach(function (p) { count[p.category] = (count[p.category] || 0) + 1; });
     d.portfolio.filters.forEach(function (f) {
-      if (f.key !== "all" && !keysInUse[f.key]) return;
-      var btn = el("button", "filter-btn" + (f.key === filter ? " active" : ""), C.esc(f.label));
+      var n = f.key === "all" ? projects.length : count[f.key];
+      if (!n) return;
+      var btn = el("button", "filter-btn" + (f.key === filter ? " active" : ""),
+        C.esc(f.label) + '<span class="filter-count">' + n + "</span>");
       btn.type = "button";
       btn.setAttribute("data-filter", f.key);
       wrap.appendChild(btn);

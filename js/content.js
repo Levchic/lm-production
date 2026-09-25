@@ -26,14 +26,6 @@ window.SITE_CONTENT = {
           "label": "Обо мне"
         },
         {
-          "href": "index.html#for-whom",
-          "label": "Для кого"
-        },
-        {
-          "href": "index.html#process",
-          "label": "Этапы работы"
-        },
-        {
           "href": "portfolio.html",
           "label": "Портфолио"
         },
@@ -54,7 +46,7 @@ window.SITE_CONTENT = {
           "label": "Контакты"
         }
       ],
-      "cta": "Задать вопрос"
+      "cta": "Обсудить проект"
     },
     "hero": {
       "annotation": "Аранжировка и оркестровка на заказ",
@@ -62,7 +54,7 @@ window.SITE_CONTENT = {
       "role": "Аранжировщик и оркестровщик, Санкт-Петербург",
       "description": "Музыка для оркестровых шоу, театра и записи — **от снятия на слух до партий на пультах.**",
       "ctaPrimary": "Обсудить проект",
-      "ctaSecondary": "Перейти в портфолио",
+      "ctaSecondary": "Портфолио",
       "photoCaption": "Галерея",
       "frameLabel": "Кадр",
       "photoSrc": "assets/media/home/img_48.jpg",
@@ -1346,7 +1338,9 @@ window.SITE_CONTENT = {
         "ctaHeading": "Точный расчёт — по запросу",
         "ctaText": "Калькулятор даёт порядок суммы. Пришлите материал — отвечу точной сметой и сроками.",
         "ctaLabel": "Запросить расчёт"
-      }
+      },
+      "homeHeading": "Услуги",
+      "homeSubheading": "Три направления работы. Цены, условия и калькулятор стоимости — на странице услуг."
     },
     "testimonials": {
       "eyebrow": "Отзывы",
@@ -1805,14 +1799,6 @@ window.SITE_CONTENT = {
           "label": "About"
         },
         {
-          "href": "index.html#for-whom",
-          "label": "Who I work with"
-        },
-        {
-          "href": "index.html#process",
-          "label": "Process"
-        },
-        {
           "href": "portfolio.html",
           "label": "Portfolio"
         },
@@ -1841,7 +1827,7 @@ window.SITE_CONTENT = {
       "role": "Arranger and orchestrator, St Petersburg",
       "description": "Music for orchestral shows, theatre and recording — **from transcription by ear to the parts on the stands.**",
       "ctaPrimary": "Discuss a project",
-      "ctaSecondary": "View portfolio",
+      "ctaSecondary": "Portfolio",
       "photoCaption": "At the desk",
       "frameLabel": "Frame",
       "photoSrc": "assets/media/home/img_48.jpg",
@@ -3125,7 +3111,9 @@ window.SITE_CONTENT = {
         "ctaHeading": "An exact quote, on request",
         "ctaText": "The calculator shows the order of magnitude. Send me the material and I’ll reply with an exact estimate and timeline.",
         "ctaLabel": "Request a quote"
-      }
+      },
+      "homeHeading": "Services",
+      "homeSubheading": "Three lines of work. Rates, terms and a cost calculator are on the Services page."
     },
     "testimonials": {
       "eyebrow": "Testimonials",

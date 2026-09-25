@@ -221,7 +221,6 @@
      ["#servicesBgPhoto", d.services.bgPhoto],
      ["#testimonialsBgPhoto", d.testimonials.bgPhoto],
      ["#faqBgPhoto", d.faq && d.faq.bgPhoto],
-     ["#blogBgPhoto", d.blog.bgPhoto],
      ["#contactBgPhoto", d.contact.bgPhoto]].forEach(function (pair) {
       setBgPhoto(pair[0], pair[1]);
     });
@@ -415,8 +414,9 @@
   function renderServicesPreview() {
     var d = t();
     $("#servicesEyebrow").textContent = d.services.eyebrow;
-    $("#servicesHeading").textContent = d.services.heading;
-    $("#servicesSub").textContent = d.services.subheading;
+    // На главной цен нет — заголовок без «и цены», свой короткий подзаголовок
+    $("#servicesHeading").textContent = d.services.homeHeading || d.services.heading;
+    $("#servicesSub").textContent = d.services.homeSubheading || d.services.subheading;
     $("#servicesViewAll").innerHTML = C.withArrow(d.services.viewAll);
     // На главной — направления целиком, а не первые три услуги из семи:
     // выборка «первых трёх» читалась как случайная.
@@ -450,18 +450,6 @@
     var list = $("#faqList"); list.innerHTML = "";
     (faq.items || []).slice(0, 5).forEach(function (item, i) {
       list.appendChild(C.faqRow(item, d, i));
-    });
-  }
-
-  function renderBlogPreview() {
-    var d = t();
-    $("#blogEyebrow").textContent = d.blog.eyebrow;
-    $("#blogHeading").textContent = d.blog.heading;
-    $("#blogSub").textContent = d.blog.subheading;
-    $("#blogViewAll").innerHTML = C.withArrow(d.blog.viewAll);
-    var grid = $("#blogGrid"); grid.innerHTML = "";
-    d.blog.posts.slice(0, 3).forEach(function (post, i) {
-      grid.appendChild(C.blogCard(post, i, d));
     });
   }
 
@@ -589,7 +577,6 @@
     renderServicesPreview();
     renderTestimonials();
     renderFaqPreview();
-    renderBlogPreview();
     renderContact();
     // кинематографичный первый экран — только если включён флаг в js/flags.js
     if (window.SiteHeroCinematic) window.SiteHeroCinematic.render();
