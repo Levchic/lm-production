@@ -823,7 +823,9 @@ time, .price, .project-meta, .service-price, .post-date { font-variant-numeric: 
   display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 5;
   overflow: hidden;
 }
-.project-more { margin-top: auto; padding-top: 14px; font-size: var(--fs-xs); letter-spacing: 0.08em; text-transform: uppercase; color: var(--mute); transition: color var(--dur-hover) var(--ease); }
+.project-foot { margin-top: auto; padding-top: 14px; display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.project-date { font-size: var(--fs-xs); letter-spacing: 0.08em; text-transform: uppercase; color: var(--mute); white-space: nowrap; }
+.project-more { font-size: var(--fs-xs); letter-spacing: 0.08em; text-transform: uppercase; color: var(--mute); transition: color var(--dur-hover) var(--ease); }
 .project-card:hover .project-more { color: var(--copper); }
 .project-card.hidden { display: none; }
 .placeholder-flag { align-self: flex-start; font-size: var(--fs-2xs); letter-spacing: 0.06em; text-transform: uppercase; color: var(--mute); border: 1px dashed var(--rule); padding: 3px 8px; }

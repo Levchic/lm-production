@@ -1,3 +1,7 @@
+/* ЗАМОРОЖЕННЫЙ ПРАЙС ДЛЯ ТЕСТОВ — ставки 2026 года до калибровки.
+   Тесты проверяют арифметику (порядок коэффициентов, пороги, надбавки),
+   а не текущие цены: с живым прайсом каждая правка ставки ломала бы
+   десятки проверок с числами вроде «9000 × 10». Этот файл не менять. */
 /**
  * ПРАЙС: ЕДИНЫЙ ФАЙЛ С ЦИФРАМИ
  * ============================
@@ -32,15 +36,6 @@
  *   share-of-module     — доля от ставки другого этапа × минуты
  *   per-piece           — за номер, с вариантами и надбавками
  */
-
-/* КАЛИБРОВКА, сентябрь 2026. Ставки сверены с реальными гонорарами:
-   номер для шоу полным циклом (снятие, аранжировка, саунд-дизайн, клик,
-   плейбэк, партитура и партии) — 7–10 тыс. ₽ за минуту; программа по
-   Бёртону (90 мин, 12 номеров, уменьшенный состав) — 600 тыс. ₽.
-   Калькулятор даёт чуть выше этих сумм: категория A на полном цикле —
-   ≈ 8 тыс. ₽/мин, B — ≈ 11 тыс. ₽/мин с налогом. Прежние ставки были в
-   2,5–3 раза выше рынка. Строки «Ведение проекта» и «Работа по договору»
-   обнулены: они заложены в ставки, отдельной строкой их не показываем. */
 
 window.PRICING_CONFIG = {
   /* Год прайса. Выводится в подписи под калькулятором. */
@@ -345,7 +340,7 @@ window.PRICING_CONFIG = {
         ru: "Восстановление нотного текста с фонограммы, когда нот не существует. Результат — набранная партитура.",
         en: "Reconstructing the score from a recording when no notation exists. The result is an engraved score."
       },
-      rate: { A: 1500, B: 2000, C: 2800, D: 3500 },
+      rate: { A: 3000, B: 4000, C: 5500, D: 7000 },
       conflictsWith: ["m8"],
       conflictReason: {
         ru: "При снятии ноты набираются сразу — отдельный набор не нужен.",
@@ -370,7 +365,7 @@ window.PRICING_CONFIG = {
       /* Самая дешёвая точка входа. Снимается тот же материал, что и в
          полном снятии, но записывается один голос и буквенная гармония,
          а не вся фактура по строкам. */
-      rate: { A: 800, B: 1000, C: 1300, D: 1600 },
+      rate: { A: 1800, B: 2200, C: 2800, D: 3500 },
       conflictsWith: ["m1", "m8"],
       conflictReason: {
         ru: "Мелодическая строка — это сокращённое снятие: полное снятие и нотный набор её заменяют.",
@@ -391,7 +386,7 @@ window.PRICING_CONFIG = {
         ru: "Партитура под заданный состав: распределение материала, динамический план, играбельность партий.",
         en: "A score for the given ensemble: material spread across sections, dynamic plan, playable parts."
       },
-      rate: { A: 5000, B: 6000, C: 7500, D: 9000 },
+      rate: { A: 7000, B: 9000, C: 12000, D: 15000 },
       conflictsWith: ["m7", "m8"],
       conflictReason: {
         ru: "Новая оркестровка уже включает набор партитуры и партий.",
@@ -424,7 +419,7 @@ window.PRICING_CONFIG = {
       },
       base: 15000,
       includedMinutes: 10,
-      perExtraMinute: 300,
+      perExtraMinute: 1500,
       note: {
         ru: "Не нужна, если порядок номеров и переходы уже собраны.",
         en: "Not needed if the running order and transitions are already settled."
@@ -439,7 +434,7 @@ window.PRICING_CONFIG = {
         ru: "Темпокарта, отсчёты, метки перехода, служебные ориентиры для дирижёра и оркестра.",
         en: "Tempo map, count-ins, transition markers, cues for the conductor and the orchestra."
       },
-      rate: 500
+      rate: 1500
     },
     {
       id: "m5",
@@ -450,7 +445,7 @@ window.PRICING_CONFIG = {
         ru: "Синтезаторные партии, хор, ударные, дополнительные слои. Сведение, стемы, сдача в концертном формате.",
         en: "Synth parts, choir, drums, extra layers. Mixing, stems, concert-ready delivery."
       },
-      rate: { A: 1500, B: 2000, C: 2500, D: 3000 },
+      rate: { A: 3500, B: 3500, C: 5000, D: 5000 },
       /* Саунд-дизайн отдельной строкой дублировал плейбэк: шумы и
          переходы делаются в том же проекте, теми же руками и в ту же
          сдачу. Поэтому он не этап, а надбавка к плейбэку — считается
@@ -479,7 +474,7 @@ window.PRICING_CONFIG = {
       /* Чаще всего это добавка к работе, которая и так идёт: партитура
          уже набрана и открыта, озвучить её — дело настройки, а не
          разбора материала. Отсюда одна низкая ставка вместо категорий. */
-      bundledRate: 500,
+      bundledRate: 1000,
       bundledWith: ["m1", "m2", "m8"],
       bundledNote: {
         ru: "Идёт вместе с набором, оркестровкой или снятием — партитура уже в работе.",
@@ -487,7 +482,7 @@ window.PRICING_CONFIG = {
       },
       /* Отдельным заказом дороже: чужую партитуру нужно сначала внести
          в проект, а от того, в каком она виде, зависит объём работы. */
-      rate: { A: 1000, B: 1200, C: 1500, D: 2000 },
+      rate: { A: 2000, B: 2500, C: 3000, D: 4000 },
       variants: [
         { id: "project", factor: 1,
           label: { ru: "Есть проект или MIDI", en: "A project or MIDI exists" } },
@@ -545,15 +540,15 @@ window.PRICING_CONFIG = {
           label: { ru: "За страницу", en: "Per page" },
           short: { ru: "стр.", en: "pg" },
           qtyLabel: { ru: "Страниц в оригинале", en: "Pages in the original" },
-          rate: { file: 350, manuscript: 500, draft: 700 } },
+          rate: { file: 500, manuscript: 700, draft: 900 } },
         { id: "minute", qtyField: "minutes",
           label: { ru: "За минуту", en: "Per minute" },
           short: { ru: "мин", en: "min" },
-          rate: { file: 2000, manuscript: 2800, draft: 3500 } },
+          rate: { file: 3000, manuscript: 4000, draft: 5000 } },
         { id: "piece", qtyField: "pieces",
           label: { ru: "За номер", en: "Per piece" },
           short: { ru: "ном.", en: "pcs" },
-          rate: { file: 8000, manuscript: 11000, draft: 14000 } }
+          rate: { file: 12000, manuscript: 15000, draft: 18000 } }
       ],
       variants: [
         { id: "file", label: { ru: "Из файла", en: "From a file" },
@@ -604,7 +599,7 @@ window.PRICING_CONFIG = {
      ------------------------------------------------------------------ */
   delivery: {
     appliesWhen: ["m1", "m2", "m7"],
-    rate: { A: 1500, B: 2000, C: 3000, D: 4000 },
+    rate: { A: 2500, B: 4000, C: 6000, D: 8000 },
     /* Названия этой строки и intake разведены намеренно. Раньше они
        звались «Оформление и сдача комплекта» и «Приём и сдача проекта»,
        стояли в смете рядом и читались как одна работа, посчитанная
@@ -761,10 +756,10 @@ window.PRICING_CONFIG = {
       { id: "person", tax: 0.04, contractFee: 0,
         label: { ru: "Частное лицо", en: "A private individual" },
         note: { ru: "Чек, без договора", en: "A receipt, no contract" } },
-      { id: "entrepreneur", tax: 0.06, contractFee: 0,
+      { id: "entrepreneur", tax: 0.06, contractFee: 4000,
         label: { ru: "ИП или самозанятый", en: "Sole trader" },
         note: { ru: "Договор, акт, чек", en: "Contract, act, receipt" } },
-      { id: "company", tax: 0.06, contractFee: 0,
+      { id: "company", tax: 0.06, contractFee: 4000,
         label: { ru: "Организация", en: "An organisation" },
         note: { ru: "Договор, акт, счёт, ЭДО", en: "Contract, act, invoice, e-document flow" } }
     ],
@@ -812,7 +807,7 @@ window.PRICING_CONFIG = {
      как раз и составляет смысл.
      ------------------------------------------------------------------ */
   intake: {
-    amount: 0,
+    amount: 3000,
     title: { ru: "Ведение проекта", en: "Running the project" },
     description: {
       ru: "Один раз на проект: разбор присланного материала, согласование сметы, документы и чек, переписка по ходу работы, хранение архива.",

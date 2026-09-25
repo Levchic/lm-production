@@ -568,6 +568,22 @@ window.SiteCommon = (function () {
       "</div>";
   }
 
+  /**
+   * Месяц и год сдачи. В контенте хранится как «2025-10» (общее для RU и
+   * EN), а название месяца берётся из языка страницы. Если вписано что-то
+   * другое — показываем как есть.
+   */
+  function projectDate(value) {
+    var m = String(value || "").trim().match(/^(\d{4})-(\d{1,2})$/) ||
+      String(value || "").trim().match(/^(\d{1,2})[.\/](\d{4})$/);
+    if (!m) return String(value || "").trim();
+    var year = +(m[1].length === 4 ? m[1] : m[2]);
+    var month = +(m[1].length === 4 ? m[2] : m[1]);
+    if (month < 1 || month > 12) return String(value).trim();
+    var name = new Date(year, month - 1, 1).toLocaleDateString(state.lang, { month: "long" });
+    return name + " " + year;
+  }
+
   /** Карточка проекта — одинаковая на главной и на странице портфолио. */
   function projectCardHTML(proj, d) {
     return projectThumb(proj, proj.categoryLabel) +
@@ -576,7 +592,10 @@ window.SiteCommon = (function () {
         '<p class="project-meta">' + esc(proj.meta) + "</p>" +
         '<p class="project-desc">' + esc(proj.description) + "</p>" +
         (proj.isPlaceholder ? '<span class="placeholder-flag">' + esc(d.common.placeholderFlag) + "</span>" : "") +
-        '<span class="project-more">' + withArrow(d.portfolio.detailsLabel) + "</span>" +
+        '<div class="project-foot">' +
+          '<span class="project-more">' + withArrow(d.portfolio.detailsLabel) + "</span>" +
+          (proj.date ? '<span class="project-date">' + esc(projectDate(proj.date)) + "</span>" : "") +
+        "</div>" +
       "</div>";
   }
 

@@ -35,6 +35,8 @@
     { key: "categoryLabel", label: "Категория (подпись на карточке)", type: "text" },
     { key: "title", label: "Название проекта", type: "text" },
     { key: "meta", label: "Подзаголовок (хронометраж, состав)", type: "text" },
+    { key: "date", label: "Месяц и год сдачи", type: "text", shared: true, placeholder: "2025-10",
+      hint: "Год и месяц через дефис: 2025-10. На карточке станет «октябрь 2025», в английской версии — «October 2025». Пусто — дата не показывается." },
     { key: "description", label: "Описание", type: "textarea" },
     { key: "__cover", label: "Главное фото проекта", type: "cover",
       hint: "Если у проекта есть ссылка на ролик, обложку можно забрать из него кнопкой «Взять кадр из ролика»." },
@@ -407,6 +409,37 @@
       ]
     },
     {
+      id: "faq", title: "Вопросы",
+      hint: "На главной показываются первые пять вопросов, полный список — на странице faq.html. Порядок меняется стрелками.",
+      groups: [
+        {
+          title: "Заголовки", fields: [
+            { key: "faq.eyebrow", label: "Надзаголовок", type: "text" },
+            { key: "faq.heading", label: "Заголовок", type: "text" },
+            { key: "faq.subheading", label: "Описание", type: "textarea" },
+            { key: "faq.viewAll", label: "Ссылка «все вопросы»", type: "text" },
+            { key: "faq.note", label: "Примечание под списком", type: "textarea" },
+            { key: "faq.bgPhoto", label: "Фото в фоне раздела", type: "media", accept: "photo", shared: true, folder: "home",
+              hint: "Оставьте пустым — раздел будет однотонным со световыми пятнами." }
+          ]
+        },
+        {
+          title: "Вопросы и ответы", fields: [
+            {
+              key: "faq.items", label: "", type: "objects",
+              titleKey: "question", addLabel: "Добавить вопрос", collapsed: true,
+              newItem: { question: "Новый вопрос", answer: "" },
+              item: [
+                { key: "question", label: "Вопрос", type: "text",
+                  hint: "Формулируйте так, как спрашивает заказчик." },
+                { key: "answer", label: "Ответ", type: "textarea" }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
       id: "blog", title: "Новости",
       groups: [
         {
@@ -705,6 +738,7 @@
       wrap.appendChild(labelNode(field));
       var input = field.type === "textarea" ? el("textarea") : el("input");
       if (field.type === "text") input.type = "text";
+      if (field.placeholder) input.placeholder = field.placeholder;
       input.value = getIn(active, field.key) || "";
       input.addEventListener("input", function () { write(input.value); });
       wrap.appendChild(input);

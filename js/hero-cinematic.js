@@ -25,6 +25,11 @@ window.SiteHeroCinematic = (function () {
 
   var FADED = [".hero-credit", ".hero-ticker", ".hero-frames"];
   var leadHeight = 0;
+  /* Где залипает блок в начале сцены и где в конце. Начало — как было:
+     имя стоит на месте, пока меняется текст. К концу, когда ролик и
+     стрелка уже на экране, блок вместе с роликом съезжает к центру окна —
+     иначе выросший «мостик» так и остаётся прижатым к нижнему краю. */
+  var stickyStart = 0, stickyEnd = 0;
 
   // Ниже этой ширины ролик рядом с текстом уже не помещается, поэтому
   // первый экран и раздел «Ознакомительный ролик» работают по-старому,
@@ -100,9 +105,13 @@ window.SiteHeroCinematic = (function () {
     function measureScene() {
       if (!bridge || bridge.hidden) return 0;
       var keep = lead ? lead.style.height : "";
+      // «мостик» по ходу сцены ещё сдвинут вниз — меряем его на своём месте
+      var shifted = bridge.style.transform;
       if (lead) lead.style.height = "0px";
+      bridge.style.transform = "none";
       var value = band(bridge);
       if (lead) lead.style.height = keep;
+      bridge.style.transform = shifted;
       return value;
     }
     var sceneHeight = measureScene();
@@ -130,7 +139,8 @@ window.SiteHeroCinematic = (function () {
         top = Math.min(top, Math.max(header + 16, window.innerHeight - sceneHeight - 24));
       }
     }
-    hero.style.setProperty("--hero-sticky-top", Math.round(top) + "px");
+    stickyStart = stickyEnd = Math.round(top);
+    placeSticky();
     centerBelowTop(text, lead, bridge, top, ticker);
     // поля сдвинули содержимое — высоту сцены пересчитываем заново
     sceneHeight = measureScene();
@@ -144,10 +154,28 @@ window.SiteHeroCinematic = (function () {
     var videoHeight = video.offsetHeight;
     if (!videoHeight || !sceneHeight) { video.style.marginTop = ""; return; }
     var shift = Math.round((sceneHeight - videoHeight) / 2);
-    shift = Math.max(shift, Math.round(header + 16 - top));   // выше шапки не поднимаем
+    if (!topAnchored) {
+      /* Конец сцены: текст и ролик — одна композиция, её и ставим по
+         центру полосы под шапкой. Если ролик выше текста, он торчит
+         вверх на половину разницы — на неё блок и опускаем. */
+      var block = Math.max(sceneHeight, videoHeight);
+      var blockTop = header + Math.max(16, Math.round((window.innerHeight - header - block) / 2));
+      stickyEnd = blockTop + Math.max(0, -shift);
+      placeSticky();
+    }
+    shift = Math.max(shift, Math.round(header + 16 - stickyEnd));   // выше шапки не поднимаем
     video.style.marginTop = shift + "px";
 
     updateArrow(video);
+  }
+
+  /** Залипание между началом и концом сцены — по ходу прокрутки. */
+  function placeSticky() {
+    var hero = $(".hero");
+    if (!hero || !isActive() || !stickyStart) return;
+    var settle = ramp(progress(), 0.55, 0.9);
+    var top = stickyStart + (stickyEnd - stickyStart) * settle;
+    hero.style.setProperty("--hero-sticky-top", Math.round(top) + "px");
   }
 
   /**
@@ -314,6 +342,7 @@ window.SiteHeroCinematic = (function () {
     }
 
     drawArrow(ramp(p, 0.5, 0.88));
+    placeSticky();
   }
 
   /**
@@ -374,6 +403,8 @@ window.SiteHeroCinematic = (function () {
     if (document.fonts && document.fonts.ready) {
       document.fonts.ready.then(updateStickyTop);
     }
+    // …и картинки с роликом: к «load» раскладка окончательная
+    window.addEventListener("load", function () { updateStickyTop(); paint(); });
     /* Высоту ролику проставляет JS по пропорциям кадра — то есть позже,
        чем считается раскладка. Пересчитываем, когда она появится. */
     var videoNode = $("#heroIntroVideo");

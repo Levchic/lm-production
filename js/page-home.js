@@ -12,6 +12,7 @@
     $("#heroCtaPrimary").textContent = d.hero.ctaPrimary;
     $("#heroCtaSecondary").textContent = d.hero.ctaSecondary;
     $("#heroMarginNote").textContent = d.hero.marginNote;
+    $("#heroMarginNote").hidden = !d.hero.marginNote;
     $("#heroPhotoCaption").textContent = d.hero.photoCaption;
 
     renderHeroMedia(d);
@@ -219,6 +220,7 @@
      ["#portfolioBgPhoto", d.portfolio.bgPhoto],
      ["#servicesBgPhoto", d.services.bgPhoto],
      ["#testimonialsBgPhoto", d.testimonials.bgPhoto],
+     ["#faqBgPhoto", d.faq && d.faq.bgPhoto],
      ["#blogBgPhoto", d.blog.bgPhoto],
      ["#contactBgPhoto", d.contact.bgPhoto]].forEach(function (pair) {
       setBgPhoto(pair[0], pair[1]);
@@ -430,8 +432,25 @@
     $("#testimonialsEyebrow").textContent = d.testimonials.eyebrow;
     $("#testimonialsHeading").textContent = d.testimonials.heading;
     $("#testimonialsSub").textContent = d.testimonials.subheading;
+    var published = (d.testimonials.items || []).some(function (item) {
+      return !item.status || item.status === "published";
+    });
+    $("#testimonials").hidden = !published;
     // карточки, карусель и форма живут в js/reviews.js
     if (window.SiteReviews) window.SiteReviews.render();
+  }
+
+  function renderFaqPreview() {
+    var d = t();
+    var faq = d.faq || { items: [] };
+    $("#faqEyebrow").textContent = faq.eyebrow || "";
+    $("#faqHeading").textContent = faq.heading || "";
+    $("#faqSub").textContent = faq.subheading || "";
+    $("#faqViewAll").innerHTML = C.withArrow(faq.viewAll || "");
+    var list = $("#faqList"); list.innerHTML = "";
+    (faq.items || []).slice(0, 5).forEach(function (item, i) {
+      list.appendChild(C.faqRow(item, d, i));
+    });
   }
 
   function renderBlogPreview() {
@@ -488,6 +507,7 @@
     // Ссылки-заглушки («#» или пустой https://) в списке не показываем —
     // лучше три живые соцсети, чем шесть, половина из которых никуда не ведёт.
     var social = $("#contactSocial"); social.innerHTML = "";
+    var primaryShown = false;
     (c.social || [])
       .filter(function (s) { return s.href && s.href !== "#" && !/^https?:\/\/?$/.test(s.href.trim()); })
       .forEach(function (s) {
@@ -496,7 +516,10 @@
            отвечаю там быстрее. Определяем по адресу, а не по флагу в
            контенте — админка переписывает список соцсетей и лишнее поле
            из него бы потерялось. */
-        var isPrimary = /(^|\/\/)(t\.me|telegram\.me)\//i.test(s.href);
+        /* Бейдж — только на первой ссылке Telegram: следом идёт канал,
+           а написать в канал нельзя. */
+        var isPrimary = !primaryShown && /(^|\/\/)(t\.me|telegram\.me)\//i.test(s.href);
+        if (isPrimary) primaryShown = true;
         var a = el("a", "social-row" + (isPrimary ? " is-primary" : ""),
           '<span class="social-icon">' + C.socialIconSVG(s.label) + "</span>" +
           '<span class="social-name">' + esc(s.label) + "</span>" +
@@ -565,6 +588,7 @@
     renderPortfolioPreview();
     renderServicesPreview();
     renderTestimonials();
+    renderFaqPreview();
     renderBlogPreview();
     renderContact();
     // кинематографичный первый экран — только если включён флаг в js/flags.js

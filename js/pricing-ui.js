@@ -122,13 +122,13 @@ window.PricingUI = (function () {
     },
     step6: { ru: "Права на результат", en: "Rights to the result" },
     step6Sub: {
-      ru: "Работа и права на неё — две разные цены. Первая уже посчитана выше, вторая считается здесь.",
-      en: "The work and the rights to it are two different prices. The first is settled above; the second is settled here."
+      ru: "Разовое исполнение входит в цену. Запись, гастроли или реклама стоят дороже — выберите, что ближе.",
+      en: "A single performance is included in the price. Recording, touring or advertising cost more — pick the closest."
     },
     step7: { ru: "Заказчик и документы", en: "The client and the paperwork" },
     step7Sub: {
-      ru: "Ставки за работу от этого не меняются — меняются налог и объём бумаг.",
-      en: "This does not change the rates for the work — it changes the tax and the paperwork."
+      ru: "Ставки за работу от этого не меняются, отличается только налог.",
+      en: "This does not change the rates for the work, only the tax."
     },
 
     manualOn: { ru: "Задать категорию вручную", en: "Set the category by hand" },
@@ -551,7 +551,7 @@ window.PricingUI = (function () {
 
     var purposes = '<fieldset class="calc-question">' +
       "<legend>" + esc(L(r.purposeLabel)) +
-        '<span class="calc-question-hint">' + esc(L(r.purposeHint)) + "</span>" +
+        (pro ? '<span class="calc-question-hint">' + esc(L(r.purposeHint)) + "</span>" : "") +
       "</legend>" +
       '<div class="calc-options">' +
         r.purposes.map(function (pu, i) {
@@ -608,6 +608,15 @@ window.PricingUI = (function () {
           "</div>";
         }).join("") +
       "</div></fieldset>";
+
+    /* Заказчику хватает одного вопроса — как будет звучать музыка: ответ
+       сам подставляет ступень и надбавки. Ступени, надбавки и оговорка про
+       права на оригинал — в рабочем режиме; про оригинал сказано и в
+       условиях работы на странице. */
+    if (!pro) {
+      return '<div class="calc-questions">' + purposes + "</div>" +
+        (capped ? '<p class="calc-note">' + esc(L(cfg.segment.cappedNote)) + "</p>" : "");
+    }
 
     return '<p class="calc-hint-block">' + esc(L(r.warning)) + "</p>" +
       '<div class="calc-questions">' + purposes + tiers + addons + "</div>" +

@@ -15,6 +15,9 @@ const path = require("path");
 
 global.window = {};
 require(path.join(__dirname, "..", "js", "pricing-config.js"));
+const liveConfig = global.window.PRICING_CONFIG;
+// арифметику проверяем на замороженном прайсе — см. шапку фикстуры
+require(path.join(__dirname, "pricing-config.fixture.js"));
 const config = global.window.PRICING_CONFIG;
 const Calc = require(path.join(__dirname, "..", "js", "pricing-calc.js"));
 
@@ -803,6 +806,27 @@ test("у всех подписей есть обе языковые версии
     check(s.title, `прикладная работа ${i}`);
     check(s.price, `прикладная работа ${i} price`);
   });
+});
+
+/* ---------- Живой прайс ---------- */
+
+test("живой прайс: каждый тип работы считается в целое положительное число", () => {
+  liveConfig.workTypes.forEach((w) => {
+    const modules = {};
+    (w.modules.length ? w.modules : ["m2"]).forEach((id) => { modules[id] = true; });
+    const r = Calc.calculate({ modules, minutes: w.minutes, sourceMinutes: w.minutes,
+      pages: 10, pieces: w.pieces, addons: w.addons || {}, answers: {} }, liveConfig);
+    assert.ok(Number.isInteger(r.total) && r.total > 0, `${w.id}: ${r.total}`);
+  });
+});
+
+test("живой прайс: номер полным циклом держится в рыночной вилке", () => {
+  // Калибровка: реальные гонорары 7–10 тыс. ₽ за минуту полным циклом
+  const r = Calc.calculate({ modules: { m1: true, m2: true, m4: true, m5: true },
+    addons: { "m5:sound": true }, minutes: 5, sourceMinutes: 5, pieces: 1,
+    category: "A", client: "company", rightsTier: "once" }, liveConfig);
+  const perMinute = r.total / 5;
+  assert.ok(perMinute >= 7000 && perMinute <= 12000, `${Math.round(perMinute)} ₽/мин`);
 });
 
 /* ---------- Итог ---------- */
