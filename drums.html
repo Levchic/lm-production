@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Барабанные паттерны — справочник с плеером и MIDI | Лев Майденко</title>
+<meta name="description" content="176 паттернов драм-машин по жанрам: брейки, фанк, хип-хоп, хаус, DnB, афро-кубинские ритмы. Слушайте в браузере с нужным темпом и скачивайте MIDI для DAW.">
+<link rel="canonical" href="https://levchic.github.io/lm-production/drums.html">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Лев Майденко · L.M.Production">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:url" content="https://levchic.github.io/lm-production/drums.html">
+<meta property="og:title" content="Барабанные паттерны — справочник с плеером и MIDI">
+<meta property="og:description" content="176 паттернов драм-машин по жанрам. Слушайте в браузере и скачивайте MIDI.">
+<meta property="og:image" content="https://levchic.github.io/lm-production/assets/media/og-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/unbounded-cyrillic-normal-400-900.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/fonts.css?v=81">
+<link rel="stylesheet" href="css/styles.css?v=81">
+<link rel="stylesheet" href="css/texture.css?v=81">
+<link rel="stylesheet" href="css/animations.css?v=81">
+<link rel="stylesheet" href="css/refs.css?v=81">
+</head>
+<body data-static-meta>
+
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+<header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <a href="index.html" class="brand" data-bind="nav.brand">Л.М.</a>
+    <nav class="main-nav" id="mainNav" aria-label="Основная навигация">
+      <ul id="navLinks"></ul>
+    </nav>
+    <div class="header-actions">
+      <button class="lang-toggle" id="langToggle" type="button" aria-label="Switch language">
+        <span class="lang-current">RU</span><span class="lang-sep">/</span><span class="lang-other">EN</span>
+      </button>
+      <a href="index.html#contact" class="btn btn-primary btn-small" data-bind="nav.cta">Обсудить проект</a>
+      <button class="nav-burger" id="navBurger" type="button" aria-label="Открыть меню" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="page-header">
+    <div class="ink-stain" aria-hidden="true"></div>
+    <div class="wrap reveal" data-reveal>
+      <span class="eyebrow"><a href="refs.html">Справочники</a></span>
+      <h1>Барабанные паттерны</h1>
+      <div class="desc">
+        <p>176 паттернов драм-машин: брейки, фанк, хип-хоп, хаус, DnB, электро и афро-кубинские ритмы. Откройте карточку, включите на своём темпе и перетащите MIDI прямо в DAW.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="tear-divider">
+    <svg viewBox="0 0 1200 30" preserveAspectRatio="none">
+      <polygon fill="currentColor" points="0,30 0,8 45,15 85,3 140,13 185,1 250,11 300,4 365,16 410,2 470,10 525,5 590,14 640,1 705,12 760,3 820,15 880,6 940,10 1000,2 1060,13 1120,4 1170,9 1200,7 1200,30"/>
+    </svg>
+  </div>
+
+  <section class="section section-deep rf">
+    <div class="wrap">
+      <div class="rf-toolbar">
+        <div class="rf-row">
+          <label class="rf-search">
+            <span class="visually-hidden">Поиск паттерна</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.8-3.8"/></svg>
+            <input id="rfSearch" type="search" placeholder="amen, house, BD SN…" autocomplete="off" spellcheck="false">
+          </label>
+          <div class="rf-bpm" role="group" aria-label="Темп">
+            <button type="button" class="rf-bpm-btn" id="rfBpmDown" aria-label="Медленнее на 5">−</button>
+            <label class="rf-bpm-val"><input id="rfBpm" type="number" min="60" max="180" step="1" value="90" aria-label="Темп, ударов в минуту"><span>bpm</span></label>
+            <button type="button" class="rf-bpm-btn" id="rfBpmUp" aria-label="Быстрее на 5">+</button>
+          </div>
+        </div>
+        <div class="rf-chips" id="rfGenres" role="group" aria-label="Жанр"></div>
+        <div class="rf-chips" id="rfMoods" role="group" aria-label="Характер">
+          <button type="button" class="rf-chip" data-mood="minimal" aria-pressed="false">Минимальные</button>
+          <button type="button" class="rf-chip" data-mood="heavy" aria-pressed="false">Плотные</button>
+          <button type="button" class="rf-chip" data-mood="complex" aria-pressed="false">Сложные</button>
+          <button type="button" class="rf-chip" data-mood="rolling" aria-pressed="false">Катящиеся</button>
+          <button type="button" class="rf-chip" data-mood="afro" aria-pressed="false">Афро-кубинские</button>
+          <button type="button" class="rf-chip" data-mood="ab" aria-pressed="false">Вариации A/B</button>
+        </div>
+      </div>
+
+      <p class="rf-count" id="rfCount" aria-live="polite"></p>
+      <div class="rf-list" id="rfList"></div>
+
+      <div class="rf-guide">
+        <details>
+          <summary>Как читать сетку</summary>
+          <p>Каждый паттерн — один такт 4/4, разбитый на 16 шагов: четыре группы по четыре, по группе на четверть. Строка — инструмент, закрашенная клетка — удар, светлая клетка — удар на первую долю.</p>
+          <p>Паттерны с пометкой A/B (иногда C, D) играются по очереди: A → B → A → B, так из одного такта получается фраза. Темп сборник не задаёт: хип-хоп обычно 70–100, хаус 120–130, DnB 160–180, даб 70–90. Свинг — на ваш вкус.</p>
+          <p>MIDI записывается на 10-й канал в раскладке General MIDI (бочка — C1/36, малый — D1/38, закрытый хэт — F#1/42), с темпом из плеера.</p>
+        </details>
+        <details>
+          <summary>Обозначения инструментов</summary>
+          <dl class="rf-legend">
+            <div><dt>BD</dt><dd>бас-бочка</dd></div>
+            <div><dt>SN</dt><dd>малый барабан</dd></div>
+            <div><dt>CH</dt><dd>закрытый хай-хэт</dd></div>
+            <div><dt>OH</dt><dd>открытый хай-хэт</dd></div>
+            <div><dt>CL, HC</dt><dd>хлопок</dd></div>
+            <div><dt>CY</dt><dd>тарелка</dd></div>
+            <div><dt>CB</dt><dd>коровий колокол</dd></div>
+            <div><dt>RS</dt><dd>удар по ободу</dd></div>
+            <div><dt>SH</dt><dd>шейкер</dd></div>
+            <div><dt>HT, MT, LT</dt><dd>высокий, средний, низкий том</dd></div>
+            <div><dt>AC</dt><dd>акцент</dd></div>
+          </dl>
+        </details>
+        <p class="rf-credit">Паттерны — из сборника <a href="https://shittyrecording.studio/" target="_blank" rel="noopener">Pocket Operations</a> Пола Венцеля (Paul Wenzel), лицензия <a href="https://creativecommons.org/licenses/by/4.0/deed.ru" target="_blank" rel="noopener">CC BY</a>. Изменения: плеер, фильтры и экспорт в MIDI.</p>
+      </div>
+
+      <div class="rf-cta">
+        <p>Нужна аранжировка под ваш коллектив или небольшая программа под вашу музыкальную задачу?</p>
+        <div class="rf-cta-actions">
+          <a href="index.html#contact" class="btn btn-primary">Обсудить проект</a>
+          <a href="services.html" class="btn btn-ghost">Услуги и цены</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div><span class="footer-brand" data-bind="nav.brand">Л.М.</span><span class="footer-tagline" data-bind="footer.tagline"></span></div>
+    <p class="footer-rights" id="footerRights"></p>
+    <a href="faq.html" class="footer-link" data-bind="footer.faq">Частые вопросы</a>
+    <a href="privacy.html" class="footer-privacy" data-bind="footer.privacy">Политика конфиденциальности</a>
+  </div>
+</footer>
+
+<script src="js/content.js?v=81"></script>
+<script src="js/common.js?v=81"></script>
+<script src="js/drum-patterns.js?v=81"></script>
+<script src="js/page-drums.js?v=81"></script>
+</body>
+</html>
