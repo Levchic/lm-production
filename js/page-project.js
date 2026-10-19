@@ -80,19 +80,17 @@
       });
     }
 
-    /* Видео — отдельным блоком */
-    var videos = proj.videos || [];
+    /* Видео — отдельным блоком. Ссылка на Spotify / Яндекс Музыку — это
+       запись, а не ролик: даже вписанная в «Видео», она уходит в «Аудио». */
+    var allVideos = proj.videos || [];
+    var videos = allVideos.filter(function (v) { return !C.isMusicURL(v.url); });
+    var music = (proj.music || []).concat(allVideos.filter(function (v) { return C.isMusicURL(v.url); }))
+      .filter(function (m) { return m.url; });
     var videoGrid = $("#videoGrid");
     toggle($("#videoSection"), videos.length > 0);
     videoGrid.innerHTML = "";
-    videoGrid.classList.toggle("is-single", videos.length === 1);
     if (videos.length) {
-      /* Плеер стриминга — это запись, а не видео: над ним «Видео» читается
-         как ошибка. Отдельной подписи не заводим, берём готовую «Аудио». */
-      var всеМузыка = videos.every(function (v) {
-        return v.url && /music\.yandex\./i.test(v.url);
-      });
-      $("#videoHeading").textContent = всеМузыка ? d.portfolio.audioLabel : d.portfolio.videoLabel;
+      $("#videoHeading").textContent = d.portfolio.videoLabel;
       videos.forEach(function (v) {
         // ссылка на YouTube/VK/Rutube — плеер сервиса, иначе свой файл
         videoGrid.insertAdjacentHTML("beforeend",
@@ -100,12 +98,14 @@
       });
     }
 
-    /* Аудио — отдельным блоком */
+    /* Аудио — отдельным блоком: сначала плееры площадок, под ними свои файлы */
     var tracks = proj.audio || [];
     var audioList = $("#audioList");
-    toggle($("#audioSection"), tracks.length > 0);
+    var musicList = $("#musicList");
+    toggle($("#audioSection"), tracks.length > 0 || music.length > 0);
     audioList.innerHTML = "";
-    if (tracks.length) {
+    musicList.innerHTML = music.map(function (m) { return C.musicEmbed(m.url, m.title); }).join("");
+    if (tracks.length || music.length) {
       $("#audioHeading").textContent = d.portfolio.audioLabel;
       tracks.forEach(function (track) {
         audioList.insertAdjacentHTML("beforeend", C.audioItem(track));

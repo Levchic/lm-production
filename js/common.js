@@ -4,6 +4,17 @@
  * плитки фото/видео/аудио и лайтбокс.
  * Конкретный контент каждой страницы рендерят js/page-*.js.
  */
+/* Яндекс Метрика — только на боевом домене: локальный просмотр и админка в статистику не попадают */
+if (location.hostname === "lm-production.ru") {
+  (function (m, e, t, r, i, k, a) {
+    m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments); };
+    m[i].l = 1 * new Date();
+    for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) { return; } }
+    k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a);
+  })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js?id=113669134", "ym");
+  ym(113669134, "init", { ssr: true, webvisor: true, clickmap: true, referrer: document.referrer, url: location.href, accurateTrackBounce: true, trackLinks: true });
+}
+
 window.SiteCommon = (function () {
   "use strict";
 
@@ -385,12 +396,14 @@ window.SiteCommon = (function () {
   function setTileAspect(tile, ratio) {
     if (!tile || !ratio || !isFinite(ratio)) return;
     tile.style.aspectRatio = ratio.toFixed(4);
+    // --r выравнивает ролики в ряду по высоте (см. .media-grid--video)
+    tile.style.setProperty("--r", ratio.toFixed(4));
     tile.classList.toggle("video-tile--tall", ratio < 0.95);
   }
 
   function applyVideoAspects() {
     $all(".video-tile").forEach(function (tile) {
-      var img = $(".video-poster", tile);
+      var img = $("img.video-poster", tile);
       if (img) {
         // есть кадр-заглушка — пропорции берём из неё, файл грузить не нужно
         var fromPoster = function () {
@@ -400,19 +413,16 @@ window.SiteCommon = (function () {
         else img.addEventListener("load", fromPoster, { once: true });
         return;
       }
-      // Постера нет: подтягиваем только метаданные ролика, чтобы вертикальное
-      // видео не показывалось в горизонтальной рамке с обрезкой.
-      var src = tile.getAttribute("data-video-src");
-      if (!src || tile.dataset.aspectProbed) return;
+      // Постера нет: вместо него стоит сам ролик (первый кадр), по его
+      // метаданным и подгоняем рамку — вертикальное видео не обрезается.
+      var probe = $("video.video-poster", tile);
+      if (!probe || tile.dataset.aspectProbed) return;
       tile.dataset.aspectProbed = "1";
-      var probe = document.createElement("video");
-      probe.preload = "metadata";
-      probe.muted = true;
-      probe.addEventListener("loadedmetadata", function () {
+      var fromVideo = function () {
         if (probe.videoWidth && probe.videoHeight) setTileAspect(tile, probe.videoWidth / probe.videoHeight);
-        probe.src = "";
-      }, { once: true });
-      probe.src = src;
+      };
+      if (probe.readyState >= 1) fromVideo();
+      else probe.addEventListener("loadedmetadata", fromVideo, { once: true });
     });
   }
 
@@ -798,13 +808,15 @@ window.SiteCommon = (function () {
 
   /**
    * Видео-плитка. Постер вписывается целиком, поэтому вертикальные ролики
-   * не обрезаются; пустое место закрывает размытая копия кадра.
+   * не обрезаются; пустое место закрывает размытая копия кадра. Без постера
+   * показываем первый кадр самого ролика, а не чёрный квадрат.
    */
   function videoTile(src, poster, extraClass) {
     var p = esc(poster || "");
     return '<div class="video-tile ' + (extraClass || "") + '" data-video-src="' + esc(src) + '">' +
-      (p ? '<div class="video-blur" style="background-image:url(' + p + ')"></div>' : "") +
-      (p ? '<img class="video-poster" src="' + p + '" alt="" loading="lazy">' : "") +
+      (p ? '<div class="video-blur" style="background-image:url(' + p + ')"></div>' +
+           '<img class="video-poster" src="' + p + '" alt="" loading="lazy">'
+         : '<video class="video-poster" src="' + esc(src) + '#t=0.1" preload="metadata" muted playsinline aria-hidden="true"></video>') +
       '<button class="video-play" type="button" aria-label="Play video"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></button>' +
       "</div>";
   }
@@ -830,21 +842,47 @@ window.SiteCommon = (function () {
     if ((m = u.match(/rutube\.ru\/(?:video|play\/embed)\/([\w-]+)/i))) {
       return "https://rutube.ru/play/embed/" + m[1];
     }
-    /* Яндекс.Музыка: страница релиза даёт полосу плеера, а не видео —
-       высоту ей задаёт класс video-embed--strip ниже. Аудио при этом
+    /* Яндекс Музыка и Spotify — плееры площадок (musicEmbed ниже). Аудио
        остаётся на стороне площадки, мы его у себя не публикуем. */
     if ((m = u.match(/music\.yandex\.(?:ru|com)\/album\/(\d+)\/track\/(\d+)/i))) {
       return "https://music.yandex.ru/iframe/track/" + m[2] + "/" + m[1];
     }
+    if ((m = u.match(/music\.yandex\.(?:ru|com)\/album\/(\d+)/i))) {
+      return "https://music.yandex.ru/iframe/album/" + m[1];
+    }
+    // Spotify: альбом, трек или плейлист → их плеер
+    if ((m = u.match(/open\.spotify\.com\/(?:intl-[\w-]+\/)?(?:embed\/)?(album|track|playlist)\/(\w+)/i))) {
+      return "https://open.spotify.com/embed/" + m[1].toLowerCase() + "/" + m[2];
+    }
     return u;
   }
 
+  /** Ссылка ведёт на музыкальную площадку, а не на ролик. */
+  function isMusicURL(url) {
+    return /music\.yandex\.|open\.spotify\.com/i.test(url || "");
+  }
+
   function videoEmbed(url, title) {
+    if (isMusicURL(url)) return musicEmbed(url, title);
     var src = embedURL(url);
     if (!src) return "";
-    var strip = src.indexOf("music.yandex.") > -1 ? " video-embed--strip" : "";
-    return '<div class="video-embed' + strip + '"><iframe src="' + esc(src) + '" title="' + esc(title || "") +
+    return '<div class="video-embed"><iframe src="' + esc(src) + '" title="' + esc(title || "") +
       '" loading="lazy" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe></div>';
+  }
+
+  /**
+   * Плеер площадки. Трек — компактная полоса, альбом и плейлист — со
+   * списком треков, чтобы его можно было слушать прямо со страницы.
+   */
+  function musicEmbed(url, title) {
+    var src = embedURL(url);
+    if (!src) return "";
+    var kind = /\/(album|playlist)\//.test(src) ? "list" : /music\.yandex\./.test(src) ? "yandex" : "track";
+    return '<div class="music-item">' +
+      (title ? '<div class="audio-title">' + esc(title) + "</div>" : "") +
+      '<div class="music-embed music-embed--' + kind + '"><iframe src="' + esc(src) + '" title="' + esc(title || "") +
+      '" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe></div>' +
+      "</div>";
   }
 
   function audioItem(track) {
@@ -882,6 +920,22 @@ window.SiteCommon = (function () {
       "</div>";
   }
 
+  /* ---------- Уведомление о cookie (Метрика) ---------- */
+  var COOKIE_KEY = "cookie-notice-ok";
+  function cookieNotice() {
+    try { if (localStorage.getItem(COOKIE_KEY)) return; } catch (e) { /* без хранилища просто покажем снова */ }
+    var f = t().footer;
+    var bar = el("div", "cookie-notice", "<p>" + f.cookie + "</p>");
+    var ok = el("button", "btn btn-primary", esc(f.cookieOk));
+    ok.type = "button";
+    ok.addEventListener("click", function () {
+      try { localStorage.setItem(COOKIE_KEY, "1"); } catch (e) { /* ничего */ }
+      bar.remove();
+    });
+    bar.appendChild(ok);
+    document.body.appendChild(bar);
+  }
+
   /* ---------- Точка входа для каждой страницы ---------- */
   function init(renderPageFn) {
     pageRenderFn = renderPageFn || null;
@@ -897,6 +951,7 @@ window.SiteCommon = (function () {
     setupCardGlow();
     setupSectionObserver();
     afterRender();
+    cookieNotice();
   }
 
   return {
@@ -910,6 +965,7 @@ window.SiteCommon = (function () {
     socialIconSVG: socialIconSVG, arrowSVG: arrowSVG, withArrow: withArrow,
     blogCardHTML: blogCardHTML, blogCard: blogCard, introDigest: introDigest,
     photoTile: photoTile, videoTile: videoTile, videoEmbed: videoEmbed, audioItem: audioItem,
+    musicEmbed: musicEmbed, isMusicURL: isMusicURL,
     init: init
   };
 })();

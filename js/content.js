@@ -35,7 +35,7 @@ window.SITE_CONTENT = {
         },
         {
           "href": "refs.html",
-          "label": "Справочники"
+          "label": "Мастерская"
         },
         {
           "href": "index.html#faq",
@@ -127,7 +127,7 @@ window.SITE_CONTENT = {
       ],
       "portrait": "assets/media/about/photo_2026-08-10-23.33.43.jpg",
       "readMore": "Подробнее обо мне",
-      "bgPhoto": ""
+      "bgPhoto": "assets/media/home/about-2.jpg"
     },
     "forWhom": {
       "eyebrow": "Для кого",
@@ -226,7 +226,7 @@ window.SITE_CONTENT = {
           "result": "партитура, партии, клик и плейбэк"
         }
       ],
-      "bgPhoto": "",
+      "bgPhoto": "assets/media/home/photo_2026-08-11-16.47.31.jpg",
       "resultLabel": "На выходе"
     },
     "portfolio": {
@@ -313,12 +313,21 @@ window.SITE_CONTENT = {
             "assets/media/portfolio/burton-show/07.jpg",
             "assets/media/portfolio/burton-show/08.jpg",
             "assets/media/portfolio/burton-show/09.jpg",
-            "assets/media/portfolio/burton-show/11.jpg"
+            "assets/media/portfolio/burton-show/11.jpg",
+            "assets/media/portfolio/burton-show/photo_2026-10-17-04.41.44.jpg"
           ],
-          "videos": [],
+          "videos": [
+            {
+              "title": "",
+              "url": "",
+              "src": "assets/media/portfolio/burton-show/img_4140.mp4",
+              "poster": "assets/media/portfolio/burton-show/img_4140-poster.jpg"
+            }
+          ],
           "audio": [],
           "isPlaceholder": false,
-          "date": "2025-10"
+          "date": "2025-10",
+          "music": []
         },
         {
           "id": "harry-potter-show",
@@ -339,7 +348,7 @@ window.SITE_CONTENT = {
               "icon": "steps"
             },
             {
-              "value": "2024",
+              "value": "Декабрь 2024",
               "label": "премьера",
               "icon": "calendar"
             }
@@ -367,12 +376,25 @@ window.SITE_CONTENT = {
             {
               "title": "",
               "url": "",
-              "src": "",
+              "src": "assets/media/portfolio/harry-potter-show/img_8210.mp4",
+              "poster": "assets/media/portfolio/harry-potter-show/img_8210-poster.jpg"
+            },
+            {
+              "title": "",
+              "url": "",
+              "src": "assets/media/portfolio/harry-potter-show/img_8217.mp4",
+              "poster": ""
+            },
+            {
+              "title": "",
+              "url": "",
+              "src": "assets/media/portfolio/harry-potter-show/img_8218.mp4",
               "poster": ""
             }
           ],
           "audio": [],
-          "isPlaceholder": false
+          "isPlaceholder": false,
+          "music": []
         },
         {
           "id": "hp-planetarium",
@@ -388,8 +410,8 @@ window.SITE_CONTENT = {
               "icon": "clock"
             },
             {
-              "value": "7",
-              "label": "фильмов франшизы",
+              "value": "24",
+              "label": "композиции",
               "icon": "steps"
             },
             {
@@ -405,39 +427,56 @@ window.SITE_CONTENT = {
             "Партитуры и комплекты партий"
           ],
           "media": {
-            "type": "score",
-            "src": ""
+            "type": "photo",
+            "src": "assets/media/portfolio/hp-planetarium/img_4653.jpg"
           },
-          "heroImage": "",
-          "photos": [],
-          "videos": [],
-          "audio": [],
-          "isPlaceholder": false
-        },
-        {
-          "id": "multiland",
-          "category": "show",
-          "categoryLabel": "Оркестровое шоу",
-          "title": "Шоу мультипликационных саундтреков «Мультиленд»",
-          "meta": "Imperial Orchestra · симфонический оркестр",
-          "description": "Детская программа по музыке мультфильмов. Роль в номерах разная: что-то сделано целиком, где-то это набор партитуры с оригинала под аранжировку другого автора, где-то — съём недостающего материала на слух.",
-          "stats": [],
-          "scope": [
-            "«Аллилуйя» из «Шрека» — номер целиком: съём, аранжировка, партитура и партии",
-            "«Аладдин» — набор партитуры с оригинала, переаранжировка, сборка нескольких тем в один номер",
-            "«Рапунцель» — то же, часть материала снята на слух",
-            "«Моана» — съём вокальных партий",
-            "«Русалочка» и «Красавица и Чудовище» — набор партитур с оригиналов, аранжировка другого автора"
+          "heroImage": "assets/media/portfolio/hp-planetarium/img_4653.jpg",
+          "photos": [
+            "assets/media/portfolio/hp-planetarium/img_4653.jpg",
+            "assets/media/portfolio/hp-planetarium/img_4651.jpg"
           ],
-          "media": {
-            "type": "score",
-            "src": ""
-          },
-          "heroImage": "",
-          "photos": [],
-          "videos": [],
+          "videos": [
+            {
+              "title": "",
+              "url": "",
+              "src": "assets/media/portfolio/hp-planetarium/video.mp4",
+              "poster": "assets/media/portfolio/hp-planetarium/video-poster.jpg"
+            },
+            {
+              "title": "",
+              "url": "",
+              "src": "assets/media/portfolio/hp-planetarium/img_4666.mp4",
+              "poster": "assets/media/portfolio/hp-planetarium/img_4666-poster.jpg"
+            },
+            {
+              "title": "",
+              "url": "",
+              "src": "assets/media/portfolio/hp-planetarium/img_4667.mp4",
+              "poster": "assets/media/portfolio/hp-planetarium/img_4667-poster.jpg"
+            },
+            {
+              "title": "",
+              "url": "",
+              "src": "assets/media/portfolio/hp-planetarium/img_4668.mp4",
+              "poster": "assets/media/portfolio/hp-planetarium/img_4668-poster.jpg"
+            },
+            {
+              "title": "",
+              "url": "",
+              "src": "assets/media/portfolio/hp-planetarium/img_4670.mp4",
+              "poster": "assets/media/portfolio/hp-planetarium/img_4670-poster.jpg"
+            },
+            {
+              "title": "",
+              "url": "",
+              "src": "assets/media/portfolio/hp-planetarium/img_4665.mp4",
+              "poster": "assets/media/portfolio/hp-planetarium/img_4665-poster.jpg"
+            }
+          ],
           "audio": [],
-          "isPlaceholder": false
+          "isPlaceholder": false,
+          "date": "Декабрь 2025",
+          "music": []
         },
         {
           "id": "kish",
@@ -445,7 +484,7 @@ window.SITE_CONTENT = {
           "categoryLabel": "Оркестровое шоу",
           "title": "Шоу «Король и Шут» с симфоническим оркестром",
           "meta": "Imperial Orchestra · две редакции программы",
-          "description": "Первая редакция сделана вместе со вторым аранжировщиком. Обновлённую программу вёл уже сам: новые номера, работа с хором, пересборка партитур и клика, репетиции и концерты.",
+          "description": "Первая редакция сделана вместе с главным композитором-аранжировщиком. Обновлённую программу вёл уже сам: новые номера, работа с хором, пересборка партитур и клика, репетиции и концерты.",
           "stats": [],
           "scope": [
             "Набор основ и правка партитур первой редакции",
@@ -458,14 +497,24 @@ window.SITE_CONTENT = {
             "Участие в репетициях и концертах"
           ],
           "media": {
-            "type": "score",
-            "src": ""
+            "type": "photo",
+            "src": "assets/media/portfolio/kish/orig.jpg"
           },
-          "heroImage": "",
-          "photos": [],
-          "videos": [],
+          "heroImage": "assets/media/portfolio/kish/orig.jpg",
+          "photos": [
+            "assets/media/portfolio/kish/img_9826-poster.jpg"
+          ],
+          "videos": [
+            {
+              "title": "",
+              "url": "",
+              "src": "assets/media/portfolio/kish/img_9826.mp4",
+              "poster": ""
+            }
+          ],
           "audio": [],
-          "isPlaceholder": false
+          "isPlaceholder": false,
+          "music": []
         },
         {
           "id": "duduk",
@@ -489,7 +538,9 @@ window.SITE_CONTENT = {
           "photos": [],
           "videos": [],
           "audio": [],
-          "isPlaceholder": false
+          "isPlaceholder": false,
+          "music": [],
+          "hidden": true
         },
         {
           "id": "wizard-oz",
@@ -522,7 +573,8 @@ window.SITE_CONTENT = {
           ],
           "videos": [],
           "audio": [],
-          "isPlaceholder": false
+          "isPlaceholder": false,
+          "music": []
         },
         {
           "id": "polnolunie",
@@ -567,7 +619,35 @@ window.SITE_CONTENT = {
           "photos": [],
           "videos": [],
           "audio": [],
-          "isPlaceholder": false
+          "isPlaceholder": false,
+          "music": []
+        },
+        {
+          "id": "multiland",
+          "category": "show",
+          "categoryLabel": "Оркестровое шоу",
+          "title": "Шоу мультипликационных саундтреков «Мультиленд»",
+          "meta": "Imperial Orchestra · симфонический оркестр",
+          "description": "Детская программа по музыке мультфильмов. Роль в номерах разная: что-то сделано целиком, где-то это набор партитуры с оригинала под аранжировку другого автора, где-то — съём недостающего материала на слух.",
+          "stats": [],
+          "scope": [
+            "«Аллилуйя» из «Шрека» — номер целиком: съём, аранжировка, партитура и партии",
+            "«Аладдин» — набор партитуры с оригинала, переаранжировка, сборка нескольких тем в один номер",
+            "«Рапунцель» — то же, часть материала снята на слух",
+            "«Моана» — съём вокальных партий",
+            "«Русалочка» и «Красавица и Чудовище» — набор партитур с оригиналов, аранжировка другого автора"
+          ],
+          "media": {
+            "type": "score",
+            "src": ""
+          },
+          "heroImage": "",
+          "photos": [],
+          "videos": [],
+          "audio": [],
+          "isPlaceholder": false,
+          "music": [],
+          "hidden": true
         },
         {
           "id": "tavrida-2025",
@@ -617,13 +697,14 @@ window.SITE_CONTENT = {
               "src": "assets/media/portfolio/tavrida-2025/bulatov-22privet-22-demo.mp3"
             }
           ],
-          "isPlaceholder": false
+          "isPlaceholder": false,
+          "music": []
         },
         {
           "id": "romashka",
           "category": "production",
           "categoryLabel": "Саунд-продакшн",
-          "title": "Песня-заставка «Раз, ромашка! Два, цветы!»",
+          "title": "Песня-заставка «Раз, ромашка! Два, стихи!»",
           "meta": "Детский спектакль · аранжировка и сведение",
           "description": "Заказчик напел мелодию и текст голосом — из этого собрана аранжировка по его пожеланиям, сведена и отдана мультитреком.",
           "stats": [],
@@ -633,14 +714,22 @@ window.SITE_CONTENT = {
             "Сдача мультитреком"
           ],
           "media": {
-            "type": "audio",
-            "src": ""
+            "type": "photo",
+            "src": "assets/media/portfolio/romashka/img_0298.jpg"
           },
-          "heroImage": "",
-          "photos": [],
+          "heroImage": "assets/media/portfolio/romashka/img_0298.jpg",
+          "photos": [
+            "assets/media/portfolio/romashka/img_0298.jpg"
+          ],
           "videos": [],
-          "audio": [],
-          "isPlaceholder": false
+          "audio": [
+            {
+              "title": "Раз, Ромашка (+)",
+              "src": "assets/media/portfolio/romashka/raz-romashka.mp3"
+            }
+          ],
+          "isPlaceholder": false,
+          "music": []
         },
         {
           "id": "luzha",
@@ -655,11 +744,13 @@ window.SITE_CONTENT = {
             "Подготовка мультитрека"
           ],
           "media": {
-            "type": "video",
-            "src": ""
+            "type": "photo",
+            "src": "assets/media/portfolio/luzha/photo_2026-10-17-05.03.00.jpg"
           },
-          "heroImage": "",
-          "photos": [],
+          "heroImage": "assets/media/portfolio/luzha/photo_2026-10-17-05.03.00.jpg",
+          "photos": [
+            "assets/media/portfolio/luzha/photo_2026-10-17-05.03.00.jpg"
+          ],
           "videos": [
             {
               "title": "«Лужа» — Манка (Яндекс Музыка)",
@@ -669,7 +760,8 @@ window.SITE_CONTENT = {
             }
           ],
           "audio": [],
-          "isPlaceholder": false
+          "isPlaceholder": false,
+          "music": []
         },
         {
           "id": "neznaika",
@@ -698,7 +790,8 @@ window.SITE_CONTENT = {
           "photos": [],
           "videos": [],
           "audio": [],
-          "isPlaceholder": false
+          "isPlaceholder": false,
+          "music": []
         },
         {
           "id": "mihail-krug",
@@ -722,7 +815,8 @@ window.SITE_CONTENT = {
           "videos": [],
           "audio": [],
           "isPlaceholder": false,
-          "hidden": true
+          "hidden": true,
+          "music": []
         },
         {
           "id": "dune-3",
@@ -752,7 +846,8 @@ window.SITE_CONTENT = {
             }
           ],
           "audio": [],
-          "isPlaceholder": false
+          "isPlaceholder": false,
+          "music": []
         },
         {
           "id": "legends-heroes",
@@ -769,14 +864,15 @@ window.SITE_CONTENT = {
             "Партитура и партии"
           ],
           "media": {
-            "type": "score",
-            "src": ""
+            "type": "photo",
+            "src": "assets/media/portfolio/legends-heroes/images-2.jpg"
           },
-          "heroImage": "",
+          "heroImage": "assets/media/portfolio/legends-heroes/images-2.jpg",
           "photos": [],
           "videos": [],
           "audio": [],
-          "isPlaceholder": false
+          "isPlaceholder": false,
+          "music": []
         },
         {
           "id": "richter",
@@ -792,14 +888,15 @@ window.SITE_CONTENT = {
             "Партитура и партии"
           ],
           "media": {
-            "type": "score",
-            "src": ""
+            "type": "photo",
+            "src": "assets/media/portfolio/richter/1900x1900-000000-80-0-0.jpg"
           },
-          "heroImage": "",
+          "heroImage": "assets/media/portfolio/richter/1900x1900-000000-80-0-0.jpg",
           "photos": [],
           "videos": [],
           "audio": [],
-          "isPlaceholder": false
+          "isPlaceholder": false,
+          "music": []
         },
         {
           "id": "einaudi",
@@ -815,14 +912,15 @@ window.SITE_CONTENT = {
             "Партитура и партии"
           ],
           "media": {
-            "type": "score",
-            "src": ""
+            "type": "photo",
+            "src": "assets/media/portfolio/einaudi/1651_ltmys_hero-mary-croppedjpg.jpg"
           },
-          "heroImage": "",
+          "heroImage": "assets/media/portfolio/einaudi/1651_ltmys_hero-mary-croppedjpg.jpg",
           "photos": [],
           "videos": [],
           "audio": [],
-          "isPlaceholder": false
+          "isPlaceholder": false,
+          "music": []
         },
         {
           "id": "oppenheimer",
@@ -852,7 +950,8 @@ window.SITE_CONTENT = {
             }
           ],
           "audio": [],
-          "isPlaceholder": false
+          "isPlaceholder": false,
+          "music": []
         },
         {
           "id": "obraz-disney",
@@ -871,14 +970,17 @@ window.SITE_CONTENT = {
             "«Анастасия» — песня Распутина"
           ],
           "media": {
-            "type": "score",
-            "src": ""
+            "type": "photo",
+            "src": "assets/media/portfolio/obraz-disney/img_0340.jpg"
           },
-          "heroImage": "",
-          "photos": [],
+          "heroImage": "assets/media/portfolio/obraz-disney/img_0340.jpg",
+          "photos": [
+            "assets/media/portfolio/obraz-disney/img_0340.jpg"
+          ],
           "videos": [],
           "audio": [],
-          "isPlaceholder": false
+          "isPlaceholder": false,
+          "music": []
         },
         {
           "id": "mtv-orchestra",
@@ -901,7 +1003,9 @@ window.SITE_CONTENT = {
           "photos": [],
           "videos": [],
           "audio": [],
-          "isPlaceholder": false
+          "isPlaceholder": false,
+          "music": [],
+          "hidden": true
         },
         {
           "id": "karamanov",
@@ -923,14 +1027,74 @@ window.SITE_CONTENT = {
             "Вычитка и сверка разночтений"
           ],
           "media": {
-            "type": "score",
-            "src": ""
+            "type": "photo",
+            "src": "assets/media/portfolio/karamanov/snimok-ekrana-2026-10-17-v-06.06.30.jpg"
           },
-          "heroImage": "",
-          "photos": [],
+          "heroImage": "assets/media/portfolio/karamanov/snimok-ekrana-2026-10-17-v-06.06.30.jpg",
+          "photos": [
+            "assets/media/portfolio/karamanov/snimok-ekrana-2026-10-17-v-06.05.48.jpg",
+            "assets/media/portfolio/karamanov/snimok-ekrana-2026-10-17-v-06.06.30.jpg"
+          ],
           "videos": [],
           "audio": [],
-          "isPlaceholder": false
+          "isPlaceholder": false,
+          "music": []
+        },
+        {
+          "id": "new-project",
+          "category": "arrangement",
+          "categoryLabel": "Аранжировка и оркестровка",
+          "title": "Аранжировка саундтрека из фильма «Одиссея»",
+          "meta": "16 минут музыки · оркестр, синтезаторы и этнические инструменты",
+          "description": "Самая объёмная из отдельных аранжировок: шестнадцать минут непрерывной музыки. Партитура Людвига Йоранссона держится на сочетании, которое встречаешь нечасто — греческие этнические инструменты, современный саунд-дизайн и симфонический оркестр звучат одним организмом, а не тремя слоями друг поверх друга. Основная работа была не в нотах, а в поиске: какими синтезаторами набрать нужный тембр и как посадить его в оркестр, чтобы он не спорил с живыми инструментами и не тонул в них.",
+          "stats": [
+            {
+              "value": "16′",
+              "label": "хронометраж",
+              "icon": "clock"
+            }
+          ],
+          "scope": [
+            "Съём материала на слух",
+            "Оркестровка на симфонический состав",
+            "Подбор синтезаторов и тембров",
+            "Баланс электроники и живого оркестра",
+            "Партитура и партии"
+          ],
+          "media": {
+            "type": "photo",
+            "src": "assets/media/portfolio/new-project/1200x675_cmsv2_c2af739c-5ea8-55d4-b5b6-d0ea1b4bc478-9839988..avif"
+          },
+          "heroImage": "assets/media/portfolio/new-project/1200x675_cmsv2_c2af739c-5ea8-55d4-b5b6-d0ea1b4bc478-9839988..avif",
+          "photos": [
+            "assets/media/portfolio/new-project/snimok-ekrana-2026-09-22-v-03.50.14.jpg",
+            "assets/media/portfolio/new-project/snimok-ekrana-2026-10-17-v-03.27.05.jpg",
+            "assets/media/portfolio/new-project/snimok-ekrana-2026-10-17-v-03.27.16.jpg"
+          ],
+          "videos": [
+            {
+              "title": "",
+              "url": "https://youtu.be/GnaQf1Tluyc?si=sOUE00qBeBFsWShL",
+              "src": "",
+              "poster": ""
+            },
+            {
+              "title": "",
+              "url": "https://open.spotify.com/album/0rBYeLCQiEAz77aEgGO4Vy?si=IYixS1efQV2TypaBlkirUg",
+              "src": "",
+              "poster": ""
+            },
+            {
+              "title": "",
+              "url": "",
+              "src": "assets/media/portfolio/new-project/img_9472.mp4",
+              "poster": "assets/media/portfolio/new-project/img_9472-poster.jpg"
+            }
+          ],
+          "audio": [],
+          "hidden": false,
+          "isPlaceholder": false,
+          "music": []
         },
         {
           "id": "gladiator",
@@ -974,7 +1138,8 @@ window.SITE_CONTENT = {
             }
           ],
           "audio": [],
-          "isPlaceholder": false
+          "isPlaceholder": false,
+          "music": []
         },
         {
           "id": "james-bond",
@@ -1005,7 +1170,8 @@ window.SITE_CONTENT = {
           "photos": [],
           "videos": [],
           "audio": [],
-          "isPlaceholder": false
+          "isPlaceholder": false,
+          "music": []
         },
         {
           "id": "top-gun",
@@ -1036,7 +1202,8 @@ window.SITE_CONTENT = {
           "photos": [],
           "videos": [],
           "audio": [],
-          "isPlaceholder": false
+          "isPlaceholder": false,
+          "music": []
         },
         {
           "id": "the-boys",
@@ -1074,7 +1241,8 @@ window.SITE_CONTENT = {
             }
           ],
           "audio": [],
-          "isPlaceholder": false
+          "isPlaceholder": false,
+          "music": []
         },
         {
           "id": "stranger-things",
@@ -1103,9 +1271,18 @@ window.SITE_CONTENT = {
           },
           "heroImage": "assets/media/portfolio/stranger-things/960x540.jpg",
           "photos": [],
-          "videos": [],
+          "videos": [
+            {
+              "title": "",
+              "url": "https://youtu.be/XFifsyyKL2g?is=n-IgpIc9ZnlGtum6",
+              "src": "",
+              "poster": ""
+            }
+          ],
           "audio": [],
-          "isPlaceholder": false
+          "isPlaceholder": false,
+          "date": "2026-04",
+          "music": []
         },
         {
           "id": "house-of-the-dragon",
@@ -1143,41 +1320,8 @@ window.SITE_CONTENT = {
             }
           ],
           "audio": [],
-          "isPlaceholder": false
-        },
-        {
-          "id": "new-project",
-          "category": "arrangement",
-          "categoryLabel": "Аранжировка и оркестровка",
-          "title": "Аранжировка саундтрека из фильма «Одиссея»",
-          "meta": "16 минут музыки · оркестр, синтезаторы и этнические инструменты",
-          "description": "Самая объёмная из отдельных аранжировок: шестнадцать минут непрерывной музыки. Партитура Людвига Йоранссона держится на сочетании, которое встречаешь нечасто — греческие этнические инструменты, современный саунд-дизайн и симфонический оркестр звучат одним организмом, а не тремя слоями друг поверх друга. Основная работа была не в нотах, а в поиске: какими синтезаторами набрать нужный тембр и как посадить его в оркестр, чтобы он не спорил с живыми инструментами и не тонул в них.",
-          "stats": [
-            {
-              "value": "16′",
-              "label": "хронометраж",
-              "icon": "clock"
-            }
-          ],
-          "scope": [
-            "Съём материала на слух",
-            "Оркестровка на симфонический состав",
-            "Подбор синтезаторов и тембров",
-            "Баланс электроники и живого оркестра",
-            "Партитура и партии"
-          ],
-          "media": {
-            "type": "photo",
-            "src": "assets/media/portfolio/new-project/1200x675_cmsv2_c2af739c-5ea8-55d4-b5b6-d0ea1b4bc478-9839988..avif"
-          },
-          "heroImage": "assets/media/portfolio/new-project/1200x675_cmsv2_c2af739c-5ea8-55d4-b5b6-d0ea1b4bc478-9839988..avif",
-          "photos": [
-            "assets/media/portfolio/new-project/snimok-ekrana-2026-09-22-v-03.50.14.jpg"
-          ],
-          "videos": [],
-          "audio": [],
-          "hidden": false,
-          "isPlaceholder": false
+          "isPlaceholder": false,
+          "music": []
         }
       ],
       "bgPhoto": ""
@@ -1693,7 +1837,7 @@ window.SITE_CONTENT = {
       "note": "Не нашли свой вопрос? Напишите — отвечу лично.",
       "openLabel": "Раскрыть ответ",
       "hideLabel": "Свернуть ответ",
-      "bgPhoto": "",
+      "bgPhoto": "assets/media/home/desk-keys.jpg",
       "items": [
         {
           "question": "Сколько стоит работа?",
@@ -1777,7 +1921,9 @@ window.SITE_CONTENT = {
       "tagline": "Аранжировка · Оркестровка · Саунд-продакшн · Logic Pro  · Sibelius",
       "rights": "Права на тексты, дизайн и авторские материалы сайта принадлежат автору. Права на упомянутые произведения и материалы третьих лиц принадлежат их правообладателям.",
       "faq": "Частые вопросы",
-      "privacy": "Политика конфиденциальности"
+      "privacy": "Политика конфиденциальности",
+      "cookie": "Сайт использует Яндекс Метрику и cookie, чтобы понимать, какие разделы полезны. <a href=\"privacy.html\">Подробнее</a>",
+      "cookieOk": "Понятно"
     },
     "langSwitch": {
       "current": "RU",
@@ -1812,7 +1958,7 @@ window.SITE_CONTENT = {
         },
         {
           "href": "refs.html",
-          "label": "References"
+          "label": "Workshop"
         },
         {
           "href": "index.html#faq",
@@ -1904,7 +2050,7 @@ window.SITE_CONTENT = {
       ],
       "portrait": "assets/media/about/photo_2026-08-10-23.33.43.jpg",
       "readMore": "More about me",
-      "bgPhoto": ""
+      "bgPhoto": "assets/media/home/about-2.jpg"
     },
     "forWhom": {
       "eyebrow": "Who I work with",
@@ -2003,7 +2149,7 @@ window.SITE_CONTENT = {
           "result": "score, parts, click and playback"
         }
       ],
-      "bgPhoto": "",
+      "bgPhoto": "assets/media/home/photo_2026-08-11-16.47.31.jpg",
       "resultLabel": "You get"
     },
     "portfolio": {
@@ -2090,12 +2236,21 @@ window.SITE_CONTENT = {
             "assets/media/portfolio/burton-show/07.jpg",
             "assets/media/portfolio/burton-show/08.jpg",
             "assets/media/portfolio/burton-show/09.jpg",
-            "assets/media/portfolio/burton-show/11.jpg"
+            "assets/media/portfolio/burton-show/11.jpg",
+            "assets/media/portfolio/burton-show/photo_2026-10-17-04.41.44.jpg"
           ],
-          "videos": [],
+          "videos": [
+            {
+              "title": "",
+              "url": "",
+              "src": "assets/media/portfolio/burton-show/img_4140.mp4",
+              "poster": "assets/media/portfolio/burton-show/img_4140-poster.jpg"
+            }
+          ],
           "audio": [],
           "isPlaceholder": false,
-          "date": "2025-10"
+          "date": "2025-10",
+          "music": []
         },
         {
           "id": "harry-potter-show",
@@ -2116,7 +2271,7 @@ window.SITE_CONTENT = {
               "icon": "steps"
             },
             {
-              "value": "2024",
+              "value": "Декабрь 2024",
               "label": "premiere",
               "icon": "calendar"
             }
@@ -2144,12 +2299,25 @@ window.SITE_CONTENT = {
             {
               "title": "",
               "url": "",
-              "src": "",
+              "src": "assets/media/portfolio/harry-potter-show/img_8210.mp4",
+              "poster": "assets/media/portfolio/harry-potter-show/img_8210-poster.jpg"
+            },
+            {
+              "title": "",
+              "url": "",
+              "src": "assets/media/portfolio/harry-potter-show/img_8217.mp4",
+              "poster": ""
+            },
+            {
+              "title": "",
+              "url": "",
+              "src": "assets/media/portfolio/harry-potter-show/img_8218.mp4",
               "poster": ""
             }
           ],
           "audio": [],
-          "isPlaceholder": false
+          "isPlaceholder": false,
+          "music": []
         },
         {
           "id": "hp-planetarium",
@@ -2165,7 +2333,7 @@ window.SITE_CONTENT = {
               "icon": "clock"
             },
             {
-              "value": "7",
+              "value": "24",
               "label": "films in the franchise",
               "icon": "steps"
             },
@@ -2182,39 +2350,56 @@ window.SITE_CONTENT = {
             "Scores and sets of parts"
           ],
           "media": {
-            "type": "score",
-            "src": ""
+            "type": "photo",
+            "src": "assets/media/portfolio/hp-planetarium/img_4653.jpg"
           },
-          "heroImage": "",
-          "photos": [],
-          "videos": [],
-          "audio": [],
-          "isPlaceholder": false
-        },
-        {
-          "id": "multiland",
-          "category": "show",
-          "categoryLabel": "Orchestral show",
-          "title": "“Multiland” — a show of animation soundtracks",
-          "meta": "Imperial Orchestra · symphony orchestra",
-          "description": "A children's programme built on music from animated films. My role differs from number to number: some were done end to end, some were engraved from the original score under another arranger's chart, and some needed missing material transcribed by ear.",
-          "stats": [],
-          "scope": [
-            "“Hallelujah” from Shrek — the whole number: transcription, arrangement, score and parts",
-            "Aladdin — engraving from the original, re-arranging, several themes assembled into one number",
-            "Rapunzel — the same, with part of the material transcribed by ear",
-            "Moana — transcribing the vocal parts",
-            "The Little Mermaid and Beauty and the Beast — engraving from the originals, arrangement by another author"
+          "heroImage": "assets/media/portfolio/hp-planetarium/img_4653.jpg",
+          "photos": [
+            "assets/media/portfolio/hp-planetarium/img_4653.jpg",
+            "assets/media/portfolio/hp-planetarium/img_4651.jpg"
           ],
-          "media": {
-            "type": "score",
-            "src": ""
-          },
-          "heroImage": "",
-          "photos": [],
-          "videos": [],
+          "videos": [
+            {
+              "title": "",
+              "url": "",
+              "src": "assets/media/portfolio/hp-planetarium/video.mp4",
+              "poster": "assets/media/portfolio/hp-planetarium/video-poster.jpg"
+            },
+            {
+              "title": "",
+              "url": "",
+              "src": "assets/media/portfolio/hp-planetarium/img_4666.mp4",
+              "poster": "assets/media/portfolio/hp-planetarium/img_4666-poster.jpg"
+            },
+            {
+              "title": "",
+              "url": "",
+              "src": "assets/media/portfolio/hp-planetarium/img_4667.mp4",
+              "poster": "assets/media/portfolio/hp-planetarium/img_4667-poster.jpg"
+            },
+            {
+              "title": "",
+              "url": "",
+              "src": "assets/media/portfolio/hp-planetarium/img_4668.mp4",
+              "poster": "assets/media/portfolio/hp-planetarium/img_4668-poster.jpg"
+            },
+            {
+              "title": "",
+              "url": "",
+              "src": "assets/media/portfolio/hp-planetarium/img_4670.mp4",
+              "poster": "assets/media/portfolio/hp-planetarium/img_4670-poster.jpg"
+            },
+            {
+              "title": "",
+              "url": "",
+              "src": "assets/media/portfolio/hp-planetarium/img_4665.mp4",
+              "poster": "assets/media/portfolio/hp-planetarium/img_4665-poster.jpg"
+            }
+          ],
           "audio": [],
-          "isPlaceholder": false
+          "isPlaceholder": false,
+          "date": "Декабрь 2025",
+          "music": []
         },
         {
           "id": "kish",
@@ -2235,14 +2420,24 @@ window.SITE_CONTENT = {
             "Rehearsals and performances"
           ],
           "media": {
-            "type": "score",
-            "src": ""
+            "type": "photo",
+            "src": "assets/media/portfolio/kish/orig.jpg"
           },
-          "heroImage": "",
-          "photos": [],
-          "videos": [],
+          "heroImage": "assets/media/portfolio/kish/orig.jpg",
+          "photos": [
+            "assets/media/portfolio/kish/img_9826-poster.jpg"
+          ],
+          "videos": [
+            {
+              "title": "",
+              "url": "",
+              "src": "assets/media/portfolio/kish/img_9826.mp4",
+              "poster": ""
+            }
+          ],
           "audio": [],
-          "isPlaceholder": false
+          "isPlaceholder": false,
+          "music": []
         },
         {
           "id": "duduk",
@@ -2266,7 +2461,9 @@ window.SITE_CONTENT = {
           "photos": [],
           "videos": [],
           "audio": [],
-          "isPlaceholder": false
+          "isPlaceholder": false,
+          "music": [],
+          "hidden": true
         },
         {
           "id": "wizard-oz",
@@ -2299,7 +2496,8 @@ window.SITE_CONTENT = {
           ],
           "videos": [],
           "audio": [],
-          "isPlaceholder": false
+          "isPlaceholder": false,
+          "music": []
         },
         {
           "id": "polnolunie",
@@ -2344,7 +2542,35 @@ window.SITE_CONTENT = {
           "photos": [],
           "videos": [],
           "audio": [],
-          "isPlaceholder": false
+          "isPlaceholder": false,
+          "music": []
+        },
+        {
+          "id": "multiland",
+          "category": "show",
+          "categoryLabel": "Orchestral show",
+          "title": "“Multiland” — a show of animation soundtracks",
+          "meta": "Imperial Orchestra · symphony orchestra",
+          "description": "A children's programme built on music from animated films. My role differs from number to number: some were done end to end, some were engraved from the original score under another arranger's chart, and some needed missing material transcribed by ear.",
+          "stats": [],
+          "scope": [
+            "“Hallelujah” from Shrek — the whole number: transcription, arrangement, score and parts",
+            "Aladdin — engraving from the original, re-arranging, several themes assembled into one number",
+            "Rapunzel — the same, with part of the material transcribed by ear",
+            "Moana — transcribing the vocal parts",
+            "The Little Mermaid and Beauty and the Beast — engraving from the originals, arrangement by another author"
+          ],
+          "media": {
+            "type": "score",
+            "src": ""
+          },
+          "heroImage": "",
+          "photos": [],
+          "videos": [],
+          "audio": [],
+          "isPlaceholder": false,
+          "music": [],
+          "hidden": true
         },
         {
           "id": "tavrida-2025",
@@ -2394,7 +2620,8 @@ window.SITE_CONTENT = {
               "src": "assets/media/portfolio/tavrida-2025/bulatov-22privet-22-demo.mp3"
             }
           ],
-          "isPlaceholder": false
+          "isPlaceholder": false,
+          "music": []
         },
         {
           "id": "romashka",
@@ -2410,14 +2637,22 @@ window.SITE_CONTENT = {
             "Delivery as a multitrack"
           ],
           "media": {
-            "type": "audio",
-            "src": ""
+            "type": "photo",
+            "src": "assets/media/portfolio/romashka/img_0298.jpg"
           },
-          "heroImage": "",
-          "photos": [],
+          "heroImage": "assets/media/portfolio/romashka/img_0298.jpg",
+          "photos": [
+            "assets/media/portfolio/romashka/img_0298.jpg"
+          ],
           "videos": [],
-          "audio": [],
-          "isPlaceholder": false
+          "audio": [
+            {
+              "title": "",
+              "src": "assets/media/portfolio/romashka/raz-romashka.mp3"
+            }
+          ],
+          "isPlaceholder": false,
+          "music": []
         },
         {
           "id": "luzha",
@@ -2432,11 +2667,13 @@ window.SITE_CONTENT = {
             "Preparing the multitrack"
           ],
           "media": {
-            "type": "video",
-            "src": ""
+            "type": "photo",
+            "src": "assets/media/portfolio/luzha/photo_2026-10-17-05.03.00.jpg"
           },
-          "heroImage": "",
-          "photos": [],
+          "heroImage": "assets/media/portfolio/luzha/photo_2026-10-17-05.03.00.jpg",
+          "photos": [
+            "assets/media/portfolio/luzha/photo_2026-10-17-05.03.00.jpg"
+          ],
           "videos": [
             {
               "title": "«Лужа» — Манка (Яндекс Музыка)",
@@ -2446,7 +2683,8 @@ window.SITE_CONTENT = {
             }
           ],
           "audio": [],
-          "isPlaceholder": false
+          "isPlaceholder": false,
+          "music": []
         },
         {
           "id": "neznaika",
@@ -2475,7 +2713,8 @@ window.SITE_CONTENT = {
           "photos": [],
           "videos": [],
           "audio": [],
-          "isPlaceholder": false
+          "isPlaceholder": false,
+          "music": []
         },
         {
           "id": "mihail-krug",
@@ -2499,7 +2738,8 @@ window.SITE_CONTENT = {
           "videos": [],
           "audio": [],
           "isPlaceholder": false,
-          "hidden": true
+          "hidden": true,
+          "music": []
         },
         {
           "id": "dune-3",
@@ -2529,7 +2769,8 @@ window.SITE_CONTENT = {
             }
           ],
           "audio": [],
-          "isPlaceholder": false
+          "isPlaceholder": false,
+          "music": []
         },
         {
           "id": "legends-heroes",
@@ -2546,14 +2787,15 @@ window.SITE_CONTENT = {
             "Score and parts"
           ],
           "media": {
-            "type": "score",
-            "src": ""
+            "type": "photo",
+            "src": "assets/media/portfolio/legends-heroes/images-2.jpg"
           },
-          "heroImage": "",
+          "heroImage": "assets/media/portfolio/legends-heroes/images-2.jpg",
           "photos": [],
           "videos": [],
           "audio": [],
-          "isPlaceholder": false
+          "isPlaceholder": false,
+          "music": []
         },
         {
           "id": "richter",
@@ -2569,14 +2811,15 @@ window.SITE_CONTENT = {
             "Score and parts"
           ],
           "media": {
-            "type": "score",
-            "src": ""
+            "type": "photo",
+            "src": "assets/media/portfolio/richter/1900x1900-000000-80-0-0.jpg"
           },
-          "heroImage": "",
+          "heroImage": "assets/media/portfolio/richter/1900x1900-000000-80-0-0.jpg",
           "photos": [],
           "videos": [],
           "audio": [],
-          "isPlaceholder": false
+          "isPlaceholder": false,
+          "music": []
         },
         {
           "id": "einaudi",
@@ -2592,14 +2835,15 @@ window.SITE_CONTENT = {
             "Score and parts"
           ],
           "media": {
-            "type": "score",
-            "src": ""
+            "type": "photo",
+            "src": "assets/media/portfolio/einaudi/1651_ltmys_hero-mary-croppedjpg.jpg"
           },
-          "heroImage": "",
+          "heroImage": "assets/media/portfolio/einaudi/1651_ltmys_hero-mary-croppedjpg.jpg",
           "photos": [],
           "videos": [],
           "audio": [],
-          "isPlaceholder": false
+          "isPlaceholder": false,
+          "music": []
         },
         {
           "id": "oppenheimer",
@@ -2629,7 +2873,8 @@ window.SITE_CONTENT = {
             }
           ],
           "audio": [],
-          "isPlaceholder": false
+          "isPlaceholder": false,
+          "music": []
         },
         {
           "id": "obraz-disney",
@@ -2648,14 +2893,17 @@ window.SITE_CONTENT = {
             "Anastasia — Rasputin's song"
           ],
           "media": {
-            "type": "score",
-            "src": ""
+            "type": "photo",
+            "src": "assets/media/portfolio/obraz-disney/img_0340.jpg"
           },
-          "heroImage": "",
-          "photos": [],
+          "heroImage": "assets/media/portfolio/obraz-disney/img_0340.jpg",
+          "photos": [
+            "assets/media/portfolio/obraz-disney/img_0340.jpg"
+          ],
           "videos": [],
           "audio": [],
-          "isPlaceholder": false
+          "isPlaceholder": false,
+          "music": []
         },
         {
           "id": "mtv-orchestra",
@@ -2678,7 +2926,9 @@ window.SITE_CONTENT = {
           "photos": [],
           "videos": [],
           "audio": [],
-          "isPlaceholder": false
+          "isPlaceholder": false,
+          "music": [],
+          "hidden": true
         },
         {
           "id": "karamanov",
@@ -2700,14 +2950,74 @@ window.SITE_CONTENT = {
             "Proofreading and reconciling discrepancies"
           ],
           "media": {
-            "type": "score",
-            "src": ""
+            "type": "photo",
+            "src": "assets/media/portfolio/karamanov/snimok-ekrana-2026-10-17-v-06.06.30.jpg"
           },
-          "heroImage": "",
-          "photos": [],
+          "heroImage": "assets/media/portfolio/karamanov/snimok-ekrana-2026-10-17-v-06.06.30.jpg",
+          "photos": [
+            "assets/media/portfolio/karamanov/snimok-ekrana-2026-10-17-v-06.05.48.jpg",
+            "assets/media/portfolio/karamanov/snimok-ekrana-2026-10-17-v-06.06.30.jpg"
+          ],
           "videos": [],
           "audio": [],
-          "isPlaceholder": false
+          "isPlaceholder": false,
+          "music": []
+        },
+        {
+          "id": "new-project",
+          "category": "arrangement",
+          "categoryLabel": "Аранжировка и оркестровка",
+          "title": "Новый проект",
+          "meta": "16 minutes of music · orchestra, synthesizers and ethnic instruments",
+          "description": "The largest of the standalone arrangements: sixteen unbroken minutes of music. Ludwig Göransson's score rests on a combination you do not meet often — Greek ethnic instruments, modern sound design and a symphony orchestra sounding as one organism rather than three layers stacked on each other. The real work was not in the notes but in the search: which synthesizers give the timbre, and how to seat it in the orchestra so it neither fights the live instruments nor drowns in them.",
+          "stats": [
+            {
+              "value": "16′",
+              "label": "running time",
+              "icon": "clock"
+            }
+          ],
+          "scope": [
+            "Transcribing by ear",
+            "Orchestrating for symphony orchestra",
+            "Choosing synthesizers and timbres",
+            "Balancing electronics against the live orchestra",
+            "Score and parts"
+          ],
+          "media": {
+            "type": "photo",
+            "src": "assets/media/portfolio/new-project/1200x675_cmsv2_c2af739c-5ea8-55d4-b5b6-d0ea1b4bc478-9839988..avif"
+          },
+          "heroImage": "assets/media/portfolio/new-project/1200x675_cmsv2_c2af739c-5ea8-55d4-b5b6-d0ea1b4bc478-9839988..avif",
+          "photos": [
+            "assets/media/portfolio/new-project/snimok-ekrana-2026-09-22-v-03.50.14.jpg",
+            "assets/media/portfolio/new-project/snimok-ekrana-2026-10-17-v-03.27.05.jpg",
+            "assets/media/portfolio/new-project/snimok-ekrana-2026-10-17-v-03.27.16.jpg"
+          ],
+          "videos": [
+            {
+              "title": "",
+              "url": "https://youtu.be/GnaQf1Tluyc?si=sOUE00qBeBFsWShL",
+              "src": "",
+              "poster": ""
+            },
+            {
+              "title": "",
+              "url": "https://open.spotify.com/album/0rBYeLCQiEAz77aEgGO4Vy?si=IYixS1efQV2TypaBlkirUg",
+              "src": "",
+              "poster": ""
+            },
+            {
+              "title": "",
+              "url": "",
+              "src": "assets/media/portfolio/new-project/img_9472.mp4",
+              "poster": "assets/media/portfolio/new-project/img_9472-poster.jpg"
+            }
+          ],
+          "audio": [],
+          "hidden": false,
+          "isPlaceholder": false,
+          "music": []
         },
         {
           "id": "gladiator",
@@ -2751,7 +3061,8 @@ window.SITE_CONTENT = {
             }
           ],
           "audio": [],
-          "isPlaceholder": false
+          "isPlaceholder": false,
+          "music": []
         },
         {
           "id": "james-bond",
@@ -2782,7 +3093,8 @@ window.SITE_CONTENT = {
           "photos": [],
           "videos": [],
           "audio": [],
-          "isPlaceholder": false
+          "isPlaceholder": false,
+          "music": []
         },
         {
           "id": "top-gun",
@@ -2813,7 +3125,8 @@ window.SITE_CONTENT = {
           "photos": [],
           "videos": [],
           "audio": [],
-          "isPlaceholder": false
+          "isPlaceholder": false,
+          "music": []
         },
         {
           "id": "the-boys",
@@ -2851,7 +3164,8 @@ window.SITE_CONTENT = {
             }
           ],
           "audio": [],
-          "isPlaceholder": false
+          "isPlaceholder": false,
+          "music": []
         },
         {
           "id": "stranger-things",
@@ -2880,9 +3194,18 @@ window.SITE_CONTENT = {
           },
           "heroImage": "assets/media/portfolio/stranger-things/960x540.jpg",
           "photos": [],
-          "videos": [],
+          "videos": [
+            {
+              "title": "",
+              "url": "https://youtu.be/XFifsyyKL2g?is=n-IgpIc9ZnlGtum6",
+              "src": "",
+              "poster": ""
+            }
+          ],
           "audio": [],
-          "isPlaceholder": false
+          "isPlaceholder": false,
+          "date": "2026-04",
+          "music": []
         },
         {
           "id": "house-of-the-dragon",
@@ -2920,41 +3243,8 @@ window.SITE_CONTENT = {
             }
           ],
           "audio": [],
-          "isPlaceholder": false
-        },
-        {
-          "id": "new-project",
-          "category": "arrangement",
-          "categoryLabel": "Аранжировка и оркестровка",
-          "title": "Новый проект",
-          "meta": "16 minutes of music · orchestra, synthesizers and ethnic instruments",
-          "description": "The largest of the standalone arrangements: sixteen unbroken minutes of music. Ludwig Göransson's score rests on a combination you do not meet often — Greek ethnic instruments, modern sound design and a symphony orchestra sounding as one organism rather than three layers stacked on each other. The real work was not in the notes but in the search: which synthesizers give the timbre, and how to seat it in the orchestra so it neither fights the live instruments nor drowns in them.",
-          "stats": [
-            {
-              "value": "16′",
-              "label": "running time",
-              "icon": "clock"
-            }
-          ],
-          "scope": [
-            "Transcribing by ear",
-            "Orchestrating for symphony orchestra",
-            "Choosing synthesizers and timbres",
-            "Balancing electronics against the live orchestra",
-            "Score and parts"
-          ],
-          "media": {
-            "type": "photo",
-            "src": "assets/media/portfolio/new-project/1200x675_cmsv2_c2af739c-5ea8-55d4-b5b6-d0ea1b4bc478-9839988..avif"
-          },
-          "heroImage": "assets/media/portfolio/new-project/1200x675_cmsv2_c2af739c-5ea8-55d4-b5b6-d0ea1b4bc478-9839988..avif",
-          "photos": [
-            "assets/media/portfolio/new-project/snimok-ekrana-2026-09-22-v-03.50.14.jpg"
-          ],
-          "videos": [],
-          "audio": [],
-          "hidden": false,
-          "isPlaceholder": false
+          "isPlaceholder": false,
+          "music": []
         }
       ],
       "bgPhoto": ""
@@ -3470,7 +3760,7 @@ window.SITE_CONTENT = {
       "note": "Question not on the list? Write to me — I'll answer personally.",
       "openLabel": "Show answer",
       "hideLabel": "Hide answer",
-      "bgPhoto": "",
+      "bgPhoto": "assets/media/home/desk-keys.jpg",
       "items": [
         {
           "question": "How much does it cost?",
@@ -3554,7 +3844,9 @@ window.SITE_CONTENT = {
       "tagline": "Arranging · Orchestration · Sound Production · Logic Pro  · Sibelius",
       "rights": "Rights to the text, design and original materials of this site belong to the author. Rights to any third-party works and materials mentioned belong to their respective owners.",
       "faq": "FAQ",
-      "privacy": "Privacy policy"
+      "privacy": "Privacy policy",
+      "cookie": "This site uses Yandex Metrica and cookies to see which sections are useful. <a href=\"privacy.html\">Details</a>",
+      "cookieOk": "Got it"
     },
     "langSwitch": {
       "current": "EN",
