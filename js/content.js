@@ -1922,7 +1922,7 @@ window.SITE_CONTENT = {
       "rights": "Права на тексты, дизайн и авторские материалы сайта принадлежат автору. Права на упомянутые произведения и материалы третьих лиц принадлежат их правообладателям.",
       "faq": "Частые вопросы",
       "privacy": "Политика конфиденциальности",
-      "cookie": "Сайт использует Яндекс Метрику и cookie, чтобы понимать, какие разделы полезны. <a href=\"privacy.html\">Подробнее</a>",
+      "cookie": "Сайт использует файлы cookie, чтобы становиться удобнее. <a href=\"privacy.html\">Подробнее</a>",
       "cookieOk": "Понятно"
     },
     "langSwitch": {
@@ -3845,7 +3845,7 @@ window.SITE_CONTENT = {
       "rights": "Rights to the text, design and original materials of this site belong to the author. Rights to any third-party works and materials mentioned belong to their respective owners.",
       "faq": "FAQ",
       "privacy": "Privacy policy",
-      "cookie": "This site uses Yandex Metrica and cookies to see which sections are useful. <a href=\"privacy.html\">Details</a>",
+      "cookie": "This site uses cookies to keep getting better. <a href=\"privacy.html\">Details</a>",
       "cookieOk": "Got it"
     },
     "langSwitch": {
