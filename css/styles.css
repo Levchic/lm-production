@@ -2708,3 +2708,6 @@ a.testimonial-name:hover { color: var(--copper); }
 .cookie-notice p { margin: 0; flex: 1; }
 .cookie-notice a { color: var(--copper-bright); }
 .cookie-notice .btn { flex-shrink: 0; }
+
+/* Подзаголовок раздела можно оставить пустым в контенте — тогда он не занимает место */
+.section-sub:empty, .page-header .desc:empty { display: none; }

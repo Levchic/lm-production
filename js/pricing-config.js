@@ -521,7 +521,7 @@ window.PRICING_CONFIG = {
       title: { ru: "Нотный набор", en: "Music engraving" },
       unit: { ru: "по выбранной единице", en: "by the chosen unit" },
       description: {
-        ru: "Перенос материала в нотный редактор: набор, вёрстка, вычитка. Считается так, как удобнее считать объём.",
+        ru: "Перенос материала в нотный редактор: набор, вёрстка, проверка на ошибки. Считается так, как удобнее считать объём.",
         en: "Moving the material into a notation editor: setting, layout, proofreading. Priced by whichever unit measures the job best."
       },
       conflictsWith: ["m1", "m2", "m7"],
@@ -567,7 +567,7 @@ window.PRICING_CONFIG = {
              описывала нажатие кнопки, а не ремесло. */
           label: { ru: "Нотная подготовка: комплект партий", en: "Music preparation: the set of parts" },
           hint: {
-            ru: "Отдельные ноты каждому инструменту: перевороты страниц в паузах, репетиционные цифры, вычитка, готовые PDF.",
+            ru: "Отдельные ноты каждому инструменту: перевороты страниц в паузах, репетиционные цифры, проверка на ошибки, готовые PDF.",
             en: "A separate part for every instrument: page turns in the rests, rehearsal marks, proofreading, print-ready PDFs."
           }
         },
@@ -843,13 +843,13 @@ window.PRICING_CONFIG = {
       price: { ru: "от 3 000 ₽ / номер", en: "from 3,000 ₽ / piece" }
     },
     {
-      title: { ru: "Корректура чужой партитуры", en: "Proofreading someone else's score" },
-      description: { ru: "Вычитка на ошибки, диапазоны, неудобные места и расхождения с клавиром.", en: "Errors, ranges, awkward passages and mismatches with the piano score." },
+      title: { ru: "Корректура партитуры", en: "Score proofreading" },
+      description: { ru: "Проверка на ошибки, диапазоны, неудобные места и расхождения с клавиром.", en: "Errors, ranges, awkward passages and mismatches with the piano score." },
       price: { ru: "от 4 000 ₽ / номер", en: "from 4,000 ₽ / piece" }
     },
     {
       title: { ru: "Сопровождение репетиции и саундчека", en: "Rehearsal and soundcheck support" },
-      description: { ru: "Правки по ходу репетиции, запуск клика и плейбэка, стыковка с звукорежиссёром.", en: "On-the-spot fixes, running click and playback, working with the sound engineer." },
+      description: { ru: "Правки по ходу репетиции, запуск клика и плейбэка, работа со звукорежиссёром.", en: "On-the-spot fixes, running click and playback, working with the sound engineer." },
       price: { ru: "от 10 000 ₽ / смена", en: "from 10,000 ₽ / session" }
     },
     {
