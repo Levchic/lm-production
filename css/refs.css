@@ -274,4 +274,5 @@ button.rg-label:hover span, .rg-row.is-open .rg-label span { color: var(--copper
 
 /* Категории в оглавлении «Мастерской» */
 .rf-hub-cat { display: flex; margin: 0 0 18px; }
-.rf-hub + .rf-hub-cat { margin-top: clamp(40px, 5vw, 64px); }
+.rf-group[hidden] { display: none; }
+.rf-group:not([hidden]) ~ .rf-group:not([hidden]) { margin-top: clamp(40px, 5vw, 64px); }
