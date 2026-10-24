@@ -584,11 +584,11 @@ window.SITE_CONTENT = {
           "category": "theatre",
           "categoryLabel": "Театр и мюзиклы",
           "title": "Концертные партитуры к рок-опере «Полнолуние»",
-          "meta": "37 проектов Logic · 240 минут · партитуры и партии",
+          "meta": "37 проектов Logic · 147 минут · партитуры и партии",
           "description": "Концертная версия рок-оперы: от проектов Logic до готовых партитур и партий. Каждый из 37 проектов нужно было проверить и почистить, выровнять MIDI, снять на слух партии, которые существовали только в аудио, и сверить всё с клавиром. Дальше — оркестровка на концертный состав, партитуры с вокальными строчками из клавира, аудиоверсия каждой партитуры и комплекты партий. Работа заняла почти четыре месяца.",
           "stats": [
             {
-              "value": "240′",
+              "value": "147′",
               "label": "хронометраж",
               "icon": "clock"
             },
@@ -2541,11 +2541,11 @@ window.SITE_CONTENT = {
           "category": "theatre",
           "categoryLabel": "Theatre & musicals",
           "title": "Concert scores for the rock opera “Polnolunie”",
-          "meta": "37 Logic projects · 240 minutes · scores and parts",
+          "meta": "37 Logic projects · 147 minutes · scores and parts",
           "description": "A concert version of a rock opera, from Logic projects to finished scores and parts. Each of the 37 projects had to be checked and cleaned up, the MIDI aligned, parts that existed only as audio transcribed by ear, and everything checked against the vocal score. Then came orchestration for the concert line-up, scores with the vocal lines taken from the vocal score, an audio version of every score, and sets of parts. The work took almost four months.",
           "stats": [
             {
-              "value": "240′",
+              "value": "147′",
               "label": "running time",
               "icon": "clock"
             },
