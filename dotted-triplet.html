@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dotted Triplet — плагин Sibelius: пунктир в триоль и обратно | Лев Майденко</title>
+<meta name="description" content="Пунктир в триоль и обратно для выделенного пассажа — одним действием. Бесплатно · Sibelius · macOS и Windows · Версия 1.0.">
+<link rel="canonical" href="https://lm-production.ru/dotted-triplet.html">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Лев Майденко · L.M.Production">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:url" content="https://lm-production.ru/dotted-triplet.html">
+<meta property="og:title" content="Dotted Triplet — плагин Sibelius: пунктир в триоль и обратно">
+<meta property="og:description" content="Пунктир в триоль и обратно для выделенного пассажа — одним действием.">
+<meta property="og:image" content="https://lm-production.ru/assets/media/tools/dt-dotted-before.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/unbounded-cyrillic-normal-400-900.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/fonts.css?v=82">
+<link rel="stylesheet" href="css/styles.css?v=85">
+<link rel="stylesheet" href="css/texture.css?v=82">
+<link rel="stylesheet" href="css/animations.css?v=82">
+<link rel="stylesheet" href="css/refs.css?v=85">
+</head>
+<body data-static-meta>
+<!-- Собрано scripts/tool-pages.js — правки вносить там -->
+
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+<header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <a href="index.html" class="brand" data-bind="nav.brand">Л.М.</a>
+    <nav class="main-nav" id="mainNav" aria-label="Основная навигация">
+      <ul id="navLinks"></ul>
+    </nav>
+    <div class="header-actions">
+      <button class="lang-toggle" id="langToggle" type="button" aria-label="Switch language">
+        <span class="lang-current">RU</span><span class="lang-sep">/</span><span class="lang-other">EN</span>
+      </button>
+      <a href="index.html#contact" class="btn btn-primary btn-small" data-bind="nav.cta">Обсудить проект</a>
+      <button class="nav-burger" id="navBurger" type="button" aria-label="Открыть меню" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="page-header">
+    <div class="ink-stain" aria-hidden="true"></div>
+    <div class="wrap reveal" data-reveal>
+      <span class="eyebrow"><a href="refs.html">Мастерская</a> · <a href="refs.html#sibelius">Плагины Sibelius</a></span>
+      <h1>Dotted Triplet</h1>
+      <div class="desc"><p>Пунктир в триоль и обратно для выделенного пассажа — одним действием.</p></div>
+      <ul class="tl-tags"><li>Бесплатно</li><li>Sibelius</li><li>macOS и Windows</li><li>Версия 1.0</li></ul>
+      <div class="tl-download" id="tlDownload">
+        <div class="tl-os" role="group" aria-label="Операционная система"><button type="button" class="tl-os-btn" data-os="mac">macOS</button><button type="button" class="tl-os-btn" data-os="win">Windows</button></div>
+        <div class="tl-dl" data-os-panel="mac"><a class="btn btn-primary tl-dl-btn" href="assets/downloads/dotted-triplet-macos.pkg" download>Скачать для macOS</a><span class="tl-dl-file">Установщик .pkg · 8 КБ</span></div><div class="tl-dl" data-os-panel="win"><a class="btn btn-primary tl-dl-btn" href="assets/downloads/dotted-triplet-windows.zip" download>Скачать для Windows</a><span class="tl-dl-file">Архив .zip · 13 КБ</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="tear-divider">
+    <svg viewBox="0 0 1200 30" preserveAspectRatio="none">
+      <polygon fill="currentColor" points="0,30 0,8 45,15 85,3 140,13 185,1 250,11 300,4 365,16 410,2 470,10 525,5 590,14 640,1 705,12 760,3 820,15 880,6 940,10 1000,2 1060,13 1120,4 1170,9 1200,7 1200,30"/>
+    </svg>
+  </div>
+
+  <section class="section section-deep rf">
+    <div class="wrap">
+      <div class="tl-shots"><figure class="tl-shot tl-shot--light"><button type="button" class="tl-shot-img" data-lightbox="assets/media/tools/dt-dotted-before.png" data-lightbox-group="shots" data-lightbox-index="0" aria-label="Увеличить: Такт с пунктирным ритмом"><img src="assets/media/tools/dt-dotted-before.png" alt="Такт с пунктирным ритмом" loading="lazy"></button><figcaption>Было: пунктир</figcaption></figure><figure class="tl-shot tl-shot--light"><button type="button" class="tl-shot-img" data-lightbox="assets/media/tools/dt-triplet-after.png" data-lightbox-group="shots" data-lightbox-index="1" aria-label="Увеличить: Тот же такт с триолями"><img src="assets/media/tools/dt-triplet-after.png" alt="Тот же такт с триолями" loading="lazy"></button><figcaption>Стало: после «Пунктир → триоль»</figcaption></figure><figure class="tl-shot tl-shot--light"><button type="button" class="tl-shot-img" data-lightbox="assets/media/tools/dt-triplet-before.png" data-lightbox-group="shots" data-lightbox-index="2" aria-label="Увеличить: Такт с триолями"><img src="assets/media/tools/dt-triplet-before.png" alt="Такт с триолями" loading="lazy"></button><figcaption>Было: триоли</figcaption></figure><figure class="tl-shot tl-shot--light"><button type="button" class="tl-shot-img" data-lightbox="assets/media/tools/dt-dotted-after.png" data-lightbox-group="shots" data-lightbox-index="3" aria-label="Увеличить: Тот же такт с пунктиром"><img src="assets/media/tools/dt-dotted-after.png" alt="Тот же такт с пунктиром" loading="lazy"></button><figcaption>Стало: после «Триоль → пунктир»</figcaption></figure><figure class="tl-shot"><button type="button" class="tl-shot-img" data-lightbox="assets/media/tools/dt-window.jpg" data-lightbox-group="shots" data-lightbox-index="4" aria-label="Увеличить: Окно плагина Dotted Triplet в Sibelius"><img src="assets/media/tools/dt-window.jpg" alt="Окно плагина Dotted Triplet в Sibelius" loading="lazy"></button><figcaption>Окно плагина: выбор направления</figcaption></figure></div>
+
+      <div class="tl-cols">
+        <div>
+          <h2 class="eyebrow rf-hub-cat">Возможности</h2>
+          <ul><li>Пунктир → триоль: восьмая с точкой и шестнадцатая становятся четвертью и восьмой в триоли, четверть с точкой и восьмая — половинной и четвертью. Любые длительности.</li><li>Триоль → пунктир: обратное преобразование для триолей из двух нот.</li><li>Аккорды, лиги и написание нот сохраняются, каждый голос обрабатывается отдельно.</li><li>Окно с выбором направления и две быстрые команды, на которые удобно назначить горячие клавиши.</li></ul>
+        </div>
+        <div>
+          <h2 class="eyebrow rf-hub-cat">Требования</h2>
+          <dl class="tl-req"><dt>Программа</dt><dd>Sibelius (проверено в Sibelius 2025)</dd><dt>Система</dt><dd>macOS или Windows</dd><dt>Цена</dt><dd>Бесплатно</dd></dl>
+        </div>
+      </div>
+
+      <div class="tl-cols">
+        <div>
+          <h2 class="eyebrow rf-hub-cat">Установка</h2>
+          <div data-os-panel="mac"><ol><li>Скачайте установщик и откройте его двойным щелчком.</li><li>Если macOS сообщит, что не может проверить разработчика, откройте «Системные настройки → Конфиденциальность и безопасность», внизу нажмите «Всё равно открыть» и запустите установщик ещё раз. Плагин бесплатный и не подписан платным сертификатом Apple — других причин у предупреждения нет.</li><li>Перезапустите Sibelius. Плагин — во вкладке Главная → Плагины → Dotted Triplet.</li></ol></div><div data-os-panel="win"><ol><li>Скачайте архив и распакуйте его.</li><li>Скопируйте папку «Dotted Triplet» целиком в %AppData%\Avid\Sibelius\Plugins\ (вставьте путь в адресную строку Проводника и нажмите Enter).</li><li>Перезапустите Sibelius. Плагин — во вкладке Главная → Плагины → Dotted Triplet.</li></ol></div>
+        </div>
+        <div>
+          <h2 class="eyebrow rf-hub-cat">Как пользоваться</h2>
+          <ol><li>Выделите пассаж: ноты, такты или несколько нотоносцев.</li><li>Главная → Плагины → Dotted Triplet → «Dotted Triplet…», выберите направление и нажмите «Применить». То же без окна — команды «Пунктир → триоль» и «Триоль → пунктир».</li><li>Горячие клавиши: Файл → Настройки → Сочетания клавиш → категория Plug-ins. Отмена — Cmd+Z / Ctrl+Z.</li></ol>
+          <h2 class="eyebrow rf-hub-cat tl-sub">Ограничения</h2><ul><li>Паузы не преобразуются — только пары нот.</li><li>Артикуляции на самих нотах (стаккато, акцент) не переносятся; лиги и динамика остаются.</li><li>Пары через тактовую черту не обрабатываются.</li></ul>
+        </div>
+      </div>
+
+      <div class="rf-cta">
+        <p>Нашли ошибку или нужен плагин под вашу задачу — напишите.</p>
+        <div class="rf-cta-actions">
+          <a href="index.html#contact" class="btn btn-primary">Обсудить проект</a>
+          <a href="refs.html" class="btn btn-ghost">Вся мастерская</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div><span class="footer-brand" data-bind="nav.brand">Л.М.</span><span class="footer-tagline" data-bind="footer.tagline"></span></div>
+    <p class="footer-rights" id="footerRights"></p>
+    <a href="faq.html" class="footer-link" data-bind="footer.faq">Частые вопросы</a>
+    <a href="privacy.html" class="footer-privacy" data-bind="footer.privacy">Политика конфиденциальности</a>
+  </div>
+</footer>
+
+<script src="js/content.js?v=88"></script>
+<script src="js/common.js?v=83"></script>
+<script src="js/page-tool.js?v=1"></script>
+</body>
+</html>
