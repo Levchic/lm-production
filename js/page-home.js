@@ -402,7 +402,15 @@
     $("#portfolioSub").textContent = d.portfolio.subheading;
     $("#portfolioViewAll").innerHTML = C.withArrow(d.portfolio.viewAll);
     var grid = $("#portfolioGrid"); grid.innerHTML = "";
-    C.visibleProjects(d).slice(0, 3).forEach(function (proj, i) {
+    /* На главной — по первому проекту каждой категории в порядке фильтров,
+       чтобы не было трёх шоу подряд. Не хватило категорий — добираем по списку. */
+    var all = C.visibleProjects(d), picks = [];
+    d.portfolio.filters.forEach(function (f) {
+      var p = all.find(function (x) { return x.category === f.key; });
+      if (p) picks.push(p);
+    });
+    all.forEach(function (p) { if (picks.indexOf(p) < 0) picks.push(p); });
+    picks.slice(0, 3).forEach(function (proj, i) {
       var card = el("a", "project-card reveal", C.projectCardHTML(proj, d));
       card.href = "project.html?id=" + encodeURIComponent(proj.id);
       card.setAttribute("data-reveal", "");
