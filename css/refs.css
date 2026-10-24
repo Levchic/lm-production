@@ -271,3 +271,7 @@ button.rg-label:hover span, .rg-row.is-open .rg-label span { color: var(--copper
 .rf-hub-item:hover .rf-hub-text b, .rf-hub-item:hover .rf-hub-go { color: var(--copper); }
 @media (hover: hover) { .rf-hub-item:hover .rf-hub-go { transform: translateX(4px); } }
 @media (max-width: 640px) { .tm-item { scroll-margin-top: calc(var(--header-h) + 16px); } }
+
+/* Категории в оглавлении «Мастерской» */
+.rf-hub-cat { display: flex; margin: 0 0 18px; }
+.rf-hub + .rf-hub-cat { margin-top: clamp(40px, 5vw, 64px); }

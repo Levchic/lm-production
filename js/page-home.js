@@ -504,7 +504,7 @@
            отвечаю там быстрее. Определяем по адресу, а не по флагу в
            контенте — админка переписывает список соцсетей и лишнее поле
            из него бы потерялось. */
-        /* Бейдж — только на первой ссылке Telegram: следом идёт канал,
+        /* Выделяем только первую ссылку Telegram: следом идёт канал,
            а написать в канал нельзя. */
         var isPrimary = !primaryShown && /(^|\/\/)(t\.me|telegram\.me)\//i.test(s.href);
         if (isPrimary) primaryShown = true;
@@ -512,8 +512,7 @@
           '<span class="social-icon">' + C.socialIconSVG(s.label) + "</span>" +
           '<span class="social-name">' + esc(s.label) + "</span>" +
           '<span class="social-handle">' + esc(handle) + "</span>" +
-          '<span class="social-go">' + C.arrowSVG() + "</span>" +
-          (isPrimary ? '<span class="social-badge">' + esc((c.primaryBadge || "")) + "</span>" : ""));
+          '<span class="social-go">' + C.arrowSVG() + "</span>");
         a.href = s.href;
         a.target = "_blank";
         a.rel = "noopener noreferrer";

@@ -2489,28 +2489,10 @@ a.testimonial-name:hover { color: var(--copper); }
 .faq-note { color: var(--mute); font-size: var(--fs-sm); margin-top: clamp(32px, 4vw, 48px); max-width: 70ch; }
 
 
-/* Telegram в списке каналов — основной: туда пишут чаще всего. Выделен
-   не кнопкой, а весом строки и подписью справа: список остаётся списком,
-   но глаз цепляется за нужную строку первой. */
-.social-row.is-primary { grid-template-columns: 18px minmax(0, auto) minmax(0, 1fr) auto 16px; }
+/* Telegram в списке каналов — основной: туда пишут чаще всего,
+   поэтому строка выделена цветом. */
 .social-row.is-primary .social-name { color: var(--copper); font-weight: 600; }
 .social-row.is-primary .social-icon { color: var(--copper); }
-.social-badge {
-  font-size: var(--fs-xs); color: var(--mute);
-  letter-spacing: 0.04em; text-transform: lowercase;
-  white-space: nowrap;
-}
-/* На узком экране у основной строки та же сетка, что у остальных: имя,
-   под ним ник и пометка, стрелка справа. Раньше колонки не совпадали,
-   и стрелка вставала сразу за ником. */
-@media (max-width: 860px) {
-  .social-row.is-primary { grid-template-columns: 18px minmax(0, 1fr) 16px; }
-  .social-row.is-primary .social-icon { grid-column: 1; grid-row: 1; }
-  .social-row.is-primary .social-name { grid-column: 2; grid-row: 1; }
-  .social-row.is-primary .social-handle { grid-column: 2; grid-row: 2; }
-  .social-row.is-primary .social-badge { grid-column: 2; grid-row: 3; font-size: var(--fs-2xs); color: var(--copper); }
-  .social-row.is-primary .social-go { grid-column: 3; grid-row: 2; }
-}
 
 
 /* Кнопка раскрытия калькулятора. Стоит там, где раньше сразу начиналась

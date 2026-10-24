@@ -1947,7 +1947,6 @@ window.SITE_CONTENT = {
           "href": "https://www.youtube.com/@levlvovich2000"
         }
       ],
-      "primaryBadge": "основной канал",
       "directHeading": "Написать напрямую",
       "directNote": "Ответ — обычно в течение дня.",
       "directFoot": "Майденко Лев Львович, самозанятый, ИНН 632148507539. Работа по договору."
@@ -3905,7 +3904,6 @@ window.SITE_CONTENT = {
           "href": "https://www.youtube.com/@levlvovich2000"
         }
       ],
-      "primaryBadge": "main channel",
       "directHeading": "Message me directly",
       "directNote": "Replies usually within a day.",
       "directFoot": "Lev Maidenko, self-employed (NPD taxpayer), TIN 632148507539. Work under contract."
