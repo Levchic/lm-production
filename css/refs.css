@@ -305,3 +305,5 @@ button.rg-label:hover span, .rg-row.is-open .rg-label span { color: var(--copper
 .tl-req { display: grid; grid-template-columns: max-content 1fr; gap: 10px 20px; margin: 0; }
 .tl-req dt { color: var(--mute); }
 .tl-req dd { margin: 0; color: var(--bone-dim); }
+.tl-manual { color: var(--copper-bright); font-size: var(--fs-sm); }
+.tl-manual:hover { text-decoration: underline; }
