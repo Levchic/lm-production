@@ -307,3 +307,12 @@ button.rg-label:hover span, .rg-row.is-open .rg-label span { color: var(--copper
 .tl-req dd { margin: 0; color: var(--bone-dim); }
 .tl-manual { color: var(--copper-bright); font-size: var(--fs-sm); }
 .tl-manual:hover { text-decoration: underline; }
+
+/* Plug-in vs app comparison on tool pages (scripts/tool-pages.js, compare) */
+.tl-compare-wrap { overflow-x: auto; margin: 0 0 8px; }
+.tl-compare { width: 100%; border-collapse: collapse; min-width: 560px; }
+.tl-compare th, .tl-compare td { text-align: left; vertical-align: top; padding: 10px 14px 10px 0; border-bottom: 1px solid var(--rule, rgba(255,255,255,.12)); }
+.tl-compare thead th { color: var(--bone); font-weight: 500; }
+.tl-compare tbody th { color: var(--mute); font-weight: 400; white-space: nowrap; }
+.tl-compare td { color: var(--bone-dim); }
+.tl-compare-link { margin: 12px 0 40px; color: var(--mute); }
