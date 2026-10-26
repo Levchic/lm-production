@@ -1332,7 +1332,7 @@ window.SITE_CONTENT = {
     "services": {
       "eyebrow": "Услуги",
       "heading": "Услуги и цены",
-      "subheading": "Ориентировочные цены и калькулятор. Точная стоимость — после изучения материала.",
+      "subheading": "Ориентировочные цены. Точная стоимость — после изучения материала.",
       "viewAll": "Все услуги и цены",
       "note": "Цены ориентировочные и не являются публичной офертой. Итоговая стоимость зависит от состава, объёма, сроков и формата использования музыки: концерт, запись, гастроли, реклама. Для учебных и любительских коллективов — скидка. Стоимость фиксируется в договоре.",
       "bgPhoto": "",
@@ -1876,7 +1876,7 @@ window.SITE_CONTENT = {
       "items": [
         {
           "question": "Сколько стоит работа?",
-          "answer": "Ориентировочные цены и калькулятор — на странице «Услуги». Точная сумма зависит от состава, сложности и сроков и называется после изучения материала. Смета бесплатная."
+          "answer": "Ориентировочные цены — на странице «Услуги». Точная сумма зависит от состава, сложности и сроков и называется после изучения материала. Смета бесплатная."
         },
         {
           "question": "Как начать работу?",
@@ -3289,7 +3289,7 @@ window.SITE_CONTENT = {
     "services": {
       "eyebrow": "Services",
       "heading": "Services & rates",
-      "subheading": "Guide prices and a calculator. Exact cost after reviewing the material.",
+      "subheading": "Guide prices. Exact cost after reviewing the material.",
       "viewAll": "All services & rates",
       "note": "Prices are indicative and do not constitute a public offer. The final cost depends on the line-up, scope, deadlines and how the music will be used: concert, recording, touring, advertising. Discount for student and amateur ensembles. The price is fixed in the contract.",
       "bgPhoto": "",
@@ -3833,7 +3833,7 @@ window.SITE_CONTENT = {
       "items": [
         {
           "question": "How much does it cost?",
-          "answer": "Guide prices and a calculator are on the Services page. The exact amount depends on the line-up, complexity and deadlines and is quoted after reviewing the material. The estimate is free."
+          "answer": "Guide prices are on the Services page. The exact amount depends on the line-up, complexity and deadlines and is quoted after reviewing the material. The estimate is free."
         },
         {
           "question": "How do we start?",
