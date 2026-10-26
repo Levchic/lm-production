@@ -315,4 +315,4 @@ button.rg-label:hover span, .rg-row.is-open .rg-label span { color: var(--copper
 .tl-compare thead th { color: var(--bone); font-weight: 500; }
 .tl-compare tbody th { color: var(--mute); font-weight: 400; white-space: nowrap; }
 .tl-compare td { color: var(--bone-dim); }
-.tl-compare-link { margin: 12px 0 40px; color: var(--mute); }
+.tl-compare-link { margin: 12px 0 48px; color: var(--mute); }
