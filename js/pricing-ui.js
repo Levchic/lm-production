@@ -53,6 +53,7 @@ window.PricingUI = (function () {
   };
   var initialized = false;
   var pro = false;
+  var sendTo = null;   /* calc.html: ссылка на чат, куда уходит готовый расчёт */
 
   var C, cfg, Calc, lang, root;
 
@@ -187,6 +188,7 @@ window.PricingUI = (function () {
       en: "The full rate card for every stage is available on request."
     },
     ctaExact: { ru: "Запросить точный расчёт", en: "Request an exact quote" },
+    sendQuote: { ru: "Отправить расчёт Льву", en: "Send the estimate to Lev" },
     copy: { ru: "Скопировать расчёт", en: "Copy the estimate" },
     copied: { ru: "Скопировано", en: "Copied" },
     copyFail: { ru: "Не вышло — выделите вручную", en: "Failed — select it manually" },
@@ -836,7 +838,9 @@ window.PricingUI = (function () {
       '<p class="calc-disclaimer">' + esc(txt("disclaimer")) + "</p>" +
 
       '<div class="calc-actions">' +
-        '<a href="index.html#contact" class="btn btn-primary btn-small">' + esc(txt("ctaExact")) + "</a>" +
+        (sendTo
+          ? '<a href="' + esc(sendTo + "?text=" + encodeURIComponent(copyText(res))) + '" class="btn btn-primary btn-small" data-send>' + esc(txt("sendQuote")) + "</a>"
+          : '<a href="index.html#contact" class="btn btn-primary btn-small">' + esc(txt("ctaExact")) + "</a>") +
         '<button type="button" class="calc-copy" data-copy>' + esc(txt("copy")) + "</button>" +
       "</div>" +
       '<p class="calc-pricelist-note">' + esc(txt("priceListNote")) + "</p>" +
@@ -1191,7 +1195,8 @@ window.PricingUI = (function () {
 
   /* ---------- Точка входа ---------- */
 
-  function mount(node) {
+  function mount(node, opts) {
+    if (opts && opts.sendTo) sendTo = opts.sendTo;
     C = window.SiteCommon;
     cfg = window.PRICING_CONFIG;
     Calc = window.PricingCalc;

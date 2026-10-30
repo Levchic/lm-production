@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<!-- Калькулятор отдельной страницей — для Telegram-бота
+     @lm_production_cost_bot (кнопка меню и Main Mini App в @BotFather)
+     и для прямой ссылки клиенту. Тот же js/pricing-ui.js, что на
+     services.html; вместо «Запросить расчёт» — кнопка, открывающая чат
+     со Львом с готовым текстом сметы. Рабочий режим: calc.html#pro или
+     t.me/lm_production_cost_bot?startapp=pro. -->
+<title>Расчёт стоимости — L.M.Production</title>
+<meta name="description" content="Предварительный расчёт стоимости аранжировки, оркестровки и нотных работ.">
+<meta name="robots" content="noindex">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Расчёт стоимости — L.M.Production">
+<meta property="og:description" content="Предварительная смета на аранжировку, оркестровку и нотные работы за пару минут.">
+<meta property="og:image" content="https://lm-production.ru/assets/media/og-lm-figure.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg?v=2" type="image/svg+xml">
+<link rel="stylesheet" href="css/fonts.css?v=e0a46891">
+<link rel="stylesheet" href="css/styles.css?v=647679b2">
+<style>
+  body { background: var(--char-deep); }
+  .tg-calc { max-width: 1180px; margin: 0 auto; padding: 22px 16px calc(40px + env(safe-area-inset-bottom)); }
+  .tg-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding-bottom: 14px; margin-bottom: 22px; border-bottom: 1px solid var(--rule); }
+  .tg-brand { font-family: var(--font-display); font-weight: 800; font-size: 0.95rem; letter-spacing: 0.02em; color: var(--bone); text-decoration: none; }
+  .tg-lang { background: none; border: 1px solid var(--rule); color: var(--bone-dim); font: inherit; font-size: 0.8rem; padding: 3px 10px; border-radius: 999px; cursor: pointer; }
+  .tg-calc h1 { font-size: clamp(1.4rem, 5vw, 2.2rem); margin: 0 0 8px; }
+  .tg-sub { color: var(--mute); margin: 0 0 26px; }
+</style>
+</head>
+<body>
+<main class="tg-calc">
+  <header class="tg-head">
+    <a class="tg-brand" id="brand" href="index.html">L.M.PRODUCTION</a>
+    <button class="tg-lang" id="lang" type="button">EN</button>
+  </header>
+  <h1 id="heading"></h1>
+  <p class="tg-sub" id="sub"></p>
+  <div class="calc" id="calcHost"></div>
+</main>
+
+<script src="https://telegram.org/js/telegram-web-app.js?59"></script>
+<script src="js/content.js?v=7b086aca"></script>
+<script src="js/common.js?v=92813759"></script>
+<script src="js/pricing-config.js?v=6d3326bc"></script>
+<script src="js/pricing-overrides.js?v=70d319ef"></script>
+<script src="js/pricing-calc.js?v=6719b834"></script>
+<script src="js/pricing-ui.js?v=215be6ff"></script>
+<script>
+(function () {
+  "use strict";
+  var LEV = "https://t.me/levlvovich2000";
+  var tg = window.Telegram && window.Telegram.WebApp;
+  var inTelegram = !!(tg && tg.initData);
+
+  if (inTelegram) {
+    tg.ready();
+    tg.expand();
+    // шапка и фон Telegram в цвет сайта, а не в тему клиента
+    try { tg.setHeaderColor("#100e12"); tg.setBackgroundColor("#100e12"); } catch (e) {}
+    if (tg.initDataUnsafe && tg.initDataUnsafe.start_param === "pro") {
+      try { localStorage.setItem("price-pro", "1"); } catch (e) {}
+    }
+  }
+
+  function render() {
+    var C = window.SiteCommon, d = window.SITE_CONTENT[C.state.lang], c = d.services.calculator || {};
+    document.documentElement.lang = C.state.lang;
+    document.getElementById("brand").textContent = d.nav.brand;
+    document.getElementById("heading").textContent = c.heading || "";
+    // подзаголовок с сайта («данные никуда не передаются») здесь не подходит: расчёт отправляют
+    document.getElementById("sub").textContent = C.state.lang === "en"
+      ? "A preliminary estimate in a couple of minutes. Send it to me in Telegram with one tap."
+      : "Предварительная смета за пару минут. Готовый расчёт можно сразу отправить мне в Telegram.";
+    document.getElementById("lang").textContent = C.state.lang === "ru" ? "EN" : "RU";
+    window.PricingUI.mount(document.getElementById("calcHost"), { sendTo: LEV });
+  }
+
+  document.getElementById("lang").addEventListener("click", function () {
+    var C = window.SiteCommon;
+    C.state.lang = C.state.lang === "ru" ? "en" : "ru";
+    try { localStorage.setItem("site-lang", C.state.lang); } catch (e) {}
+    render();
+  });
+
+  // В Telegram ссылку на чат открывает сам Telegram, иначе она уйдёт в браузер
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest("[data-send]");
+    if (!a || !inTelegram) return;
+    e.preventDefault();
+    tg.openTelegramLink(a.href);
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>
