@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="10" fill="#100e12"/>
-  <text x="32" y="43" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif"
-        font-size="30" font-weight="700" fill="#c2622b">ЛМ</text>
+  <!-- «LM» контурами, без шрифта: значок вкладки не умеет грузить Unbounded -->
+  <rect width="64" height="64" rx="12" fill="#100e12"/>
+  <path fill="#c2622b" d="M9 17h7.5v23.5H27V47H9zM30 47V17h8l5 13.5L48 17h8v30h-7V30l-4.4 12h-3.2L37 30v17z"/>
 </svg>

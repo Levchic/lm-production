@@ -1993,7 +1993,7 @@ window.SITE_CONTENT = {
     "workshop": {
       "eyebrow": "Мастерская",
       "heading": "Мастерская",
-      "intro": "Полезные сервисы и материалы для музыкальной работы.",
+      "intro": "Бесплатные плагины, программы и справочники для работы с нотами и звуком.",
       "allLabel": "Все",
       "groups": [
         {
@@ -2003,17 +2003,34 @@ window.SITE_CONTENT = {
             {
               "title": "Справочник диапазонов",
               "text": "42 инструмента оркестра и хора на одной клавиатуре: удобная зона, край диапазона, транспозиция, ключи.",
-              "href": "ranges.html"
+              "href": "ranges.html",
+              "image": "assets/media/tools/ref-ranges.jpg",
+              "tags": [
+                "В браузере"
+              ],
+              "badge": ""
             },
             {
               "title": "Термины и приёмы игры",
               "text": "Обозначения темпа, динамики и характера на итальянском, немецком и французском. Приёмы игры по группам оркестра.",
-              "href": "terms.html"
+              "href": "terms.html",
+              "image": "assets/media/tools/ref-terms.jpg",
+              "tags": [
+                "В браузере",
+                "348 статей"
+              ],
+              "badge": ""
             },
             {
               "title": "Барабанные паттерны",
               "text": "176 паттернов драм-машин по жанрам. Проигрывание и экспорт в MIDI.",
-              "href": "drums.html"
+              "href": "drums.html",
+              "image": "assets/media/tools/ref-drums.jpg",
+              "tags": [
+                "В браузере",
+                "MIDI"
+              ],
+              "badge": ""
             }
           ]
         },
@@ -2024,12 +2041,26 @@ window.SITE_CONTENT = {
             {
               "title": "Dotted Triplet",
               "text": "Пунктир в триоль и обратно для выделенного пассажа: окно с выбором направления и быстрые команды под горячие клавиши. macOS и Windows.",
-              "href": "dotted-triplet.html"
+              "href": "dotted-triplet.html",
+              "image": "assets/media/tools/dt-window.jpg",
+              "tags": [
+                "Sibelius",
+                "macOS",
+                "Windows"
+              ],
+              "badge": ""
             },
             {
               "title": "Syllables",
               "text": "Подтекстовка: текст песни сам делится на слоги и встаёт под ноты вокальной партии. Русский и английский, macOS и Windows.",
-              "href": "syllables.html"
+              "href": "syllables.html",
+              "image": "assets/media/tools/syl-plugin-window.png",
+              "tags": [
+                "Sibelius",
+                "macOS",
+                "Windows"
+              ],
+              "badge": ""
             }
           ]
         },
@@ -2040,12 +2071,24 @@ window.SITE_CONTENT = {
             {
               "title": "MIDI Transfer",
               "text": "Ноты из Sibelius в Logic Pro и обратно: скопировал и перетащил на дорожку или вставил в партитуру. Бета-версия, macOS.",
-              "href": "midi-transfer.html"
+              "href": "midi-transfer.html",
+              "image": "assets/media/tools/mt-window.png",
+              "tags": [
+                "Sibelius → Logic",
+                "macOS"
+              ],
+              "badge": "Бета"
             },
             {
               "title": "Syllables 2.0",
               "text": "Та же подтекстовка в отдельном окне: текст прямо в программе и предпросмотр слогов по тактам до расстановки. Бета-версия, macOS.",
-              "href": "syllables-app.html"
+              "href": "syllables-app.html",
+              "image": "assets/media/tools/syl-app-window.png",
+              "tags": [
+                "Sibelius",
+                "macOS"
+              ],
+              "badge": "Бета"
             }
           ]
         },
@@ -2056,12 +2099,26 @@ window.SITE_CONTENT = {
             {
               "title": "LM Pulse",
               "text": "Тремоло: ритмичная пульсация громкости. Десять форм волны, синхронизация с темпом проекта. Audio Unit и VST3, Apple Silicon и Intel.",
-              "href": "lm-pulse.html"
+              "href": "lm-pulse.html",
+              "image": "assets/media/tools/lm-pulse-panel.jpg",
+              "tags": [
+                "AU",
+                "VST3",
+                "macOS"
+              ],
+              "badge": ""
             },
             {
               "title": "LM Orbit",
               "text": "Автопанорама: звук движется по стереобазе слева направо, справа налево или туда-обратно. Синхронизация с темпом, ширина и сглаживание. Audio Unit и VST3.",
-              "href": "lm-orbit.html"
+              "href": "lm-orbit.html",
+              "image": "assets/media/tools/lm-orbit-panel.jpg",
+              "tags": [
+                "AU",
+                "VST3",
+                "macOS"
+              ],
+              "badge": ""
             }
           ]
         }
@@ -4051,7 +4108,7 @@ window.SITE_CONTENT = {
     "workshop": {
       "eyebrow": "Workshop",
       "heading": "Workshop",
-      "intro": "Useful tools and materials for music work.",
+      "intro": "Free plugins, apps and references for working with scores and sound.",
       "allLabel": "All",
       "groups": [
         {
@@ -4061,17 +4118,34 @@ window.SITE_CONTENT = {
             {
               "title": "Instrument ranges",
               "text": "42 orchestral and choir instruments on one keyboard: comfortable zone, extreme range, transposition, clefs.",
-              "href": "ranges.html"
+              "href": "ranges.html",
+              "image": "assets/media/tools/ref-ranges.jpg",
+              "tags": [
+                "In browser"
+              ],
+              "badge": ""
             },
             {
               "title": "Terms and playing techniques",
               "text": "Tempo, dynamics and expression markings in Italian, German and French. Playing techniques by orchestral section.",
-              "href": "terms.html"
+              "href": "terms.html",
+              "image": "assets/media/tools/ref-terms.jpg",
+              "tags": [
+                "In browser",
+                "348 entries"
+              ],
+              "badge": ""
             },
             {
               "title": "Drum patterns",
               "text": "176 drum machine patterns by genre. Playback and MIDI export.",
-              "href": "drums.html"
+              "href": "drums.html",
+              "image": "assets/media/tools/ref-drums.jpg",
+              "tags": [
+                "In browser",
+                "MIDI"
+              ],
+              "badge": ""
             }
           ]
         },
@@ -4082,12 +4156,26 @@ window.SITE_CONTENT = {
             {
               "title": "Dotted Triplet",
               "text": "Dotted rhythms to triplets and back for a selected passage: a dialog to pick the direction and quick commands for hotkeys. macOS and Windows.",
-              "href": "dotted-triplet.html"
+              "href": "dotted-triplet.html",
+              "image": "assets/media/tools/dt-window.jpg",
+              "tags": [
+                "Sibelius",
+                "macOS",
+                "Windows"
+              ],
+              "badge": ""
             },
             {
               "title": "Syllables",
               "text": "Lyrics entry: song text is split into syllables and placed under the notes of the vocal part. Russian and English, macOS and Windows.",
-              "href": "syllables.html"
+              "href": "syllables.html",
+              "image": "assets/media/tools/syl-plugin-window.png",
+              "tags": [
+                "Sibelius",
+                "macOS",
+                "Windows"
+              ],
+              "badge": ""
             }
           ]
         },
@@ -4098,12 +4186,24 @@ window.SITE_CONTENT = {
             {
               "title": "MIDI Transfer",
               "text": "Notes from Sibelius to Logic Pro and back: copy, then drag onto a track or paste into the score. Beta, macOS.",
-              "href": "midi-transfer.html"
+              "href": "midi-transfer.html",
+              "image": "assets/media/tools/mt-window.png",
+              "tags": [
+                "Sibelius → Logic",
+                "macOS"
+              ],
+              "badge": "Beta"
             },
             {
               "title": "Syllables 2.0",
               "text": "The same lyrics entry in a standalone window: text right in the app and a bar-by-bar syllable preview before placing. Beta, macOS.",
-              "href": "syllables-app.html"
+              "href": "syllables-app.html",
+              "image": "assets/media/tools/syl-app-window.png",
+              "tags": [
+                "Sibelius",
+                "macOS"
+              ],
+              "badge": "Beta"
             }
           ]
         },
@@ -4114,12 +4214,26 @@ window.SITE_CONTENT = {
             {
               "title": "LM Pulse",
               "text": "Tremolo: rhythmic volume pulsing. Ten waveforms, sync to project tempo. Audio Unit and VST3, Apple Silicon and Intel.",
-              "href": "lm-pulse.html"
+              "href": "lm-pulse.html",
+              "image": "assets/media/tools/lm-pulse-panel.jpg",
+              "tags": [
+                "AU",
+                "VST3",
+                "macOS"
+              ],
+              "badge": ""
             },
             {
               "title": "LM Orbit",
               "text": "Auto-pan: the sound moves across the stereo field left to right, right to left or back and forth. Tempo sync, width and smoothing. Audio Unit and VST3.",
-              "href": "lm-orbit.html"
+              "href": "lm-orbit.html",
+              "image": "assets/media/tools/lm-orbit-panel.jpg",
+              "tags": [
+                "AU",
+                "VST3",
+                "macOS"
+              ],
+              "badge": ""
             }
           ]
         }

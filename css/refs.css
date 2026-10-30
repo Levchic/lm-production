@@ -254,28 +254,59 @@ button.rg-label:hover span, .rg-row.is-open .rg-label span { color: var(--copper
    Раздел «Справочники» (refs.html): список-оглавление.
    ========================================================================= */
 .page-header .eyebrow a:hover { color: var(--copper); }
-.rf-hub { border-top: 1px solid var(--rule); }
-.rf-hub-item {
-  display: grid; grid-template-columns: 3.2rem 1fr auto; gap: 18px; align-items: baseline;
-  padding: clamp(20px, 2.4vw, 30px) 0; border-bottom: 1px solid var(--rule);
+/* Карточки инструментов, как в каталоге плагинов. Обложка всегда 16:10:
+   скриншоты разного размера и пропорций лежат на ней «окном» с тенью и
+   не обрезаются — сетка остаётся ровной при любых исходниках. */
+.ws-grid {
+  display: grid; gap: clamp(16px, 2vw, 28px);
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
 }
-.rf-hub-n { font-family: var(--font-display); font-weight: 700; font-size: var(--fs-md); color: var(--copper); }
-.rf-hub-text { color: var(--bone-dim); max-width: 64ch; }
-.rf-hub-text b {
-  display: block; margin-bottom: 6px;
-  font-family: var(--font-display); font-weight: 800; font-size: var(--fs-h3);
+.ws-card {
+  display: flex; flex-direction: column; min-width: 0;
+  background: var(--char-raised); border: 1px solid var(--rule); border-radius: 6px; overflow: hidden;
+  transition: border-color var(--dur-hover) ease, transform var(--dur-ui) var(--ease-out);
+}
+.ws-card[hidden] { display: none; }
+.ws-cover {
+  position: relative; aspect-ratio: 16 / 10; overflow: hidden;
+  display: grid; place-items: center;
+  background: radial-gradient(120% 90% at 50% 110%, rgba(194, 98, 43, 0.28), transparent 60%), #141216;
+  border-bottom: 1px solid var(--rule);
+}
+.ws-cover img {
+  max-width: 86%; max-height: 80%; width: auto; height: auto; display: block;
+  border-radius: 6px; box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.06);
+  transition: transform var(--dur-ui) var(--ease-out);
+}
+.ws-badge {
+  position: absolute; top: 12px; left: 12px;
+  background: var(--copper); color: #fff; border-radius: 99px;
+  font-size: var(--fs-2xs); letter-spacing: 0.12em; text-transform: uppercase; padding: 4px 10px;
+}
+.ws-body { display: flex; flex-direction: column; gap: 8px; padding: clamp(16px, 1.6vw, 22px); flex: 1; }
+.ws-cat { font-size: var(--fs-2xs); letter-spacing: 0.18em; text-transform: uppercase; color: var(--copper); }
+.ws-title {
+  margin: 0; font-family: var(--font-display); font-weight: 800; font-size: var(--fs-md);
   text-transform: uppercase; letter-spacing: var(--tr-display); color: var(--bone);
   transition: color var(--dur-hover) ease;
 }
-.rf-hub-go { font-size: var(--fs-lg); color: var(--mute); transition: transform var(--dur-hover) var(--ease-out), color var(--dur-hover) ease; }
-.rf-hub-item:hover .rf-hub-text b, .rf-hub-item:hover .rf-hub-go { color: var(--copper); }
-@media (hover: hover) { .rf-hub-item:hover .rf-hub-go { transform: translateX(4px); } }
-@media (max-width: 640px) { .tm-item { scroll-margin-top: calc(var(--header-h) + 16px); } }
-
-/* Категории в оглавлении «Мастерской» */
-.rf-hub-cat { display: flex; margin: 0 0 18px; }
-.rf-group[hidden] { display: none; }
-.rf-group:not([hidden]) ~ .rf-group:not([hidden]) { margin-top: clamp(40px, 5vw, 64px); }
+.ws-text {
+  margin: 0; color: var(--bone-dim); font-size: var(--fs-sm); line-height: 1.55;
+  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+}
+.ws-foot { margin-top: auto; padding-top: 10px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.ws-tags { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; margin: 0; padding: 0; }
+.ws-tags li { border: 1px solid var(--rule); color: var(--mute); font-size: var(--fs-2xs); letter-spacing: 0.04em; padding: 3px 9px; border-radius: 99px; }
+.ws-go { color: var(--mute); font-size: var(--fs-lg); flex: none; transition: transform var(--dur-hover) var(--ease-out), color var(--dur-hover) ease; }
+@media (hover: hover) and (pointer: fine) {
+  .ws-card:hover { border-color: var(--copper-dim); transform: translateY(-3px); }
+  .ws-card:hover .ws-cover img { transform: scale(1.03); }
+  .ws-card:hover .ws-title, .ws-card:hover .ws-go { color: var(--copper); }
+  .ws-card:hover .ws-go { transform: translateX(4px); }
+}
+.rf-filters { margin-bottom: clamp(24px, 3vw, 36px); }
+/* У справочников узкая колонка для чтения, у каталога — полная ширина */
+.rf.ws .wrap { max-width: var(--container); }
 
 /* ---------- Страница плагина (tool-pages.js) ---------- */
 .tl-tags { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 18px 0 0; }

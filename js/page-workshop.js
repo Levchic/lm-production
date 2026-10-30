@@ -1,5 +1,5 @@
 /**
- * Мастерская (refs.html): тексты и список инструментов — из content.js
+ * Мастерская (refs.html): тексты и карточки инструментов — из content.js
  * (раздел workshop, правится в админке). Фильтр по разделам: кнопки
  * строятся из групп, выбор живёт в адресе (refs.html#logic).
  */
@@ -9,20 +9,32 @@
   var $ = C.$, el = C.el, t = C.t, esc = C.esc;
 
   function show(key) {
-    var groups = Array.prototype.slice.call(document.querySelectorAll(".rf-group"));
-    if (!groups.some(function (g) { return g.dataset.cat === key; })) key = "all";
-    groups.forEach(function (g) { g.hidden = key !== "all" && g.dataset.cat !== key; });
-    // Номера идут подряд по видимым пунктам: в фильтре «Logic» — 01, 02, а не 08, 09
-    var n = 0;
-    groups.forEach(function (g) {
-      if (g.hidden) return;
-      Array.prototype.forEach.call(g.querySelectorAll(".rf-hub-n"), function (node) { node.textContent = String(++n).padStart(2, "0"); });
-    });
+    var cards = Array.prototype.slice.call(document.querySelectorAll(".ws-card"));
+    if (!cards.some(function (c) { return c.dataset.cat === key; })) key = "all";
+    cards.forEach(function (c) { c.hidden = key !== "all" && c.dataset.cat !== key; });
     Array.prototype.forEach.call($("#rfFilters").children, function (b) {
       var on = b.dataset.filter === key;
       b.classList.toggle("active", on);
       b.setAttribute("aria-pressed", on);
     });
+  }
+
+  function card(item, group) {
+    var a = el("a", "ws-card");
+    a.href = item.href;
+    a.dataset.cat = group.id;
+    var cover = '<div class="ws-cover">' +
+      (item.image ? '<img src="' + esc(item.image) + '" alt="" loading="lazy" decoding="async">' : "") +
+      (item.badge ? '<span class="ws-badge">' + esc(item.badge) + "</span>" : "") + "</div>";
+    var tags = (item.tags || []).filter(Boolean).map(function (tag) { return "<li>" + esc(tag) + "</li>"; }).join("");
+    a.innerHTML = cover +
+      '<div class="ws-body">' +
+        '<span class="ws-cat">' + esc(group.title) + "</span>" +
+        '<h3 class="ws-title">' + esc(item.title) + "</h3>" +
+        '<p class="ws-text">' + esc(item.text) + "</p>" +
+        '<div class="ws-foot"><ul class="ws-tags">' + tags + '</ul><span class="ws-go" aria-hidden="true">→</span></div>' +
+      "</div>";
+    return a;
   }
 
   function render() {
@@ -35,23 +47,12 @@
     $("#wsCtaSecondary").textContent = w.ctaSecondary || "";
 
     var groups = (w.groups || []).filter(function (g) { return (g.items || []).length; });
-    var host = $("#rfGroups"); host.innerHTML = "";
+    var grid = el("div", "ws-grid");
     groups.forEach(function (g) {
-      var box = el("div", "rf-group");
-      box.dataset.cat = g.id;
-      box.appendChild(el("h2", "eyebrow rf-hub-cat", esc(g.title)));
-      var hub = el("div", "rf-hub");
-      g.items.forEach(function (item) {
-        var a = el("a", "rf-hub-item",
-          '<span class="rf-hub-n"></span>' +
-          '<span class="rf-hub-text"><b>' + esc(item.title) + "</b>" + esc(item.text) + "</span>" +
-          '<span class="rf-hub-go" aria-hidden="true">→</span>');
-        a.href = item.href;
-        hub.appendChild(a);
-      });
-      box.appendChild(hub);
-      host.appendChild(box);
+      g.items.forEach(function (item) { grid.appendChild(card(item, g)); });
     });
+    var host = $("#rfGroups"); host.innerHTML = "";
+    host.appendChild(grid);
 
     var bar = $("#rfFilters"); bar.innerHTML = "";
     var total = 0;
