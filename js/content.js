@@ -2381,8 +2381,8 @@ window.SITE_CONTENT = {
           ]
         }
       ],
-      "ctaText": "Аранжировка и оркестровка под конкретный состав. Разработка инструментов под задачу.",
-      "ctaPrimary": "Обсудить проект",
+      "ctaText": "Нужна партитура под ключ? Аранжировка и оркестровка под конкретный состав, нотный набор, сведение.",
+      "ctaPrimary": "Рассчитать стоимость",
       "ctaSecondary": "Услуги и цены"
     }
   },
@@ -4754,8 +4754,8 @@ window.SITE_CONTENT = {
           ]
         }
       ],
-      "ctaText": "Arranging and orchestration for a specific ensemble. Custom tools built for the task.",
-      "ctaPrimary": "Discuss a project",
+      "ctaText": "Need a finished score? Arranging and orchestration for a specific ensemble, engraving, mixing.",
+      "ctaPrimary": "Estimate the cost",
       "ctaSecondary": "Services and rates"
     }
   }
