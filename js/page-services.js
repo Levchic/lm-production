@@ -63,6 +63,8 @@
 
   function renderCalculator(d) {
     var c = d.services.calculator || {};
+    // выключенный в админке калькулятор всё равно виден в режиме «для себя» (#pro)
+    $("#calculator").hidden = !c.enabled && !(window.PricingUI && window.PricingUI.isPro());
     $("#calcEyebrow").textContent = c.eyebrow || "";
     $("#calcHeading").textContent = c.heading || "";
     $("#calcSub").textContent = c.subheading || "";

@@ -577,6 +577,20 @@
     });
   }
 
+  /* Галочка «Скрыть этот раздел на главной» в админке. Отзывы прячутся
+     ещё и сами, когда опубликованных нет, — их здесь только скрываем. */
+  function applyHiddenSections() {
+    var d = t();
+    [["about", "#about"], ["forWhom", "#for-whom"], ["process", "#process"],
+     ["portfolio", "#portfolio"], ["services", "#services"], ["testimonials", "#testimonials"],
+     ["faq", "#faq"], ["contact", "#contact"]].forEach(function (pair) {
+      var hide = !!(d[pair[0]] && d[pair[0]].hiddenOnHome);
+      var node = $(pair[1]);
+      if (hide) node.hidden = true;
+      else if (pair[0] !== "testimonials") node.hidden = false;
+    });
+  }
+
   function renderHome() {
     renderSectionBackgrounds();
     renderHero();
@@ -589,6 +603,7 @@
     renderTestimonials();
     renderFaqPreview();
     renderContact();
+    applyHiddenSections();
     // кинематографичный первый экран — только если включён флаг в js/flags.js
     if (window.SiteHeroCinematic) window.SiteHeroCinematic.render();
   }

@@ -1230,5 +1230,5 @@ window.PricingUI = (function () {
     state.pieces = type.pieces;
   }
 
-  return { mount: mount, state: state };
+  return { mount: mount, state: state, isPro: detectPro };
 })();

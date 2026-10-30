@@ -19,11 +19,11 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preload" href="assets/fonts/unbounded-cyrillic-normal-400-900.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/fonts.css?v=82">
-<link rel="stylesheet" href="css/styles.css?v=89">
-<link rel="stylesheet" href="css/texture.css?v=82">
-<link rel="stylesheet" href="css/animations.css?v=82">
-<link rel="stylesheet" href="css/refs.css?v=86">
+<link rel="stylesheet" href="css/fonts.css?v=e0a46891">
+<link rel="stylesheet" href="css/styles.css?v=0988a669">
+<link rel="stylesheet" href="css/texture.css?v=4fddb1ea">
+<link rel="stylesheet" href="css/animations.css?v=c4c5fce1">
+<link rel="stylesheet" href="css/refs.css?v=b39f49eb">
 </head>
 <body data-static-meta>
 
@@ -51,11 +51,9 @@
   <section class="page-header">
     <div class="ink-stain" aria-hidden="true"></div>
     <div class="wrap reveal" data-reveal>
-      <span class="eyebrow">Мастерская</span>
-      <h1>Мастерская</h1>
-      <div class="desc">
-        <p>Полезные сервисы и материалы для музыкальной работы.</p>
-      </div>
+      <span class="eyebrow" id="wsEyebrow"></span>
+      <h1 id="wsHeading"></h1>
+      <div class="desc"><p id="wsIntro"></p></div>
     </div>
   </section>
 
@@ -69,80 +67,13 @@
     <div class="wrap">
       <div class="portfolio-filters rf-filters" id="rfFilters" aria-label="Разделы мастерской"></div>
 
-      <div class="rf-group" data-cat="refs" data-title="Справочники">
-        <h2 class="eyebrow rf-hub-cat">Справочники</h2>
-        <div class="rf-hub">
-          <a class="rf-hub-item" href="ranges.html">
-            <span class="rf-hub-n">01</span>
-            <span class="rf-hub-text"><b>Справочник диапазонов</b>42 инструмента оркестра и хора на одной клавиатуре: удобная зона, край диапазона, транспозиция, ключи.</span>
-            <span class="rf-hub-go" aria-hidden="true">→</span>
-          </a>
-          <a class="rf-hub-item" href="terms.html">
-            <span class="rf-hub-n">02</span>
-            <span class="rf-hub-text"><b>Термины и приёмы игры</b>Обозначения темпа, динамики и характера на итальянском, немецком и французском. Приёмы игры по группам оркестра.</span>
-            <span class="rf-hub-go" aria-hidden="true">→</span>
-          </a>
-          <a class="rf-hub-item" href="drums.html">
-            <span class="rf-hub-n">03</span>
-            <span class="rf-hub-text"><b>Барабанные паттерны</b>176 паттернов драм-машин по жанрам. Проигрывание и экспорт в MIDI.</span>
-            <span class="rf-hub-go" aria-hidden="true">→</span>
-          </a>
-        </div>
-      </div>
-
-      <div class="rf-group" data-cat="sibelius" data-title="Плагины Sibelius">
-        <h2 class="eyebrow rf-hub-cat">Плагины Sibelius</h2>
-        <div class="rf-hub">
-          <a class="rf-hub-item" href="dotted-triplet.html">
-            <span class="rf-hub-n">04</span>
-            <span class="rf-hub-text"><b>Dotted Triplet</b>Пунктир в триоль и обратно для выделенного пассажа: окно с выбором направления и быстрые команды под горячие клавиши. macOS и Windows.</span>
-            <span class="rf-hub-go" aria-hidden="true">→</span>
-          </a>
-          <a class="rf-hub-item" href="syllables.html">
-            <span class="rf-hub-n">05</span>
-            <span class="rf-hub-text"><b>Syllables</b>Подтекстовка: текст песни сам делится на слоги и встаёт под ноты вокальной партии. Русский и английский, macOS и Windows.</span>
-            <span class="rf-hub-go" aria-hidden="true">→</span>
-          </a>
-        </div>
-      </div>
-
-      <div class="rf-group" data-cat="apps" data-title="Программы">
-        <h2 class="eyebrow rf-hub-cat">Программы</h2>
-        <div class="rf-hub">
-          <a class="rf-hub-item" href="midi-transfer.html">
-            <span class="rf-hub-n">06</span>
-            <span class="rf-hub-text"><b>MIDI Transfer</b>Ноты из Sibelius в Logic Pro и обратно: скопировал и перетащил на дорожку или вставил в партитуру. Бета-версия, macOS.</span>
-            <span class="rf-hub-go" aria-hidden="true">→</span>
-          </a>
-          <a class="rf-hub-item" href="syllables-app.html">
-            <span class="rf-hub-n">07</span>
-            <span class="rf-hub-text"><b>Syllables 2.0</b>Та же подтекстовка в отдельном окне: текст прямо в программе и предпросмотр слогов по тактам до расстановки. Бета-версия, macOS.</span>
-            <span class="rf-hub-go" aria-hidden="true">→</span>
-          </a>
-        </div>
-      </div>
-
-      <div class="rf-group" data-cat="logic" data-title="Плагины для Logic Pro">
-        <h2 class="eyebrow rf-hub-cat">Плагины для Logic Pro</h2>
-        <div class="rf-hub">
-          <a class="rf-hub-item" href="lm-pulse.html">
-            <span class="rf-hub-n">08</span>
-            <span class="rf-hub-text"><b>LM Pulse</b>Тремоло: ритмичная пульсация громкости. Десять форм волны, синхронизация с темпом проекта. Audio Unit и VST3, Apple Silicon и Intel.</span>
-            <span class="rf-hub-go" aria-hidden="true">→</span>
-          </a>
-          <a class="rf-hub-item" href="lm-orbit.html">
-            <span class="rf-hub-n">09</span>
-            <span class="rf-hub-text"><b>LM Orbit</b>Автопанорама: звук движется по стереобазе слева направо, справа налево или туда-обратно. Синхронизация с темпом, ширина и сглаживание. Audio Unit и VST3.</span>
-            <span class="rf-hub-go" aria-hidden="true">→</span>
-          </a>
-        </div>
-      </div>
+      <div id="rfGroups"></div>
 
       <div class="rf-cta">
-        <p>Аранжировка и оркестровка под конкретный состав. Разработка инструментов под задачу.</p>
+        <p id="wsCtaText"></p>
         <div class="rf-cta-actions">
-          <a href="index.html#contact" class="btn btn-primary">Обсудить проект</a>
-          <a href="services.html" class="btn btn-ghost">Услуги и цены</a>
+          <a href="index.html#contact" class="btn btn-primary" id="wsCtaPrimary"></a>
+          <a href="services.html" class="btn btn-ghost" id="wsCtaSecondary"></a>
         </div>
       </div>
     </div>
@@ -158,51 +89,8 @@
   </div>
 </footer>
 
-<script src="js/content.js?v=97"></script>
-<script src="js/common.js?v=83"></script>
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-  SiteCommon.init();
-  // Фильтр разделов: кнопки строятся из блоков .rf-group, выбор живёт в адресе (refs.html#logic)
-  var groups = Array.prototype.slice.call(document.querySelectorAll(".rf-group"));
-  var bar = document.getElementById("rfFilters");
-  var total = 0;
-  var items = [["all", "Все"]].concat(groups.map(function (g) { return [g.dataset.cat, g.dataset.title]; }));
-  items.forEach(function (it) {
-    var n = it[0] === "all" ? 0 : groups.filter(function (g) { return g.dataset.cat === it[0]; })[0].querySelectorAll(".rf-hub-item").length;
-    total += n;
-    var b = document.createElement("button");
-    b.type = "button";
-    b.className = "filter-btn";
-    b.dataset.filter = it[0];
-    b.innerHTML = it[1] + '<span class="filter-count"></span>';
-    b.lastChild.textContent = n;
-    bar.appendChild(b);
-  });
-  bar.firstChild.lastChild.textContent = total;
-  function show(key) {
-    if (!groups.some(function (g) { return g.dataset.cat === key; })) key = "all";
-    groups.forEach(function (g) { g.hidden = key !== "all" && g.dataset.cat !== key; });
-    // Номера идут подряд по видимым пунктам: в фильтре «Logic» — 01, 02, а не 05, 06
-    var n = 0;
-    groups.forEach(function (g) {
-      if (g.hidden) return;
-      Array.prototype.forEach.call(g.querySelectorAll(".rf-hub-n"), function (el) { el.textContent = String(++n).padStart(2, "0"); });
-    });
-    Array.prototype.forEach.call(bar.children, function (b) {
-      var on = b.dataset.filter === key;
-      b.classList.toggle("active", on);
-      b.setAttribute("aria-pressed", on);
-    });
-  }
-  bar.addEventListener("click", function (e) {
-    var b = e.target.closest(".filter-btn");
-    if (!b) return;
-    show(b.dataset.filter);
-    history.replaceState(null, "", b.dataset.filter === "all" ? location.pathname : "#" + b.dataset.filter);
-  });
-  show(location.hash.slice(1));
-});
-</script>
+<script src="js/content.js?v=3b52d4f9"></script>
+<script src="js/common.js?v=92813759"></script>
+<script src="js/page-workshop.js?v=a1196a2d"></script>
 </body>
 </html>
