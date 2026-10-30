@@ -1,0 +1,51 @@
+/* Прайс-лист для печати и PDF (price.html). Светлый лист: его пересылают
+   и распечатывают, тёмный фон сайта на бумаге съедает краску. */
+:root {
+  --ink: #17151a; --ink-dim: #4a4540; --mute: #8a8378; --rule: #e3ddd3;
+  --copper: #b3541e; --paper: #ffffff;
+}
+@page { size: A4; margin: 14mm 14mm 16mm; }
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--paper); color: var(--ink); }
+body { font-family: "Jost", "Helvetica Neue", Arial, sans-serif; font-size: 9.5pt; line-height: 1.38; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.ps { max-width: 182mm; margin: 0 auto; padding: 12mm 0; }
+@media print { .ps { padding: 0; } }
+
+.ps-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; padding-bottom: 14px; border-bottom: 2px solid var(--copper); }
+.ps-brand { font-family: "Unbounded", sans-serif; font-weight: 800; font-size: 17pt; letter-spacing: 0.01em; }
+.ps-name { margin-top: 4px; color: var(--ink-dim); }
+.ps-head-right { text-align: right; }
+.ps-title { font-family: "Unbounded", sans-serif; font-weight: 700; font-size: 13pt; color: var(--copper); text-transform: uppercase; }
+.ps-valid { color: var(--mute); font-size: 8.5pt; margin-top: 2px; }
+.ps-lead { color: var(--ink-dim); margin: 12px 0 4px; }
+
+h2 { font-family: "Unbounded", sans-serif; font-weight: 700; font-size: 11pt; text-transform: uppercase; letter-spacing: 0.01em; margin: 14px 0 3px; break-after: avoid; }
+.ps-group { break-inside: auto; }
+.ps-group-sum { color: var(--mute); font-size: 9pt; margin: 0 0 6px; }
+.ps-table { width: 100%; border-collapse: collapse; }
+.ps-table tr { border-top: 1px solid var(--rule); break-inside: avoid; }
+.ps-table tr:last-child { border-bottom: 1px solid var(--rule); }
+.ps-table td { padding: 4.5px 0; vertical-align: top; }
+.ps-table td b { font-weight: 600; }
+.ps-table td span { display: block; color: var(--mute); font-size: 8.5pt; }
+.ps-price { text-align: right; white-space: nowrap; padding-left: 16px !important; color: var(--copper); font-weight: 600; }
+
+.ps-block { break-inside: auto; }
+.ps-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 22px; }
+.ps-cols div { break-inside: avoid; }
+.ps-cols b { display: block; font-weight: 600; }
+.ps-cols span { color: var(--ink-dim); font-size: 9pt; }
+
+.ps-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.ps-card { border: 1px solid var(--rule); border-radius: 4px; padding: 8px 11px; break-inside: avoid; }
+.ps-card-head { display: flex; justify-content: space-between; gap: 10px; align-items: baseline; }
+.ps-card-head .ps-price { padding-left: 0 !important; }
+.ps-card p { margin: 5px 0 0; font-size: 9pt; color: var(--ink-dim); }
+.ps-card .ps-stages { color: var(--ink); }
+.ps-card .ps-meta { color: var(--mute); font-size: 8.5pt; }
+
+.ps-foot { margin-top: 18px; padding-top: 10px; border-top: 2px solid var(--copper); font-size: 8.5pt; color: var(--mute); break-inside: avoid; }
+.ps-foot p { margin: 0 0 6px; }
+.ps-contacts { color: var(--ink); font-weight: 600; font-size: 10pt; }
+.ps-dot { color: var(--copper); padding: 0 8px; }
+.ps-budgets { break-before: page; }

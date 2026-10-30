@@ -33,7 +33,7 @@
  *   per-piece           — за номер, с вариантами и надбавками
  */
 
-/* КАЛИБРОВКА, сентябрь 2026 — см. PRICING.md. Этот файл загружается на
+/* КАЛИБРОВКА, сентябрь 2026; ставки подняты под прайс-лист в октябре 2026 — см. PRICING.md. Этот файл загружается на
    сайте и виден любому посетителю: сюда не пишем ничего, кроме ставок. */
 
 window.PRICING_CONFIG = {
@@ -339,7 +339,7 @@ window.PRICING_CONFIG = {
         ru: "Восстановление нотного текста с фонограммы, когда нот не существует. Результат — набранная партитура.",
         en: "Reconstructing the score from a recording when no notation exists. The result is an engraved score."
       },
-      rate: { A: 1500, B: 2000, C: 2800, D: 3500 },
+      rate: { A: 2000, B: 2700, C: 3700, D: 4700 },
       conflictsWith: ["m8"],
       conflictReason: {
         ru: "При снятии ноты набираются сразу — отдельный набор не нужен.",
@@ -364,7 +364,7 @@ window.PRICING_CONFIG = {
       /* Самая дешёвая точка входа. Снимается тот же материал, что и в
          полном снятии, но записывается один голос и буквенная гармония,
          а не вся фактура по строкам. */
-      rate: { A: 800, B: 1000, C: 1300, D: 1600 },
+      rate: { A: 1000, B: 1250, C: 1600, D: 2000 },
       conflictsWith: ["m1", "m8"],
       conflictReason: {
         ru: "Мелодическая строка — это сокращённое снятие: полное снятие и нотный набор её заменяют.",
@@ -385,7 +385,7 @@ window.PRICING_CONFIG = {
         ru: "Партитура под заданный состав: распределение материала, динамический план, играбельность партий.",
         en: "A score for the given ensemble: material spread across sections, dynamic plan, playable parts."
       },
-      rate: { A: 5000, B: 6000, C: 7500, D: 9000 },
+      rate: { A: 7000, B: 8400, C: 10500, D: 12600 },
       conflictsWith: ["m7", "m8"],
       conflictReason: {
         ru: "Новая оркестровка уже включает набор партитуры и партий.",
@@ -433,7 +433,7 @@ window.PRICING_CONFIG = {
         ru: "Темпокарта, отсчёты, метки перехода, служебные ориентиры для дирижёра и оркестра.",
         en: "Tempo map, count-ins, transition markers, cues for the conductor and the orchestra."
       },
-      rate: 500
+      rate: 1000
     },
     {
       id: "m5",
@@ -481,7 +481,7 @@ window.PRICING_CONFIG = {
       },
       /* Отдельным заказом дороже: чужую партитуру нужно сначала внести
          в проект, а от того, в каком она виде, зависит объём работы. */
-      rate: { A: 1000, B: 1200, C: 1500, D: 2000 },
+      rate: { A: 1500, B: 1800, C: 2200, D: 3000 },
       variants: [
         { id: "project", factor: 1,
           label: { ru: "Есть проект или MIDI", en: "A project or MIDI exists" } },
@@ -539,15 +539,15 @@ window.PRICING_CONFIG = {
           label: { ru: "За страницу", en: "Per page" },
           short: { ru: "стр.", en: "pg" },
           qtyLabel: { ru: "Страниц в оригинале", en: "Pages in the original" },
-          rate: { file: 350, manuscript: 500, draft: 700 } },
+          rate: { file: 400, manuscript: 600, draft: 800 } },
         { id: "minute", qtyField: "minutes",
           label: { ru: "За минуту", en: "Per minute" },
           short: { ru: "мин", en: "min" },
-          rate: { file: 2000, manuscript: 2800, draft: 3500 } },
+          rate: { file: 2300, manuscript: 3200, draft: 4000 } },
         { id: "piece", qtyField: "pieces",
           label: { ru: "За номер", en: "Per piece" },
           short: { ru: "ном.", en: "pcs" },
-          rate: { file: 8000, manuscript: 11000, draft: 14000 } }
+          rate: { file: 9000, manuscript: 12500, draft: 16000 } }
       ],
       variants: [
         { id: "file", label: { ru: "Из файла", en: "From a file" },
@@ -840,12 +840,12 @@ window.PRICING_CONFIG = {
     {
       title: { ru: "Транспонирование готовой партитуры", en: "Transposing an existing score" },
       description: { ru: "Смена тональности под вокалиста или инструмент, с правкой удобства партий.", en: "New key for a singer or instrument, with playability fixed." },
-      price: { ru: "от 3 000 ₽ / номер", en: "from 3,000 ₽ / piece" }
+      price: { ru: "от 4 000 ₽ / номер", en: "from 4,000 ₽ / piece" }
     },
     {
-      title: { ru: "Корректура партитуры", en: "Score proofreading" },
+      title: { ru: "Проверка партитуры на ошибки", en: "Score proofreading" },
       description: { ru: "Проверка на ошибки, диапазоны, неудобные места и расхождения с клавиром.", en: "Errors, ranges, awkward passages and mismatches with the piano score." },
-      price: { ru: "от 4 000 ₽ / номер", en: "from 4,000 ₽ / piece" }
+      price: { ru: "от 3 000 ₽ / номер", en: "from 3,000 ₽ / piece" }
     },
     {
       title: { ru: "Сопровождение репетиции и саундчека", en: "Rehearsal and soundcheck support" },
@@ -855,7 +855,7 @@ window.PRICING_CONFIG = {
     {
       title: { ru: "Разбор партитуры по видеосвязи", en: "Score review over video call" },
       description: { ru: "Совместный разбор материала на экране: правки по ходу разговора, оценка играбельности, подбор состава под площадку и бюджет.", en: "Going through the material together on screen: edits as we talk, playability checked, an ensemble chosen for the venue and the budget." },
-      price: { ru: "3 500 ₽ / час", en: "3,500 ₽ / hour" }
+      price: { ru: "4 000 ₽ / час", en: "4,000 ₽ / hour" }
     }
   ]
 };

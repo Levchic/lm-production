@@ -234,7 +234,7 @@ window.SITE_CONTENT = {
         },
         {
           "title": "Договор",
-          "description": "Объём, сроки и число кругов правок фиксируются в договоре. Предоплата — 50%. Демоверсия до договора — на платной основе.",
+          "description": "Объём, сроки и условия правок фиксируются в договоре. Предоплата — 50%. Демоверсия до договора — на платной основе.",
           "result": "согласованные условия"
         },
         {
@@ -1351,125 +1351,280 @@ window.SITE_CONTENT = {
     "services": {
       "eyebrow": "Услуги",
       "heading": "Услуги и цены",
-      "subheading": "Ориентировочные цены. Точная стоимость — после изучения материала.",
+      "subheading": "Ориентиры по ценам. Точная смета — после изучения материала.",
       "viewAll": "Все услуги и цены",
-      "note": "Цены ориентировочные и не являются публичной офертой. Итоговая стоимость зависит от состава, объёма, сроков и формата использования музыки: концерт, запись, гастроли, реклама. Для учебных и любительских коллективов — скидка. Стоимость фиксируется в договоре.",
+      "note": "Цены ориентировочные и не являются публичной офертой. Итоговая стоимость зависит от состава, объёма, сроков и цели использования музыки: концерт, запись, гастроли, реклама. Для учебных и любительских коллективов — скидка. Стоимость фиксируется в договоре.",
       "bgPhoto": "",
       "detailsLabel": "Подробнее",
       "hideLabel": "Свернуть",
       "groups": [
         {
-          "id": "arrangement",
-          "title": "Аранжировка и оркестровка",
-          "summary": "Оркестр, камерный и эстрадный состав, концертные программы."
+          "id": "orchestra",
+          "title": "Оркестровая аранжировка",
+          "summary": "Симфонический, эстрадно-симфонический и камерный состав. Отдельные номера и программы целиком."
         },
         {
-          "id": "production",
-          "title": "Саунд-продакшн",
-          "summary": "Треки, каверы, плейбэки и саунд-дизайн в Logic Pro."
+          "id": "stage",
+          "title": "Для сцены и шоу",
+          "summary": "Клик, плейбэк, саунд-дизайн и аудиоверсии для концертов с видеорядом."
         },
         {
           "id": "score",
           "title": "Ноты",
-          "summary": "Нотный набор, снятие на слух, мелодическая строка."
+          "summary": "Партитуры и партии, нотный набор, снятие на слух."
+        },
+        {
+          "id": "songs",
+          "title": "Песни и треки",
+          "summary": "Аранжировка, эпик-каверы, монтаж, работа с вокалом и сведение в Logic Pro."
+        },
+        {
+          "id": "extra",
+          "title": "Дополнительно",
+          "summary": "Занятия, консультации, мокапы на библиотеках, инструменты под задачу.",
+          "hideOnHome": true
         }
       ],
       "items": [
         {
           "bullets": [],
-          "title": "Аранжировка для оркестра",
-          "group": "arrangement",
-          "description": "Оркестровка под заданный состав, динамический план.",
-          "detail": "Полная партитура по эскизу или референсу: распределение материала по группам, динамический план, баланс, исполнимость партий. Стоимость зависит от состава и сложности материала.",
-          "price": "от 5 000 ₽ / мин"
+          "group": "orchestra",
+          "title": "Аранжировка и оркестровка для оркестра",
+          "price": "от 7 000 ₽ / мин",
+          "description": "По нотам, клавиру или эскизу. Партитура и партии входят.",
+          "detail": "Новая оркестровка под ваш состав: симфонический, эстрадно-симфонический, духовой. Распределение материала по группам, динамический план, баланс, удобные для исполнения партии. Если исходник — только запись, добавляется снятие на слух; выгоднее заказать номер полным циклом."
         },
         {
           "bullets": [],
-          "title": "Камерное переложение",
-          "group": "arrangement",
-          "description": "Переложение под струнный, духовой или смешанный ансамбль.",
-          "detail": "Переложение готовой партитуры с учётом возможностей конкретного ансамбля. Работа по записи без партитуры относится к аранжировке.",
-          "price": "от 2 500 ₽ / мин"
+          "group": "orchestra",
+          "title": "Номер полным циклом",
+          "price": "от 10 000 ₽ / мин",
+          "description": "Снятие на слух, аранжировка, клик, плейбэк, партитура и партии.",
+          "detail": "Всё, что нужно для номера в шоу: музыка снимается с записи, аранжируется под состав, к ней делаются клик и плейбэк, сдаются партитура и партии. Те же этапы по отдельности стоят около 11 500 ₽ за минуту."
         },
         {
           "bullets": [],
+          "group": "orchestra",
           "title": "Концертная программа под ключ",
-          "group": "arrangement",
-          "description": "Структура номеров, аранжировки, клик, плейбэк, партитуры.",
-          "detail": "Программа целиком: структура вечера и номеров, снятие и аранжировка материала, клик-треки и плейбэки, партитуры и партии, работа на репетициях. Цена — по объёму программы.",
-          "price": "от 150 000 ₽ / программа"
+          "price": "от 285 000 ₽ / 30 мин",
+          "description": "Структура, все номера полным циклом, клик и плейбэк под видеоряд.",
+          "detail": "Программа целиком: отбор материала и драматургия, переходы между номерами, аранжировки полным циклом, клик и плейбэк, синхронизация с видео, партитуры и партии, правки по репетиции. Ориентир — около 285 000 ₽ за 30 минут музыки и около 540 000 ₽ за час: на объём действует скидка."
         },
         {
           "bullets": [],
-          "title": "Аранжировка трека",
-          "group": "production",
-          "description": "Поп, рок, эстрада: аранжировка песни или минусовка.",
-          "detail": "Аранжировка песни под артиста или группу, минусовка по оригиналу, новая версия известного трека. Живые и виртуальные инструменты, сведение, стемы для концерта.",
-          "price": "от 10 000 ₽ / трек"
+          "group": "orchestra",
+          "title": "Переложение для камерного ансамбля",
+          "price": "от 3 500 ₽ / мин",
+          "description": "Струнный квартет, духовой квинтет, смешанный состав.",
+          "detail": "Перенос готового материала на небольшой состав с учётом возможностей каждого инструмента и без потери фактуры."
         },
         {
           "bullets": [],
-          "title": "Эпик-кавер",
-          "group": "production",
-          "description": "Оркестровая версия трека с эффектами и сведением.",
-          "detail": "Кавер в кинематографическом звучании: оркестровые и хоровые библиотеки, синтезаторы, ударные, эффекты. Сведение, мастер и мультитреки для дальнейшей работы.",
-          "price": "от 10 000 ₽ / трек"
+          "group": "orchestra",
+          "title": "Адаптация готовой партитуры под ваш состав",
+          "price": "от 6 000 ₽ / номер",
+          "description": "Сокращение состава, частичная переоркестровка, правка партий.",
+          "detail": "Для театров и коллективов, у которых есть партитуры, но другой состав: мюзикл или спектакль под ваш оркестр, замена отсутствующих инструментов, перераспределение голосов."
         },
         {
           "bullets": [],
-          "title": "Клик и плейбэк",
-          "group": "production",
-          "description": "Темповая сетка, метки, синтезаторные и хоровые слои.",
-          "detail": "Темповая сетка и метки переходов, синтезаторные партии, хор и дополнительные слои. Стемы и клик — в формате для звукорежиссёра и дирижёра.",
-          "price": "от 500 ₽ / мин"
+          "group": "stage",
+          "title": "Клик-трек",
+          "price": "от 1 000 ₽ / мин",
+          "description": "Темповая карта, размеры, метки частей и отсчёты.",
+          "detail": "Дорожка для дирижёра и музыкантов: темповая карта по номеру, голосовые или звуковые метки частей, отсчёты перед вступлениями."
         },
         {
           "bullets": [],
+          "group": "stage",
+          "title": "Плейбэк",
+          "price": "от 1 500 ₽ / мин",
+          "description": "Синтезаторы, хор, ударные и эффекты под живой оркестр.",
+          "detail": "Партии, которых нет в составе: синтезаторы, хор, электронные ударные, звуковые эффекты. Сдаётся стемами, сведённый под живой оркестр."
+        },
+        {
+          "bullets": [],
+          "group": "stage",
           "title": "Саунд-дизайн",
-          "group": "production",
+          "price": "от 2 500 ₽ / мин",
           "description": "Шумы, атмосферы, переходы, звук к видео.",
-          "detail": "Шумы, атмосферы, удары и переходы для шоу, видео и рекламы.",
-          "price": "от 2 000 ₽ / мин"
+          "detail": "Звуковые слои, которые держат шоу вместе: атмосферы, переходы между номерами, акценты под видеоряд."
         },
         {
           "bullets": [],
-          "title": "Сведение и мультитреки",
-          "group": "production",
-          "description": "Сведение трека, стемы и мультитреки.",
-          "detail": "Сведение собственных и присланных треков, подготовка стемов и мультитреков для концерта, записи или передачи другому звукорежиссёру.",
-          "price": "от 10 000 ₽ / трек"
-        },
-        {
-          "bullets": [],
+          "group": "stage",
           "title": "Аудиоверсия партитуры",
-          "group": "production",
+          "price": "от 500 ₽ / мин",
           "description": "Звучание номера до первой репетиции.",
-          "detail": "Озвучивание партитуры оркестровыми библиотеками с проработкой баланса, штрихов и динамики — для показа заказчику или художественному совету. Для собственных партитур дешевле: проект уже собран. Сторонняя партитура требует переноса в DAW.",
-          "price": "от 500 ₽ / мин"
+          "detail": "Быстрая аудиоверсия, чтобы заказчик и дирижёр услышали аранжировку заранее: 500 ₽ за минуту вместе с аранжировкой, отдельно — от 1 500 ₽. Детальный мокап на оркестровых библиотеках — в разделе «Дополнительно»."
         },
         {
           "bullets": [],
-          "title": "Нотный набор",
           "group": "score",
-          "description": "Набор и вёрстка в редакторе: с файла, PDF или рукописи.",
-          "detail": "Набор, вёрстка и проверка на ошибки в нотном редакторе. Партитурная страница с рукописи — от 500 ₽, одноголосная партия или чистовой файл — от 350 ₽; возможен расчёт по минутам или за номер. Комплект партий с репетиционными цифрами и переворотами в паузах — отдельно.",
-          "price": "от 350 ₽ / стр."
+          "title": "Партитура и партии по проекту Logic",
+          "price": "от 5 000 ₽ / мин",
+          "description": "Готовая музыка из DAW — в ноты для живого состава.",
+          "detail": "Когда музыка уже написана в Logic Pro или другой программе: перевод MIDI и аудио в партитуру и партии, правка под реальные возможности инструментов, вёрстка для концерта."
         },
         {
           "bullets": [],
+          "group": "score",
           "title": "Снятие на слух",
-          "group": "score",
-          "description": "Расшифровка плотной фактуры с записи.",
-          "detail": "Расшифровка многослойной фактуры с записи при отсутствии нот. Результат сверяется с референсом на каждом этапе.",
-          "price": "от 1 500 ₽ / мин"
+          "price": "от 2 000 ₽ / мин",
+          "description": "Мелодия, гармония и основные голоса по записи.",
+          "detail": "Расшифровка записи: мелодия, гармония, бас, ключевые подголоски. Основа для аранжировки или самостоятельный результат. Плотная фактура и плохое качество записи — дороже."
         },
         {
           "bullets": [],
-          "title": "Мелодическая строка",
           "group": "score",
-          "description": "Мелодия, слова и гармония на одном листе.",
-          "detail": "Мелодия, текст и буквенные обозначения аккордов по записи. Без партитуры и партий: поинструментальные партии — это снятие на слух или нотный набор.",
-          "price": "от 800 ₽ / мин"
+          "title": "Нотный набор",
+          "price": "от 400 ₽ / стр.",
+          "description": "С файла или PDF — от 400 ₽, с рукописи — от 600 ₽ за страницу.",
+          "detail": "Набор и вёрстка в Sibelius: единое оформление, проверка на ошибки. Черновик с правками и вставками — дороже."
+        },
+        {
+          "bullets": [],
+          "group": "score",
+          "title": "Мелодическая строка (вокальная строчка с текстом)",
+          "price": "от 1 000 ₽ / мин",
+          "description": "Мелодия, слова и аккорды на одном листе.",
+          "detail": "Лист для вокалиста или ансамбля: мелодия с подтекстовкой, аккорды, структура песни."
+        },
+        {
+          "bullets": [],
+          "group": "score",
+          "title": "Расписка партий из готовой партитуры",
+          "price": "от 2 000 ₽ / номер",
+          "description": "Партии с удобными переворотами и подсказками в паузах.",
+          "detail": "Когда партитура уже есть: партии для каждого музыканта, единое оформление, перевороты в паузах, подсказки перед вступлениями."
+        },
+        {
+          "bullets": [],
+          "group": "score",
+          "title": "Транспонирование готовой партитуры",
+          "price": "от 4 000 ₽ / номер",
+          "description": "Смена тональности под вокалиста или инструмент.",
+          "detail": "Новая тональность для всей партитуры и партий с правкой неудобных мест и диапазонов."
+        },
+        {
+          "bullets": [],
+          "group": "songs",
+          "title": "Аранжировка песни",
+          "price": "от 15 000 ₽ / трек",
+          "description": "Поп, рок, эстрада: аранжировка или минусовка в Logic Pro.",
+          "detail": "Аранжировка по демо или голосовой записи: партии инструментов, структура, звук. Сведение — отдельно или в комплекте."
+        },
+        {
+          "bullets": [],
+          "group": "songs",
+          "title": "Песня с оркестром",
+          "price": "от 30 000 ₽ / трек",
+          "description": "Оркестровая версия песни для выступления артиста с оркестром.",
+          "detail": "Аранжировка песни под оркестр, партитура и партии; при необходимости — клик и плейбэк. Если есть только запись, добавляется снятие на слух."
+        },
+        {
+          "bullets": [],
+          "group": "songs",
+          "title": "Эпик-кавер",
+          "price": "от 30 000 ₽ / трек",
+          "description": "Кинематографичная оркестровая версия трека со сведением.",
+          "detail": "Оркестр, хор, ударные и саунд-дизайн на основе известной мелодии: аранжировка, сведение, мастер для публикации."
+        },
+        {
+          "bullets": [],
+          "group": "songs",
+          "title": "Перепродюсирование нейропесни",
+          "price": "от 15 000 ₽ / трек",
+          "description": "Песня из Suno или Udio — в живую аранжировку с чистым звуком.",
+          "detail": "Сохраняю мелодию, структуру и идею, заново собираю аранжировку на качественных инструментах и свожу. Живой вокал можно записать у вашего звукорежиссёра."
+        },
+        {
+          "bullets": [],
+          "group": "songs",
+          "title": "Монтаж аудио",
+          "price": "от 1 500 ₽ / трек",
+          "description": "Нарезка и склейка, переходы, смена темпа и тональности.",
+          "detail": "Подготовка фонограммы под номер или видео: нарезка и склейка, сокращение и повторы частей, плавные переходы между треками, ускорение и замедление, транспонирование без потери качества. Сложный монтаж по таймкоду — от 1 000 ₽ за минуту материала."
+        },
+        {
+          "bullets": [],
+          "group": "songs",
+          "title": "Очистка от шумов и реставрация",
+          "price": "от 2 000 ₽ / трек",
+          "description": "Шум, гул, щелчки, реверберация помещения.",
+          "detail": "Очистка записи с репетиции, концерта или телефона: шумы, гул сети, щелчки, лишняя гулкость помещения. Сильно повреждённая запись — дороже."
+        },
+        {
+          "bullets": [],
+          "group": "songs",
+          "title": "Работа с вокалом",
+          "price": "от 3 000 ₽ / трек",
+          "description": "Чистка, выравнивание, коррекция интонации, сборка дублей.",
+          "detail": "Чистка дыханий и шумов, выравнивание громкости, коррекция интонации и ритма, сборка лучших дублей в одну дорожку."
+        },
+        {
+          "bullets": [],
+          "group": "songs",
+          "title": "Сведение",
+          "price": "от 10 000 ₽ / трек",
+          "description": "Сведение трека, стемы и мультитреки для концерта.",
+          "detail": "Баланс, обработка, пространство; стемы и мультитреки для выступления или публикации."
+        },
+        {
+          "bullets": [],
+          "group": "extra",
+          "title": "Мокап партитуры на оркестровых библиотеках",
+          "price": "от 4 000 ₽ / мин",
+          "description": "Реалистичное звучание: Spitfire, Cinematic Studio, Orchestral Tools, VSL.",
+          "detail": "Детальная аудиоверсия для презентации, заявки или фонограммы: озвучивание на профессиональных библиотеках, артикуляции, динамика, сведение, экспорт в WAV."
+        },
+        {
+          "bullets": [],
+          "group": "extra",
+          "title": "Занятия по Logic Pro и Sibelius",
+          "price": "3 500 ₽ / час",
+          "description": "Индивидуально, по видеосвязи: от основ до рабочих приёмов.",
+          "detail": "Программа под ваши задачи: набор и вёрстка нот, работа с оркестровыми библиотеками, аранжировка и сведение в Logic Pro."
+        },
+        {
+          "bullets": [],
+          "group": "extra",
+          "title": "Разбор партитуры по видеосвязи",
+          "price": "4 000 ₽ / час",
+          "description": "Правки по ходу разговора, оценка исполнимости, подбор состава.",
+          "detail": "Совместный разбор материала на экране: замечания по оркестровке, исполнимость партий, состав под площадку и бюджет."
+        },
+        {
+          "bullets": [],
+          "group": "extra",
+          "title": "Проверка партитуры на ошибки",
+          "price": "от 3 000 ₽ / номер",
+          "description": "Ошибки, диапазоны, неудобные места, расхождения с клавиром.",
+          "detail": "Проверка готовой партитуры и партий перед репетицией со списком замечаний или с исправлением."
+        },
+        {
+          "bullets": [],
+          "group": "extra",
+          "title": "Сопровождение репетиции и саундчека",
+          "price": "от 10 000 ₽ / смена",
+          "description": "Правки по ходу репетиции, запуск клика и плейбэка. Можно включить в договор.",
+          "detail": "Присутствие на репетиции: оперативные правки партий, запуск клика и плейбэка, работа со звукорежиссёром. Сопровождение можно сразу включить в договор на аранжировку — тогда смены считаются вместе с проектом."
+        },
+        {
+          "bullets": [],
+          "group": "extra",
+          "title": "Плагины и инструменты под задачу",
+          "price": "по договорённости",
+          "description": "Скрипты для Sibelius, плагины Audio Unit и VST3, утилиты для студии.",
+          "detail": "Примеры — в Мастерской: Syllables, Dotted Triplet, MIDI Transfer, LM Pulse, LM Orbit."
+        },
+        {
+          "bullets": [],
+          "group": "extra",
+          "title": "Другое",
+          "price": "по договорённости",
+          "description": "Нестандартная задача — напишите, обсудим.",
+          "detail": ""
         }
       ],
       "pricing": {
@@ -1479,19 +1634,27 @@ window.SITE_CONTENT = {
         "principles": [
           {
             "title": "Только нужные этапы",
-            "text": "В смету входят только необходимые этапы. При наличии партитуры снятие на слух не требуется. Любой этап можно заказать отдельно."
+            "text": "В смету входят только необходимые этапы. Есть партитура — снятие на слух не нужно. Любой этап можно заказать отдельно."
           },
           {
-            "title": "Основная единица — минута музыки",
-            "text": "Для нотного набора — также страница или номер. Количество номеров учитывается отдельно: десять коротких пьес — десять партитур и комплектов партий."
+            "title": "Минута музыки",
+            "text": "Основная единица — минута готовой музыки. Для нотного набора — страница, для адаптации и расписки партий — номер."
           },
           {
-            "title": "Сложность определяется по партитуре",
-            "text": "Категория складывается из того, что видно в нотах: размер состава, плотность фактуры, хор, ударные, редкие инструменты, смены темпа и размера."
+            "title": "Полный цикл выгоднее",
+            "text": "Номер полным циклом стоит от 10 000 ₽ за минуту, те же этапы по отдельности — около 11 500 ₽."
           },
           {
-            "title": "Цена фиксируется до начала работы",
-            "text": "Стоимость и объём согласуются письменно до старта. Два круга правок входят в стоимость. Изменение состава или структуры — пересчёт сметы."
+            "title": "Скидка за объём",
+            "text": "От 30 минут музыки — 5%, от 60 минут — 10%. Итог округляется: секунды не считаются."
+          },
+          {
+            "title": "Цена зависит от задачи",
+            "text": "Сложность материала, сроки, цель использования — концерт, запись, реклама — и тип заказчика. Для учебных и любительских коллективов — скидка."
+          },
+          {
+            "title": "Фиксируется до начала",
+            "text": "Стоимость, объём и сроки согласуются письменно до старта и закрепляются в договоре."
           }
         ]
       },
@@ -1522,8 +1685,8 @@ window.SITE_CONTENT = {
             "text": "В течение пяти рабочих дней после сдачи, независимо от даты премьеры."
           },
           {
-            "title": "Два круга правок включены",
-            "text": "Последующие круги и изменения после сдачи — 5 000 ₽ за круг. Правки, меняющие структуру, состав или тональный план, считаются новым объёмом."
+            "title": "Правки включены",
+            "text": "Правки в разумном объёме входят в стоимость. Если после согласования меняется сама задача — состав, структура, тональный план, — доработка считается отдельно."
           },
           {
             "title": "Что сдаётся",
@@ -1535,15 +1698,110 @@ window.SITE_CONTENT = {
           },
           {
             "title": "Права на результат",
-            "text": "Работа и права на неё — две разные цены. В базовую входит разовое исполнение; репертуар коллектива, исключительная лицензия и полная передача прав считаются надбавкой. Аранжировка чужого произведения — переработка: права на оригинал заказчик получает отдельно, у правообладателя или через РАО."
+            "text": "В базовую цену входит исполнение заказчиком. Исключительная лицензия и полная передача прав — надбавка. Аранжировка чужого произведения — переработка: права на оригинал заказчик получает отдельно, у правообладателя или через РАО."
           }
         ],
-        "ctaHeading": "Точный расчёт — по запросу",
-        "ctaText": "Точная смета и сроки — после изучения материала.",
-        "ctaLabel": "Запросить расчёт"
+        "ctaHeading": "Обсудим ваш проект",
+        "ctaText": "Пришлите задачу и материалы — отвечу со сметой и сроками.",
+        "ctaLabel": "Обсудить проект",
+        "pdfLabel": "Скачать прайс (PDF)"
       },
       "homeHeading": "Услуги",
-      "homeSubheading": ""
+      "homeSubheading": "",
+      "budgets": {
+        "eyebrow": "Примеры",
+        "heading": "Сколько стоит проект",
+        "subheading": "Условные проекты, посчитанные по ценам этой страницы: что входит, сколько длится и что вы получаете.",
+        "items": [
+          {
+            "title": "Шоу саундтреков на 60 минут",
+            "summary": "12 номеров по музыке из фильмов, оркестр 30 человек, видеоряд на экране.",
+            "stages": [
+              "Отбор материала и драматургия программы",
+              "Снятие на слух всех номеров",
+              "Аранжировка под состав",
+              "Клик и плейбэк, синхронизация с видео",
+              "Аудиоверсии на согласование",
+              "Партитуры и партии, правки по репетиции"
+            ],
+            "duration": "2,5–3 месяца",
+            "result": "Партитуры и партии в PDF, клик и плейбэк стемами, аудиоверсии номеров",
+            "calc": "60 мин × 10 000 ₽ − 10% за объём",
+            "price": "≈ 540 000 ₽"
+          },
+          {
+            "title": "Сюита из саундтрека, 12 минут",
+            "summary": "Номер для концерта симфонического оркестра по музыке из фильма.",
+            "stages": [
+              "Снятие на слух",
+              "Аранжировка под состав оркестра",
+              "Клик и плейбэк",
+              "Партитура и партии"
+            ],
+            "duration": "2–3 недели",
+            "result": "Партитура и партии в PDF, клик и плейбэк",
+            "calc": "12 мин × 10 000 ₽",
+            "price": "≈ 120 000 ₽"
+          },
+          {
+            "title": "Песня артиста с оркестром, 4 минуты",
+            "summary": "Артист выступает с оркестром, есть студийная запись песни.",
+            "stages": [
+              "Снятие на слух",
+              "Оркестровая аранжировка",
+              "Аудиоверсия на согласование",
+              "Партитура и партии"
+            ],
+            "duration": "7–10 дней",
+            "result": "Партитура и партии в PDF, аудиоверсия",
+            "calc": "4 мин × (2 000 + 7 000) ₽ + аудиоверсия 2 000 ₽",
+            "price": "≈ 38 000 ₽"
+          },
+          {
+            "title": "Мюзикл под состав театра, 20 номеров",
+            "summary": "Партитуры есть, но оркестр в театре другой.",
+            "stages": [
+              "Сверка составов",
+              "Сокращение и переоркестровка",
+              "Правка и расписка партий",
+              "Правки по репетициям"
+            ],
+            "duration": "3–5 недель",
+            "result": "Партитуры и партии под ваш состав",
+            "calc": "20 номеров × 6 000 ₽",
+            "price": "≈ 120 000 ₽"
+          },
+          {
+            "title": "Концертная версия по проектам Logic, 60 минут",
+            "summary": "Музыка спектакля написана в Logic Pro, нужна партитура для живого оркестра.",
+            "stages": [
+              "Разбор проектов",
+              "Перевод в партитуру и правка под инструменты",
+              "Расписка партий",
+              "Аудиоверсия для сверки"
+            ],
+            "duration": "2–3 месяца",
+            "result": "Партитура и партии в PDF и Sibelius",
+            "calc": "60 мин × 5 000 ₽ − 10% за объём",
+            "price": "≈ 270 000 ₽"
+          },
+          {
+            "title": "Партитура с рукописи, 100 страниц",
+            "summary": "Концерт для солиста с оркестром, рукопись автора.",
+            "stages": [
+              "Набор партитуры",
+              "Вёрстка",
+              "Проверка на ошибки"
+            ],
+            "duration": "3–4 недели",
+            "result": "Партитура в PDF и Sibelius",
+            "calc": "100 стр. × 600 ₽",
+            "price": "≈ 60 000 ₽"
+          }
+        ],
+        "durationLabel": "Срок",
+        "resultLabel": "Результат"
+      }
     },
     "testimonials": {
       "eyebrow": "Отзывы",
@@ -1912,7 +2170,7 @@ window.SITE_CONTENT = {
         },
         {
           "question": "Сколько правок входит в стоимость?",
-          "answer": "Два круга. Следующие — 5 000 ₽ за круг. Изменения структуры, состава или тонального плана считаются новым объёмом."
+          "answer": "Правки в разумном объёме входят в стоимость — считать их по штукам не приходится. Если после согласования меняется сама задача — структура, состав или тональный план, — доработка оценивается отдельно."
         },
         {
           "question": "Есть только запись с телефона или напетая мелодия. Этого достаточно?",
@@ -2349,7 +2607,7 @@ window.SITE_CONTENT = {
         },
         {
           "title": "Contract",
-          "description": "Scope, deadlines and revision rounds are fixed in the contract. 50% advance. A demo before the contract is paid work.",
+          "description": "Scope, deadlines and revision terms are fixed in the contract. 50% advance. A demo before the contract is paid work.",
           "result": "agreed terms"
         },
         {
@@ -3466,147 +3724,310 @@ window.SITE_CONTENT = {
     "services": {
       "eyebrow": "Services",
       "heading": "Services & rates",
-      "subheading": "Guide prices. Exact cost after reviewing the material.",
+      "subheading": "Indicative rates. An exact quote follows once I have seen the material.",
       "viewAll": "All services & rates",
-      "note": "Prices are indicative and do not constitute a public offer. The final cost depends on the line-up, scope, deadlines and how the music will be used: concert, recording, touring, advertising. Discount for student and amateur ensembles. The price is fixed in the contract.",
+      "note": "Rates are indicative and do not constitute a public offer. The final price depends on the ensemble, scope, deadline and intended use: concert, recording, touring, advertising. Discounts for student and amateur ensembles. The price is fixed in the contract.",
       "bgPhoto": "",
       "detailsLabel": "Details",
       "hideLabel": "Hide",
       "groups": [
         {
-          "id": "arrangement",
-          "title": "Arranging and orchestration",
-          "summary": "Orchestra, chamber and pop ensembles, concert programmes."
+          "id": "orchestra",
+          "title": "Orchestral arranging",
+          "summary": "Symphony, pops and chamber ensembles. Single numbers and full programmes."
         },
         {
-          "id": "production",
-          "title": "Sound production",
-          "summary": "Tracks, covers, playbacks and sound design in Logic Pro."
+          "id": "stage",
+          "title": "Stage and shows",
+          "summary": "Click, playback, sound design and audio mock-ups for concerts with video."
         },
         {
           "id": "score",
-          "title": "Sheet music",
-          "summary": "Engraving, transcription, lead sheets."
+          "title": "Scores",
+          "summary": "Scores and parts, music engraving, transcription."
+        },
+        {
+          "id": "songs",
+          "title": "Songs and tracks",
+          "summary": "Arranging, epic covers, editing, vocal work and mixing in Logic Pro."
+        },
+        {
+          "id": "extra",
+          "title": "Additional",
+          "summary": "Lessons, consultations, library mock-ups, custom tools.",
+          "hideOnHome": true
         }
       ],
       "items": [
         {
           "bullets": [],
-          "title": "Orchestral arrangement",
-          "group": "arrangement",
-          "description": "Orchestration for the given ensemble, dynamic plan.",
-          "detail": "A full score from a sketch or reference: distributing material across sections, dynamic plan, balance, playability. Cost depends on the line-up and complexity.",
-          "price": "from 5,000 ₽ / min"
+          "group": "orchestra",
+          "title": "Orchestral arrangement and orchestration",
+          "price": "from 7,000 ₽ / min",
+          "description": "From sheet music, a piano score or a sketch. Score and parts included.",
+          "detail": "A new orchestration for your ensemble: symphony, pops or wind orchestra. Distribution across sections, dynamic plan, balance, playable parts. If the source is only a recording, transcription is added; ordering the full cycle is better value."
         },
         {
           "bullets": [],
-          "title": "Chamber transcription",
-          "group": "arrangement",
-          "description": "Adapted to a specific ensemble, character intact.",
-          "detail": "Reducing an existing score for what a specific ensemble can actually play. Working from a recording without a score counts as arranging.",
-          "price": "from 2,500 ₽ / min"
+          "group": "orchestra",
+          "title": "Full-cycle number",
+          "price": "from 10,000 ₽ / min",
+          "description": "Transcription, arrangement, click, playback, score and parts.",
+          "detail": "Everything a show number needs: the music is transcribed, arranged for the ensemble, given a click and playback, and delivered as score and parts. Ordered separately, the same stages cost about 11,500 ₽ per minute."
         },
         {
           "bullets": [],
+          "group": "orchestra",
           "title": "Turnkey concert programme",
-          "group": "arrangement",
-          "description": "Number structure, arrangements, click, playback, scores.",
-          "detail": "The whole programme: structure of the evening and numbers, transcription and arranging, click tracks and playbacks, scores and parts, rehearsal support. Priced by the size of the programme.",
-          "price": "from 150,000 ₽ / programme"
+          "price": "from 285,000 ₽ / 30 min",
+          "description": "Structure, every number in full cycle, click and playback to picture.",
+          "detail": "The whole programme: selection and dramaturgy, transitions, full-cycle arrangements, click and playback, sync to video, scores and parts, revisions after rehearsal. Guide price: about 285,000 ₽ for 30 minutes of music and about 540,000 ₽ for an hour, with a volume discount."
         },
         {
           "bullets": [],
-          "title": "Track arrangement",
-          "group": "production",
-          "description": "Pop, rock, variety: song arrangement or backing track.",
-          "detail": "Arranging a song for an artist or band, a backing track based on the original, a new version of a well-known track. Live and virtual instruments, mixing, stems for the stage.",
-          "price": "from 10,000 ₽ / track"
+          "group": "orchestra",
+          "title": "Chamber ensemble arrangement",
+          "price": "from 3,500 ₽ / min",
+          "description": "String quartet, wind quintet, mixed ensemble.",
+          "detail": "Existing material reworked for a small ensemble, written for each instrument without losing the texture."
         },
         {
           "bullets": [],
-          "title": "Epic cover",
-          "group": "production",
-          "description": "Orchestral version of a track with effects and mixing.",
-          "detail": "A cover with a cinematic sound: orchestral and choir libraries, synths, percussion, effects. Mix, master and multitracks for further work.",
-          "price": "from 10,000 ₽ / track"
+          "group": "orchestra",
+          "title": "Adapting an existing score to your ensemble",
+          "price": "from 6,000 ₽ / number",
+          "description": "Reduced scoring, partial re-orchestration, revised parts.",
+          "detail": "For theatres and ensembles that have scores but a different line-up: a musical or show for your orchestra, substitutes for missing instruments, redistributed voices."
         },
         {
           "bullets": [],
-          "title": "Click and playback",
-          "group": "production",
-          "description": "Tempo grid, markers, synth and choir layers.",
-          "detail": "Tempo grid and transition markers, synth parts, choir and extra layers. Stems and click in a format ready for the sound engineer and conductor.",
-          "price": "from 500 ₽ / min"
+          "group": "stage",
+          "title": "Click track",
+          "price": "from 1,000 ₽ / min",
+          "description": "Tempo map, metres, section cues and count-ins.",
+          "detail": "A track for the conductor and players: tempo map, spoken or audio section cues, count-ins before entries."
         },
         {
           "bullets": [],
+          "group": "stage",
+          "title": "Playback",
+          "price": "from 1,500 ₽ / min",
+          "description": "Synths, choir, drums and effects to sit under a live orchestra.",
+          "detail": "Parts the ensemble does not have: synths, choir, electronic drums, sound effects. Delivered as stems, mixed to sit under a live orchestra."
+        },
+        {
+          "bullets": [],
+          "group": "stage",
           "title": "Sound design",
-          "group": "production",
+          "price": "from 2,500 ₽ / min",
           "description": "Noises, atmospheres, transitions, sound to picture.",
-          "detail": "Noises, atmospheres, hits and transitions for shows, video and advertising.",
-          "price": "from 2,000 ₽ / min"
+          "detail": "The layers that hold a show together: atmospheres, transitions between numbers, hits to picture."
         },
         {
           "bullets": [],
-          "title": "Mixing and multitracks",
-          "group": "production",
-          "description": "Track mixing, stems and multitracks.",
-          "detail": "Mixing my own and supplied tracks, preparing stems and multitracks for the stage, recording or handing over to another engineer.",
-          "price": "from 10,000 ₽ / track"
-        },
-        {
-          "bullets": [],
+          "group": "stage",
           "title": "Audio version of the score",
-          "group": "production",
+          "price": "from 500 ₽ / min",
           "description": "Hear the number before the first rehearsal.",
-          "detail": "Rendering the score with orchestral libraries — balance, articulation and dynamics — for the client or an artistic board. Cheaper for my own scores, since the project already exists; a third-party score has to be rebuilt in the DAW first.",
-          "price": "from 500 ₽ / min"
+          "detail": "A quick audio version so the client and conductor can hear the arrangement in advance: 500 ₽ per minute with an arrangement, from 1,500 ₽ on its own. Detailed mock-ups on orchestral libraries are under “Additional”."
         },
         {
           "bullets": [],
-          "title": "Music engraving",
           "group": "score",
-          "description": "Setting and layout in a notation editor: from a file, PDF or manuscript.",
-          "detail": "Engraving, layout and proofreading in a notation editor. A score page from manuscript from 500 ₽, a single-line part or clean file from 350 ₽; per-minute or per-number pricing is also possible. A set of parts with rehearsal marks and page turns in rests is charged separately.",
-          "price": "from 350 ₽ / page"
+          "title": "Score and parts from a Logic project",
+          "price": "from 5,000 ₽ / min",
+          "description": "Finished DAW music turned into notation for live players.",
+          "detail": "When the music is already written in Logic Pro or another DAW: MIDI and audio turned into a score and parts, adjusted to what the instruments can actually play, laid out for performance."
         },
         {
           "bullets": [],
+          "group": "score",
           "title": "Transcription by ear",
-          "group": "score",
-          "description": "Decoding dense material from a recording.",
-          "detail": "Transcribing dense, layered textures from a recording when no sheet music exists. Checked against the reference at every stage.",
-          "price": "from 1,500 ₽ / min"
+          "price": "from 2,000 ₽ / min",
+          "description": "Melody, harmony and main voices from a recording.",
+          "detail": "Melody, harmony, bass and key counter-lines from a recording. A basis for an arrangement or a result on its own. Dense textures and poor recordings cost more."
         },
         {
           "bullets": [],
-          "title": "Lead sheet",
           "group": "score",
-          "description": "Melody, words and chords on a single sheet.",
-          "detail": "Melody, lyrics and chord symbols from a recording. No score or parts: separate instrument parts are transcription or engraving.",
-          "price": "from 800 ₽ / min"
+          "title": "Music engraving",
+          "price": "from 400 ₽ / page",
+          "description": "From a file or PDF — from 400 ₽, from a manuscript — from 600 ₽ per page.",
+          "detail": "Engraving and layout in Sibelius: consistent style, proofreading. Drafts with corrections and inserts cost more."
+        },
+        {
+          "bullets": [],
+          "group": "score",
+          "title": "Lead sheet (vocal line with lyrics)",
+          "price": "from 1,000 ₽ / min",
+          "description": "Melody, lyrics and chords on one sheet.",
+          "detail": "A sheet for a singer or band: melody with lyrics, chords, song structure."
+        },
+        {
+          "bullets": [],
+          "group": "score",
+          "title": "Part extraction from an existing score",
+          "price": "from 2,000 ₽ / number",
+          "description": "Parts with practical page turns and cues in rests.",
+          "detail": "When the score exists: a part for every player, consistent layout, page turns in rests, cues before entries."
+        },
+        {
+          "bullets": [],
+          "group": "score",
+          "title": "Transposing an existing score",
+          "price": "from 4,000 ₽ / number",
+          "description": "A new key for a singer or instrument.",
+          "detail": "The whole score and parts in a new key, with awkward passages and ranges fixed."
+        },
+        {
+          "bullets": [],
+          "group": "songs",
+          "title": "Song arrangement",
+          "price": "from 15,000 ₽ / track",
+          "description": "Pop, rock, variety: an arrangement or backing track in Logic Pro.",
+          "detail": "An arrangement from a demo or voice memo: instrument parts, structure, sound. Mixing separately or as a package."
+        },
+        {
+          "bullets": [],
+          "group": "songs",
+          "title": "Song with orchestra",
+          "price": "from 30,000 ₽ / track",
+          "description": "An orchestral version of a song for an artist performing with an orchestra.",
+          "detail": "The song arranged for orchestra, score and parts; click and playback if needed. If there is only a recording, transcription is added."
+        },
+        {
+          "bullets": [],
+          "group": "songs",
+          "title": "Epic cover",
+          "price": "from 30,000 ₽ / track",
+          "description": "A cinematic orchestral version of a track, mixed.",
+          "detail": "Orchestra, choir, drums and sound design built on a well-known melody: arrangement, mix, master for release."
+        },
+        {
+          "bullets": [],
+          "group": "songs",
+          "title": "Re-producing an AI-generated song",
+          "price": "from 15,000 ₽ / track",
+          "description": "A Suno or Udio song turned into a real arrangement with clean sound.",
+          "detail": "I keep the melody, structure and idea, rebuild the arrangement on quality instruments and mix it. Live vocals can be recorded with your engineer."
+        },
+        {
+          "bullets": [],
+          "group": "songs",
+          "title": "Audio editing",
+          "price": "from 1,500 ₽ / track",
+          "description": "Cutting and splicing, transitions, tempo and key changes.",
+          "detail": "Preparing a track for a number or video: cutting and splicing, shortening and repeating sections, smooth transitions, speeding up and slowing down, transposing without quality loss. Complex editing to timecode — from 1,000 ₽ per minute of material."
+        },
+        {
+          "bullets": [],
+          "group": "songs",
+          "title": "Noise removal and restoration",
+          "price": "from 2,000 ₽ / track",
+          "description": "Noise, hum, clicks, room reverb.",
+          "detail": "Cleaning up a rehearsal, concert or phone recording: noise, mains hum, clicks, excess room reverb. Badly damaged recordings cost more."
+        },
+        {
+          "bullets": [],
+          "group": "songs",
+          "title": "Vocal editing",
+          "price": "from 3,000 ₽ / track",
+          "description": "Cleaning, levelling, pitch correction, comping takes.",
+          "detail": "Removing breaths and noise, levelling, pitch and timing correction, comping the best takes into one track."
+        },
+        {
+          "bullets": [],
+          "group": "songs",
+          "title": "Mixing",
+          "price": "from 10,000 ₽ / track",
+          "description": "Track mixing, stems and multitracks for live use.",
+          "detail": "Balance, processing, space; stems and multitracks for performance or release."
+        },
+        {
+          "bullets": [],
+          "group": "extra",
+          "title": "Score mock-up on orchestral libraries",
+          "price": "from 4,000 ₽ / min",
+          "description": "Realistic sound: Spitfire, Cinematic Studio, Orchestral Tools, VSL.",
+          "detail": "A detailed audio version for a pitch, an application or a backing track: professional libraries, articulations, dynamics, mixing, WAV export."
+        },
+        {
+          "bullets": [],
+          "group": "extra",
+          "title": "Logic Pro and Sibelius lessons",
+          "price": "3,500 ₽ / hour",
+          "description": "One-to-one, over video call: from basics to working techniques.",
+          "detail": "A programme built around your tasks: engraving and layout, orchestral libraries, arranging and mixing in Logic Pro."
+        },
+        {
+          "bullets": [],
+          "group": "extra",
+          "title": "Score review over video call",
+          "price": "4,000 ₽ / hour",
+          "description": "Edits during the call, playability check, choosing the line-up.",
+          "detail": "We go through the material together on screen: orchestration notes, playability of parts, a line-up to fit the venue and budget."
+        },
+        {
+          "bullets": [],
+          "group": "extra",
+          "title": "Score proofreading",
+          "price": "from 3,000 ₽ / number",
+          "description": "Errors, ranges, awkward passages, mismatches with the piano score.",
+          "detail": "A check of the finished score and parts before rehearsal, with a list of notes or with corrections."
+        },
+        {
+          "bullets": [],
+          "group": "extra",
+          "title": "Rehearsal and soundcheck support",
+          "price": "from 10,000 ₽ / session",
+          "description": "Edits during rehearsal, running click and playback. Can be included in the contract.",
+          "detail": "On site at rehearsal: quick part fixes, running click and playback, working with the sound engineer. Support can be included in the arrangement contract from the start, priced together with the project."
+        },
+        {
+          "bullets": [],
+          "group": "extra",
+          "title": "Custom plugins and tools",
+          "price": "by arrangement",
+          "description": "Sibelius scripts, Audio Unit and VST3 plugins, studio utilities.",
+          "detail": "Examples in the Workshop: Syllables, Dotted Triplet, MIDI Transfer, LM Pulse, LM Orbit."
+        },
+        {
+          "bullets": [],
+          "group": "extra",
+          "title": "Something else",
+          "price": "by arrangement",
+          "description": "An unusual task — write and we will discuss it.",
+          "detail": ""
         }
       ],
       "pricing": {
         "eyebrow": "Principle",
-        "heading": "How the price is built",
+        "heading": "How the price is formed",
         "subheading": "",
         "principles": [
           {
             "title": "Only the stages you need",
-            "text": "The estimate includes only the necessary stages. With a score in hand, no transcription is needed. Any stage can be ordered separately."
+            "text": "The quote includes only the stages required. If there is a score, no transcription is needed. Any stage can be ordered on its own."
           },
           {
-            "title": "The job is measured by whatever measures it best",
-            "text": "Engraving can also be priced per page or per number. The number of pieces counts separately: ten short pieces mean ten scores and ten sets of parts."
+            "title": "Minute of music",
+            "text": "The main unit is a minute of finished music. For engraving — a page, for adaptations and part extraction — a number."
           },
           {
-            "title": "Complexity is read from the score",
-            "text": "The category comes from what is visible in the notation: the size of the ensemble, density of the texture, choir, percussion, rare instruments, changes of tempo and metre."
+            "title": "Full cycle is better value",
+            "text": "A full-cycle number costs from 10,000 ₽ per minute; the same stages ordered separately come to about 11,500 ₽."
           },
           {
-            "title": "The price is fixed before work starts",
-            "text": "Cost and scope are agreed in writing before the start. Two revision rounds are included. A change of line-up or structure means a new estimate."
+            "title": "Volume discount",
+            "text": "5% from 30 minutes of music, 10% from 60 minutes. Totals are rounded: no counting seconds."
+          },
+          {
+            "title": "Depends on the task",
+            "text": "Material complexity, deadline, intended use — concert, recording, advertising — and type of client. Discounts for student and amateur ensembles."
+          },
+          {
+            "title": "Fixed before work starts",
+            "text": "Price, scope and deadline are agreed in writing before the start and fixed in the contract."
           }
         ]
       },
@@ -3630,35 +4051,130 @@ window.SITE_CONTENT = {
         "items": [
           {
             "title": "50% advance",
-            "text": "Work begins once the advance is paid. Projects longer than a month can be paid in stages."
+            "text": "Work starts after the advance. Projects longer than a month can be paid in stages."
           },
           {
             "title": "Balance within 5 working days",
             "text": "Within five working days of delivery, regardless of the premiere date."
           },
           {
-            "title": "Two rounds of revisions included",
-            "text": "Further rounds, and changes made after delivery, are 5,000 ₽ per round. Revisions that alter structure, ensemble or key plan count as new scope."
+            "title": "Revisions included",
+            "text": "A reasonable amount of revisions is included. If the brief itself changes after approval — line-up, structure, key plan — the rework is quoted separately."
           },
           {
             "title": "What you receive",
-            "text": "Score and parts as PDF, playback as stems, click on a separate track. Editable Sibelius and Logic Pro projects by separate agreement."
+            "text": "Score and parts as PDF, playback as stems, click as a separate track. Editable Sibelius and Logic Pro files by separate agreement."
           },
           {
             "title": "Deadlines",
-            "text": "Counted from the moment the complete source material and the advance are received, not from the date we agreed."
+            "text": "Counted from the moment all source materials and the advance are received."
           },
           {
-            "title": "Rights to the result",
-            "text": "The work and the rights to it are two different prices. A single performance is included; ensemble repertoire, an exclusive licence and a full assignment are priced on top. An arrangement of someone else's work is a derivative: rights to the original are cleared separately by the client."
+            "title": "Rights",
+            "text": "The base price covers performance by the client. An exclusive licence or full transfer of rights costs extra. An arrangement of someone else's work is a derivative: rights to the original are cleared by the client with the rights holder."
           }
         ],
-        "ctaHeading": "An exact quote, on request",
-        "ctaText": "Exact estimate and timeline after reviewing the material.",
-        "ctaLabel": "Request a quote"
+        "ctaHeading": "Let's discuss your project",
+        "ctaText": "Send the brief and materials — I'll reply with a quote and timeline.",
+        "ctaLabel": "Discuss a project",
+        "pdfLabel": "Download rates (PDF)"
       },
       "homeHeading": "Services",
-      "homeSubheading": ""
+      "homeSubheading": "",
+      "budgets": {
+        "eyebrow": "Examples",
+        "heading": "What a project costs",
+        "subheading": "Hypothetical projects priced with the rates on this page: what is included, how long it takes and what you get.",
+        "items": [
+          {
+            "title": "A 60-minute film music show",
+            "summary": "12 numbers of film music, a 30-piece orchestra, video on screen.",
+            "stages": [
+              "Selection and dramaturgy",
+              "Transcription of every number",
+              "Arrangement for the ensemble",
+              "Click and playback, sync to video",
+              "Audio versions for approval",
+              "Scores and parts, revisions after rehearsal"
+            ],
+            "duration": "2.5–3 months",
+            "result": "Scores and parts as PDF, click and playback as stems, audio versions",
+            "calc": "60 min × 10,000 ₽ − 10% volume discount",
+            "price": "≈ 540,000 ₽"
+          },
+          {
+            "title": "A 12-minute film suite",
+            "summary": "A concert number for symphony orchestra based on a film score.",
+            "stages": [
+              "Transcription",
+              "Arrangement for the orchestra",
+              "Click and playback",
+              "Score and parts"
+            ],
+            "duration": "2–3 weeks",
+            "result": "Score and parts as PDF, click and playback",
+            "calc": "12 min × 10,000 ₽",
+            "price": "≈ 120,000 ₽"
+          },
+          {
+            "title": "An artist's song with orchestra, 4 minutes",
+            "summary": "An artist performs with an orchestra; a studio recording exists.",
+            "stages": [
+              "Transcription",
+              "Orchestral arrangement",
+              "Audio version for approval",
+              "Score and parts"
+            ],
+            "duration": "7–10 days",
+            "result": "Score and parts as PDF, audio version",
+            "calc": "4 min × (2,000 + 7,000) ₽ + audio version 2,000 ₽",
+            "price": "≈ 38,000 ₽"
+          },
+          {
+            "title": "A musical for a theatre's orchestra, 20 numbers",
+            "summary": "Scores exist, but the theatre has a different orchestra.",
+            "stages": [
+              "Comparing line-ups",
+              "Reduction and re-orchestration",
+              "Revised and extracted parts",
+              "Revisions after rehearsals"
+            ],
+            "duration": "3–5 weeks",
+            "result": "Scores and parts for your line-up",
+            "calc": "20 numbers × 6,000 ₽",
+            "price": "≈ 120,000 ₽"
+          },
+          {
+            "title": "Concert version from Logic projects, 60 minutes",
+            "summary": "A show's music is written in Logic Pro; a score for live orchestra is needed.",
+            "stages": [
+              "Going through the projects",
+              "Notation adjusted to the instruments",
+              "Part extraction",
+              "Audio version for checking"
+            ],
+            "duration": "2–3 months",
+            "result": "Score and parts as PDF and Sibelius",
+            "calc": "60 min × 5,000 ₽ − 10% volume discount",
+            "price": "≈ 270,000 ₽"
+          },
+          {
+            "title": "A 100-page score from manuscript",
+            "summary": "A concerto for soloist and orchestra in the composer's hand.",
+            "stages": [
+              "Engraving the score",
+              "Layout",
+              "Proofreading"
+            ],
+            "duration": "3–4 weeks",
+            "result": "Score as PDF and Sibelius",
+            "calc": "100 pages × 600 ₽",
+            "price": "≈ 60,000 ₽"
+          }
+        ],
+        "durationLabel": "Timeline",
+        "resultLabel": "You get"
+      }
     },
     "testimonials": {
       "eyebrow": "Testimonials",
@@ -4027,7 +4543,7 @@ window.SITE_CONTENT = {
         },
         {
           "question": "How many revisions are included?",
-          "answer": "Two rounds. Further rounds are 5,000 ₽ each. Changes to structure, line-up or key plan count as new scope."
+          "answer": "A reasonable amount of revisions is included — they are not counted one by one. If the brief itself changes after approval — structure, line-up or key plan — the rework is quoted separately."
         },
         {
           "question": "All I have is a phone recording or a hummed melody. Is that enough?",

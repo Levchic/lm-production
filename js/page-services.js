@@ -95,22 +95,28 @@
     });
   }
 
-  /** Прикладные работы: цены живут в прайс-конфиге, рядом со ставками. */
-  function renderExtras(d) {
-    var e = d.services.extra || {};
-    $("#extraEyebrow").textContent = e.eyebrow || "";
-    $("#extraHeading").textContent = e.heading || "";
-    $("#extraSub").textContent = e.subheading || "";
-
-    var host = $("#extraList"); host.innerHTML = "";
-    var lang = C.state.lang;
-    ((window.PRICING_CONFIG && window.PRICING_CONFIG.extraServices) || []).forEach(function (item) {
-      host.appendChild(C.priceRow({
-        title: item.title[lang] || item.title.ru,
-        description: item.description[lang] || item.description.ru,
-        price: item.price[lang] || item.price.ru,
-        bullets: []
-      }, d));
+  /** Примеры бюджетов: условный проект, этапы, срок, результат и итог. */
+  function renderBudgets(d) {
+    var b = d.services.budgets || {};
+    $("#budgetsEyebrow").textContent = b.eyebrow || "";
+    $("#budgetsHeading").textContent = b.heading || "";
+    $("#budgetsSub").textContent = b.subheading || "";
+    var host = $("#budgetsList"); host.innerHTML = "";
+    $("#budgets").hidden = !(b.items || []).length;
+    (b.items || []).forEach(function (item, i) {
+      var stages = (item.stages || []).map(function (s) { return "<li>" + C.esc(s) + "</li>"; }).join("");
+      var card = el("article", "budget reveal",
+        '<div class="budget-head"><h3>' + C.esc(item.title) + '</h3><p class="budget-price">' + C.esc(item.price) + "</p></div>" +
+        (item.summary ? '<p class="budget-summary">' + C.esc(item.summary) + "</p>" : "") +
+        (stages ? '<ul class="budget-stages">' + stages + "</ul>" : "") +
+        '<dl class="budget-meta">' +
+          (item.duration ? "<dt>" + C.esc(b.durationLabel || "Срок") + "</dt><dd>" + C.esc(item.duration) + "</dd>" : "") +
+          (item.result ? "<dt>" + C.esc(b.resultLabel || "Результат") + "</dt><dd>" + C.esc(item.result) + "</dd>" : "") +
+        "</dl>" +
+        (item.calc ? '<p class="budget-calc">' + C.esc(item.calc) + "</p>" : ""));
+      card.setAttribute("data-reveal", "");
+      card.style.setProperty("--reveal-delay", Math.min(i, 5) * 60 + "ms");
+      host.appendChild(card);
     });
   }
 
@@ -121,6 +127,10 @@
     $("#termsCtaHeading").textContent = terms.ctaHeading || "";
     $("#termsCtaText").textContent = terms.ctaText || "";
     $("#termsCtaLink").textContent = terms.ctaLabel || "";
+    var pdf = $("#termsPdf");
+    pdf.textContent = terms.pdfLabel || "";
+    pdf.hidden = !terms.pdfLabel;
+    pdf.href = "assets/downloads/lm-production-price-" + (C.state.lang === "en" ? "en" : "ru") + ".pdf";
 
     var host = $("#termsList"); host.innerHTML = "";
     (terms.items || []).forEach(function (item, i) {
@@ -166,7 +176,7 @@
     renderShowcase(d);
     renderPrinciples(d);
     renderCalculator(d);
-    renderExtras(d);
+    renderBudgets(d);
     renderTerms(d);
     setupCalcToggle();
     fitTermsGrid();

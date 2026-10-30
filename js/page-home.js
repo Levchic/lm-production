@@ -430,7 +430,7 @@
     // выборка «первых трёх» читалась как случайная.
     var grid = $("#servicesGrid"); grid.innerHTML = "";
     C.servicesByGroup(d).forEach(function (bucket, i) {
-      if (!bucket.group) return;
+      if (!bucket.group || bucket.group.hideOnHome) return;
       grid.appendChild(C.directionCard(bucket, i, d));
     });
   }

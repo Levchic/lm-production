@@ -1068,13 +1068,17 @@ time, .price, .project-meta, .service-price, .post-date { font-variant-numeric: 
    ========================================================================= */
 
 /* ---------- Четыре принципа ---------- */
+/* Принципов шесть: 3 × 2 на широком экране, 2 × 3 на планшете — без
+   пустых ячеек, которые светились бы цветом линий. */
 .principles {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: minmax(0, 1fr);
   gap: 1px;
   background: var(--rule);
   border: 1px solid var(--rule);
 }
+@media (min-width: 640px) { .principles { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1000px) { .principles { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 .principle { background: var(--char); padding: var(--sp-card); }
 .principle-index {
   font-family: var(--font-display); font-weight: 500;
@@ -1500,6 +1504,30 @@ time, .price, .project-meta, .service-price, .post-date { font-variant-numeric: 
   color: var(--bone-dim); font-size: var(--fs-sm);
   margin-top: 10px; max-width: 62ch;
 }
+
+.terms-cta-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.terms-cta-actions .btn[hidden] { display: none; }
+
+/* ---------- Примеры бюджетов (services.html) ----------
+   Карточка условного проекта: итог крупно справа от названия, ниже
+   этапы, срок и результат, внизу — из чего сложилась сумма. */
+.budgets { display: grid; gap: clamp(16px, 2vw, 24px); grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); }
+.budget {
+  display: flex; flex-direction: column; gap: 14px;
+  background: var(--char-raised); border: 1px solid var(--rule); border-radius: 6px;
+  padding: clamp(20px, 2vw, 28px);
+}
+.budget-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
+.budget-head h3 { font-family: var(--font-body); font-size: var(--fs-md); text-transform: none; letter-spacing: 0; font-weight: 600; line-height: 1.3; margin: 0; }
+.budget-price { margin: 0; flex: none; font-family: var(--font-display); font-weight: 700; color: var(--copper-bright); white-space: nowrap; }
+.budget-summary { margin: 0; color: var(--bone-dim); font-size: var(--fs-sm); }
+.budget-stages { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; font-size: var(--fs-sm); color: var(--bone-dim); }
+.budget-stages li { position: relative; padding-left: 18px; }
+.budget-stages li::before { content: ""; position: absolute; left: 0; top: 0.7em; width: 8px; height: 1px; background: var(--copper); }
+.budget-meta { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; font-size: var(--fs-sm); }
+.budget-meta dt { color: var(--mute); }
+.budget-meta dd { margin: 0; color: var(--bone-dim); }
+.budget-calc { margin: auto 0 0; padding-top: 12px; border-top: 1px solid var(--rule); color: var(--mute); font-size: var(--fs-xs); }
 
 /* ---------- Адаптив калькулятора ---------- */
 /* ---------- Полоса с итогом ----------
