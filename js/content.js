@@ -61,9 +61,8 @@ window.SITE_CONTENT = {
       "ctaSecondary": "Портфолио",
       "photoCaption": "Галерея",
       "frameLabel": "Кадр",
-      "photoSrc": "assets/media/photos/work-score.jpg",
+      "photoSrc": "assets/media/home/img_48.jpg",
       "photos": [
-        "assets/media/photos/work-score.jpg",
         "assets/media/home/img_48.jpg",
         "assets/media/photos/work-pencil.jpg",
         "assets/media/na-glavnuyu.jpg",
@@ -143,11 +142,10 @@ window.SITE_CONTENT = {
         "Сведение",
         "Нотный набор"
       ],
-      "portrait": "assets/media/photos/portrait-smile.jpg",
+      "portrait": "assets/media/about/photo_2026-08-10-23.33.43.jpg",
       "readMore": "Подробнее",
       "bgPhoto": "assets/media/home/about-2.jpg",
       "gallery": [
-        "assets/media/about/photo_2026-08-10-23.33.43.jpg",
         "assets/media/img_4829-2.jpg",
         "assets/media/photos/work-pencil.jpg",
         "assets/media/img_4830-2.jpg"
@@ -1972,7 +1970,7 @@ window.SITE_CONTENT = {
       "directHeading": "Написать напрямую",
       "directNote": "Ответ — обычно в течение дня.",
       "directFoot": "Майденко Лев Львович, самозанятый, ИНН 632148507539. Работа по договору.",
-      "figure": "assets/media/photos/figure.webp"
+      "figure": ""
     },
     "footer": {
       "tagline": "Аранжировка · Оркестровка · Саунд-продакшн · Logic Pro  · Sibelius",
@@ -2121,9 +2119,8 @@ window.SITE_CONTENT = {
       "ctaSecondary": "Portfolio",
       "photoCaption": "At the desk",
       "frameLabel": "Frame",
-      "photoSrc": "assets/media/photos/work-score.jpg",
+      "photoSrc": "assets/media/home/img_48.jpg",
       "photos": [
-        "assets/media/photos/work-score.jpg",
         "assets/media/home/img_48.jpg",
         "assets/media/photos/work-pencil.jpg",
         "assets/media/na-glavnuyu.jpg",
@@ -2203,11 +2200,10 @@ window.SITE_CONTENT = {
         "Mixing",
         "Music engraving"
       ],
-      "portrait": "assets/media/photos/portrait-smile.jpg",
+      "portrait": "assets/media/about/photo_2026-08-10-23.33.43.jpg",
       "readMore": "More",
       "bgPhoto": "assets/media/home/about-2.jpg",
       "gallery": [
-        "assets/media/about/photo_2026-08-10-23.33.43.jpg",
         "assets/media/img_4829-2.jpg",
         "assets/media/photos/work-pencil.jpg",
         "assets/media/img_4830-2.jpg"
@@ -4032,7 +4028,7 @@ window.SITE_CONTENT = {
       "directHeading": "Message me directly",
       "directNote": "Replies usually within a day.",
       "directFoot": "Lev Maidenko, self-employed (NPD taxpayer), TIN 632148507539. Work under contract.",
-      "figure": "assets/media/photos/figure.webp"
+      "figure": ""
     },
     "footer": {
       "tagline": "Arranging · Orchestration · Sound Production · Logic Pro  · Sibelius",
