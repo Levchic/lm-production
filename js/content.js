@@ -102,20 +102,33 @@ window.SITE_CONTENT = {
     },
     "about": {
       "eyebrow": "Обо мне",
-      "heading": "Биография",
+      "heading": "Опыт и подход",
       "paragraphs": [
-        "Я аранжировщик и оркестровщик из Санкт-Петербурга. Делаю оркестровые шоу, аранжировки для оркестров и артистов, плейбэки и саунд-дизайн.",
-        "Начинал как баянист: музыкальная школа в Тольятти, училище имени Римского-Корсакова, международные конкурсы. Несколько лет был штатным аранжировщиком Imperial Orchestra и продолжаю с ними работать, а также с другими оркестрами, театрами и артистами."
+        "Аранжировщик и оркестровщик из Санкт-Петербурга. Делаю оркестровые шоу и концертные программы, аранжировки для оркестров, театров и артистов, клик-треки, плейбэки и саунд-дизайн.",
+        "В 2022–2024 годах работал в Imperial Orchestra — сначала ассистентом главного композитора, затем штатным аранжировщиком. С 2025 года работаю самостоятельно: по договору, со сроками и объёмом работ, зафиксированными до начала."
       ],
       "long": [
-        "Музыкой я занимаюсь с шести лет. В Лицее искусств в Тольятти я услышал ансамбль народных инструментов, где виртуозно играл баянист-старшеклассник, — и выбрал баян.",
-        "Восемь лет учёбы и конкурсы, с которых я привозил призовые места. В девятом классе специальности по программе уже не было, но педагог занималась со мной отдельно, чтобы я поступал в музыкальное училище. Школьные учителя говорили, что музыкой семью не прокормишь, и советовали идти в десятый класс — я даже сменил экзамены на физику и химию. Но на конкурсе в Петербурге нас заметил преподаватель училища имени Римского-Корсакова и пригласил поступать, и в 2016 году я переехал из Тольятти в Петербург.",
-        "За четыре года учёбы я побывал во Франции, Германии, Литве и Сербии — с народным оркестром и на конкурсах. В Сербии получил гран-при международного конкурса баянистов, в 2018 году выступал в Каунасе на Кубке мира — одном из самых престижных конкурсов для баянистов. Тогда же освоил Sibelius: писал аранжировки для народных ансамблей и оркестра, снимал музыку на слух и набирал ноты на заказ.",
-        "В 2020 году поступил в консерваторию по классу баяна и ушёл на срочную службу — в эстрадно-симфонический оркестр. Играл в нём на баяне и параллельно делал для дирижёра аранжировки и партитуры. После армии около года работал в консерватории работником сцены: расставлял пульты и стулья, развозил инструменты по площадкам города. Тогда я узнал составы и рассадку оркестра не по учебникам.",
-        "Однажды я подрабатывал на монтаже сцены перед концертом Imperial Orchestra. Масштаб шоу поразил, и я спросил, не нужен ли им помощник с нотами. Главный композитор как раз искал ассистента — сейчас мы коллеги. Через пару лет я уже делал программы самостоятельно как штатный аранжировщик. Оркестр собирает многотысячные залы, его записи на YouTube набирают миллионы просмотров, и часть этих аранжировок — моя.",
-        "Потом я ушёл во фриланс: продолжаю работать с Imperial Orchestra, а также с другими оркестрами и ансамблями, театрами, композиторами и артистами. В 2025 году был музыкальным продюсером в арт-школе «Таврида.Арт» и делал аранжировки песен её участников.",
-        "Самая сложная программа за всё время — шоу по фильмам Тима Бёртона. Музыка Дэнни Эльфмана к «Сонной лощине» по языку ближе к авангарду XX века: тональность и форма размыты, стили сменяют друг друга, и снимать её на слух было настоящим испытанием. Партитуры были готовы в срок, концерт прозвучал так, как должен был.",
-        "Сейчас я продолжаю работать с оркестрами и артистами, учусь писать свою музыку и развиваюсь в звукорежиссуре и саунд-дизайне. Без него современную оркестровую музыку уже не представить: у Людвига Йоранссона, например, на саунд-дизайне держится всё звучание."
+        "## Чем занимаюсь",
+        "Аранжировка и оркестровка для оркестровых шоу, концертных программ, театра и артистов. Беру на себя весь цикл: снятие на слух, аранжировка, партитура и партии, клик и плейбэк, саунд-дизайн, запись и сведение. Можно заказать всё вместе или отдельный этап.",
+        "## Опыт",
+        "**2022–2024 — Imperial Orchestra.** Ассистент главного композитора, затем штатный аранжировщик. Оркестр собирает многотысячные залы, его записи на YouTube набирают миллионы просмотров. Сотрудничество продолжается.",
+        "**С 2025 года — самостоятельная работа** с оркестрами, театрами, композиторами и артистами. В 2025 году — музыкальный продюсер арт-школы «Таврида.Арт».",
+        "## Избранные проекты",
+        "**Шоу по музыке к фильмам Тима Бёртона** — 90 минут. Партитуры по музыке Дэнни Эльфмана сняты на слух.",
+        "**Шоу по музыке к фильмам о «Гарри Поттере»** — 100 минут, премьера в декабре 2024 года.",
+        "**«Гарри Поттер» в планетарии** — 24 композиции, 50 минут, 2025 год.",
+        "**Рок-опера «Полнолуние»** — концертные партитуры на 147 минут: 37 проектов Logic, 4 месяца работы.",
+        "**Мюзикл «Волшебник Изумрудного города»** — 29 номеров: сокращение составов и частичная переоркестровка.",
+        "**Концерт для скрипки А. Караманова** — нотный набор партитуры с рукописи, 175 страниц.",
+        "## Условия работы",
+        "**Договор.** Работаю как самозанятый: договор, предоплата 50%, чек на каждую оплату.",
+        "**Сроки.** Срок фиксируется в договоре. Сорванных сроков не было.",
+        "**Правки.** Правки в разумном объёме входят в стоимость. Если после согласования меняется сама задача и доработка выходит большой, её объём и стоимость согласуем отдельно.",
+        "**Поддержка после сдачи.** На связи до концерта и после него. Ошибки в нотах, найденные на репетиции, исправляю без доплаты.",
+        "**Пожелания заказчика.** Референсы и требования разбираем до начала работы. Если замысел расходится с возможностями состава или сроками, предлагаю варианты решения.",
+        "**Партии для исполнителей.** Играю в оркестре сам: баянист, проходил службу в эстрадно-симфоническом оркестре. Партии готовлю с учётом исполнителей: удобные перевороты, подсказки в длинных паузах, реальные возможности инструментов.",
+        "## Образование",
+        "Санкт-Петербургское музыкальное училище имени Н. А. Римского-Корсакова, класс баяна. Сейчас учусь в консерватории. Гран-при международного конкурса баянистов в Сербии, участник Кубка мира по баяну (Каунас, 2018)."
       ],
       "tags": [
         "Оркестровка",
@@ -2058,20 +2071,33 @@ window.SITE_CONTENT = {
     },
     "about": {
       "eyebrow": "About",
-      "heading": "Biography",
+      "heading": "Experience and approach",
       "paragraphs": [
-        "I'm an arranger and orchestrator based in St Petersburg. I work on orchestral shows, arrangements for orchestras and artists, playbacks and sound design.",
-        "I started out as a bayan player: music school in Tolyatti, the Rimsky-Korsakov College of Music, international competitions. For several years I was a staff arranger at Imperial Orchestra and still work with them, as well as with other orchestras, theatres and artists."
+        "Arranger and orchestrator based in St Petersburg. I produce orchestral shows and concert programmes, arrangements for orchestras, theatres and artists, click tracks, playbacks and sound design.",
+        "From 2022 to 2024 I worked at Imperial Orchestra — first as assistant to the chief composer, then as staff arranger. Since 2025 I have worked independently, under contract, with deadlines and scope agreed before work begins."
       ],
       "long": [
-        "I've been playing music since I was six. At the Lyceum of Arts in Tolyatti I heard a folk ensemble with a senior student playing the bayan with real virtuosity — and chose the bayan.",
-        "Eight years of lessons and competitions, most of which I came back from with a prize. By ninth grade the specialist subject was no longer in the curriculum, but my teacher kept working with me privately so I could apply to music college. School teachers told me music wouldn't feed a family and advised staying on for tenth grade — I even switched my exams to physics and chemistry. But at a competition in St Petersburg a teacher from the Rimsky-Korsakov College noticed us and invited us to apply, and in 2016 I moved from Tolyatti to St Petersburg.",
-        "Over four years of study I travelled to France, Germany, Lithuania and Serbia, with a folk orchestra and to competitions. In Serbia I won the grand prix of an international bayan competition, and in 2018 I played at the World Cup in Kaunas, one of the most prestigious competitions for the instrument. That's also when I learned Sibelius: arranging for folk ensembles and orchestra, transcribing by ear and engraving to order.",
-        "In 2020 I entered the Conservatory in the bayan class and was called up for military service — into a variety and symphony orchestra. I played bayan there and arranged and copied scores for the conductor on the side. Back in civilian life, I spent about a year on the Conservatory's stage crew: setting up stands and chairs, moving instruments between venues across the city. That's where I learned orchestral line-ups and seating from practice rather than textbooks.",
-        "One day I was working a stage-setup shift before an Imperial Orchestra concert. The scale of the show was stunning, and I asked whether they needed help with sheet music. The chief composer happened to be looking for an assistant — today we're colleagues. A couple of years later I was producing programmes on my own as a staff arranger. The orchestra plays to audiences of thousands, its videos on YouTube get millions of views, and some of those arrangements are mine.",
-        "Then I went freelance: I still work with Imperial Orchestra, as well as with other orchestras and ensembles, theatres, composers and artists. In 2025 I was a music producer at the Tavrida.Art art school, arranging songs for its participants.",
-        "The hardest programme I've done is the Tim Burton show. Danny Elfman's score for Sleepy Hollow is closer to 20th-century avant-garde: tonality and form are blurred, styles shift constantly, and transcribing it by ear was a real test. The scores were ready on time, and the concert sounded the way it should.",
-        "Today I keep working with orchestras and artists, I'm learning to write my own music, and I'm growing as a sound engineer and sound designer. Modern orchestral music is hard to imagine without sound design: in Ludwig Göransson's scores, for instance, it carries the whole sound."
+        "## What I do",
+        "Arranging and orchestration for orchestral shows, concert programmes, theatre and artists. I cover the full cycle: transcription, arrangement, score and parts, click and playback, sound design, recording and mixing. You can order everything together or a single stage.",
+        "## Experience",
+        "**2022–2024 — Imperial Orchestra.** Assistant to the chief composer, then staff arranger. The orchestra fills arenas, and its YouTube recordings have millions of views. We still work together.",
+        "**Since 2025 — independent work** with orchestras, theatres, composers and artists. In 2025, music producer at the Tavrida.Art arts school.",
+        "## Selected projects",
+        "**Tim Burton film music show** — 90 minutes. Scores of Danny Elfman's music transcribed by ear.",
+        "**Harry Potter film music show** — 100 minutes, premiered in December 2024.",
+        "**Harry Potter at the planetarium** — 24 pieces, 50 minutes, 2025.",
+        "**Rock opera «Full Moon»** — concert scores totalling 147 minutes: 37 Logic projects, 4 months of work.",
+        "**Musical «The Wizard of the Emerald City»** — 29 numbers: reduced scorings and partial re-orchestration.",
+        "**A. Karamanov, Violin Concerto** — score engraved from manuscript, 175 pages.",
+        "## Terms",
+        "**Contract.** I work as a registered self-employed professional: written contract, 50% advance, a receipt for every payment.",
+        "**Deadlines.** The deadline is set in the contract. I have never missed one.",
+        "**Revisions.** A reasonable amount of revisions is included. If the brief itself changes after approval and the rework is substantial, its scope and cost are agreed separately.",
+        "**Support after delivery.** I stay in touch up to the concert and after it. Errors in the parts found at rehearsal are corrected free of charge.",
+        "**Client requirements.** References and requirements are discussed before work begins. If an idea doesn't fit the ensemble or the schedule, I propose alternatives.",
+        "**Parts for players.** I am an orchestral player myself: a bayan player who served in a variety-symphony orchestra. Parts are prepared with the players in mind: practical page turns, cues in long rests, real instrument ranges.",
+        "## Education",
+        "Rimsky-Korsakov College of Music, St Petersburg, bayan class. Currently studying at the conservatory. Grand Prix at an international bayan competition in Serbia; competitor at the Bayan World Cup (Kaunas, 2018)."
       ],
       "tags": [
         "Orchestration",

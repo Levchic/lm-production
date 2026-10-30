@@ -13,7 +13,9 @@
 
     var long = $("#longParagraphs"); long.innerHTML = "";
     d.about.long.forEach(function (p, i) {
-      var node = el("p", "reveal", esc(p));
+      // «## Заголовок» — подзаголовок, **текст** — выделение
+      var head = /^##\s/.test(p);
+      var node = el(head ? "h3" : "p", head ? "reveal about-subhead" : "reveal", head ? esc(p.slice(3)) : C.emphasize(p));
       node.setAttribute("data-reveal", "");
       node.style.setProperty("--reveal-delay", Math.min(i, 8) * 60 + "ms");
       long.appendChild(node);

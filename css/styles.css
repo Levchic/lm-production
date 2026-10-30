@@ -1972,6 +1972,9 @@ a.testimonial-name:hover { color: var(--copper); }
 }
 .about-long { max-width: 68ch; }
 .about-long p { color: var(--bone-dim); font-size: var(--fs-md); line-height: 1.75; margin-bottom: 20px; }
+.about-long p strong { font-weight: 600; color: var(--bone); }
+.about-long .about-subhead { font-family: var(--font-display); font-size: var(--fs-lg, 1.25rem); font-weight: 600; color: var(--copper-bright); margin: clamp(32px, 4vw, 48px) 0 16px; }
+.about-long .about-subhead:first-child { margin-top: 0; }
 .about-tags { display: flex; flex-wrap: wrap; gap: 10px; align-content: flex-start; }
 .about-tags span { border: 1px solid var(--rule); border-radius: 2px; padding: 7px 14px; font-size: var(--fs-xs); color: var(--mute); transition: border-color var(--dur-hover) var(--ease), color var(--dur-hover) var(--ease); }
 .about-tags span:hover { border-color: var(--copper); color: var(--copper); }
