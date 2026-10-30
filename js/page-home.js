@@ -483,6 +483,10 @@
     $("#contactEyebrow").textContent = c.eyebrow;
     $("#contactHeading").textContent = c.heading;
     $("#contactSub").textContent = c.subheading;
+    var figure = $("#contactFigure");
+    figure.hidden = !c.figure;
+    if (c.figure) figure.src = c.figure;
+    $("#contact").classList.toggle("has-figure", !!c.figure);
     $("#contactDirectHeading").textContent = c.directHeading || "";
     $("#contactDirectNote").textContent = c.directNote || "";
     $("#contactDirectFoot").textContent = c.directFoot || "";
