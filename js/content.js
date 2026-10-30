@@ -64,10 +64,9 @@ window.SITE_CONTENT = {
       "photoSrc": "assets/media/home/img_48.jpg",
       "photos": [
         "assets/media/home/img_48.jpg",
-        "assets/media/portfolio/burton-show/05.jpg",
         "assets/media/na-glavnuyu.jpg",
-        "assets/media/6.jpg",
-        "assets/media/snimok-ekrana-2026-08-11-v-15.43.32-2.jpg"
+        "assets/media/snimok-ekrana-2026-08-11-v-15.43.32-2.jpg",
+        "assets/media/home/photo_2026-08-11-16.47.31.jpg"
       ],
       "ticker": [
         "Аранжировка",
@@ -2021,10 +2020,9 @@ window.SITE_CONTENT = {
       "photoSrc": "assets/media/home/img_48.jpg",
       "photos": [
         "assets/media/home/img_48.jpg",
-        "assets/media/portfolio/burton-show/05.jpg",
         "assets/media/na-glavnuyu.jpg",
-        "assets/media/6.jpg",
-        "assets/media/snimok-ekrana-2026-08-11-v-15.43.32-2.jpg"
+        "assets/media/snimok-ekrana-2026-08-11-v-15.43.32-2.jpg",
+        "assets/media/home/photo_2026-08-11-16.47.31.jpg"
       ],
       "ticker": [
         "Arranging",
