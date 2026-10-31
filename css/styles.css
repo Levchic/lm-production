@@ -2758,3 +2758,7 @@ a.testimonial-name:hover { color: var(--copper); }
 
 /* Подзаголовок раздела можно оставить пустым в контенте — тогда он не занимает место */
 .section-sub:empty, .page-header .desc:empty { display: none; }
+
+/* Фон-видео первого экрана (галочка в админке): без наезда — движение
+   уже в самом ролике. */
+.hero-video.hero-slide, .hero-video.hero-slide.is-current { transform: none; object-position: center; }

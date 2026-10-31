@@ -41,6 +41,7 @@
     heroSlideTimer = 0;
     heroSlideIndex = 0;
     media.innerHTML = "";
+    if (d.hero.videoEnabled) return renderHeroVideo(media);
     if (!list.length) return;
 
     list.forEach(function (src, i) {
@@ -61,6 +62,25 @@
     renderHeroFrames(list.length);
     if (list.length < 2 || heroReduceMotion) return;
     startHeroRotation();
+  }
+
+  /** Фон-видео: нарезка без звука по кругу. Постер виден сразу, пока
+      грузится ролик; при «уменьшении движения» остаётся только он. */
+  function renderHeroVideo(media) {
+    var dir = "assets/media/home/";
+    var narrow = window.matchMedia("(max-width: 760px)").matches;
+    var v = el("video", "hero-slide hero-video is-current");
+    v.id = "heroPhotoImg";
+    v.poster = dir + "hero-loop-poster.jpg";
+    v.muted = true; v.loop = true; v.playsInline = true;
+    v.setAttribute("muted", ""); v.setAttribute("playsinline", "");
+    v.preload = heroReduceMotion ? "none" : "auto";
+    v.autoplay = !heroReduceMotion;
+    v.src = dir + (narrow ? "hero-loop-mobile.mp4" : "hero-loop.mp4");
+    media.appendChild(v);
+    $("#heroPhotoCaption").textContent = "";   /* «Галерея» к ролику не относится */
+    setupHeroParallax();
+    renderHeroFrames(0);
   }
 
   /** Показать кадр n. Отсчёт до следующей смены начинается заново —
