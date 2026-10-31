@@ -64,6 +64,7 @@ window.SITE_CONTENT = {
       "frameLabel": "Кадр",
       "photoSrc": "assets/media/home/img_48.jpg",
       "photos": [
+        "assets/media/home/lev-studio-wide.jpg",
         "assets/media/home/img_48.jpg",
         "assets/media/photos/work-pencil.jpg",
         "assets/media/na-glavnuyu.jpg",
@@ -145,13 +146,14 @@ window.SITE_CONTENT = {
         "Сведение",
         "Нотный набор"
       ],
-      "portrait": "assets/media/about/photo_2026-08-10-23.33.43.jpg",
+      "portrait": "assets/media/about/lev-jacket.webp",
       "readMore": "Подробнее",
       "bgPhoto": "assets/media/home/about-2.jpg",
       "gallery": [
-        "assets/media/img_4829-2.jpg",
-        "assets/media/photos/work-pencil.jpg",
-        "assets/media/img_4830-2.jpg"
+        "assets/media/about/photo_2026-08-10-23.33.43.jpg",
+        "assets/media/about/lev-bayan.jpg",
+        "assets/media/about/lev-orchestra.jpg",
+        "assets/media/about/lev-score.jpg"
       ],
       "stats": [
         {
@@ -2457,6 +2459,7 @@ window.SITE_CONTENT = {
       "frameLabel": "Frame",
       "photoSrc": "assets/media/home/img_48.jpg",
       "photos": [
+        "assets/media/home/lev-studio-wide.jpg",
         "assets/media/home/img_48.jpg",
         "assets/media/photos/work-pencil.jpg",
         "assets/media/na-glavnuyu.jpg",
@@ -2538,13 +2541,14 @@ window.SITE_CONTENT = {
         "Mixing",
         "Music engraving"
       ],
-      "portrait": "assets/media/about/photo_2026-08-10-23.33.43.jpg",
+      "portrait": "assets/media/about/lev-jacket.webp",
       "readMore": "More",
       "bgPhoto": "assets/media/home/about-2.jpg",
       "gallery": [
-        "assets/media/img_4829-2.jpg",
-        "assets/media/photos/work-pencil.jpg",
-        "assets/media/img_4830-2.jpg"
+        "assets/media/about/photo_2026-08-10-23.33.43.jpg",
+        "assets/media/about/lev-bayan.jpg",
+        "assets/media/about/lev-orchestra.jpg",
+        "assets/media/about/lev-score.jpg"
       ],
       "stats": [
         {

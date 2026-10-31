@@ -1993,10 +1993,19 @@ a.testimonial-name:hover { color: var(--copper); }
 
 /* Обо мне */
 .about-hero-grid { display: grid; grid-template-columns: 1.25fr 0.75fr; gap: clamp(28px, 4vw, 52px); align-items: center; }
-.about-hero-portrait {
-  aspect-ratio: 4 / 5; overflow: hidden;
-  border: 1px solid var(--rule);
-  background-size: cover; background-position: center 25%;
+/* Портрет — вырезанная фигура без рамки. Контровой свет снимка продолжается
+   тёплым пятном за спиной (оно гаснет до краёв кадра, поэтому нигде не
+   упирается в границу), низ фигуры растворяется в разделе. Фигура чуть
+   меньше кадра — ореолу по силуэту есть куда разойтись. */
+.about-hero-portrait, .about-portrait {
+  aspect-ratio: 4 / 5;
+  background-image: var(--photo, none), radial-gradient(ellipse closest-side at 50% 55%, rgba(194, 98, 43, 0.26), rgba(194, 98, 43, 0.08) 60%, transparent);
+  background-size: auto 94%, 100% 100%;
+  background-position: center bottom, center;
+  background-repeat: no-repeat;
+  filter: drop-shadow(0 0 16px rgba(209, 111, 52, 0.28));
+  -webkit-mask-image: linear-gradient(180deg, #000 70%, transparent 100%);
+  mask-image: linear-gradient(180deg, #000 70%, transparent 100%);
 }
 .about-long { max-width: 68ch; }
 /* Полный текст и рядом одна рамка с фото: она едет вместе с чтением
@@ -2035,11 +2044,6 @@ a.testimonial-name:hover { color: var(--copper); }
 .about-stats .stat-card { padding: 14px 18px; }
 .case-stats.about-stats:empty { display: none; }
 .about-more { margin-top: 24px; }
-.about-portrait {
-  aspect-ratio: 4 / 5; overflow: hidden;
-  border: 1px solid var(--rule);
-  background-size: cover; background-position: center 25%;
-}
 
 /* Страница проекта */
 .case-header { padding: calc(var(--header-h) + clamp(48px, 7vw, 84px)) 0 clamp(36px, 5vw, 52px); position: relative; overflow: hidden; }
@@ -2292,8 +2296,8 @@ a.testimonial-name:hover { color: var(--copper); }
   .service-group { grid-template-columns: 1fr; gap: 20px; }
   .service-group-head { position: static; }
   .service-group-head p { max-width: 60ch; }
-  .about-hero-portrait { width: 100%; max-width: 300px; }
-  .about-portrait { max-width: 340px; }
+  .about-hero-portrait { width: 100%; max-width: 300px; justify-self: center; }
+  .about-portrait { width: 100%; max-width: 340px; justify-self: center; }
   /* Узкий экран: заголовок, под ним ролик, под роликом — пересказ.
      Текст по левому краю, как везде на сайте. */
   .intro-video-inner { grid-template-columns: 1fr; grid-template-areas: "head" "player" "digest"; grid-template-rows: auto; }

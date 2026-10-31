@@ -35,7 +35,7 @@
 
     var heroPortrait = $("#aboutHeroPortrait");
     if (d.about.portrait) {
-      heroPortrait.style.backgroundImage = "url(" + d.about.portrait + ")";
+      heroPortrait.style.setProperty("--photo", "url(" + new URL(d.about.portrait, location.href).href + ")");  /* url() в переменной считается от css/, поэтому адрес полный */
       heroPortrait.style.display = "";
     } else {
       heroPortrait.style.display = "none";

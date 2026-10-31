@@ -200,7 +200,7 @@
 
     var portrait = $("#aboutPortrait");
     if (d.about.portrait) {
-      portrait.style.backgroundImage = "url(" + d.about.portrait + ")";
+      portrait.style.setProperty("--photo", "url(" + new URL(d.about.portrait, location.href).href + ")");  /* url() в переменной считается от css/, поэтому адрес полный */
       portrait.style.display = "";
     } else {
       portrait.style.display = "none";
