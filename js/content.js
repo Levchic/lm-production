@@ -113,13 +113,14 @@ window.SITE_CONTENT = {
         "## Чем занимаюсь",
         "Аранжировка и оркестровка для оркестровых шоу, концертных программ, театра и артистов. Беру на себя весь цикл: снятие на слух, аранжировка, партитура и партии, клик и плейбэк, саунд-дизайн, запись и сведение. Можно заказать всё вместе или отдельный этап.",
         "## Путь",
+        "**С 6 лет** — занимаюсь музыкой.",
         "**2016** — окончил лицей искусств.",
         "**2020** — окончил Санкт-Петербургское музыкальное училище имени Н. А. Римского-Корсакова, класс баяна. За время учёбы — Гран-при международного конкурса баянистов в Сербии и участие в Кубке мира по баяну (Каунас, 2018).",
         "**2021** — служба в армейском ансамбле. Поступил в Петербургскую консерваторию, год работал там помощником сцены.",
         "**2022–2024** — штатный аранжировщик Imperial Orchestra, параллельно — скор-ридер на концертах оркестра: ассистент режиссёра видеотрансляции, который ведёт её по партитуре. Оркестр собирает многотысячные залы, его записи на YouTube набирают миллионы просмотров. Сотрудничество продолжается.",
         "**С 2025 года** — самостоятельная работа с оркестрами, театрами, композиторами и артистами. В 2025 году — музыкальный продюсер арт-школы «Таврида.Арт».",
         "## В цифрах",
-        "**25+ проектов** с 2020 года: оркестровые шоу, концертные программы, саундтреки, мюзиклы.",
+        "**25+ работ** с 2020 года: оркестровые шоу, концертные программы, саундтреки, мюзиклы.",
         "**500+ минут музыки** — партитуры, партии, клик и плейбэк.",
         "**300+ минут музыки снято на слух** — оркестровый материал, существующий только в записи.",
         "**7 программ и спектаклей целиком** — концертные шоу, мюзикл и детский спектакль: от структуры номеров до сопровождения премьеры.",
@@ -155,12 +156,12 @@ window.SITE_CONTENT = {
       "stats": [
         {
           "value": "6 лет",
-          "label": "в профессии",
+          "label": "в музыкальных проектах",
           "icon": "calendar"
         },
         {
           "value": "25+",
-          "label": "проектов",
+          "label": "работ",
           "icon": "steps"
         },
         {
@@ -2505,13 +2506,14 @@ window.SITE_CONTENT = {
         "## What I do",
         "Arranging and orchestration for orchestral shows, concert programmes, theatre and artists. I cover the full cycle: transcription, arrangement, score and parts, click and playback, sound design, recording and mixing. You can order everything together or a single stage.",
         "## Path",
+        "**From age 6** — studying music.",
         "**2016** — graduated from an arts lyceum.",
         "**2020** — graduated from the Rimsky-Korsakov College of Music, St Petersburg, bayan class. During my studies: Grand Prix at an international bayan competition in Serbia and the Bayan World Cup (Kaunas, 2018).",
         "**2021** — military service in an army ensemble. Entered the St Petersburg Conservatory and spent a year there as a stage assistant.",
         "**2022–2024** — staff arranger at Imperial Orchestra, and in parallel a score reader at the orchestra's concerts: assistant to the broadcast director, following the score to cue the cameras. The orchestra fills arenas, and its YouTube recordings have millions of views. We still work together.",
         "**Since 2025** — independent work with orchestras, theatres, composers and artists. In 2025, music producer at the Tavrida.Art arts school.",
         "## In numbers",
-        "**25+ projects** since 2020: orchestral shows, concert programmes, soundtracks, musicals.",
+        "**25+ commissions** since 2020: orchestral shows, concert programmes, soundtracks, musicals.",
         "**500+ minutes of music** — scores, parts, click and playback.",
         "**300+ minutes of music transcribed by ear** — orchestral material that exists only as a recording.",
         "**7 complete programmes and stage shows** — concert shows, a musical and a children's play: from the running order to premiere support.",
@@ -2547,12 +2549,12 @@ window.SITE_CONTENT = {
       "stats": [
         {
           "value": "6 years",
-          "label": "in the profession",
+          "label": "in music projects",
           "icon": "calendar"
         },
         {
           "value": "25+",
-          "label": "projects",
+          "label": "commissions",
           "icon": "steps"
         },
         {
