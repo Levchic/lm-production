@@ -2383,7 +2383,7 @@ window.SITE_CONTENT = {
         }
       ],
       "ctaText": "Нужна партитура под ключ? Аранжировка и оркестровка под конкретный состав, нотный набор, сведение.",
-      "ctaPrimary": "Рассчитать стоимость",
+      "ctaPrimary": "Обсудить проект",
       "ctaSecondary": "Услуги и цены"
     }
   },
@@ -4757,7 +4757,7 @@ window.SITE_CONTENT = {
         }
       ],
       "ctaText": "Need a finished score? Arranging and orchestration for a specific ensemble, engraving, mixing.",
-      "ctaPrimary": "Estimate the cost",
+      "ctaPrimary": "Discuss a project",
       "ctaSecondary": "Services and rates"
     }
   }
