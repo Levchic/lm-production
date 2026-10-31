@@ -2031,6 +2031,9 @@ a.testimonial-name:hover { color: var(--copper); }
 .about-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 340px); gap: clamp(32px, 5vw, 56px); align-items: start; }
 .about-text p { color: var(--bone-dim); font-size: var(--fs-md); line-height: 1.75; margin-bottom: 18px; }
 .about-text + .about-tags { margin-top: 26px; }
+.case-stats.about-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); margin: 8px 0 28px; }
+.about-stats .stat-card { padding: 14px 18px; }
+.case-stats.about-stats:empty { display: none; }
 .about-more { margin-top: 24px; }
 .about-portrait {
   aspect-ratio: 4 / 5; overflow: hidden;
@@ -2639,6 +2642,9 @@ a.testimonial-name:hover { color: var(--copper); }
   .about-text p { font-size: var(--fs-base); line-height: 1.55; margin-bottom: 12px; }
   .about-text p:nth-child(n+3) { display: none; }
   .about-tags { gap: 6px; }
+  .case-stats.about-stats { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+  .about-stats .stat-card { flex-direction: column; align-items: flex-start; gap: 8px; padding: 12px; }
+  .about-stats .stat-card .n { font-size: 1.3rem; }
   .about-tags span { padding: 5px 10px; font-size: var(--fs-2xs); }
   .about-portrait { aspect-ratio: 4 / 3; max-width: none; }
   .about-long p, .page-header .desc { font-size: var(--fs-base); line-height: 1.6; }

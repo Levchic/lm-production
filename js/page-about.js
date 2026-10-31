@@ -10,6 +10,7 @@
 
     var intro = $("#intro"); intro.innerHTML = "";
     d.about.paragraphs.forEach(function (p) { intro.appendChild(el("p", null, esc(p))); });
+    $("#aboutStats").innerHTML = C.statCardsHTML(d.about.stats);
 
     var long = $("#longParagraphs"); long.innerHTML = "";
     d.about.long.forEach(function (p, i) {

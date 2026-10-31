@@ -499,6 +499,14 @@ window.SiteCommon = (function () {
     return icons[key] || '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/></svg>';
   }
 
+  /** Плашки с цифрами: «значение + подпись» с иконкой (проекты, «Обо мне»). */
+  function statCardsHTML(stats) {
+    return (stats || []).map(function (s) {
+      return '<div class="stat-card"><span class="icon">' + statIconSVG(s.icon) + "</span>" +
+        '<div><div class="n">' + esc(s.value) + '</div><div class="l">' + esc(s.label) + "</div></div></div>";
+    }).join("");
+  }
+
   /** Иконка соцсети по названию из админки — узнаём по ключевому слову. */
   /**
    * Стрелка в ссылках-переходах. Раньше здесь стоял символ «→» из шрифта:
@@ -958,7 +966,7 @@ window.SiteCommon = (function () {
     state: state, t: t, $: $, $all: $all, el: el, esc: esc, emphasize: emphasize, getPath: getPath,
     bindTexts: bindTexts, renderChrome: renderChrome, initReveal: initReveal, afterRender: afterRender,
     visibleProjects: visibleProjects,
-    waveformHTML: waveformHTML, iconSVG: iconSVG, statIconSVG: statIconSVG,
+    waveformHTML: waveformHTML, iconSVG: iconSVG, statIconSVG: statIconSVG, statCardsHTML: statCardsHTML,
     projectThumb: projectThumb, projectCardHTML: projectCardHTML,
     servicesByGroup: servicesByGroup, priceRow: priceRow, directionCard: directionCard,
     faqRow: faqRow,

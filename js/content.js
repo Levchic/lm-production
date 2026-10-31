@@ -107,31 +107,32 @@ window.SITE_CONTENT = {
       "eyebrow": "Обо мне",
       "heading": "Опыт и подход",
       "paragraphs": [
-        "Аранжировщик и оркестровщик из Санкт-Петербурга. Делаю оркестровые шоу и концертные программы, аранжировки для оркестров, театров и артистов, клик-треки, плейбэки и саунд-дизайн.",
-        "В 2022–2024 годах работал в Imperial Orchestra — сначала ассистентом главного композитора, затем штатным аранжировщиком. С 2025 года работаю самостоятельно: по договору, со сроками и объёмом работ, зафиксированными до начала."
+        "Аранжировщик и оркестровщик из Санкт-Петербурга. Делаю оркестровые шоу и концертные программы, аранжировки для оркестров, театров и артистов, клик-треки, плейбэки и саунд-дизайн."
       ],
       "long": [
         "## Чем занимаюсь",
         "Аранжировка и оркестровка для оркестровых шоу, концертных программ, театра и артистов. Беру на себя весь цикл: снятие на слух, аранжировка, партитура и партии, клик и плейбэк, саунд-дизайн, запись и сведение. Можно заказать всё вместе или отдельный этап.",
-        "## Опыт",
-        "**2022–2024 — Imperial Orchestra.** Ассистент главного композитора, затем штатный аранжировщик. Оркестр собирает многотысячные залы, его записи на YouTube набирают миллионы просмотров. Сотрудничество продолжается.",
-        "**С 2025 года — самостоятельная работа** с оркестрами, театрами, композиторами и артистами. В 2025 году — музыкальный продюсер арт-школы «Таврида.Арт».",
-        "## Избранные проекты",
-        "**Шоу по музыке к фильмам Тима Бёртона** — 90 минут. Партитуры по музыке Дэнни Эльфмана сняты на слух.",
-        "**Шоу по музыке к фильмам о «Гарри Поттере»** — 100 минут, премьера в декабре 2024 года.",
-        "**«Гарри Поттер» в планетарии** — 24 композиции, 50 минут, 2025 год.",
-        "**Рок-опера «Полнолуние»** — концертные партитуры на 147 минут: 37 проектов Logic, 4 месяца работы.",
-        "**Мюзикл «Волшебник Изумрудного города»** — 29 номеров: сокращение составов и частичная переоркестровка.",
-        "**Концерт для скрипки А. Караманова** — нотный набор партитуры с рукописи, 175 страниц.",
+        "## Путь",
+        "**2016** — окончил лицей искусств.",
+        "**2020** — окончил Санкт-Петербургское музыкальное училище имени Н. А. Римского-Корсакова, класс баяна. За время учёбы — Гран-при международного конкурса баянистов в Сербии и участие в Кубке мира по баяну (Каунас, 2018).",
+        "**2021** — служба в армейском ансамбле. Поступил в Петербургскую консерваторию, год работал там помощником сцены.",
+        "**2022–2024** — штатный аранжировщик Imperial Orchestra, параллельно — скор-ридер на концертах оркестра: ассистент режиссёра видеотрансляции, который ведёт её по партитуре. Оркестр собирает многотысячные залы, его записи на YouTube набирают миллионы просмотров. Сотрудничество продолжается.",
+        "**С 2025 года** — самостоятельная работа с оркестрами, театрами, композиторами и артистами. В 2025 году — музыкальный продюсер арт-школы «Таврида.Арт».",
+        "## В цифрах",
+        "**25+ проектов** с 2020 года: оркестровые шоу, концертные программы, саундтреки, мюзиклы.",
+        "**500+ минут музыки** — партитуры, партии, клик и плейбэк.",
+        "**300+ минут музыки снято на слух** — оркестровый материал, существующий только в записи.",
+        "**7 программ и спектаклей целиком** — концертные шоу, мюзикл и детский спектакль: от структуры номеров до сопровождения премьеры.",
+        "**25 отдельных номеров** — от съёма на слух до готовых партий, из них 7 саундтреков в полном цикле продакшена: аранжировка, запись, сведение.",
+        "**40+ номеров** для мюзиклов и спектаклей.",
+        "**500+ страниц нотного набора**, большая часть — с рукописных партитур.",
         "## Условия работы",
         "**Договор.** Работаю как самозанятый: договор, предоплата 50%, чек на каждую оплату.",
         "**Сроки.** Срок фиксируется в договоре. Сорванных сроков не было.",
         "**Правки.** Правки в разумном объёме входят в стоимость. Если после согласования меняется сама задача и доработка выходит большой, её объём и стоимость согласуем отдельно.",
         "**Поддержка после сдачи.** На связи до концерта и после него. Ошибки в нотах, найденные на репетиции, исправляю без доплаты.",
         "**Пожелания заказчика.** Референсы и требования разбираем до начала работы. Если замысел расходится с возможностями состава или сроками, предлагаю варианты решения.",
-        "**Партии для исполнителей.** Играю в оркестре сам: баянист, проходил службу в эстрадно-симфоническом оркестре. Партии готовлю с учётом исполнителей: удобные перевороты, подсказки в длинных паузах, реальные возможности инструментов.",
-        "## Образование",
-        "Санкт-Петербургское музыкальное училище имени Н. А. Римского-Корсакова, класс баяна. Сейчас учусь в консерватории. Гран-при международного конкурса баянистов в Сербии, участник Кубка мира по баяну (Каунас, 2018)."
+        "**Партии для исполнителей.** Играю в оркестре сам: баянист, проходил службу в эстрадно-симфоническом оркестре. Партии готовлю с учётом исполнителей: удобные перевороты, подсказки в длинных паузах, реальные возможности инструментов."
       ],
       "tags": [
         "Оркестровка",
@@ -150,6 +151,23 @@ window.SITE_CONTENT = {
         "assets/media/img_4829-2.jpg",
         "assets/media/photos/work-pencil.jpg",
         "assets/media/img_4830-2.jpg"
+      ],
+      "stats": [
+        {
+          "value": "6 лет",
+          "label": "в профессии",
+          "icon": "calendar"
+        },
+        {
+          "value": "25+",
+          "label": "проектов",
+          "icon": "steps"
+        },
+        {
+          "value": "500+",
+          "label": "минут музыки",
+          "icon": "clock"
+        }
       ]
     },
     "forWhom": {
@@ -2481,31 +2499,32 @@ window.SITE_CONTENT = {
       "eyebrow": "About",
       "heading": "Experience and approach",
       "paragraphs": [
-        "Arranger and orchestrator based in St Petersburg. I produce orchestral shows and concert programmes, arrangements for orchestras, theatres and artists, click tracks, playbacks and sound design.",
-        "From 2022 to 2024 I worked at Imperial Orchestra — first as assistant to the chief composer, then as staff arranger. Since 2025 I have worked independently, under contract, with deadlines and scope agreed before work begins."
+        "Arranger and orchestrator based in St Petersburg. I produce orchestral shows and concert programmes, arrangements for orchestras, theatres and artists, click tracks, playbacks and sound design."
       ],
       "long": [
         "## What I do",
         "Arranging and orchestration for orchestral shows, concert programmes, theatre and artists. I cover the full cycle: transcription, arrangement, score and parts, click and playback, sound design, recording and mixing. You can order everything together or a single stage.",
-        "## Experience",
-        "**2022–2024 — Imperial Orchestra.** Assistant to the chief composer, then staff arranger. The orchestra fills arenas, and its YouTube recordings have millions of views. We still work together.",
-        "**Since 2025 — independent work** with orchestras, theatres, composers and artists. In 2025, music producer at the Tavrida.Art arts school.",
-        "## Selected projects",
-        "**Tim Burton film music show** — 90 minutes. Scores of Danny Elfman's music transcribed by ear.",
-        "**Harry Potter film music show** — 100 minutes, premiered in December 2024.",
-        "**Harry Potter at the planetarium** — 24 pieces, 50 minutes, 2025.",
-        "**Rock opera «Full Moon»** — concert scores totalling 147 minutes: 37 Logic projects, 4 months of work.",
-        "**Musical «The Wizard of the Emerald City»** — 29 numbers: reduced scorings and partial re-orchestration.",
-        "**A. Karamanov, Violin Concerto** — score engraved from manuscript, 175 pages.",
+        "## Path",
+        "**2016** — graduated from an arts lyceum.",
+        "**2020** — graduated from the Rimsky-Korsakov College of Music, St Petersburg, bayan class. During my studies: Grand Prix at an international bayan competition in Serbia and the Bayan World Cup (Kaunas, 2018).",
+        "**2021** — military service in an army ensemble. Entered the St Petersburg Conservatory and spent a year there as a stage assistant.",
+        "**2022–2024** — staff arranger at Imperial Orchestra, and in parallel a score reader at the orchestra's concerts: assistant to the broadcast director, following the score to cue the cameras. The orchestra fills arenas, and its YouTube recordings have millions of views. We still work together.",
+        "**Since 2025** — independent work with orchestras, theatres, composers and artists. In 2025, music producer at the Tavrida.Art arts school.",
+        "## In numbers",
+        "**25+ projects** since 2020: orchestral shows, concert programmes, soundtracks, musicals.",
+        "**500+ minutes of music** — scores, parts, click and playback.",
+        "**300+ minutes of music transcribed by ear** — orchestral material that exists only as a recording.",
+        "**7 complete programmes and stage shows** — concert shows, a musical and a children's play: from the running order to premiere support.",
+        "**25 individual numbers** — from transcription to finished parts, including 7 soundtracks with full-cycle production: arranging, recording, mixing.",
+        "**40+ numbers** for musicals and stage shows.",
+        "**500+ pages of music engraving**, most of it from handwritten scores.",
         "## Terms",
         "**Contract.** I work as a registered self-employed professional: written contract, 50% advance, a receipt for every payment.",
         "**Deadlines.** The deadline is set in the contract. I have never missed one.",
         "**Revisions.** A reasonable amount of revisions is included. If the brief itself changes after approval and the rework is substantial, its scope and cost are agreed separately.",
         "**Support after delivery.** I stay in touch up to the concert and after it. Errors in the parts found at rehearsal are corrected free of charge.",
         "**Client requirements.** References and requirements are discussed before work begins. If an idea doesn't fit the ensemble or the schedule, I propose alternatives.",
-        "**Parts for players.** I am an orchestral player myself: a bayan player who served in a variety-symphony orchestra. Parts are prepared with the players in mind: practical page turns, cues in long rests, real instrument ranges.",
-        "## Education",
-        "Rimsky-Korsakov College of Music, St Petersburg, bayan class. Currently studying at the conservatory. Grand Prix at an international bayan competition in Serbia; competitor at the Bayan World Cup (Kaunas, 2018)."
+        "**Parts for players.** I am an orchestral player myself: a bayan player who served in a variety-symphony orchestra. Parts are prepared with the players in mind: practical page turns, cues in long rests, real instrument ranges."
       ],
       "tags": [
         "Orchestration",
@@ -2524,6 +2543,23 @@ window.SITE_CONTENT = {
         "assets/media/img_4829-2.jpg",
         "assets/media/photos/work-pencil.jpg",
         "assets/media/img_4830-2.jpg"
+      ],
+      "stats": [
+        {
+          "value": "6 years",
+          "label": "in the profession",
+          "icon": "calendar"
+        },
+        {
+          "value": "25+",
+          "label": "projects",
+          "icon": "steps"
+        },
+        {
+          "value": "500+",
+          "label": "minutes of music",
+          "icon": "clock"
+        }
       ]
     },
     "forWhom": {

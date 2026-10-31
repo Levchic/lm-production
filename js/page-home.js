@@ -196,6 +196,7 @@
     $("#aboutHeading").textContent = d.about.heading;
     var p = $("#aboutParagraphs"); p.innerHTML = "";
     d.about.paragraphs.forEach(function (text) { p.appendChild(el("p", null, esc(text))); });
+    $("#aboutStats").innerHTML = C.statCardsHTML(d.about.stats);
 
     var portrait = $("#aboutPortrait");
     if (d.about.portrait) {
