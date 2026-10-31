@@ -170,6 +170,21 @@ window.SITE_CONTENT = {
           "value": "500+",
           "label": "минут музыки",
           "icon": "clock"
+        },
+        {
+          "value": "300+",
+          "label": "минут снято на слух",
+          "icon": "clock"
+        },
+        {
+          "value": "500+",
+          "label": "страниц нотного набора",
+          "icon": "steps"
+        },
+        {
+          "value": "7",
+          "label": "программ и спектаклей целиком",
+          "icon": "ensemble"
         }
       ]
     },
@@ -2565,6 +2580,21 @@ window.SITE_CONTENT = {
           "value": "500+",
           "label": "minutes of music",
           "icon": "clock"
+        },
+        {
+          "value": "300+",
+          "label": "minutes transcribed by ear",
+          "icon": "clock"
+        },
+        {
+          "value": "500+",
+          "label": "pages of engraving",
+          "icon": "steps"
+        },
+        {
+          "value": "7",
+          "label": "full shows and productions",
+          "icon": "ensemble"
         }
       ]
     },

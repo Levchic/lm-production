@@ -2040,7 +2040,7 @@ a.testimonial-name:hover { color: var(--copper); }
 .about-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 340px); gap: clamp(32px, 5vw, 56px); align-items: start; }
 .about-text p { color: var(--bone-dim); font-size: var(--fs-md); line-height: 1.75; margin-bottom: 18px; }
 .about-text + .about-tags { margin-top: 26px; }
-.case-stats.about-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); margin: 8px 0 28px; }
+.case-stats.about-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 8px 0 28px; }
 .about-stats .stat-card { padding: 14px 18px; }
 .case-stats.about-stats:empty { display: none; }
 .about-more { margin-top: 24px; }
@@ -2298,6 +2298,14 @@ a.testimonial-name:hover { color: var(--copper); }
   .service-group-head p { max-width: 60ch; }
   .about-hero-portrait { width: 100%; max-width: 300px; justify-self: center; }
   .about-portrait { width: 100%; max-width: 340px; justify-self: center; }
+  /* В одну колонку портрет идёт сразу за заголовком, а не после всего текста:
+     на странице «Обо мне» колонка с текстом распадается на отдельные строки
+     сетки, чтобы фото встало между заголовком и описанием. */
+  .about-portrait { order: -1; }
+  .about-hero-grid { row-gap: 0; }
+  .about-hero-grid > .reveal:not(.about-hero-portrait) { display: contents; }
+  .about-hero-grid > .reveal:not(.about-hero-portrait) > :not(.eyebrow):not(h1) { order: 2; }
+  .about-hero-portrait { order: 1; margin: 8px 0 28px; }
   /* Узкий экран: заголовок, под ним ролик, под роликом — пересказ.
      Текст по левому краю, как везде на сайте. */
   .intro-video-inner { grid-template-columns: 1fr; grid-template-areas: "head" "player" "digest"; grid-template-rows: auto; }
