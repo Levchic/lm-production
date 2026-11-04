@@ -64,11 +64,8 @@ window.SITE_CONTENT = {
       "frameLabel": "Кадр",
       "photoSrc": "assets/media/home/img_48.jpg",
       "photos": [
-        "assets/media/home/lev-studio-wide.jpg",
         "assets/media/home/img_48.jpg",
-        "assets/media/photos/work-pencil.jpg",
         "assets/media/na-glavnuyu.jpg",
-        "assets/media/photos/work-back.jpg",
         "assets/media/snimok-ekrana-2026-08-11-v-15.43.32-2.jpg",
         "assets/media/home/photo_2026-08-11-16.47.31.jpg"
       ],
@@ -106,7 +103,7 @@ window.SITE_CONTENT = {
     },
     "about": {
       "eyebrow": "Обо мне",
-      "heading": "Опыт и подход",
+      "heading": "Как я работаю",
       "paragraphs": [
         "Аранжировщик и оркестровщик из Санкт-Петербурга. Делаю оркестровые шоу и концертные программы, аранжировки для оркестров, театров и артистов, клик-треки, плейбэки и саунд-дизайн."
       ],
@@ -146,14 +143,14 @@ window.SITE_CONTENT = {
         "Сведение",
         "Нотный набор"
       ],
-      "portrait": "assets/media/about/lev-jacket.webp",
+      "portrait": "assets/media/about/lev-portrait.jpg",
       "readMore": "Подробнее",
       "bgPhoto": "assets/media/home/about-2.jpg",
       "gallery": [
         "assets/media/about/photo_2026-08-10-23.33.43.jpg",
         "assets/media/about/lev-bayan.jpg",
         "assets/media/about/lev-orchestra.jpg",
-        "assets/media/about/lev-score.jpg"
+        "assets/media/about/lev-portrait-square.jpg"
       ],
       "stats": [
         {
@@ -285,7 +282,7 @@ window.SITE_CONTENT = {
           "result": "партитура, партии, клик и плейбэк"
         }
       ],
-      "bgPhoto": "assets/media/photos/work-back.jpg",
+      "bgPhoto": "assets/media/na-glavnuyu.jpg",
       "resultLabel": "Результат"
     },
     "portfolio": {
@@ -2474,11 +2471,8 @@ window.SITE_CONTENT = {
       "frameLabel": "Frame",
       "photoSrc": "assets/media/home/img_48.jpg",
       "photos": [
-        "assets/media/home/lev-studio-wide.jpg",
         "assets/media/home/img_48.jpg",
-        "assets/media/photos/work-pencil.jpg",
         "assets/media/na-glavnuyu.jpg",
-        "assets/media/photos/work-back.jpg",
         "assets/media/snimok-ekrana-2026-08-11-v-15.43.32-2.jpg",
         "assets/media/home/photo_2026-08-11-16.47.31.jpg"
       ],
@@ -2516,7 +2510,7 @@ window.SITE_CONTENT = {
     },
     "about": {
       "eyebrow": "About",
-      "heading": "Experience and approach",
+      "heading": "How I work",
       "paragraphs": [
         "Arranger and orchestrator based in St Petersburg. I produce orchestral shows and concert programmes, arrangements for orchestras, theatres and artists, click tracks, playbacks and sound design."
       ],
@@ -2556,14 +2550,14 @@ window.SITE_CONTENT = {
         "Mixing",
         "Music engraving"
       ],
-      "portrait": "assets/media/about/lev-jacket.webp",
+      "portrait": "assets/media/about/lev-portrait.jpg",
       "readMore": "More",
       "bgPhoto": "assets/media/home/about-2.jpg",
       "gallery": [
         "assets/media/about/photo_2026-08-10-23.33.43.jpg",
         "assets/media/about/lev-bayan.jpg",
         "assets/media/about/lev-orchestra.jpg",
-        "assets/media/about/lev-score.jpg"
+        "assets/media/about/lev-portrait-square.jpg"
       ],
       "stats": [
         {
@@ -2695,7 +2689,7 @@ window.SITE_CONTENT = {
           "result": "score, parts, click and playback"
         }
       ],
-      "bgPhoto": "assets/media/photos/work-back.jpg",
+      "bgPhoto": "assets/media/na-glavnuyu.jpg",
       "resultLabel": "Result"
     },
     "portfolio": {

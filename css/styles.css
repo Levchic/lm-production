@@ -1993,19 +1993,15 @@ a.testimonial-name:hover { color: var(--copper); }
 
 /* Обо мне */
 .about-hero-grid { display: grid; grid-template-columns: 1.25fr 0.75fr; gap: clamp(28px, 4vw, 52px); align-items: center; }
-/* Портрет — вырезанная фигура без рамки. Контровой свет снимка продолжается
-   тёплым пятном за спиной (оно гаснет до краёв кадра, поэтому нигде не
-   упирается в границу), низ фигуры растворяется в разделе. Фигура чуть
-   меньше кадра — ореолу по силуэту есть куда разойтись. */
+/* Портрет без рамки: тёмный студийный фон снимка близок к фону сайта,
+   поэтому края кадра просто гаснут — фото растворяется в разделе,
+   а не лежит на нём прямоугольником. */
 .about-hero-portrait, .about-portrait {
   aspect-ratio: 4 / 5;
-  background-image: var(--photo, none), radial-gradient(ellipse closest-side at 50% 55%, rgba(194, 98, 43, 0.26), rgba(194, 98, 43, 0.08) 60%, transparent);
-  background-size: auto 94%, 100% 100%;
-  background-position: center bottom, center;
-  background-repeat: no-repeat;
-  filter: drop-shadow(0 0 16px rgba(209, 111, 52, 0.28));
-  -webkit-mask-image: linear-gradient(180deg, #000 70%, transparent 100%);
-  mask-image: linear-gradient(180deg, #000 70%, transparent 100%);
+  background-image: var(--photo, none);
+  background-size: cover; background-position: center 20%; background-repeat: no-repeat;
+  -webkit-mask-image: radial-gradient(ellipse 50% 50% at 50% 45%, #000 62%, transparent 100%);
+  mask-image: radial-gradient(ellipse 50% 50% at 50% 45%, #000 62%, transparent 100%);
 }
 .about-long { max-width: 68ch; }
 /* Полный текст и рядом одна рамка с фото: она едет вместе с чтением
@@ -2658,7 +2654,7 @@ a.testimonial-name:hover { color: var(--copper); }
   .about-stats .stat-card { flex-direction: column; align-items: flex-start; gap: 8px; padding: 12px; }
   .about-stats .stat-card .n { font-size: 1.3rem; }
   .about-tags span { padding: 5px 10px; font-size: var(--fs-2xs); }
-  .about-portrait { aspect-ratio: 4 / 3; max-width: none; }
+  .about-portrait { aspect-ratio: 4 / 5; }
   .about-long p, .page-header .desc { font-size: var(--fs-base); line-height: 1.6; }
 
   /* Для кого и направления: строки короче, ярлыки у заказчиков убраны —
