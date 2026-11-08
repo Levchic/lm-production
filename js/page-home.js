@@ -205,6 +205,7 @@
     } else {
       portrait.style.display = "none";
     }
+    portrait.parentElement.classList.toggle("no-portrait", !d.about.portrait);  /* без фото текст занимает всю ширину */
     var tags = $("#aboutTags"); tags.innerHTML = "";
     d.about.tags.forEach(function (tag) { tags.appendChild(el("span", null, esc(tag))); });
     $("#aboutReadMore").innerHTML = C.withArrow(d.about.readMore);

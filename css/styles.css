@@ -2003,6 +2003,7 @@ a.testimonial-name:hover { color: var(--copper); }
   -webkit-mask-image: radial-gradient(ellipse 50% 50% at 50% 45%, #000 62%, transparent 100%);
   mask-image: radial-gradient(ellipse 50% 50% at 50% 45%, #000 62%, transparent 100%);
 }
+.about-grid.no-portrait, .about-hero-grid.no-portrait { grid-template-columns: minmax(0, 1fr); }
 .about-long { max-width: 68ch; }
 /* Полный текст и рядом одна рамка с фото: она едет вместе с чтением
    (sticky), а кадр сменяется на каждом подзаголовке — так фото не

@@ -40,6 +40,7 @@
     } else {
       heroPortrait.style.display = "none";
     }
+    heroPortrait.parentElement.classList.toggle("no-portrait", !d.about.portrait);  /* без фото текст занимает всю ширину */
 
     $("#aboutToPortfolio").innerHTML = C.withArrow(d.portfolio.viewAll);
   }

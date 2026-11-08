@@ -143,7 +143,7 @@ window.SITE_CONTENT = {
         "Сведение",
         "Нотный набор"
       ],
-      "portrait": "assets/media/about/lev-portrait.jpg",
+      "portrait": "",
       "readMore": "Подробнее",
       "bgPhoto": "assets/media/home/about-2.jpg",
       "gallery": [
@@ -2550,7 +2550,7 @@ window.SITE_CONTENT = {
         "Mixing",
         "Music engraving"
       ],
-      "portrait": "assets/media/about/lev-portrait.jpg",
+      "portrait": "",
       "readMore": "More",
       "bgPhoto": "assets/media/home/about-2.jpg",
       "gallery": [
